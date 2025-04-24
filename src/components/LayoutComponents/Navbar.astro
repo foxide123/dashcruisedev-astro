@@ -1,0 +1,88 @@
+---
+import { MenuItemsData } from "@/data/MenuItemsData"
+
+const lg_screen_width = "lg:w-[75vw]"
+---
+
+<nav
+      class={`mx-auto xl:flex-row xl:my-[48px] xl:h-[98px] rounded-4xl h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
+    >
+      <div class="xl:w-[350px] xl:px-0 xl:justify-start xl:pl-6 sm:px-0 w-full justify-center flex items-center">
+        {/* > XL Navbar (Only Icon)*/}
+        <div class="xl:flex hidden self-center rounded-4xl p-2 justify-center items-center">
+          <img
+            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/c0d6674f-31fc-4fc3-cdcd-7cd049c48700/logo240x240"
+            alt="logo"
+            width={240}
+            height={240}
+            loading="eager"
+          />
+        </div>
+        {/* DEFAULT to XL Navbar (Hamburger, Icon and Locale)*/}
+<!--         <div class="xl:hidden w-screen self-center p-2 flex justify-around items-center">
+          {/* Hamburger */}
+          <button
+            onClick={() => {
+              setIsOpened(!isOpened);
+            }}
+            class="cursor-pointer"
+          >
+            <div class="md:hidden">
+              <IconMenu2 stroke={3} width={50} height={50} />
+            </div>
+            <div class="md:block hidden">
+              <IconMenu2 stroke={3} width={70} height={70} />
+            </div>
+          </button>
+          {/* Logo */}
+          <img
+            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240"
+            alt="logo"
+            class="ml-10 md:w-[200px] md:h-[200px] w-[120px] h-[120px]"
+            loading="eager"
+          />
+          <div class="ml-5">
+            <CountrySelectionModal />
+          </div>
+        </div> -->
+      </div>
+      <ul
+        class={` w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
+    transition-all duration-500 ease-in-out overflow-hidden 
+     xl:max-h-none xl:opacity-100`}
+      >
+        {MenuItemsData.map((item) => (
+            <a
+              class={`xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
+             href={item.pathname}
+            >
+              {item.name}
+            </a>
+        ))}
+        <li class="xl:block hidden">
+         <!--  <CountrySelectionModal /> -->
+        </li>
+      </ul>
+      <div class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden">
+        <a href="#pricing_section" class="text-center bg-carrot-500  mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer">
+            See Pricing
+        </a>
+
+      </div>
+<!--       <div class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden">
+        {pageSlug === "/" ? (
+          <a
+            href="#pricing_section"
+           /*  spy={true}
+            smooth={true}
+            duration={2000}
+            offset={30}
+            class="text-center bg-carrot-500  mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer" */
+          >
+            See Pricing
+          </a>
+        ) : (
+          <a href="/#pricing_section" class="text-center bg-carrot-500  mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer">See Pricing</a>
+        )}
+      </div> -->
+    </nav>
