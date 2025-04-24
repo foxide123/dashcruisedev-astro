@@ -1,0 +1,43 @@
+---
+import ContactUsForm from '@/components/ContactForm';
+
+type ContactUsProps = {
+  lg_screen_width: string;
+  default_screen_width: string;
+};
+
+type ContactUsDataType = {
+  header: string;
+  description: string;
+};
+
+const { lg_screen_width, default_screen_width, contactUsData, contactFormData } = Astro.props;
+
+const headerLines = contactUsData.header.split('\n');
+---
+
+<section class="bg-white w-screen flex justify-center">
+  <!--   <FadeInSection> -->
+  {/* Wrapper with defined width */}
+  <div
+    class={`lg:justify-between lg:flex-row lg:py-0 py-10  flex flex-col  ${lg_screen_width} ${default_screen_width}`}
+  >
+    {/* Description */}
+    <div class="caret-transparent lg:w-[530px] md:text-start text-center">
+      {/* <h2 class="text-carrot-500 text-sm leading-5 mb-2">Contact Us</h2> */}
+      <h1 class="text-5xl tracking-tight">
+        {headerLines.map((text: string, index: number) => <div>{text}</div>)}
+      </h1>
+      <p class="text-base leading-6 mt-4">
+        {contactUsData.description}
+      </p>
+    </div>
+    <ContactUsForm
+      padding="lg:p-10 p-0"
+      marginTop="lg:mt-0 mt-10"
+      formData={contactFormData}
+      client:visible
+    />
+  </div>
+  <!--   </FadeInSection> -->
+</section>

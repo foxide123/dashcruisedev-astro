@@ -1,12 +1,10 @@
 {
-  "about": {
-    "header": "About Us",
-    "description": "We build unique, high-performing websites - without huge upfront cost",
-    "sectionHeader": "Our Purpose",
-    "sectionDescription": "At DashcruiseDev, we believe everyone deserves a beautiful tailor-made website that drive results. That's why we have reimagined the traditional web design model.\nInstead of charging thousands upfront, we offer custom-designed websites on a monthly subscription. You get everything you need - design, development, hosting, support, and updates - all in one subscription package.",
-    "teamHeader": "Say hello to our team members",
-    "teamDescription": "Say hello to our team members - a group of creative, driven, and talented individuals working together to bring your ideas to life"
-  },
+  "header": "About Us",
+  "description": "We build unique, high-performing websites - without huge upfront cost",
+  "sectionHeader": "Our Purpose",
+  "sectionDescription": "At DashcruiseDev, we believe everyone deserves a beautiful tailor-made website that drive results. That's why we have reimagined the traditional web design model.\nInstead of charging thousands upfront, we offer custom-designed websites on a monthly subscription. You get everything you need - design, development, hosting, support, and updates - all in one subscription package.",
+  "teamHeader": "Say hello to our team members",
+  "teamDescription": "Say hello to our team members - a group of creative, driven, and talented individuals working together to bring your ideas to life",
   "teamMembers": [
     {
       "name": "Jakub",

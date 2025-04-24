@@ -12,6 +12,13 @@ import deHomeData from '@/data/dictionaries/de/home.json';
 
 import enCommonData from '@/data/dictionaries/en/common.json';
 import deCommonData from '@/data/dictionaries/de/common.json';
+import ComparisonSection from '@/components/HomePage/sections/ComparisonSection.astro';
+import HighlightSection from '@/components/HomePage/sections/HighlightSection.astro';
+import PortfolioSection from '@/components/HomePage/sections/PortfolioSection.astro';
+import ContactSection from '@/components/HomePage/sections/ContactSection.astro';
+import PricingSection from '@/components/HomePage/sections/PricingSection.astro';
+import QaSection from '@/components/HomePage/sections/QaSection.astro';
+import MeetingSection from '@/components/HomePage/sections/MeetingSection.astro';
 
 const translations = {
   en: {
@@ -37,7 +44,7 @@ export async function getStaticPaths() {
 
 <Layout
 >
-  <div class="w-full">
+  <div class="w-screen">
     <div
       class="relative caret-transparent w-screen flex justify-center lg:min-h-[75vh]"
     >
@@ -81,5 +88,12 @@ export async function getStaticPaths() {
         </div>
       </div>
     </div>
+    <ComparisonSection comparisonData={homeData.comparison} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <HighlightSection highlightData={homeData.highlight} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <PortfolioSection portfolioData={homeData.portfolio} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <ContactSection contactUsData={commonData.contactUs} contactFormData={commonData.contactForm}  lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <PricingSection pricingData={homeData.pricing} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <MeetingSection meetingData={homeData.meeting} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+    <QaSection qaData={homeData.qa} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
   </div>
 </Layout>

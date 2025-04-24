@@ -2,6 +2,7 @@
 import { MenuItemsData } from "@/data/MenuItemsData"
 
 const lg_screen_width = "lg:w-[75vw]"
+const {locale} = Astro.params;
 ---
 
 <nav
@@ -54,7 +55,7 @@ const lg_screen_width = "lg:w-[75vw]"
         {MenuItemsData.map((item) => (
             <a
               class={`xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
-             href={item.pathname}
+              href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
             >
               {item.name}
             </a>

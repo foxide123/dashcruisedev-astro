@@ -1,19 +1,19 @@
 export const MenuItemsData = [
     {
         name: "Home",
-        pathname: "/"
+        pathname: ""
     },
     {
         name: "About",
-        pathname: "/about"
+        pathname: "about"
     },
     {
         name: "Contact",
-        pathname: "/contact"
+        pathname: "contact"
     },
     {
         name: "Blog",
-        pathname: "/blog"
+        pathname: "blog"
     },
    /*  {
         name: "Pages",
