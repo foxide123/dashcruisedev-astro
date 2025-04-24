@@ -13,7 +13,7 @@ export default function ContactUsForm({
   padding?: string;
   marginTop?: string;
   //eslint-disable-next-line
-  formData?:any
+  formData:any
 }) {
   const [showPopup, setShowPopup] = useState(false);
   const [pending, setPending] = useState(false);

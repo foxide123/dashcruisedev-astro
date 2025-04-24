@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths } from "astro";
+import enContactData from "@/data/dictionaries/en/common.json"
+import deContactData from "@/data/dictionaries/de/common.json"
+import ContactUsForm from "@/components/ContactForm";
+import Layout from "@/layouts/MainLayout.astro"
+
+const {locale} = Astro.params;
+
+const lg_screen_width = "lg:w-[85vw]"
+const default_screen_width = "w-[75vw]"
+
+const translations = {
+    en: enContactData,
+    de: deContactData
+}
+
+const contactData = locale === 'en' ? translations['en'] : translations['de'];
+const contactUsData = contactData.contactUs;
+const contactFormData = contactData.contactForm;
+
+export async function getStaticPaths(){
+    return [{params: {locale: 'en'}}, {params: {locale: 'de'}}];
+}
+---
+
+<Layout>
+
+<div class="w-screen h-full bg-white flex justify-center items-center">
+  <div
+    class={`flex flex-col justify-center items-center ${lg_screen_width} ${default_screen_width}`}
+  >
+    <div class="lg:w-fit w-full p-10 mb-24 mx-auto">
+      <h1 class="font-normal text-[40px]">{contactUsData.header}</h1>
+      {
+        /* <h2 class="text-base font-bold tracking-wide mt-8">Hours</h2>
+          <h3 class="font-normal text-base tracking-wide text-start mt-8 leading-10">
+            Monday - Friday: 10:00am - 7:30pm <br />
+            Saturday: 10:00am - 6:00pm <br />
+            Sunday: 11:00am - 6:00pm
+          </h3> */
+      }
+      <h2
+        class="font-normal text-base tracking-wide text-start mt-8 leading-7 w-1/2"
+      >
+        {contactUsData.description}
+      </h2>
+      <ContactUsForm marginTop="mt-16" formData={contactFormData}/>
+    </div>
+  </div>
+</div>
+</Layout>
