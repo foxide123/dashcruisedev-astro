@@ -1,0 +1,106 @@
+{
+    "contactForm": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending Message..."
+    },
+    "contactUs": {
+      "header": "We'd love to\nconnect with you!",
+      "description": "Please fill out the contact form and we will contact you as soon as possible with all of the informations and answers to your questions."
+  },
+    "exclusivePlan": {
+      "header": "Exclusive Plan",
+      "description": "Access to the full suite of advanced functionalities",
+      "interval": "month",
+      "features": ["2 Pages Included", "Boost Your Brand with a Custom Site", "Mobile and Desktop Version", "Search Engine Optimization (SEO)", "Hosting & Domain & Business Email"],
+      "cta": "Learn More"
+    },
+    "pricingPlan": [
+      {
+        "name": "🌱 Startup 🌱",
+        "price": "49",
+        "additionalPagePrice": "9",
+        "description": "Perfect for new businesses or solo professionals who just need a solid online presence",
+        "bgColor": "bg-gray-900",
+        "textPrimaryColor": "white",
+        "textSecondaryColor": "gray-400",
+        "features": [
+          {
+            "featureHighlight": "✅ Simple, Custom Website",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "📱 Mobile-Friendly Design",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🔍 Basic SEO Setup",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "⚡️ Quick Launch",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🔒 Hosting, Domain & SSL Included",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "📄 Includes 2 Pages",
+            "featureDescription": ""
+          }
+        ],
+        "extraPagesHeader": "Need More Pages?",
+        "iteration": "month",
+        "extraPagesDescription": "per additional page"
+      },
+      {
+        "name": "✨ Standard ✨",
+        "price": "79",
+        "additionalPagePrice": "9",
+        "description": "Ideal for growing businesses that want a custom site, better visibility, and peace of mind",
+        "bgColor": "bg-gray-100",
+        "textPrimaryColor": "black",
+        "textSecondaryColor": "carrot-500",
+        "features": [
+          {
+            "featureHighlight": "✅ Custom Website Design",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "📱 Responsive & Mobile Friendly",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🔍 SEO Optimization",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🔁 Unlimited Edits",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🔒 Hosting, Domain & SSL Included",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "📄 Up to 5 Custom Pages",
+            "featureDescription": ""
+          }
+        ],
+        "extraPagesHeader": "Need More Pages?",
+        "iteration": "month",
+        "extraPagesDescription": "per additional page"
+      }
+    ],
+    "newsletter": {
+      "header": "Stay Up to Date on <br></br> Sales & News",
+      "placeholder": "Enter your email",
+      "invalidEmailError": "Invalid Email Address",
+      "cta": "Sign Up",
+      "emailExistsError": "This email is already subscribed",
+      "unknownError": "Unknown Error"
+    }
+  }

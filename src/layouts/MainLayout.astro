@@ -1,0 +1,24 @@
+---
+import "../styles/global.css"
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav>
+      <a class="text-green-500" href="#">Home</a>
+      <a href="#">Posts</a>
+      <a href="#">Contact</a>
+    </nav>
+    <article>
+      <slot /> <!-- your content is injected here -->
+    </article>
+  </body>
+  <style>
+    h1 {
+      font-size: 2rem;
+    }
+  </style>
+</html>
