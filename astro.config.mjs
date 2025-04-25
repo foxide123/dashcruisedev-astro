@@ -1,39 +1,68 @@
 // @ts-check
+import {loadEnv} from "vite";
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from "@astrojs/cloudflare"
 
 import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
 
+const mode = process.env.NODE_ENV ?? "development";
+const { SITE_URL } = loadEnv(mode, process.cwd(), "");
+
+const isProduction = process.env.NODE_ENV === 'production'
+
+const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: siteUrl,
+  trailingSlash: "ignore",
   i18n: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en',
+    routing: 'manual'
+  },
+ /*  i18n: {
     locales: ["en", "de"],
     defaultLocale: "en",
     fallback: {
       de: "en"
     },
     routing: {
-      prefixDefaultLocale: true,
-      fallbackType: "rewrite"
+       prefixDefaultLocale: true,
+       redirectToDefaultLocale: true,
+       fallbackType: "redirect"  
     }
-  },
+  }, */
   vite: {
+    ssr: {
+      resolve: {
+        alias: {
+          'react-dom/server': isProduction ? 'react-dom/server.edge' : 'react-dom/server',
+        }
+      }
+    },
     resolve: {
       alias: {
         "@": new URL("./src", import.meta.url).pathname
-      }
+      },
     },
 
     plugins: [tailwindcss()]
   },
-  integrations: [mdx(), sitemap(), react()],
-  /* adapter: cloudflare({
+  integrations: [mdx(), sitemap(), react({
+    jsxImportSource: 'react',
+    babel: {
+      presets: [],
+      plugins: [],
+    }
+  })],
+  adapter: cloudflare({
     platformProxy: {
       enabled: true
     }
-  }), */
+  }),
 });
