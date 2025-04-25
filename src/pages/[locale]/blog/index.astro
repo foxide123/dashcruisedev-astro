@@ -8,7 +8,7 @@ import FormattedDate from '@/components/FormattedDate.astro';
 import enBlogData from '@/data/dictionaries/en/blog.json';
 import deBlogData from '@/data/dictionaries/de/blog.json';
 import Layout from "@/layouts/MainLayout.astro"
-import CursorWrapper from './CursorWrapper';
+import CursorWrapper from '@/components/CursorWrapper';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -40,6 +40,8 @@ const otherPosts = blogData.posts.slice(1);
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
 }
+
+export const prerender = true
 ---
 
 <Layout>

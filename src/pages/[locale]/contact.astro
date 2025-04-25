@@ -22,6 +22,8 @@ const contactFormData = contactData.contactForm;
 export async function getStaticPaths(){
     return [{params: {locale: 'en'}}, {params: {locale: 'de'}}];
 }
+
+export const prerender = true
 ---
 
 <Layout>

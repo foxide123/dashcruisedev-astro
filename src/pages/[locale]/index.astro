@@ -43,6 +43,8 @@ const default_screen_width = 'lg:w-85vw';
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
 }
+
+export const prerender = true
 ---
 
 <Layout>
