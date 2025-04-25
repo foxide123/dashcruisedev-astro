@@ -2,7 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import Layout from '@/layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
-import ExclusivePlan from "@/components/HomePage/ExclusivePlan.astro";
+import ExclusivePlan from '@/components/HomePage/ExclusivePlan.astro';
 // defaultLocale is "en"
 const indexUrl = getRelativeLocaleUrl('en', '');
 
@@ -19,20 +19,23 @@ import ContactSection from '@/components/HomePage/sections/ContactSection.astro'
 import PricingSection from '@/components/HomePage/sections/PricingSection.astro';
 import QaSection from '@/components/HomePage/sections/QaSection.astro';
 import MeetingSection from '@/components/HomePage/sections/MeetingSection.astro';
+import { ContainerTextFlipClient } from '@/components/HomePage/ContainerTextFlipClient';
+import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
 
 const translations = {
   en: {
     home: enHomeData,
-    common: enCommonData
+    common: enCommonData,
   },
   de: {
     home: deHomeData,
-    common: deCommonData
+    common: deCommonData,
   },
 };
 
 const homeData = locale === 'en' ? translations.en.home : translations.de.home;
-const commonData = locale === 'en' ? translations.en.common : translations.de.common;
+const commonData =
+  locale === 'en' ? translations.en.common : translations.de.common;
 const heroData = homeData.hero;
 const lg_screen_width = 'lg:w-[75vw]';
 const default_screen_width = 'lg:w-85vw';
@@ -42,59 +45,49 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout
->
-  <div class="w-screen">
-    <div
-      class="relative caret-transparent w-screen flex justify-center lg:min-h-[75vh]"
-    >
-      <div class="absolute inset-0 bg-black z-[-1] md:hidden"></div>
-      <div class={`fixed -z-10  inset-0 w-screen h-screen sm:block hidden`}>
-        <img
-            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080"
-            alt="Background image"
-            loading="eager"
-            class="relative w-screen h-screen overflow-hidden"
-          /> 
-      </div>
-      <div
-        class={`pb-[48px] ${lg_screen_width} flex ${default_screen_width} overflow-hidden`}
-      >
-        {/* Main Hero Section */}
-        <div
-          class="z-10 lg:justify-between lg:flex-row flex flex-col justify-center items-center w-full"
-        >
-          {/* Launch Your Site */}
-          <div class="lg:w-[662px] flex flex-col lg:items-start text-white">
-            <div
-              class="lg:text-7xl lg:leading-[90px] lg:text-start text-6xl my-5 leading-[80px] tracking-[-2%] font-bold font-sans text-center"
-            >
-              <!--   <h1>
-                  {heroData.headerBeforeEffect}
-                  <span class="block">
-                    <ContainerTextFlipClient words={heroData.headerEffect} />
-                  </span>{" "}
-                  {heroData.headerAfterEffect}
-                </h1> -->
-            </div>
-            <p
-              class=" sm:hidden lg:text-start text-base leading-6 text-center break-words mb-2"
-            >
-              We craft custom websites designed to bring your ideas to life and
-              help you grow your business.
-              <br />
-            </p>
-          </div>
-          <ExclusivePlan planData={commonData.exclusivePlan} currency="eur" >
-        </div>
-      </div>
-    </div>
-    <ComparisonSection comparisonData={homeData.comparison} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <HighlightSection highlightData={homeData.highlight} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <PortfolioSection portfolioData={homeData.portfolio} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <ContactSection contactUsData={commonData.contactUs} contactFormData={commonData.contactForm}  lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <PricingSection pricingData={homeData.pricing} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <MeetingSection meetingData={homeData.meeting} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
-    <QaSection qaData={homeData.qa} lg_screen_width={lg_screen_width} default_screen_width={default_screen_width}/>
+<Layout>
+  <div class="w-screen flex flex-col justify-center">
+    <HeroSection
+      heroData={heroData}
+      commonData={commonData}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <ComparisonSection
+      comparisonData={homeData.comparison}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <HighlightSection
+      highlightData={homeData.highlight}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <PortfolioSection
+      portfolioData={homeData.portfolio}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <ContactSection
+      contactUsData={commonData.contactUs}
+      contactFormData={commonData.contactForm}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <PricingSection
+      pricingData={homeData.pricing}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <MeetingSection
+      meetingData={homeData.meeting}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
+    <QaSection
+      qaData={homeData.qa}
+      lg_screen_width={lg_screen_width}
+      default_screen_width={default_screen_width}
+    />
   </div>
 </Layout>
