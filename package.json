@@ -19,6 +19,7 @@
 		"@nanostores/react": "^1.0.0",
 		"@radix-ui/react-popover": "^1.1.11",
 		"@radix-ui/react-select": "^2.2.2",
+		"@stripe/stripe-js": "^7.2.0",
 		"@tabler/icons-react": "^3.31.0",
 		"@tailwindcss/vite": "^4.1.4",
 		"@types/react": "^19.1.2",

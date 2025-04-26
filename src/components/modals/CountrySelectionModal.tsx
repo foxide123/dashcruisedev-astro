@@ -18,7 +18,7 @@ import { ArrowDown } from 'lucide-react';
 import { navigate } from 'astro:transitions/client';
 import { useEffect, useState } from 'react';
 import { useStore } from '@nanostores/react';
-import { localeCurrency } from '@/localeCurrencyStore';
+import { currencyFromStore } from '@/store/currencyStore';
 import Cookies from 'js-cookie'
 
 const getLocaleWithFlag  = (locale:String) => {
@@ -35,10 +35,13 @@ const getLocaleWithFlag  = (locale:String) => {
 }
 
 export default function CountrySelectionModal({locale}: {locale:string | undefined}) {
+  const currencyFromCookies = Cookies.get('currency')
   const [language, setLanguage] = useState(getLocaleWithFlag(locale ?? 'en'));
-  const [currency, setCurrency] = useState('usd');
+  const [currency, setCurrency] = useState(currencyFromCookies ?? 'usd');
 
   const [open, setOpen] = useState(false);
+
+  const $currencyFromStore = useStore(currencyFromStore);
 
   let pathname;
 
@@ -64,6 +67,8 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
     Cookies.set("currency", currency, { path: "/" });
     Cookies.set("locale", newLocale, { path: "/" });
     Cookies.set("localeWithFlag", language)
+
+    currencyFromStore.set('currency')
 
     setOpen(false);
 

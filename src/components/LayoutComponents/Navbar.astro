@@ -2,32 +2,17 @@
 import { MenuItemsData } from '@/data/MenuItemsData';
 import { IconMenu2 } from '@tabler/icons-react';
 import CountrySelectionModal from '../modals/CountrySelectionModal';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import HamburgerToggle from './HamburgerToggle.astro';
 
 const lg_screen_width = 'lg:w-[75vw]';
 const { locale } = Astro.params;
+
+const pathname = Astro.url.pathname;
 ---
 
-<script type="module">
-  let hamburgerIsOpened = false;
-  function handleClick() {
-    hamburgerIsOpened = !hamburgerIsOpened;
-    const menu = document.getElementById('menu');
-    if (hamburgerIsOpened) {
-      menu.classList.add('max-h-[500px', 'opacity-100');
-      menu.classList.remove('max-h-0', 'opacity-0');
-    } else {
-      menu.classList.remove('max-h-[500px]', 'opacity-100');
-      menu.classList.add('max-h-0', 'opacity-0');
-    }
-  }
-  document
-    .getElementById('hamburger-button')
-    ?.addEventListener('click', handleClick);
-</script>
-
 <nav
-  class={`mx-auto xl:flex-row xl:my-[48px] xl:h-[98px] rounded-4xl h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
+  class={`xl:flex-row xl:my-[48px] xl:h-[98px] lg:rounded-4xl mx-auto h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
 >
   <div
     class="xl:w-[350px] xl:px-0 xl:justify-start xl:pl-6 sm:px-0 w-full justify-center flex items-center"
@@ -49,14 +34,7 @@ const { locale } = Astro.params;
       class="xl:hidden w-screen self-center p-2 flex justify-around items-center"
     >
       {/* Hamburger */}
-      <button id="hamburger-button" class={`cursor-pointer`}>
-        <div class="md:hidden">
-          <IconMenu2 stroke={3} width={50} height={50} />
-        </div>
-        <div class="md:block hidden">
-          <IconMenu2 stroke={3} width={70} height={70} />
-        </div>
-      </button>
+      <HamburgerToggle/>
       {/* Logo */}
       <img
         src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240"
@@ -65,28 +43,45 @@ const { locale } = Astro.params;
         loading="eager"
       />
       <div class="ml-5">
-        <CountrySelectionModal client:load locale={locale}/>
+        <CountrySelectionModal client:load locale={locale} />
       </div>
     </div>
   </div>
   <ul
     id="menu"
-    class={` w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
+    class={`w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
     transition-all duration-500 ease-in-out overflow-hidden 
-         xl:max-h-none xl:opacity-100`}
+         xl:max-h-none xl:opacity-100 max-h-0 opacity-0`}
   >
     {
-      MenuItemsData.map((item) => (
-        <a
-          class={`xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
-          href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
-        >
-          {item.name}
-        </a>
-      ))
+      MenuItemsData.map((item, index) => {
+        const fullItemPath = `/${locale}/${item.pathname}`;
+        console.log('Full Item Path: ', fullItemPath);
+        const currentPath = Astro.url.pathname!.endsWith('/')
+          ? pathname!.slice(0, -1)
+          : pathname;
+        console.log('Current Path: ', currentPath);
+        const comparePath = fullItemPath.endsWith('/')
+          ? fullItemPath.slice(0, -1)
+          : fullItemPath;
+        console.log('Compare Path', comparePath);
+        const isActive =
+          currentPath === comparePath ? 'text-carrot-500' : 'text-white';
+        console.log('Is Active:', isActive);
+        const isLast = index === MenuItemsData.length - 1;
+        return (
+          <a
+            data-astro-prefetch="load"
+            class={`${isActive} xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
+            href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
+          >
+            {item.name}
+          </a>
+        );
+      })
     }
     <li class="xl:block hidden">
-      <CountrySelectionModal client:load locale={locale}/>
+      <CountrySelectionModal client:load locale={locale} />
     </li>
   </ul>
   <div

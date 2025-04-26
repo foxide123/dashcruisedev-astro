@@ -1,0 +1,79 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+type CheckoutApiResponse = {
+    sessionId: string;
+}
+
+
+export default function SubscribeButton({
+  customAmount,
+  text,
+  processingText = "Processing...",
+  currency,
+  language,
+  planName
+}: {
+  customAmount: string;
+  text: string;
+  processingText?: string;
+  currency: string;
+  language: string;
+  planName: string;
+}) {
+  const [loading, setLoading] = useState(false);
+  let pathname;
+
+  useEffect(() => {
+    pathname = window.location.pathname;
+    setLoading(false); // Reset on mount
+  }, [pathname]);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/checkout-sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: customAmount,
+          currency: currency,
+          language: language,
+          planName: planName
+        }),
+      });
+
+      const data = (await response.json()) as CheckoutApiResponse;
+
+      if (response.status !== 200 || !data.sessionId) {
+        console.error("Error creating session:", data);
+        return;
+      }
+
+      const { loadStripe } = await import("@stripe/stripe-js/pure");
+      const stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+      );
+
+      const stripe = await stripePromise;
+      await stripe?.redirectToCheckout({ sessionId: data.sessionId });
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div>
+      <button
+        onClick={handleCheckout}
+        disabled={loading}
+        className="flex justify-center items-center bg-carrot-500 rounded-xl py-6 px-4 text-center text-white text-2xl w-full cursor-pointer"
+      >
+        {loading ? processingText : text}
+      </button>
+    </div>
+  );
+}

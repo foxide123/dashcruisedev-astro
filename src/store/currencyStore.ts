@@ -1,4 +1,6 @@
-import { map } from 'nanostores';
+import { atom, map } from 'nanostores'
+
+export const currencyFromStore = atom('usd')
 
 export interface LocaleCurrencyValue {
     locale: String;

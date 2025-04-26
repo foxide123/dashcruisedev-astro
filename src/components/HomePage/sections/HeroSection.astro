@@ -1,6 +1,6 @@
 ---
 import { ContainerTextFlipClient } from '../ContainerTextFlipClient';
-import ExclusivePlan from '../ExclusivePlan.astro';
+import ExclusivePlan from '@/components/HomePage/Pricing/ExclusivePlan.astro';
 
 const { lg_screen_width, default_screen_width, heroData, commonData } =
   Astro.props;
@@ -15,6 +15,7 @@ const { lg_screen_width, default_screen_width, heroData, commonData } =
       src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080"
       alt="Background image"
       loading="eager"
+      fetchpriority="high"
       class="relative w-screen h-screen overflow-hidden"
     />
   </div>

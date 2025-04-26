@@ -3,12 +3,21 @@ import '../styles/global.css';
 import Navbar from '@/components/LayoutComponents/Navbar.astro';
 import { ClientRouter } from 'astro:transitions';
 import { fade } from 'astro:transitions';
+import Metadata from "@/components/seo/Metadata.astro"
+import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+
+interface Props {
+  metadata: MetadataProps;
+}
+
+const {metadata} = Astro.props;
 ---
 
 <html lang="en" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Metadata {...metadata} />
     <ClientRouter />
   </head>
   <body>

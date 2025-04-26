@@ -13,12 +13,15 @@ const mode = process.env.NODE_ENV ?? "development";
 const { SITE_URL } = loadEnv(mode, process.cwd(), "");
 
 const isProduction = process.env.NODE_ENV === 'production'
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('mode:', mode);
 
 const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
 
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
+  prefetch: true,
   trailingSlash: "ignore",
   i18n: {
     locales: ['en', 'de'],
@@ -47,7 +50,8 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        "@": new URL("./src", import.meta.url).pathname
+        "@": new URL("./src", import.meta.url).pathname,
+        'react-dom/server': 'react-dom/server.edge'
       },
     },
 

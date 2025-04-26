@@ -1,0 +1,35 @@
+---
+import QAComponent from './QAComponent';
+
+type QaItemType = {
+  question: string;
+  answer: string;
+};
+
+type QaDataType = {
+  sectionHighlight: string;
+  header: string;
+  qaData: QaItemType;
+};
+
+const { lg_screen_width, default_screen_width, qaData} = Astro.props;
+---
+
+<section class="bg-white caret-transparent flex justify-center w-screen">
+<!--   <FadeInSection> -->
+    <div
+      class={`lg:py-[150px] lg:text-start py-10 text-center ${lg_screen_width} ${default_screen_width}`}
+    >
+      <div class="text-center">
+        <h3 class="text-xl font-medium text-carrot-500">
+          {qaData.sectionHighlight}
+        </h3>
+        <h1 class=" font-medium text-5xl leading-15 tracking-tight">
+          {qaData.header}
+        </h1>
+      </div>
+
+      <QAComponent client:visible qaData={qaData.qaData}/>
+    </div>
+<!--   </FadeInSection> -->
+</section>

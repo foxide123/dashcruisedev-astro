@@ -1,7 +1,6 @@
-/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faX } from "@fortawesome/free-solid-svg-icons"
-import { IconPropsType, IconSizeEnum } from "@/types/icon_types"
-
+import { IconSizeEnum } from "@/types/icon_types"
+import type { IconPropsType } from "@/types/icon_types"
+import { XCircleIcon } from "lucide-react";
 
 export default function XIcon({
   color = "text-carrot-500",
@@ -19,6 +18,6 @@ export default function XIcon({
   
 
   return (
-    <FontAwesomeIcon icon={faX} className={`mr-5 ${color} w-[${iconWidth}px]`} />
+    <XCircleIcon className={`mr-5 ${color} w-[${iconWidth}px]`} />
   )
-} */
+}

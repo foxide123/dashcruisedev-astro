@@ -1,0 +1,33 @@
+---
+/* import { IconMenu2 } from "@tabler/icons-react"; */
+---
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .getElementById('hamburger-button')
+      ?.addEventListener('click', handleClick);
+    let hamburgerIsOpened = false;
+    function handleClick() {
+      hamburgerIsOpened = !hamburgerIsOpened;
+      const menu = document.getElementById('menu');
+      if (hamburgerIsOpened) {
+        menu.classList.add('max-h-[500px]', 'opacity-100');
+        menu.classList.remove('max-h-0', 'opacity-0');
+      } else {
+        menu.classList.remove('max-h-[500px]', 'opacity-100');
+        menu.classList.add('max-h-0', 'opacity-0');
+      }
+    }
+  });
+</script>
+<button id="hamburger-button" class={`cursor-pointer`}>
+  <div class="md:hidden">
+    +
+    <!-- <IconMenu2 stroke={3} width={50} height={50} /> -->
+  </div>
+  <div class="md:block hidden">
+    +
+    <!--   <IconMenu2 stroke={3} width={70} height={70} /> -->
+  </div>
+</button>

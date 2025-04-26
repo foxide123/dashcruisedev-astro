@@ -1,5 +1,8 @@
 ---
 import FadeInSection from "@/components/FadeInSection.tsx";
+import CheckIconCustom from "@/components/icons/CheckIconCustom";
+import XIconCustom from "@/components/icons/XIconCustom";
+import { IconSizeEnum } from "@/types/icon_types";
 
 const {comparisonData, lg_screen_width, default_screen_width} = Astro.props;
 ---
@@ -34,7 +37,7 @@ const {comparisonData, lg_screen_width, default_screen_width} = Astro.props;
                   <li class="list-item-custom">
                     <div>
                       {/* <CheckIcon /> */}
-                      +
+                      <CheckIconCustom size={IconSizeEnum.small} client:visible/>
                     </div>{" "}
                     <span>{item}</span>
                   </li>
@@ -54,8 +57,7 @@ const {comparisonData, lg_screen_width, default_screen_width} = Astro.props;
                 (item: string, index: number) => (
                   <li class="list-item-custom">
                     <div>
-                      {/* <XIcon /> */}
-                      -
+                      <XIconCustom size={IconSizeEnum.small} color="text-black" client:visible/> 
                     </div>{" "}
                     <span>{item}</span>
                   </li>

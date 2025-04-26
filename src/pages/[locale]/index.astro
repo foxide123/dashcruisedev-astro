@@ -2,7 +2,6 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import Layout from '@/layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
-import ExclusivePlan from '@/components/HomePage/ExclusivePlan.astro';
 // defaultLocale is "en"
 const indexUrl = getRelativeLocaleUrl('en', '');
 
@@ -17,10 +16,12 @@ import HighlightSection from '@/components/HomePage/sections/HighlightSection.as
 import PortfolioSection from '@/components/HomePage/sections/PortfolioSection.astro';
 import ContactSection from '@/components/HomePage/sections/ContactSection.astro';
 import PricingSection from '@/components/HomePage/sections/PricingSection.astro';
-import QaSection from '@/components/HomePage/sections/QaSection.astro';
-import MeetingSection from '@/components/HomePage/sections/MeetingSection.astro';
+import QaSection from '@/components/HomePage/sections/QA/QaSection.astro';
+import MeetingSection from '@/components/HomePage/sections/Meeting/MeetingSection.astro';
 import { ContainerTextFlipClient } from '@/components/HomePage/ContainerTextFlipClient';
 import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
+import Metadata from '@/components/seo/Metadata.astro';
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 
 const translations = {
   en: {
@@ -38,16 +39,35 @@ const commonData =
   locale === 'en' ? translations.en.common : translations.de.common;
 const heroData = homeData.hero;
 const lg_screen_width = 'lg:w-[75vw]';
-const default_screen_width = 'lg:w-85vw';
+const default_screen_width = 'w-[85vw]';
+
+const metadata: MetadataProps = {
+  title: 'Web Agency',
+  description: 'Web Agency Offering Custom Websites',
+  keywords: ['agency', 'websites', ''],
+  creator: 'Jakub Cezary Kolando',
+  publisher: 'Jakub Cezary Kolando',
+  metadataBase: new URL('https://dashcruisedev.com'),
+  alternates: {
+    canonical: '/en',
+    languages: {
+      en: 'https://dashcruisedev.com/en',
+      de: 'https://dashcruisedev.com/de',
+    },
+  },
+  openGraph: {
+    images: '/og-image.png',
+  },
+};
 
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
 }
 
-export const prerender = true
+export const prerender = true;
 ---
 
-<Layout>
+<Layout metadata={metadata}>
   <div class="w-screen flex flex-col justify-center">
     <HeroSection
       heroData={heroData}
@@ -77,7 +97,9 @@ export const prerender = true
       default_screen_width={default_screen_width}
     />
     <PricingSection
-      pricingData={homeData.pricing}
+      locale={locale}
+      pricingPlansData={commonData.pricingPlan}
+      pricingSectionData={homeData.pricing}
       lg_screen_width={lg_screen_width}
       default_screen_width={default_screen_width}
     />

@@ -1,0 +1,64 @@
+---
+type AlternateProps = {
+  canonical: string;
+  languages?: Record<string, string>;
+};
+
+type OpenGraphProps = {
+  images: string;
+};
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  creator?: string;
+  publisher?: string;
+  metadataBase?: URL;
+  alternates?: AlternateProps;
+  openGraph?: OpenGraphProps;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  creator,
+  metadataBase,
+  alternates,
+  openGraph,
+} = Astro.props;
+
+// Creating String from Array of Keywords
+let keywordsFormatted = keywords ? keywords.join(',') : '';
+
+// CANONICAL LINK
+const canonicalLink = alternates?.canonical ? (metadataBase
+  ? metadataBase.toString().concat(alternates.canonical)
+  : alternates.canonical) : '';
+
+console.log('Description', description);
+console.log('Title', title);
+console.log('Author', creator);
+console.log('Keywords', keywords);
+console.log('Canonical URL', canonicalLink);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content={creator} />
+<meta name="keywords" content={keywordsFormatted} />
+
+<link rel="canonical" href={canonicalLink} />
+<!-- Alternate Links like https://acme.com/en  -->
+{
+  alternates?.languages &&
+    Object.entries(alternates.languages).map(([lang, href]) => {
+      const alternateHref = metadataBase
+        ? metadataBase.toString().concat(href)
+        : href;
+      console.log(alternateHref);
+      return <link rel="alternate" hreflang={lang} href={alternateHref} />;
+    })
+}
+<meta property="og:image" content="https://acme.com/og-image.png" />

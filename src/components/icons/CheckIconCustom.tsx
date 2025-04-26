@@ -1,8 +1,7 @@
-<!-- ---
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import { IconPropsType, IconSizeEnum } from "@/types/icon_types";
----
+import type {IconPropsType} from "@/types/icon_types";
+import { IconSizeEnum } from "@/types/icon_types";
+import { CheckIcon as CheckIconLucide } from 'lucide-react';
+
 export default function CheckIcon({
   size = IconSizeEnum.small,
   color = "text-carrot-500",
@@ -19,6 +18,6 @@ export default function CheckIcon({
   const iconWidth = iconSizeMap[size] ?? 24; //default to 24
 
   return (
-    <FontAwesomeIcon icon={faCheck} className={`mr-5 ${color} w-[${iconWidth}px] mt-${marginTop}`} />
+    <CheckIconLucide className={`mr-5 ${color} w-[${iconWidth}px] mt-${marginTop}`} />
   )
-} -->
+}
