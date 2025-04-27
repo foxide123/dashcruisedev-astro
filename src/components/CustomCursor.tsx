@@ -20,7 +20,6 @@ export default function CustomCursor({isVisible, label}: {isVisible:boolean, lab
     const move = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       setHasMoved(true);
-      console.log("X:", e.clientX, "Y:", e.clientY)
     };
 
     window.addEventListener('mousemove', move);

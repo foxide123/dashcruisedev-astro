@@ -1,6 +1,5 @@
 ---
 import { MenuItemsData } from '@/data/MenuItemsData';
-import { IconMenu2 } from '@tabler/icons-react';
 import CountrySelectionModal from '../modals/CountrySelectionModal';
 import Cookies from 'js-cookie';
 import HamburgerToggle from './HamburgerToggle.astro';
@@ -57,22 +56,18 @@ const pathname = Astro.url.pathname;
     {
       MenuItemsData.map((item, index) => {
         const fullItemPath = `/${locale}/${item.pathname}`;
-        console.log('Full Item Path: ', fullItemPath);
         const currentPath = Astro.url.pathname!.endsWith('/')
           ? pathname!.slice(0, -1)
           : pathname;
-        console.log('Current Path: ', currentPath);
         const comparePath = fullItemPath.endsWith('/')
           ? fullItemPath.slice(0, -1)
           : fullItemPath;
-        console.log('Compare Path', comparePath);
         const isActive =
           currentPath === comparePath ? 'text-carrot-500' : 'text-white';
-        console.log('Is Active:', isActive);
         const isLast = index === MenuItemsData.length - 1;
         return (
           <a
-            data-astro-prefetch="load"
+            data-astro-prefetch="hover"
             class={`${isActive} xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
             href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
           >

@@ -18,8 +18,9 @@ console.log('mode:', mode);
 
 const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
 
+
 // https://astro.build/config
-export default defineConfig({
+ export default defineConfig({
   site: siteUrl,
   prefetch: true,
   trailingSlash: "ignore",
@@ -28,19 +29,22 @@ export default defineConfig({
     defaultLocale: 'en',
     routing: 'manual'
   },
- /*  i18n: {
-    locales: ["en", "de"],
-    defaultLocale: "en",
-    fallback: {
-      de: "en"
-    },
-    routing: {
-       prefixDefaultLocale: true,
-       redirectToDefaultLocale: true,
-       fallbackType: "redirect"  
-    }
-  }, */
+
   vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+        }
+      }
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom']
+    },
     ssr: {
       resolve: {
         alias: {
@@ -50,21 +54,15 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        "@": new URL("./src", import.meta.url).pathname,
+        '@': new URL("./src", import.meta.url).toString().replace(/^file:\/+/, '/'),
         'react-dom/server': isProduction ? 'react-dom/server.edge': ''
       },
     },
 
     plugins: [tailwindcss()]
   },
-  integrations: [mdx(), sitemap(), react({
-    jsxImportSource: 'react',
-    babel: {
-      presets: [],
-      plugins: [],
-    }
-  })],
-  adapter: cloudflare({
+  integrations: [mdx(), sitemap(), react()],
+   adapter: cloudflare({
     platformProxy: {
       enabled: true
     }
