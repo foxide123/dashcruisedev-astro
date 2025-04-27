@@ -3,6 +3,8 @@ import { SocialIcons2 } from '@/components/SocialIcons2';
 import Layout from '@/layouts/MainLayout.astro';
 import enAboutData from "@/data/dictionaries/en/about.json";
 import deAboutData from "@/data/dictionaries/de/about.json";
+import Metadata from '@/components/seo/Metadata.astro';
+import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
 
 type AboutType = {
   header: string;
@@ -23,7 +25,7 @@ type TeamMemberType = {
   fb_url: string;
   ig_url: string;
   linkedin_url: string;
-  tw_url: string;
+  twitter_url: string;
   upwork_url: string;
 };
 
@@ -52,6 +54,41 @@ const sectionDescriptionLines = aboutData.sectionDescription.split('\n');
 const lg_screen_width = "lg:w-[85vw]"
 const default_screen_width = "w-[75vw]"
 
+const metadata: MetadataProps = {
+  title: 'DashcruiseDev - About Us',
+  description: 'Meet Our Team at DashcruiseDev',
+  keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+  creator: 'Jakub Cezary Kolando',
+  publisher: 'Jakub Cezary Kolando',
+  metadataBase: new URL('https://dashcruisedev.com'),
+  alternates: {
+    canonical: '/en',
+    languages: {
+      en: '/en',
+      de: '/de',
+      pl: "/pl",
+      ro: "/ro"
+    },
+  },
+  openGraph: {
+    images: '/og-image.png',
+  },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
+        alt: "Background Image",
+        media: "(min-width: 640px)"
+      },
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
+        alt: "Background Image ",
+        media: "(max-width: 639px)"
+      }
+    ]
+  }
+};
+
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
 }
@@ -59,7 +96,7 @@ export async function getStaticPaths() {
 export const prerender = true
 ---
 
-<Layout>
+<Layout metadata={metadata}>
   <div class="caret-transparent w-screen">
     {/* Hero */}
     <div
@@ -193,7 +230,7 @@ export const prerender = true
                       <SocialIcons2
                         fb_url={member.fb_url}
                         linkedin_url={member.linkedin_url}
-                        tw_url={member.tw_url}
+                        tw_url={member.twitter_url}
                         ig_url={member.ig_url}
                         upwork_url={member.upwork_url}
                         direction="flex-row"

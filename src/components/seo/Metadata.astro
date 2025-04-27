@@ -13,6 +13,7 @@ type ImageProps = {
   alt: string;
   srcset?: string;
   sizes?: string;
+  media?: string;
 }
 
 type PreloadImageProps = {
@@ -73,5 +74,5 @@ const ogImage = openGraph ? new URL(openGraph?.images!, metadataBase) : '/favico
 
 <!-- Preload Remote Images -->
 {imagesToPreload?.remoteImages?.map((image) => (
-  <link rel="preload" as={image.alt} href={image.href} />
+  <link rel="preload" as={image.alt} href={image.href} media={image.media}/>
 ))}
