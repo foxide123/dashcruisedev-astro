@@ -1,5 +1,5 @@
 ---
-/* import { IconMenu2 } from "@tabler/icons-react"; */
+import HamburgerIconCustom from "@/components/icons/HamburgerIconCustom"
 ---
 
 <script type="module">
@@ -23,11 +23,9 @@
 </script>
 <button id="hamburger-button" class={`cursor-pointer`}>
   <div class="md:hidden">
-    +
-    <!-- <IconMenu2 stroke={3} width={50} height={50} /> -->
+    <HamburgerIconCustom stroke={3} width={50} height={50} client:load/>
   </div>
   <div class="md:block hidden">
-    +
-    <!--   <IconMenu2 stroke={3} width={70} height={70} /> -->
+    <HamburgerIconCustom stroke={3} width={70} height={70} client:load/>
   </div>
 </button>

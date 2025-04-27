@@ -34,7 +34,7 @@ export default function SubscribeButton({
     setLoading(true);
 
     try {
-      const response = await fetch("/api/checkout-sessions", {
+      const response = await fetch("https://api.dashcruisedev.com/stripe/checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,14 +47,14 @@ export default function SubscribeButton({
 
       const data = (await response.json()) as CheckoutApiResponse;
 
-      if (response.status !== 200 || !data.sessionId) {
+      if (!data.sessionId) {
         console.error("Error creating session:", data);
         return;
       }
 
       const { loadStripe } = await import("@stripe/stripe-js/pure");
       const stripePromise = loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+        import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST as string
       );
 
       const stripe = await stripePromise;

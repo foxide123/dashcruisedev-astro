@@ -81,7 +81,9 @@ const {
               </span>
               <span class=" font-medium">&thinsp;/ month</span> */
           }
-          <PricingCurrency  basePrice={Number(planPrice as string)}  client:visible/>
+          <span class="border-2 border-green-500 mx-auto text-3xl font-bold">
+            <PricingCurrency  basePrice={Number(planPrice as string)}  client:visible/>
+          </span>
         </div>
       </div>
     </div>

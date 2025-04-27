@@ -51,7 +51,7 @@ export default defineConfig({
     resolve: {
       alias: {
         "@": new URL("./src", import.meta.url).pathname,
-        'react-dom/server': 'react-dom/server.edge'
+        'react-dom/server': isProduction ? 'react-dom/server.edge': ''
       },
     },
 

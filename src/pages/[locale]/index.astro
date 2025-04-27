@@ -44,20 +44,28 @@ const default_screen_width = 'w-[85vw]';
 const metadata: MetadataProps = {
   title: 'Web Agency',
   description: 'Web Agency Offering Custom Websites',
-  keywords: ['agency', 'websites', ''],
+  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL('https://dashcruisedev.com'),
   alternates: {
     canonical: '/en',
     languages: {
-      en: 'https://dashcruisedev.com/en',
-      de: 'https://dashcruisedev.com/de',
+      en: '/en',
+      de: '/de',
     },
   },
   openGraph: {
     images: '/og-image.png',
   },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080",
+        alt: "Background Image"
+      }
+    ]
+  }
 };
 
 export async function getStaticPaths() {

@@ -8,6 +8,18 @@ type OpenGraphProps = {
   images: string;
 };
 
+type ImageProps = {
+  href: string;
+  alt: string;
+  srcset?: string;
+  sizes?: string;
+}
+
+type PreloadImageProps = {
+  remoteImages?: ImageProps[];
+  localImages?: ImageProps[];
+}
+
 export interface Props {
   title?: string;
   description?: string;
@@ -17,6 +29,7 @@ export interface Props {
   metadataBase?: URL;
   alternates?: AlternateProps;
   openGraph?: OpenGraphProps;
+  imagesToPreload?: PreloadImageProps;
 }
 
 const {
@@ -27,21 +40,19 @@ const {
   metadataBase,
   alternates,
   openGraph,
+  imagesToPreload
 } = Astro.props;
 
 // Creating String from Array of Keywords
 let keywordsFormatted = keywords ? keywords.join(',') : '';
 
 // CANONICAL LINK
-const canonicalLink = alternates?.canonical ? (metadataBase
-  ? metadataBase.toString().concat(alternates.canonical)
-  : alternates.canonical) : '';
+const canonicalLink = alternates?.canonical
+  ? new URL(alternates.canonical, metadataBase).toString()
+  : '';
 
-console.log('Description', description);
-console.log('Title', title);
-console.log('Author', creator);
-console.log('Keywords', keywords);
-console.log('Canonical URL', canonicalLink);
+// OG Image
+const ogImage = openGraph ? new URL(openGraph?.images!, metadataBase) : '/favicon.icon';
 ---
 
 <title>{title}</title>
@@ -54,11 +65,13 @@ console.log('Canonical URL', canonicalLink);
 {
   alternates?.languages &&
     Object.entries(alternates.languages).map(([lang, href]) => {
-      const alternateHref = metadataBase
-        ? metadataBase.toString().concat(href)
-        : href;
-      console.log(alternateHref);
+      const alternateHref = new URL(href, metadataBase)
       return <link rel="alternate" hreflang={lang} href={alternateHref} />;
     })
 }
-<meta property="og:image" content="https://acme.com/og-image.png" />
+<meta property="og:image" content={ogImage} />
+
+<!-- Preload Remote Images -->
+{imagesToPreload?.remoteImages?.map((image) => (
+  <link rel="preload" as={image.alt} href={image.href} />
+))}
