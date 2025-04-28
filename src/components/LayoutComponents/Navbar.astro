@@ -2,7 +2,7 @@
 import { MenuItemsData } from '@/data/MenuItemsData';
 import CountrySelectionModal from '../modals/CountrySelectionModal';
 import Cookies from 'js-cookie';
-import HamburgerToggle from './HamburgerToggle.astro';
+import HamburgerToggle from './HamburgerToggle';
 
 const lg_screen_width = 'lg:w-[75vw]';
 const { locale } = Astro.params;
@@ -40,7 +40,7 @@ const pathname = Astro.url.pathname;
       class="xl:hidden w-screen self-center p-2 flex justify-around items-center"
     >
       {/* Hamburger */}
-      <HamburgerToggle/>
+      <HamburgerToggle client:media="(max-width: 1279px)"/>
       {/* Logo */}
 
       <picture>
