@@ -1,5 +1,15 @@
 ---
 import { supportedLocaleArray } from '@/utils/translationUtils';
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+import {
+  fetchArticleBySlug,
+  fetchSlugsWithLocale,
+  generateHreflangsForArticles,
+} from '@/actions/articleActions';
+import type { ArticleData, SlugWithLocale } from '@/types/article_types';
+import Layout from '@/layouts/MainLayout.astro';
+import { SocialIcons2 } from '@/components/common/SocialIcons2';
+import DOMPurify from 'isomorphic-dompurify';
 
 /* import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
@@ -17,21 +27,126 @@ type Props = CollectionEntry<'blog'>;
 const post = Astro.props;
 const { Content } = await render(post); */
 
+const lg_screen_width = 'lg:w-[75vw]';
+const default_screen_width = 'w-[85vw]';
+
+const { locale, slug } = Astro.params;
+
+const slugsWithLocale: SlugWithLocale[] = await fetchSlugsWithLocale();
+const { languages } = generateHreflangsForArticles(slugsWithLocale);
+const articleData: ArticleData | null = await fetchArticleBySlug(slug);
+console.log("ArticleData body: ", articleData);
+
+const metadata: MetadataProps = {
+  title: 'Web Agency',
+  description: 'Web Agency Offering Custom Websites',
+  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
+  creator: 'Jakub Cezary Kolando',
+  publisher: 'Jakub Cezary Kolando',
+  metadataBase: new URL('https://dashcruisedev.com'),
+  alternates: {
+    canonical: `/${locale}/${slug}`,
+    languages: languages,
+  },
+  openGraph: {
+    images: '/og-image.png',
+  },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080',
+        alt: 'Background Image',
+      },
+    ],
+  },
+};
+
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
-    {
-      params: { locale: supportedLocale }
-    }
-  ))
+	const slugsWithLocale = await fetchSlugsWithLocale();
+  return slugsWithLocale.map((item: any) => ({
+    params: { locale: item.locale, slug: item.slug },
+  }));
 }
 
-export const prerender = true
+export const prerender = true;
 ---
-<div>
-	Hello From slug Blog
-</div>
 
-<!-- <BlogPost {...post.data}>
-	<Content />
-</BlogPost>
- -->
+<Layout metadata={metadata}>
+  <div
+    class={`caret-transparent ${lg_screen_width} ${default_screen_width} mx-auto min-h-screen flex md:flex-row flex-col justify-center`}
+  >
+    {/* Sidebar navigation */}
+    <div class="md:sticky md:block hidden caret-accent h-[320px]  top-20 left-0 mt-50 mr-20 text-base w-[200px]">
+		<h2 class="mb-5">ON THIS PAGE</h2>
+		<hr />
+		<ul>
+		  <li class="mt-5 cursor-pointer">
+			<a href="#what-is-seo-and-why-it-matters">
+			  What Is SEO and Why It Matters
+			</a>
+		  </li>
+		  <li class="mt-5 cursor-pointer">
+			<a href="#how-search-engines-work">How Search Engines Work</a>
+		  </li>
+		  <li class="mt-5 cursor-pointer">
+			<a href="#3-key-elements-of-seo">3 Key Elements of SEO</a>
+		  </li>
+		  <li class="mt-5 cursor-pointer">
+			<a href="#why-you-should-care">Why You Should Care</a>
+		  </li>
+		  <li class="mt-5 cursor-pointer">
+			<a href="#quick-tips-for-beginners">Quick Tips for Beginners</a>
+		  </li>
+		</ul>
+	  </div>
+
+    {/* Main Content in the Middle */}
+    <div
+      class={` text-gray-700 lg:w-1/2 font-normal text-medium-body leading-medium-body w-full text-base`}
+    >
+      <h1
+        class="font-medium text-center text-medium-header leading-medium-header"
+      >
+        {articleData?.introduction}
+      </h1>
+      <div class="mt-10 relative w-full aspect-video">
+        <img
+          alt="main-image"
+          src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/e097d49d-c0e4-4644-f379-8a731753de00/hd1920x1080"
+          fetchpriority="high"
+          loading="eager"
+          class="object-cover inset-0 absolute w-full h-full"
+        />
+      </div>
+      {
+        articleData?.body && (
+          <div
+            set:html={DOMPurify.sanitize(articleData.body),
+            }
+            class="mb-50"
+          />
+        )
+      }
+    </div>
+
+    {/* Social Media On the Right*/}
+    <div
+      class="md:sticky md:block hidden w-[200px] h-[250px] shadow-md ml-20 py-5 rounded-sm top-20 left-0 mt-50 flex flex-col justify-center"
+    >
+      <h2 class="text-center mb-5 w-1/2 mx-auto">Check Our Social Media</h2>
+      <SocialIcons2 linkedin_url="s" fb_url="s" direction="flex-col" />
+    </div>
+    {/* Social Media on Small Screens */}
+    <div
+      class="md:hidden block shadow-md py-5 my-5 rounded-sm w-full flex-wrap"
+    >
+      <h2 class="text-center mb-5 w-1/2 mx-auto">Check Our Social Media</h2>
+      <SocialIcons2
+        linkedin_url="https://www.linkedin.com/in/jakub-cezary-kolando-137491269/"
+        fb_url="https://www.facebook.com/profile.php?id=61574463432787&notif_id=1743636704425943&notif_t=page_user_activity&ref=notif"
+        ig_url="https://www.instagram.com/perspective_135/"
+        direction="flex-row"
+      />
+    </div>
+  </div>
+</Layout>

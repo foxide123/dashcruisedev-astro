@@ -11,10 +11,10 @@ export const MenuItemsData = [
         name: "Contact",
         pathname: "contact"
     },
-   /*  {
+    {
         name: "Blog",
         pathname: "blog"
-    }, */
+    },
    /*  {
         name: "Pages",
         pathname: "/pages",

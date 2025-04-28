@@ -212,7 +212,8 @@ export const prerender = true
                       <img
                         src={member.imageUrl}
                         style={{ objectFit: 'cover' }}
-                        alt="Profile Image Jakub"
+                        alt="Profile Image"
+                        loading="lazy"
                       />
                     </div>
                     <h2 class="font-semibold text-[1.4rem] mt-2">
@@ -231,6 +232,7 @@ export const prerender = true
                         ig_url={member.ig_url}
                         upwork_url={member.upwork_url}
                         direction="flex-row"
+                        client:visible
                       />
                     </div>
                   </div>

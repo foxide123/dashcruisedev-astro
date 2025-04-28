@@ -10,10 +10,8 @@ import deBlogData from '@/data/dictionaries/de/blog.json';
 import Layout from "@/layouts/MainLayout.astro"
 import CursorWrapper from '@/components/CursorWrapper';
 import { supportedLocaleArray } from '@/utils/translationUtils';
-
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+import { fetchSlugsWithLocale } from '@/actions/articleActions';
 
 type PostParams = {
     title: string;
@@ -26,10 +24,6 @@ type PostParams = {
 const lg_screen_width = 'lg:w-[85vw]';
 const default_screen_width = 'w-[75vw]';
 
-const translations = {
-  en: enBlogData,
-  de: deBlogData,
-};
 
 const { locale } = Astro.params;
 
@@ -37,6 +31,35 @@ const blogData = locale === 'en' ? enBlogData : deBlogData;
 
 const mainPost = blogData.posts[0];
 const otherPosts = blogData.posts.slice(1);
+
+const metadata: MetadataProps = {
+  title: 'Web Agency',
+  description: 'Web Agency Offering Custom Websites',
+  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
+  creator: 'Jakub Cezary Kolando',
+  publisher: 'Jakub Cezary Kolando',
+  metadataBase: new URL('https://dashcruisedev.com/en/blog'),
+  alternates: {
+    canonical: '/en/blog',
+    languages: {
+      en: '/en/blog',
+      de: '/de/blog',
+      pl: '/pl/blog',
+      ro: "/ro/blog"
+    },
+  },
+  openGraph: {
+    images: '/og-image.png',
+  },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080",
+        alt: "Background Image"
+      }
+    ]
+  }
+};
 
 export async function getStaticPaths() {
   return supportedLocaleArray.map((supportedLocale) => (
@@ -49,7 +72,7 @@ export async function getStaticPaths() {
 export const prerender = true
 ---
 
-<Layout>
+<Layout metadata={metadata}>
 <div class="caret-transparent w-screen lg:py-10 min-h-[100vh]">
 <CursorWrapper client:idle>
     <a href={`blog/${mainPost.slug}`} class="w-full cursor-default">

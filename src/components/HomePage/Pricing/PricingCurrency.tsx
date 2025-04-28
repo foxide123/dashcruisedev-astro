@@ -76,7 +76,7 @@ export default function PricingCurrency({ basePrice }: { basePrice: number }) {
       {priceCurrencySymbol} {priceValue}
     </span>
     <span className="text-2xl space-y-4 font-normal">
-         /&thinsp;Month
+         &thinsp;/&thinsp;Month
       </span>
     </div>
 

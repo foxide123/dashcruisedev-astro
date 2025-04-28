@@ -29,7 +29,7 @@ const {
   <div class={`${lg_screen_width} ${default_screen_width}`}>
     <Newsletter locale={locale ?? 'en'} newsletterData={newsletterData} client:visible/>
     <div class="mt-10 flex justify-end">
-      <SocialIcons />
+      <SocialIcons client:visible/>
     </div>
     <p
       class="text-white mt-10"
