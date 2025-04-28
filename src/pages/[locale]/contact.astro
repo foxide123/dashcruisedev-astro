@@ -9,8 +9,8 @@ import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
 
 const {locale} = Astro.params;
 
-const lg_screen_width = "lg:w-[85vw]"
-const default_screen_width = "w-[75vw]"
+const lg_screen_width = "lg:w-[75vw]"
+const default_screen_width = "w-[85vw]"
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -81,7 +81,7 @@ export const prerender = true
           </h3> */
       }
       <h2
-        class="font-normal text-base tracking-wide text-start mt-8 leading-7 w-1/2"
+        class="lg:w-1/2 w-full font-normal text-base tracking-wide text-start mt-8 leading-7"
       >
         {contactUsData.description}
       </h2>

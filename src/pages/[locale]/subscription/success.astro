@@ -1,0 +1,62 @@
+---
+import { verifyStripeSession } from '@/actions/stripeActions';
+import Layout from '@/layouts/MainLayout.astro';
+
+const url = new URL(Astro.request.url)
+const sessionId = url.searchParams.get('session_id');
+const { locale } = Astro.params;
+
+if(!sessionId) return new Response(null, {status: 404})
+
+const {data, error} = (await verifyStripeSession(sessionId)) as any;
+
+if(error) return new Response(null, {status: error.status})
+
+export const prerender = false;
+--- 
+
+<Layout>
+    {error && <div>Loading...</div>}
+  {!error && (
+      <div class="w-screen h-screen bg-white flex flex-col justify-center items-center text-center">
+        <div>
+          <img
+            src="/check_icon_2.svg"
+            width={132}
+            height={132}
+            alt="check icon"
+            class="mx-auto"
+          />
+          <h1 class="text-[58px] font-bold tracking-tight mt-[40px]">
+            Subscription Confirmed
+          </h1>
+          <h1>
+            {data}
+          </h1>
+          <h3 class="font-normal text-2xl tracking-tight mt-[20px]">
+            Thank you for subscribing to our Web Development Plan!{' '}
+          </h3>
+          <h2 class="font-medium text-2xl tracking-tight mt-[20px]">
+            Your payment was successful, and your subscription is now active.
+          </h2>
+          <p class="font-normal text-xl tracking-tight mt-[40px] w-[815px] px-10">
+            You&apos;ll receive an email from us with all the details and next
+            steps to get started. If you don&apos;t see the email within a few
+            minutes, check spam or contact us at{' '}
+            <span class="font-semibold text-carrot-500">
+              contact@dashcruisedev.com
+            </span>
+          </p>
+          <div class="mt-[56px]">
+            <a
+              href="/"
+              class="bg-carrot-500 px-[48px] py-[16px] rounded-xl cursor-pointer text-white"
+            >
+              Go to Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+</Layout>

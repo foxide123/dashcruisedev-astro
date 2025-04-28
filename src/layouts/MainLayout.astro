@@ -9,7 +9,7 @@ import Footer from '@/components/LayoutComponents/Footer.astro';
 import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
 export interface Props {
-  metadata: MetadataProps;
+  metadata?: MetadataProps;
 }
 
 const {metadata} = Astro.props;
@@ -34,7 +34,7 @@ const newsletterData = (await translations[supportedLocale]['common.json']())['n
       <slot />
       <!-- your content is injected here -->
     </article>
-    <Footer lg_screen_width="lg: w-[85vw]" default_screen_width="w-[75vw]" footerData={footerData} newsletterData={newsletterData} locale={locale}/>
+    <Footer lg_screen_width="lg: w-[75vw]" default_screen_width="w-[85vw]" footerData={footerData} newsletterData={newsletterData} locale={locale}/>
   </body><style>
     h1 {
       font-size: 2rem;
