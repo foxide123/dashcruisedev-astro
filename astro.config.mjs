@@ -4,11 +4,10 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from "@astrojs/cloudflare"
-
 import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
 
+/*
 const mode = process.env.NODE_ENV ?? "development";
 const { SITE_URL } = loadEnv(mode, process.cwd(), "");
 
@@ -17,10 +16,34 @@ console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('mode:', mode);
 
 const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
-
+ */
 
 // https://astro.build/config
- export default defineConfig({
+export default defineConfig({
+  output: 'server',
+  adapter: cloudflare({
+    platformProxy: {enabled: true}
+  }),
+  site: "https://dashcruisedev.com",
+  prefetch: true,
+  trailingSlash: "ignore",
+  i18n: {
+    locales: ['en', 'de', 'pl', 'ro'],
+    defaultLocale: 'en',
+    routing: 'manual'
+  },
+  integrations: [react(), mdx(), sitemap()],
+  vite: {
+    resolve: {
+      alias: import.meta.env.PROD && {
+        "react-dom/server": "react-dom/server.edge",
+      },
+    },
+
+    plugins: [tailwindcss()]
+  }
+})
+/*  export default defineConfig({
   site: siteUrl,
   prefetch: true,
   trailingSlash: "ignore",
@@ -62,9 +85,4 @@ const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
     plugins: [tailwindcss()]
   },
   integrations: [mdx(), sitemap(), react()],
-   adapter: cloudflare({
-    platformProxy: {
-      enabled: true
-    }
-  }),
-});
+}); */

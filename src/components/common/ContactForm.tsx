@@ -3,7 +3,10 @@
 import { useState } from "react";
 /* import { handleMailSubmition } from "@/app/actions/mailActions"; */
 import PopupModal from "@/components/modals/PopupModal";
-import { AlertBox } from "@/components/AlertBox";
+import { AlertBox } from "@/components/modals/AlertBox";
+import { handleMailSubmition } from "@/actions/mailActions";
+import type {ContactFormDataProps} from "@/types/common_types"
+
 
 export default function ContactUsForm({
   padding,
@@ -13,7 +16,7 @@ export default function ContactUsForm({
   padding?: string;
   marginTop?: string;
   //eslint-disable-next-line
-  formData:any
+  formData:ContactFormDataProps
 }) {
   const [showPopup, setShowPopup] = useState(false);
   const [pending, setPending] = useState(false);
@@ -31,7 +34,7 @@ export default function ContactUsForm({
   return (
     <div className={`lg:w-[747px] ${marginTop} rounded-lg`}>
       <form
-       /*  onSubmit={async (e) => {
+         onSubmit={async (e) => {
           e.preventDefault();
           setPending(true);
 
@@ -53,7 +56,7 @@ export default function ContactUsForm({
             console.error("Validation or server error:", result.error);
             // You could also show a toast or inline error here
           }
-        }} */
+        }} 
         className={`flex flex-col ${padding}`}
       >
         <input

@@ -6,11 +6,7 @@ import { Image } from 'astro:assets';
 const indexUrl = getRelativeLocaleUrl('en', '');
 
 const { locale } = Astro.params;
-import enHomeData from '@/data/dictionaries/en/home.json';
-import deHomeData from '@/data/dictionaries/de/home.json';
 
-import enCommonData from '@/data/dictionaries/en/common.json';
-import deCommonData from '@/data/dictionaries/de/common.json';
 import ComparisonSection from '@/components/HomePage/sections/ComparisonSection.astro';
 import HighlightSection from '@/components/HomePage/sections/HighlightSection.astro';
 import PortfolioSection from '@/components/HomePage/sections/PortfolioSection.astro';
@@ -22,22 +18,13 @@ import { ContainerTextFlipClient } from '@/components/HomePage/ContainerTextFlip
 import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+import { supportedLocaleArray, translations, type SupportedLocale } from '@/utils/translationUtils';
 
-const translations = {
-  en: {
-    home: enHomeData,
-    common: enCommonData,
-  },
-  de: {
-    home: deHomeData,
-    common: deCommonData,
-  },
-};
+const supportedLocale = locale as SupportedLocale
 
-const homeData = locale === 'en' ? translations.en.home : translations.de.home;
-const commonData =
-  locale === 'en' ? translations.en.common : translations.de.common;
-const heroData = homeData.hero;
+const homeData = await translations[supportedLocale]['home.json']();
+const commonData = await translations[supportedLocale]['common.json']();
+const heroData = homeData['hero'];
 const lg_screen_width = 'lg:w-[75vw]';
 const default_screen_width = 'w-[85vw]';
 
@@ -71,7 +58,11 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
+  return supportedLocaleArray.map((supportedLocale) => (
+    {
+      params: { locale: supportedLocale }
+    }
+  ))
 }
 
 export const prerender = true;

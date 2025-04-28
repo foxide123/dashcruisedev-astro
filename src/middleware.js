@@ -1,7 +1,7 @@
 import { defineMiddleware } from "astro:middleware";
 import { redirectToDefaultLocale } from "astro:i18n"; // function available with `manual` routing
 
-const locales = ['en', 'de']
+const locales = ['en', 'de', 'pl', 'ro']
 const defaultLocale = 'en'
 
 export const onRequest = defineMiddleware(async (ctx, next) => {

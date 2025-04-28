@@ -5,12 +5,20 @@ import { ClientRouter } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 import Metadata from "@/components/seo/Metadata.astro"
 import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import Footer from '@/components/LayoutComponents/Footer.astro';
+import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
 export interface Props {
   metadata: MetadataProps;
 }
 
 const {metadata} = Astro.props;
+const {locale} = Astro.params;
+
+const supportedLocale = locale as SupportedLocale
+
+const footerData = (await translations[supportedLocale]['footer.json']())['footer'];
+const newsletterData = (await translations[supportedLocale]['common.json']())['newsletter'];
 ---
 
 <html lang="en" transition:animate="none">
@@ -21,11 +29,12 @@ const {metadata} = Astro.props;
     <ClientRouter />
   </head>
   <body>
-    <Navbar/>
+    <Navbar locale={locale}/>
     <article>
       <slot />
       <!-- your content is injected here -->
     </article>
+    <Footer lg_screen_width="lg: w-[85vw]" default_screen_width="w-[75vw]" footerData={footerData} newsletterData={newsletterData} locale={locale}/>
   </body><style>
     h1 {
       font-size: 2rem;

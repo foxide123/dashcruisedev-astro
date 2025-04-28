@@ -71,7 +71,7 @@ export default function PricingCurrency({ basePrice }: { basePrice: number }) {
   const priceCurrencySymbol = getCurrencySymbol(currency);
 
   return (
-    <div className="h-[60px] w-[300px]">
+    <div className="h-[60px] w-[300px] flex justify-center items-center">
      <span>
       {priceCurrencySymbol} {priceValue}
     </span>

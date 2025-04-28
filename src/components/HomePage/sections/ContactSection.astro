@@ -1,15 +1,18 @@
 ---
-import ContactUsForm from '@/components/ContactForm';
-
-type ContactUsProps = {
-  lg_screen_width: string;
-  default_screen_width: string;
-};
+import ContactUsForm from '@/components/common/ContactForm';
+import type {ContactFormDataProps} from "@/types/common_types"
 
 type ContactUsDataType = {
   header: string;
   description: string;
 };
+
+interface Props {
+  lg_screen_width: string;
+  default_screen_width: string;
+  contactUsData: ContactUsDataType;
+  contactFormData: ContactFormDataProps;
+}
 
 const { lg_screen_width, default_screen_width, contactUsData, contactFormData } = Astro.props;
 

@@ -2,31 +2,69 @@
 import type { GetStaticPaths } from "astro";
 import enContactData from "@/data/dictionaries/en/common.json"
 import deContactData from "@/data/dictionaries/de/common.json"
-import ContactUsForm from "@/components/ContactForm";
+import ContactUsForm from "@/components/common/ContactForm";
 import Layout from "@/layouts/MainLayout.astro"
+import { supportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
+import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
 
 const {locale} = Astro.params;
 
 const lg_screen_width = "lg:w-[85vw]"
 const default_screen_width = "w-[75vw]"
 
-const translations = {
-    en: enContactData,
-    de: deContactData
-}
+const supportedLocale = locale as SupportedLocale;
 
-const contactData = locale === 'en' ? translations['en'] : translations['de'];
+const contactData = await translations[supportedLocale]['common.json']();
 const contactUsData = contactData.contactUs;
 const contactFormData = contactData.contactForm;
 
-export async function getStaticPaths(){
-    return [{params: {locale: 'en'}}, {params: {locale: 'de'}}];
+const metadata: MetadataProps = {
+  title: 'DashcruiseDev - About Us',
+  description: 'Meet Our Team at DashcruiseDev',
+  keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+  creator: 'Jakub Cezary Kolando',
+  publisher: 'Jakub Cezary Kolando',
+  metadataBase: new URL('https://dashcruisedev.com/en/about'),
+  alternates: {
+    canonical: '/en/about',
+    languages: {
+      en: '/en/about',
+      de: '/de/about',
+      pl: "/pl/about",
+      ro: "/ro/about"
+    },
+  },
+  openGraph: {
+    images: '/og-image.png',
+  },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
+        alt: "Background Image",
+        media: "(min-width: 640px)"
+      },
+      {
+        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
+        alt: "Background Image ",
+        media: "(max-width: 639px)"
+      }
+    ]
+  }
+};
+
+export async function getStaticPaths() {
+  return supportedLocaleArray.map((supportedLocale) => (
+    {
+      params: { locale: supportedLocale }
+    }
+  ))
 }
 
 export const prerender = true
 ---
 
-<Layout>
+<Layout metadata={metadata}>
 
 <div class="w-screen h-full bg-white flex justify-center items-center">
   <div

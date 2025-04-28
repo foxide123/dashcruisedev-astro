@@ -37,7 +37,7 @@ export default function CustomCursor({isVisible, label}: {isVisible:boolean, lab
 
   return (
     <div
-      class={`z-20 fixed pointer-events-none transition-opacity ${
+      className={`z-20 fixed pointer-events-none transition-opacity ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
@@ -45,7 +45,7 @@ export default function CustomCursor({isVisible, label}: {isVisible:boolean, lab
         cursor: "none"
       }}
     > 
-      <div class={clsx(/* anton.class ,*/"text-center bg-transparent z-20 w-fit font-[Anton] font-semibold  text-carrot-500 tracking-wider text-8xl transition-opacity duration-2000 delay-[5s] ease-in-out shadow-md rounded-full py-5 px-10",
+      <div className={clsx(/* anton.class ,*/"text-center bg-transparent z-20 w-fit font-[Anton] font-semibold  text-carrot-500 tracking-wider text-8xl transition-opacity duration-2000 delay-[5s] ease-in-out shadow-md rounded-full py-5 px-10",
         isVisible && "opacity-100"
       )}>
         {label}

@@ -1,10 +1,11 @@
 ---
-import { SocialIcons2 } from '@/components/SocialIcons2';
+import { SocialIcons2 } from '@/components/common/SocialIcons2';
 import Layout from '@/layouts/MainLayout.astro';
 import enAboutData from "@/data/dictionaries/en/about.json";
 import deAboutData from "@/data/dictionaries/de/about.json";
 import Metadata from '@/components/seo/Metadata.astro';
 import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import { supportedLocaleArray, translations, type SupportedLocale } from '@/utils/translationUtils';
 
 type AboutType = {
   header: string;
@@ -37,16 +38,9 @@ interface Props {
 
 const { locale} = Astro.params;
 
-const translations = {
-  en: {
-    about: enAboutData
-  },
-  de: {
-    about: deAboutData
-  },
-};
+const supportedLocale = locale as SupportedLocale;
 
-const aboutData = locale === 'en' ? translations.en.about : translations.de.about;
+const aboutData:AboutType = await translations[supportedLocale]['about.json']();
 
 const teamMembers: TeamMemberType[] = aboutData.teamMembers;
 const sectionDescriptionLines = aboutData.sectionDescription.split('\n');
@@ -60,14 +54,14 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com'),
+  metadataBase: new URL('https://dashcruisedev.com/en/about'),
   alternates: {
-    canonical: '/en',
+    canonical: '/en/about',
     languages: {
-      en: '/en',
-      de: '/de',
-      pl: "/pl",
-      ro: "/ro"
+      en: '/en/about',
+      de: '/de/about',
+      pl: "/pl/about",
+      ro: "/ro/about"
     },
   },
   openGraph: {
@@ -90,9 +84,12 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
+  return supportedLocaleArray.map((supportedLocale) => (
+    {
+      params: { locale: supportedLocale }
+    }
+  ))
 }
-
 export const prerender = true
 ---
 

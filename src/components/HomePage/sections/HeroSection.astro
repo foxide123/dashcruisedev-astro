@@ -2,7 +2,7 @@
 import { ContainerTextFlipClient } from '../ContainerTextFlipClient';
 import ExclusivePlan from '@/components/HomePage/Pricing/ExclusivePlan.astro';
 
-const isProduction = process.env.NODE_ENV === 'production'
+/* const isProduction = process.env.NODE_ENV === 'production' */
 
 const { lg_screen_width, default_screen_width, heroData, commonData } =
   Astro.props;
@@ -47,10 +47,10 @@ const { lg_screen_width, default_screen_width, heroData, commonData } =
           <h1>
             {heroData.headerBeforeEffect}
             <span class="block">
-              {isProduction && <ContainerTextFlipClient
+              <ContainerTextFlipClient
                 words={heroData.headerEffect}
                 client:load
-              />}
+              />
             </span>{' '}
             {heroData.headerAfterEffect}
           </h1>

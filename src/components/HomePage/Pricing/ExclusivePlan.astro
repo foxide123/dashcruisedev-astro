@@ -28,7 +28,7 @@ const {planData, currency} = Astro.props;
       {planData.description}
     </h2>
     <h2 class="text-5xl font-medium leading-15 space-y-12 tracking-tight my-6">
-      <PricingCurrency basePrice=49 client:load/>
+      <PricingCurrency basePrice={49} client:load/>
       <!-- <span class="text-2xl space-y-4 font-normal">
          /&thinsp;{planData.interval}
       </span> -->
