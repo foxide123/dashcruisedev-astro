@@ -1,11 +1,15 @@
 ---
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
 import Layout from '@/layouts/MainLayout.astro';
-import enAboutData from "@/data/dictionaries/en/about.json";
-import deAboutData from "@/data/dictionaries/de/about.json";
+import enAboutData from '@/data/dictionaries/en/about.json';
+import deAboutData from '@/data/dictionaries/de/about.json';
 import Metadata from '@/components/seo/Metadata.astro';
-import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
-import { supportedLocaleArray, translations, type SupportedLocale } from '@/utils/translationUtils';
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+import {
+  supportedLocaleArray,
+  translations,
+  type SupportedLocale,
+} from '@/utils/translationUtils';
 
 type AboutType = {
   header: string;
@@ -36,22 +40,30 @@ interface Props {
   aboutData: AboutType;
 }
 
-const { locale} = Astro.params;
+const { locale } = Astro.params;
 
 const supportedLocale = locale as SupportedLocale;
 
-const aboutData:AboutType = await translations[supportedLocale]['about.json']();
+const aboutData: AboutType =
+  await translations[supportedLocale]['about.json']();
 
 const teamMembers: TeamMemberType[] = aboutData.teamMembers;
 const sectionDescriptionLines = aboutData.sectionDescription.split('\n');
 
-const lg_screen_width = "lg:w-[85vw]"
-const default_screen_width = "w-[75vw]"
+const lg_screen_width = 'lg:w-[85vw]';
+const default_screen_width = 'w-[75vw]';
 
 const metadata: MetadataProps = {
   title: 'DashcruiseDev - About Us',
   description: 'Meet Our Team at DashcruiseDev',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+  keywords: [
+    'web agency',
+    'websites',
+    'custom websites',
+    'astro',
+    'dashcruisedev',
+    'dashcruisedev about',
+  ],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL('https://dashcruisedev.com/en/about'),
@@ -60,8 +72,8 @@ const metadata: MetadataProps = {
     languages: {
       en: '/en/about',
       de: '/de/about',
-      pl: "/pl/about",
-      ro: "/ro/about"
+      pl: '/pl/about',
+      ro: '/ro/about',
     },
   },
   openGraph: {
@@ -70,27 +82,25 @@ const metadata: MetadataProps = {
   imagesToPreload: {
     remoteImages: [
       {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
-        alt: "Background Image",
-        media: "(min-width: 640px)"
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080',
+        alt: 'Background Image',
+        media: '(min-width: 640px)',
       },
       {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
-        alt: "Background Image ",
-        media: "(max-width: 639px)"
-      }
-    ]
-  }
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480',
+        alt: 'Background Image ',
+        media: '(max-width: 639px)',
+      },
+    ],
+  },
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
-    {
-      params: { locale: supportedLocale }
-    }
-  ))
+  return supportedLocaleArray.map((supportedLocale) => ({
+    params: { locale: supportedLocale },
+  }));
 }
-export const prerender = true
+export const prerender = true;
 ---
 
 <Layout metadata={metadata}>
@@ -101,47 +111,45 @@ export const prerender = true
     >
       {/* Big Screens Bg Image */}
 
-      {
-        /*            <div class={`fixed relative -z-10  inset-0 w-screen h-full`}>
-                    <Image
-                      src="7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080"
-                      alt="About Bg Image"
-                      layout="fill"
-                      objectFit="cover"
-                      priority
-                      decoding="async"
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/CABEIAAUACgMBEQACEQEDEQH/xAAqAAEBAAAAAAAAAAAAAAAAAAAHCgEAAwEAAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAhRepoM//xAAfEAACAgEEAwAAAAAAAAAAAAADBAECBQAGEyISFDH/2gAIAQEAAT8AAjjDbTym4GEos2szjseoBb11U6RIzQczFIVKc97UqHh4mVvAtTGal3lpQFjdp6V+zr//xAAcEQACAwADAQAAAAAAAAAAAAABAgMREgAhYpH/2gAIAQIBAT8AWUI6RCNCpSR2ZtNISF0tNYAGibtWsUq471ryvzn/xAAbEQEBAQADAQEAAAAAAAAAAAACAQMEEhMAUf/aAAgBAwEBPwDwm3D5HKTc0GvFyyI6DKFNTWswdnUIYLHn1crfrLBOk/b9/9k="
-                    />
-                  </div>
-  
-          <BgImageWrapper
-            width="w-screen"
-            height="h-full"
-            imgSrc="7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/CABEIAAUACgMBEQACEQEDEQH/xAAqAAEBAAAAAAAAAAAAAAAAAAAHCgEAAwEAAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAhRepoM//xAAfEAACAgEEAwAAAAAAAAAAAAADBAECBQAGEyISFDH/2gAIAQEAAT8AAjjDbTym4GEos2szjseoBb11U6RIzQczFIVKc97UqHh4mVvAtTGal3lpQFjdp6V+zr//xAAcEQACAwADAQAAAAAAAAAAAAABAgMREgAhYpH/2gAIAQIBAT8AWUI6RCNCpSR2ZtNISF0tNYAGibtWsUq471ryvzn/xAAbEQEBAQADAQEAAAAAAAAAAAACAQMEEhMAUf/aAAgBAwEBPwDwm3D5HKTc0GvFyyI6DKFNTWswdnUIYLHn1crfrLBOk/b9/9k="
-            imgAlt="About Bg Image"
-            mobileHeight="aspect-video"
-          /> */
-      }
-
-      <div class="hidden sm:flex fixed inset-0">
-        <img
-          src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080"
-          alt="About Bg Image"
-          loading="eager"
-          fetchpriority="high"
-          class="object-cover z-[-10] w-full"
-        />
+      <div
+        style="background-color: black;
+    background-size: cover;
+  background-position: center;"
+        class="hidden sm:flex fixed inset-0"
+      >
+        <picture>
+          <source
+            media="(min-width: 640px)"
+            srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+            alt="About Bg Image"
+            loading="eager"
+            fetchpriority="high"
+            class="object-cover z-[-10] w-full"
+          />
+        </picture>
       </div>
-      <div class="sm:hidden relative w-screen z-[-10] aspect-video self-start">
-        <img
-          src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480"
-          alt="About Bg Image"
-          loading="eager"
-          fetchpriority="high"
-          class="object-cover z-[-10]"
-        />
+      <div
+        style="background-color: black;
+      background-size: cover;
+    background-position: center;"
+        class="sm:hidden relative w-screen z-[-10] aspect-video self-start"
+      >
+        <picture>
+          <source
+            media="(max-width: 639px)"
+            srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+            alt="About Bg Image"
+            loading="eager"
+            fetchpriority="high"
+            class="object-cover z-[-10]"
+          />
+        </picture>
       </div>
       <div class="absolute w-fit z-10 text-white text-center z-10">
         <h1 class="sm:text-[4rem] font-bold leading-[6rem] text-5xl">
@@ -202,9 +210,7 @@ export const prerender = true
                   </>
                 ));
                 return (
-                  <div
-                    class="lg:px-15 shadow-lg rounded-2xl px-5 text-center border-2 border-profile_border"
-                  >
+                  <div class="lg:px-15 shadow-lg rounded-2xl px-5 text-center border-2 border-profile_border">
                     {/* Team Member Photo */}
                     <div
                       class={`lg:w-[280px] lg:h-[280px] sm:w-1/2 shadow-xl mt-5 mx-auto rounded-xl overflow-hidden relative w-full h-[280px] border-2 ${member.bgColor}`}

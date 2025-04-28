@@ -9,8 +9,7 @@ import {
 import type { ArticleData, SlugWithLocale } from '@/types/article_types';
 import Layout from '@/layouts/MainLayout.astro';
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
-import DOMPurify from 'isomorphic-dompurify';
-
+import sanitizeHtml from 'sanitize-html'
 /* import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
 import { render } from 'astro:content';
@@ -29,7 +28,6 @@ const { Content } = await render(post); */
 
 const lg_screen_width = 'lg:w-[75vw]';
 const default_screen_width = 'w-[85vw]';
-
 const { locale, slug } = Astro.params;
 
 const slugsWithLocale: SlugWithLocale[] = await fetchSlugsWithLocale();
@@ -121,8 +119,7 @@ export const prerender = true;
       {
         articleData?.body && (
           <div
-            set:html={DOMPurify.sanitize(articleData.body),
-            }
+            set:html={sanitizeHtml(articleData.body)}
             class="mb-50"
           />
         )
