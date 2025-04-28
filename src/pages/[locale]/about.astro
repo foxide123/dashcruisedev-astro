@@ -79,7 +79,7 @@ const metadata: MetadataProps = {
   openGraph: {
     images: '/og-image.png',
   },
-  imagesToPreload: {
+/*   imagesToPreload: {
     remoteImages: [
       {
         href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080',
@@ -92,7 +92,7 @@ const metadata: MetadataProps = {
         media: '(max-width: 639px)',
       },
     ],
-  },
+  }, */
 };
 
 export async function getStaticPaths() {
@@ -125,8 +125,7 @@ export const prerender = true;
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
             alt="About Bg Image"
-            loading="eager"
-            fetchpriority="high"
+            loading="lazy"
             class="object-cover z-[-10] w-full"
           />
         </picture>
@@ -145,8 +144,7 @@ export const prerender = true;
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
             alt="About Bg Image"
-            loading="eager"
-            fetchpriority="high"
+            loading="lazy"
             class="object-cover z-[-10]"
           />
         </picture>
