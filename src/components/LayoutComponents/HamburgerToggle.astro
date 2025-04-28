@@ -1,28 +1,42 @@
 ---
-import HamburgerIconCustom from "@/components/icons/HamburgerIconCustom"
+import HamburgerIconCustom from '@/components/icons/HamburgerIconCustom';
 ---
-
-<script type="module">
-  document.addEventListener('DOMContentLoaded', () => {
-    document
-      .getElementById('hamburger-button')
-      ?.addEventListener('click', handleClick);
-    let hamburgerIsOpened = false;
-    function handleClick() {
-      hamburgerIsOpened = !hamburgerIsOpened;
-      const menu = document.getElementById('menu');
-      if (hamburgerIsOpened) {
-        menu.classList.add('max-h-[500px]', 'opacity-100');
-        menu.classList.remove('max-h-0', 'opacity-0');
-      } else {
-        menu.classList.remove('max-h-[500px]', 'opacity-100');
-        menu.classList.add('max-h-0', 'opacity-0');
-      }
+<style>
+  @media (min-width: 1280px) {
+    .mobile-menu {
+      display: none;
     }
-  });
-</script>
-<button id="hamburger-button" class={`cursor-pointer`}>
-  <div class="xl:hidden">
-    <HamburgerIconCustom stroke={3} width={50} height={50} client:media="(max-width: 1279px)"/>
-  </div>
-</button>
+  }
+</style>
+
+<div class="mobile-menu">
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      document
+        .getElementById('hamburger-button')
+        ?.addEventListener('click', handleClick);
+      let hamburgerIsOpened = false;
+      function handleClick() {
+        hamburgerIsOpened = !hamburgerIsOpened;
+        const menu = document.getElementById('menu');
+        if (hamburgerIsOpened) {
+          menu.classList.add('max-h-[500px]', 'opacity-100');
+          menu.classList.remove('max-h-0', 'opacity-0');
+        } else {
+          menu.classList.remove('max-h-[500px]', 'opacity-100');
+          menu.classList.add('max-h-0', 'opacity-0');
+        }
+      }
+    });
+  </script>
+  <button id="hamburger-button" class={`cursor-pointer`}>
+    <div class="xl:hidden">
+      <HamburgerIconCustom
+        stroke={3}
+        width={50}
+        height={50}
+        client:media="(max-width: 1279px)"
+      />
+    </div>
+  </button>
+</div>
