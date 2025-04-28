@@ -9,6 +9,7 @@ import enBlogData from '@/data/dictionaries/en/blog.json';
 import deBlogData from '@/data/dictionaries/de/blog.json';
 import Layout from "@/layouts/MainLayout.astro"
 import CursorWrapper from '@/components/CursorWrapper';
+import { supportedLocaleArray } from '@/utils/translationUtils';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -38,7 +39,11 @@ const mainPost = blogData.posts[0];
 const otherPosts = blogData.posts.slice(1);
 
 export async function getStaticPaths() {
-  return [{ params: { locale: 'en' } }, { params: { locale: 'de' } }];
+  return supportedLocaleArray.map((supportedLocale) => (
+    {
+      params: { locale: supportedLocale }
+    }
+  ))
 }
 
 export const prerender = true

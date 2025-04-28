@@ -18,7 +18,9 @@ const {locale} = Astro.params;
 const supportedLocale = locale as SupportedLocale
 
 const footerData = (await translations[supportedLocale]['footer.json']())['footer'];
+console.log("footerData:", footerData);
 const newsletterData = (await translations[supportedLocale]['common.json']())['newsletter'];
+console.log('newsletterData:', newsletterData);
 ---
 
 <html lang="en" transition:animate="none">
