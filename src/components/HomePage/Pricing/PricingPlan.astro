@@ -24,6 +24,7 @@ interface Params {
   extraPagesHeader: string;
   iteration: string;
   extraPagesDescription: string;
+  lookupKey: string;
 }
 
 const {
@@ -39,12 +40,8 @@ const {
   extraPagesHeader,
   iteration,
   extraPagesDescription,
+  lookupKey,
 } = Astro.props;
-/*  const cookieStore = await cookies();
-  const currency = cookieStore.get("currency")?.value || "usd";
-
-  const priceSymbol = currency === "usd" ? "$" : "€";
-  const language = cookieStore.get("language")?.value || "en"; */
 ---
 
 <div
@@ -82,8 +79,14 @@ const {
               </span>
               <span class=" font-medium">&thinsp;/ month</span> */
           }
-          <span class=" mx-auto flex items-center justify-center text-3xl font-bold">
-            <PricingCurrency  basePrice={Number(planPrice as string)}  client:visible/>
+          <span
+            class="mx-auto flex items-center justify-center text-3xl font-bold"
+          >
+            <PricingCurrency
+              basePrice={Number(planPrice as string)}
+              lookupKey={lookupKey}
+              client:load
+            />
           </span>
         </div>
       </div>
@@ -131,9 +134,9 @@ const {
   <SubscribeButton
     customAmount={planPrice}
     text="Subscribe"
-    currency="usd"
     language={locale}
     planName={planName}
+    lookupKey={lookupKey}
     client:visible
   />
 </div>

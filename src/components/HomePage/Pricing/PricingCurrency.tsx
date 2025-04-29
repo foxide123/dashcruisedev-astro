@@ -1,8 +1,10 @@
 'use client';
 import { currencyFromStore } from '@/store/currencyStore';
-import { useStore } from '@nanostores/react';
 import Cookies from 'js-cookie';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useStore } from '@nanostores/react';
+import { pricesStore, loadPrices } from '@/store/pricesStore';
+import type { StripePriceSimplified } from '@/types/stripe_types';
 
 type SupportedCurrency = 'eur' | 'pln' | 'ron' | 'usd';
 
@@ -19,67 +21,56 @@ const getCurrencySymbol = (currency: string) => {
   }
 };
 
-const usdCurrencyConverter = (
-  basePrice: number,
-  targetCurrency: SupportedCurrency
-) => {
-  switch (targetCurrency) {
-    case 'eur':
-      return basePrice * 0.9;
-    case 'pln':
-      return basePrice * 4.5;
-    case 'ron':
-      return basePrice * 4.9;
-    default:
-      return basePrice;
-  }
-};
-
-function roundNumber(price: number) {
-  if (price < 100) {
-    return Math.ceil(price / 5) * 5; // Round up to nearest 5
-  } else if (price < 500) {
-    return Math.ceil(price / 50) * 50; // Round up to nearest 50
-  } else {
-    return Math.ceil(price / 100) * 100; // Round up to nearest 100
-  }
-}
-
-function checkIfCurrencySupported(currencyName: string) {
-  return ['eur', 'pln', 'ron', 'usd'].includes(currencyName);
-}
-
-export default function PricingCurrency({ basePrice }: { basePrice: number }) {
+export default function PricingCurrency({
+  basePrice,
+  lookupKey,
+}: {
+  basePrice: number;
+  lookupKey: string;
+}) {
   const [mounted, setMounted] = useState(false);
   const [currency, setCurrency] = useState<SupportedCurrency>('usd');
 
+  // store where we save all of the prices from stripe
+  const $pricesStore = useStore(pricesStore);
+  console.log('Prices store:', $pricesStore);
+
   useEffect(() => {
     setMounted(true);
-    const cookieCurrency = Cookies.get('currency') ?? 'usd';
-    setCurrency(cookieCurrency as SupportedCurrency);
+    setCurrency((Cookies.get('currency') ?? 'usd') as SupportedCurrency);
+    // call loadPrices function from store to retrieve prices data
+    loadPrices();
   }, []);
+
+  const transformedLookupKey = `${lookupKey}_${currency}`;
+  console.log('Transformed Lookup Key:', transformedLookupKey);
+
+  const priceData: StripePriceSimplified | undefined = useMemo(() => {
+    if (!$pricesStore || !Array.isArray($pricesStore)) return undefined;
+    return $pricesStore.find((item) => item.lookupKey === transformedLookupKey);
+  }, [$pricesStore, transformedLookupKey]);
+
+  console.log('Price Data:', priceData);
 
   if (!mounted) {
     return <div className="h-[60px] w-[300px] "></div>;
   }
 
-  const isCurrencySupported = checkIfCurrencySupported(currency);
-  let priceValue = isCurrencySupported
-    ? usdCurrencyConverter(basePrice, currency as SupportedCurrency)
-    : basePrice;
-  priceValue = roundNumber(priceValue);
-  const priceCurrencySymbol = getCurrencySymbol(currency);
-
   return (
     <div className="h-[60px] w-[300px] flex justify-center items-center">
-     <span>
-      {priceCurrencySymbol} {priceValue}
-    </span>
-    <span className="text-2xl space-y-4 font-normal">
-         &thinsp;/&thinsp;Month
-      </span>
+      {priceData ? (
+        <>
+          <span>
+            {getCurrencySymbol(priceData?.currency ?? 'usd')}{' '}
+            {priceData?.unitAmount / 100}
+          </span>
+          <span className="text-2xl space-y-4 font-normal">
+            &thinsp;/&thinsp;Month
+          </span>
+        </>
+      ) : (
+        <span></span>
+      )}
     </div>
-
-    
   );
 }

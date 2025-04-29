@@ -20,6 +20,7 @@ type PricingPlanType = {
   extraPagesHeader: string;
   iteration: string;
   extraPagesDescription: string;
+  lookupKey: string;
 };
 
 type PricingDataType = {
@@ -83,6 +84,7 @@ const { lg_screen_width, default_screen_width, pricingPlansData, pricingSectionD
           extraPagesHeader={plan.extraPagesHeader}
           iteration={plan.iteration}
           extraPagesDescription={plan.extraPagesDescription}
+          lookupKey={plan.lookupKey}
         />
       )
     )}

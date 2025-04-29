@@ -10,11 +10,12 @@ export interface Props {
     interval: string;
     features: string[];
     cta: string;
+    lookupKey: string;
   };
-  currency: string;
 }
 
-const {planData, currency} = Astro.props;
+const {planData} = Astro.props;
+const {locale} = Astro.params;
 ---
 
 <div
@@ -28,7 +29,7 @@ const {planData, currency} = Astro.props;
       {planData.description}
     </h2>
     <h2 class="text-5xl font-medium leading-15 space-y-12 tracking-tight my-6">
-      <PricingCurrency basePrice={49} client:load/>
+      <PricingCurrency basePrice={49} lookupKey={planData.lookupKey} client:load/>
       <!-- <span class="text-2xl space-y-4 font-normal">
          /&thinsp;{planData.interval}
       </span> -->
@@ -45,7 +46,7 @@ const {planData, currency} = Astro.props;
     </ul>
 
     <a
-      href="/#pricing_section"
+      href=`/${locale}/#pricing_section`
       class="mt-5 flex justify-center items-center bg-carrot-500 rounded-xl py-6 px-4 text-center text-white text-2xl w-full cursor-pointer"
     >
       {planData.cta}
