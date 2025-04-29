@@ -3,8 +3,8 @@ import '../styles/global.css';
 import Navbar from '@/components/LayoutComponents/Navbar.astro';
 import { ClientRouter } from 'astro:transitions';
 import { fade } from 'astro:transitions';
-import Metadata from "@/components/seo/Metadata.astro"
-import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import Metadata from '@/components/seo/Metadata.astro';
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import Footer from '@/components/LayoutComponents/Footer.astro';
 import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
@@ -12,29 +12,45 @@ export interface Props {
   metadata?: MetadataProps;
 }
 
-const {metadata} = Astro.props;
-const {locale} = Astro.params;
+const { metadata } = Astro.props;
+const { locale } = Astro.params;
 
-const supportedLocale = locale as SupportedLocale
+const supportedLocale = locale as SupportedLocale;
 
-const footerData = (await translations[supportedLocale]['footer.json']())['footer'];
-const newsletterData = (await translations[supportedLocale]['common.json']())['newsletter'];
+const footerData = (await translations[supportedLocale]['footer.json']())[
+  'footer'
+];
+const newsletterData = (await translations[supportedLocale]['common.json']())[
+  'newsletter'
+];
 ---
 
 <html lang="en" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png?v=2"
+    />
+    <link rel="manifest" href="/site.webmanifest"></link>
     <Metadata {...metadata} />
     <ClientRouter />
   </head>
   <body>
-    <Navbar locale={locale}/>
+    <Navbar locale={locale} />
     <article>
       <slot />
       <!-- your content is injected here -->
     </article>
-    <Footer lg_screen_width="lg: w-[75vw]" default_screen_width="w-[85vw]" footerData={footerData} newsletterData={newsletterData} locale={locale}/>
+    <Footer
+      lg_screen_width="lg: w-[75vw]"
+      default_screen_width="w-[85vw]"
+      footerData={footerData}
+      newsletterData={newsletterData}
+      locale={locale}
+    />
   </body><style>
     h1 {
       font-size: 2rem;

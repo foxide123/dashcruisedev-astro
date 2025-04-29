@@ -17,7 +17,8 @@ const pathname = Astro.url.pathname;
     class="xl:w-[350px] xl:px-0 xl:justify-start xl:pl-6 sm:px-0 w-full justify-center flex items-center"
   >
     {/* > XL Navbar (Only Icon)*/}
-    <div
+    <a
+      href="/"
       class="xl:flex hidden self-center rounded-4xl p-2 justify-center items-center"
     >
       <picture>
@@ -34,27 +35,28 @@ const pathname = Astro.url.pathname;
           fetchpriority="high"
         />
       </picture>
-    </div>
+    </a>
     {/* DEFAULT to XL Navbar (Hamburger, Icon and Locale)*/}
     <div
       class="xl:hidden w-screen self-center p-2 flex justify-around items-center"
     >
       {/* Hamburger */}
-      <HamburgerToggle client:media="(max-width: 1279px)"/>
+      <HamburgerToggle client:media="(max-width: 1279px)" />
       {/* Logo */}
-
-      <picture>
-        <source
-          media="(max-width: 1279px)"
-          srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240"
-        />
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-          alt="logo"
-        class="ml-10 md:w-[200px] md:h-[200px] w-[120px] h-[120px]"
-        loading="eager"
-        />
-      </picture>
+      <a href="/">
+        <picture>
+          <source
+            media="(max-width: 1279px)"
+            srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+            alt="logo"
+            class="ml-10 md:w-[200px] md:h-[200px] w-[120px] h-[120px]"
+            loading="eager"
+          />
+        </picture>
+      </a>
 
       <div class="ml-5">
         <CountrySelectionModal

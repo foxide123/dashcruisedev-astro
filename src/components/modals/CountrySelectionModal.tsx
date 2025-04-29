@@ -35,9 +35,11 @@ const getLocaleWithFlag  = (locale:String) => {
 }
 
 export default function CountrySelectionModal({locale}: {locale:string | undefined}) {
-  const currencyFromCookies = Cookies.get('currency')
+
+
   const [language, setLanguage] = useState(getLocaleWithFlag(locale ?? 'en'));
-  const [currency, setCurrency] = useState(currencyFromCookies ?? 'usd');
+  const [currency, setCurrency] = useState('usd');
+
 
   const [open, setOpen] = useState(false);
 
@@ -47,6 +49,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
 
   useEffect(() => {
     if(typeof window ==='undefined')  setLanguage('🇺🇸 en');
+    setCurrency(Cookies.get('currency') ?? "usd");
     pathname = window.location.pathname;
     const localeFromPath = pathname?.split("/")[1];
     const localeWithFlag = getLocaleWithFlag(localeFromPath);
