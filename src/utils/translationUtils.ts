@@ -1,12 +1,13 @@
-type JsonFiles = 'about.json' | 'blog.json' | 'common.json' | 'footer.json' | 'header.json' | 'home.json';
+type JsonFiles = 'about.json' | 'blog_page.json' | 'common.json' | 'footer.json' | 'header.json' | 'home_page.json' | 'success_page.json';
 
 const jsonFiles: JsonFiles[] = [
   'about.json', 
-  'blog.json', 
+  'blog_page.json', 
   'common.json', 
   'footer.json', 
   'header.json', 
-  'home.json'
+  'home_page.json',
+  'success_page.json'
 ]
 
 export type SupportedLocale = 'en' | 'de' | 'pl' | 'ro';

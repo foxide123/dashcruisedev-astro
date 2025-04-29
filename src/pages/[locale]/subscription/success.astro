@@ -1,22 +1,56 @@
 ---
 import { verifyStripeSession } from '@/actions/stripeActions';
 import Layout from '@/layouts/MainLayout.astro';
+import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
 const url = new URL(Astro.request.url)
 const sessionId = url.searchParams.get('session_id');
 const { locale } = Astro.params;
 
-if(!sessionId) return new Response(null, {status: 404})
+type SessionResponseDataType = {
+  email?: string;
+  subscriptionId: string;
+  paymentStatus: string;
+  mode: string;
+  plan: string;
+}
 
-const {data, error} = (await verifyStripeSession(sessionId)) as any;
+type VerifyStripeSessionResponse = {
+  data: SessionResponseDataType;
+  error: any;
+}
 
-if(error) return new Response(null, {status: error.status})
+type SuccessPageProps = {
+  title: string;
+  acknowledgement: string;
+  header: string;
+  body: string;
+  email: string;
+  cta: string;
+  loading: string;
+}
+
+if(!sessionId) return new Response('Session Id Not Provided', {status: 404})
+
+const {data, error} = (await verifyStripeSession(sessionId)) as VerifyStripeSessionResponse;
+
+
+if(error) {
+  console.error(error instanceof Error ? error.message : error);
+  return new Response(error, {status: 500})
+}
+
+console.log("Stripe data:", data);
+
+const supportedLocale = locale as SupportedLocale;
+
+const successData:SuccessPageProps = await translations[supportedLocale]['success_page.json']();
 
 export const prerender = false;
 --- 
 
 <Layout>
-    {error && <div>Loading...</div>}
+    {error && <div>{successData.loading}</div>}
   {!error && (
       <div class="w-screen h-screen bg-white flex flex-col justify-center items-center text-center">
         <div>
@@ -30,21 +64,16 @@ export const prerender = false;
           <h1 class="text-[58px] font-bold tracking-tight mt-[40px]">
             Subscription Confirmed
           </h1>
-          <h1>
-            {data}
-          </h1>
           <h3 class="font-normal text-2xl tracking-tight mt-[20px]">
-            Thank you for subscribing to our Web Development Plan!{' '}
+            {successData.acknowledgement} <span class="font-bold">{data.plan}</span>
           </h3>
           <h2 class="font-medium text-2xl tracking-tight mt-[20px]">
-            Your payment was successful, and your subscription is now active.
+            {successData.header}
           </h2>
           <p class="font-normal text-xl tracking-tight mt-[40px] w-[815px] px-10">
-            You&apos;ll receive an email from us with all the details and next
-            steps to get started. If you don&apos;t see the email within a few
-            minutes, check spam or contact us at{' '}
+            {successData.body}
             <span class="font-semibold text-carrot-500">
-              contact@dashcruisedev.com
+              {successData.email}
             </span>
           </p>
           <div class="mt-[56px]">
@@ -52,7 +81,7 @@ export const prerender = false;
               href="/"
               class="bg-carrot-500 px-[48px] py-[16px] rounded-xl cursor-pointer text-white"
             >
-              Go to Dashboard
+              {successData.cta}
             </a>
           </div>
         </div>

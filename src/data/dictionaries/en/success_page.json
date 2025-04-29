@@ -1,0 +1,9 @@
+{
+    "title": "Subscription Confirmed",
+    "acknowledgement": "Thank you for subscribing to our Web Development Plan: ",
+    "header": "Your payment was successful, and your subscription is now active.",
+    "body": "You&apos;ll receive an email from us with all the details and next steps to get started. If you don&apos;t see the email within a few minutes, check spam or contact us at",
+    "email": "contact@dashcruisedev.com",
+    "cta": "Go to Dashboard",
+    "loading": "Loading..."
+}

@@ -22,7 +22,7 @@ import { supportedLocaleArray, translations, type SupportedLocale } from '@/util
 
 const supportedLocale = locale as SupportedLocale
 
-const homeData = await translations[supportedLocale]['home.json']();
+const homeData = await translations[supportedLocale]['home_page.json']();
 const commonData = await translations[supportedLocale]['common.json']();
 const heroData = homeData['hero'];
 const lg_screen_width = 'lg:w-[75vw]';
