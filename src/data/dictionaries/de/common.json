@@ -12,6 +12,7 @@
 },
   "exclusivePlan": {
     "header": "Exklusiver Plan",
+    "lookupKey": "startup_monthly",
     "description": "Zugriff auf die komplette Suite fortschrittlicher Funktionen",
     "interval": "Monat",
     "features": [
@@ -28,6 +29,7 @@
       "name": "🌱 Startup 🌱",
       "price": "49",
       "additionalPagePrice": "9",
+      "lookupKey": "startup_monthly",
       "description": "Perfekt für neue Unternehmen oder Einzelunternehmer, die einfach eine solide Online-Präsenz benötigen",
       "bgColor": "bg-gray-900",
       "textPrimaryColor": "white",
@@ -66,6 +68,7 @@
       "name": "✨ Standard ✨",
       "price": "79",
       "additionalPagePrice": "9",
+      "lookupKey": "standard_monthly",
       "description": "Ideal für wachsende Unternehmen, die eine individuelle Website, bessere Sichtbarkeit und Sorgenfreiheit wollen",
       "bgColor": "bg-gray-100",
       "textPrimaryColor": "black",

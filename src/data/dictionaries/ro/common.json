@@ -12,6 +12,7 @@
     },
     "exclusivePlan": {
       "header": "Plan Exclusiv",
+      "lookupKey": "startup_monthly",
       "description": "Acces la întreaga suită de funcționalități avansate",
       "interval": "luna",
       "features": ["2 Pagini Incluse", "Îmbunătățește-ți Brandul cu un Site Personalizat", "Versiune Mobilă și Desktop", "Optimizare pentru Motoarele de Căutare (SEO)", "Găzduire & Domeniu & Email de Afacere"],
@@ -22,6 +23,7 @@
         "name": "🌱 Startup 🌱",
         "price": "49",
         "additionalPagePrice": "9",
+        "lookupKey": "startup_monthly",
         "description": "Perfect pentru afaceri noi sau profesioniștii care au nevoie doar de o prezență online solidă",
         "bgColor": "bg-gray-900",
         "textPrimaryColor": "white",
@@ -60,6 +62,7 @@
         "name": "✨ Standard ✨",
         "price": "79",
         "additionalPagePrice": "9",
+        "lookupKey": "standard_monthly",
         "description": "Ideal pentru afaceri în creștere care doresc un site personalizat, vizibilitate mai mare și liniște sufletească",
         "bgColor": "bg-gray-100",
         "textPrimaryColor": "black",
