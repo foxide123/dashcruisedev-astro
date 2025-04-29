@@ -1,26 +1,12 @@
 ---
 import { verifyStripeSession } from '@/actions/stripeActions';
 import Layout from '@/layouts/MainLayout.astro';
+import type { StripeSessionResponse } from '@/types/stripe_types';
 import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
 const url = new URL(Astro.request.url)
 const sessionId = url.searchParams.get('session_id');
 const { locale } = Astro.params;
-
-type SessionResponseDataType = {
-  email?: string;
-  subscriptionId: string;
-  paymentStatus: string;
-  mode: string;
-  plan: string;
-  customerDetails: any;
-  customerId: any;
-}
-
-type VerifyStripeSessionResponse = {
-  data: SessionResponseDataType;
-  error: any;
-}
 
 type SuccessPageProps = {
   title: string;
@@ -31,6 +17,13 @@ type SuccessPageProps = {
   cta: string;
   loading: string;
 }
+
+
+type VerifyStripeSessionResponse = {
+  data: StripeSessionResponse;
+  error: any;
+}
+
 
 if(!sessionId) return new Response('Session Id Not Provided', {status: 404})
 

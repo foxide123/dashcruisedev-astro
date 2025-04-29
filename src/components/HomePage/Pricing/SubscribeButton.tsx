@@ -55,7 +55,7 @@ export default function SubscribeButton({
 
       const { loadStripe } = await import("@stripe/stripe-js/pure");
       const stripePromise = loadStripe(
-        import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST as string
+        import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY_PROD as string
       );
 
       const stripe = await stripePromise;
