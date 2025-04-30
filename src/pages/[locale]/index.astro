@@ -18,9 +18,14 @@ import { ContainerTextFlipClient } from '@/components/HomePage/ContainerTextFlip
 import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
-import { supportedLocaleArray, translations, type SupportedLocale } from '@/utils/translationUtils';
+import {
+  supportedLocaleArray,
+  translations,
+  type SupportedLocale,
+} from '@/utils/translationUtils';
+import { getStripePrices } from '@/actions/stripeActions';
 
-const supportedLocale = locale as SupportedLocale
+const supportedLocale = locale as SupportedLocale;
 
 const homeData = await translations[supportedLocale]['home_page.json']();
 const commonData = await translations[supportedLocale]['common.json']();
@@ -41,8 +46,16 @@ const metadata: MetadataProps = {
       en: '/en',
       de: '/de',
       pl: '/pl',
-      ro: "/ro"
+      ro: '/ro',
     },
+  },
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240',
+        alt: '',
+      },
+    ],
   },
   openGraph: {
     images: '/og-image.png',
@@ -59,12 +72,16 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
-    {
-      params: { locale: supportedLocale }
-    }
-  ))
+  return supportedLocaleArray.map((supportedLocale) => ({
+    params: { locale: supportedLocale },
+  }));
 }
+
+const { data, error } = await getStripePrices();
+
+console.log('Data on home page:', data);
+
+const prices = data;
 
 export const prerender = true;
 ---
@@ -72,6 +89,7 @@ export const prerender = true;
 <Layout metadata={metadata}>
   <div class="w-screen flex flex-col justify-center overflow-hidden">
     <HeroSection
+      prices={prices}
       heroData={heroData}
       commonData={commonData}
       lg_screen_width={lg_screen_width}
@@ -99,6 +117,7 @@ export const prerender = true;
       default_screen_width={default_screen_width}
     />
     <PricingSection
+      prices={prices}
       locale={locale}
       pricingPlansData={commonData.pricingPlan}
       pricingSectionData={homeData.pricing}

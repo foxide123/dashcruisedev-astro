@@ -1,3 +1,5 @@
+import type { StripePriceSimplified } from '@/types/stripe_types';
+
 export async function getStripePrices() {
   const res = await fetch(
     'https://api.dashcruisedev.com/stripe/website-plans/get-prices',
@@ -12,7 +14,30 @@ export async function getStripePrices() {
     };
   }
 
-  return await res.json();
+  const { data, error } = (await res.json()) as any;
+
+  if (error) return { data: null, error: error };
+
+  const transformedStripeData = data.data.map(
+    (item: any) =>
+      ({
+        id: item.id,
+        lookupKey: item.lookup_key,
+        currency: item.currency,
+        product: {
+          id: item.product.id,
+        },
+        recurring: {
+          interval: item.recurring.interval,
+          interval_count: item.recurring.interval_count,
+          trialPeriodDays: item.recurring.trial_period_days,
+        },
+        unitAmount: item.unit_amount,
+        type: item.type,
+      }) as StripePriceSimplified
+  );
+
+  return { data: transformedStripeData, error: null };
 }
 
 export async function verifyStripeSession(sessionId?: string) {
@@ -34,16 +59,23 @@ export async function verifyStripeSession(sessionId?: string) {
   return await res.json();
 }
 
-export async function redirectToCheckout(lookupKey: string, language: string, currency: string) {
-  const res = await fetch('https://api.dashcruisedev.com/stripe/checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      lookupKeyWithoutCurrency: lookupKey,
-      language: language,
-      currency: currency
-    }),
-  });
+export async function redirectToCheckout(
+  lookupKey: string,
+  language: string,
+  currency: string
+) {
+  const res = await fetch(
+    'https://api.dashcruisedev.com/stripe/checkout-session',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        lookupKeyWithoutCurrency: lookupKey,
+        language: language,
+        currency: currency,
+      }),
+    }
+  );
 
   return await res.json();
 }

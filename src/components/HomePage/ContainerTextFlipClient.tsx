@@ -1,8 +1,8 @@
 // src/components/ui/ContainerTextFlipClient.tsx
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import ContainerTextFlip from "@/components/HomePage/ContainerTextFlip";
+import React, { useEffect, useState } from 'react';
+import ContainerTextFlip from '@/components/HomePage/ContainerTextFlip';
 //eslint-disable-next-line
 export function ContainerTextFlipClient(props: any) {
   const [showAnimation, setShowAnimation] = useState(false);
@@ -10,12 +10,17 @@ export function ContainerTextFlipClient(props: any) {
     <span className="text-carrot-500">
       {props.words && props.words[props.words.length - 1]
         ? props.words[props.words.length - 1]
-        : "Brand"}
+        : 'Brand'}
     </span>
   );
 
   useEffect(() => {
-    if ("requestIdleCallback" in window) {
+    const fallback = document.getElementById('flip-fallback');
+    if (fallback) {
+      fallback.style.opacity = '0';
+      fallback.style.transition = 'opacity 0.3s ease';
+    }
+    if ('requestIdleCallback' in window) {
       //eslint-disable-next-line
       (window as any).requestIdleCallback(() => {
         setShowAnimation(true);
@@ -25,8 +30,8 @@ export function ContainerTextFlipClient(props: any) {
     }
   }, []);
 
-  if (!showAnimation) {
+  /*   if (!showAnimation) {
     return fallbackText
-  }
-  return <ContainerTextFlip {...props} />;
+  } */
+  return <>{showAnimation && <ContainerTextFlip {...props} />}</>;
 }

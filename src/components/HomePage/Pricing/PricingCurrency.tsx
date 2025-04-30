@@ -21,36 +21,24 @@ const getCurrencySymbol = (currency: string) => {
   }
 };
 
-export default function PricingCurrency({
-  basePrice,
-  lookupKey,
-}: {
-  basePrice: number;
-  lookupKey: string;
-}) {
+const getPriceData = (pricesArray: StripePriceSimplified[],lookupKey: string) => pricesArray?.find(
+  (price: StripePriceSimplified) =>
+    price.lookupKey === lookupKey);
+
+export default function PricingCurrency({ prices, lookupKey }: { prices:StripePriceSimplified[], lookupKey: string }) {
   const [mounted, setMounted] = useState(false);
   const [currency, setCurrency] = useState<SupportedCurrency>('usd');
-
-  // store where we save all of the prices from stripe
-  const $pricesStore = useStore(pricesStore);
-  console.log('Prices store:', $pricesStore);
+  const [priceData, setPriceData] = useState<any>(null);
 
   useEffect(() => {
+    const selectedCurrency = (Cookies.get('currency') ?? 'usd') as SupportedCurrency;
+    const price = getPriceData(prices, `${lookupKey}_${selectedCurrency}`);
+    console.log("PRICES:", prices);
+    console.log("LOOKUP KEY:", `${lookupKey}_${currency}`);
+    console.log("PRICE DATA:", price);
+    setPriceData(price);
     setMounted(true);
-    setCurrency((Cookies.get('currency') ?? 'usd') as SupportedCurrency);
-    // call loadPrices function from store to retrieve prices data
-    loadPrices();
   }, []);
-
-  const transformedLookupKey = `${lookupKey}_${currency}`;
-  console.log('Transformed Lookup Key:', transformedLookupKey);
-
-  const priceData: StripePriceSimplified | undefined = useMemo(() => {
-    if (!$pricesStore || !Array.isArray($pricesStore)) return undefined;
-    return $pricesStore.find((item) => item.lookupKey === transformedLookupKey);
-  }, [$pricesStore, transformedLookupKey]);
-
-  console.log('Price Data:', priceData);
 
   if (!mounted) {
     return <div className="h-[60px] w-[300px] "></div>;
@@ -58,8 +46,9 @@ export default function PricingCurrency({
 
   return (
     <div className="h-[60px] w-[300px] flex justify-center items-center">
-      {priceData ? (
-        <>
+      {
+        priceData ? (
+          <>
           <span>
             {getCurrencySymbol(priceData?.currency ?? 'usd')}{' '}
             {priceData?.unitAmount / 100}
@@ -68,9 +57,8 @@ export default function PricingCurrency({
             &thinsp;/&thinsp;Month
           </span>
         </>
-      ) : (
-        <span></span>
-      )}
+        ) : <span></span>
+      }
     </div>
   );
 }

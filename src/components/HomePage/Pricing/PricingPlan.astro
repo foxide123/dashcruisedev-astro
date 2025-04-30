@@ -5,6 +5,7 @@ import CheckIcon from '@/components/icons/CheckIconCustom';
 import PricingCurrency from './PricingCurrency';
 import { currencyFromStore } from '@/store/currencyStore';
 import { useStore } from '@nanostores/react';
+import type { StripePriceSimplified } from '@/types/stripe_types';
 
 type PricingFeatureProp = {
   featureHighlight: string;
@@ -25,6 +26,7 @@ interface Params {
   iteration: string;
   extraPagesDescription: string;
   lookupKey: string;
+  prices: StripePriceSimplified[];
 }
 
 const {
@@ -41,6 +43,7 @@ const {
   iteration,
   extraPagesDescription,
   lookupKey,
+  prices
 } = Astro.props;
 ---
 
@@ -83,7 +86,7 @@ const {
             class="mx-auto flex items-center justify-center text-3xl font-bold"
           >
             <PricingCurrency
-              basePrice={Number(planPrice as string)}
+              prices={prices}
               lookupKey={lookupKey}
               client:load
             />

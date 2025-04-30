@@ -1,7 +1,8 @@
 ---
 /* import FadeInSection from '@/components/common/FadeInSection';
  */
-import PricingPlan from "@/components/HomePage/Pricing/PricingPlan.astro"
+import PricingPlan from '@/components/HomePage/Pricing/PricingPlan.astro';
+import type { StripePriceSimplified } from '@/types/stripe_types';
 
 type PricingFeatureProp = {
   featureHighlight: string;
@@ -34,61 +35,69 @@ interface Props {
   pricingPlansData: PricingPlanType[];
   pricingSectionData: PricingDataType;
   locale: string;
+  prices: StripePriceSimplified[];
 }
 
-const { lg_screen_width, default_screen_width, pricingPlansData, pricingSectionData, locale } = Astro.props;
-
+const {
+  lg_screen_width,
+  default_screen_width,
+  pricingPlansData,
+  pricingSectionData,
+  locale,
+  prices,
+} = Astro.props;
 ---
 
 <section
   id="pricing_section"
-  class=" bg-white caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto lg:py-[150px] py-10 px-8"
+  class="bg-white caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto lg:py-[150px] py-10 px-8"
 >
-<!--   <FadeInSection> -->
-    <div class={`${lg_screen_width} ${default_screen_width}`}>
-      <div class="lg:px-10 max-w-[964px] w-full px-0 mx-auto text-center">
-        <h1 class=" lg:text-5xl text-4xl font-semibold">
-          {pricingSectionData.header}
-        </h1>
-        <p class="mt-5 text-xl text-gray-500 font-medium">
-          {pricingSectionData.description}
-        </p>
-        <div
-          class="mt-8 w-fit mx-auto flex flex-row items-center justify-between"
-        >
-          {
-            /*<p class="font-medium text-2xl pr-5 text-carrot-500">Monthly</p>
+  <!--   <FadeInSection> -->
+  <div class={`${lg_screen_width} ${default_screen_width}`}>
+    <div class="lg:px-10 max-w-[964px] w-full px-0 mx-auto text-center">
+      <h1 class="lg:text-5xl text-4xl font-semibold">
+        {pricingSectionData.header}
+      </h1>
+      <p class="mt-5 text-xl text-gray-500 font-medium">
+        {pricingSectionData.description}
+      </p>
+      <div
+        class="mt-8 w-fit mx-auto flex flex-row items-center justify-between"
+      >
+        {
+          /*<p class="font-medium text-2xl pr-5 text-carrot-500">Monthly</p>
           <Switch class="cursor-pointer h-[30px] w-[65px]"/>
           <p class="font-medium text-2xl pl-5">Yearly</p>
           */
-          }
-        </div>
-      </div>
-
-      {/* Available Plans */}
-      <div
-        class={`lg:pt-14 pt-5 flex-wrap lg:items-start lg:flex-row lg:justify-around ${lg_screen_width} ${default_screen_width} flex flex-col justify-center items-center`}
-      >
-     { pricingPlansData!.map(
-      (plan: PricingPlanType, index: number) => (
-        <PricingPlan
-        locale={locale}
-          planName={plan.name}
-          planPrice={plan.price}
-          planDescription={plan.description}
-          additionalPagePrice={plan.additionalPagePrice}
-          bgColor={plan.bgColor}
-          textPrimaryColor={plan.textPrimaryColor}
-          textSecondaryColor={plan.textSecondaryColor}
-          features={plan.features}
-          extraPagesHeader={plan.extraPagesHeader}
-          iteration={plan.iteration}
-          extraPagesDescription={plan.extraPagesDescription}
-          lookupKey={plan.lookupKey}
-        />
-      )
-    )}
+        }
       </div>
     </div>
-<!--   </FadeInSection> -->
+
+    {/* Available Plans */}
+    <div
+      class={`lg:pt-14 pt-5 flex-wrap lg:items-start lg:flex-row lg:justify-around ${lg_screen_width} ${default_screen_width} flex flex-col justify-center items-center`}
+    >
+      {
+        pricingPlansData!.map((plan: PricingPlanType, index: number) => (
+          <PricingPlan
+            prices={prices}
+            locale={locale}
+            planName={plan.name}
+            planPrice={plan.price}
+            planDescription={plan.description}
+            additionalPagePrice={plan.additionalPagePrice}
+            bgColor={plan.bgColor}
+            textPrimaryColor={plan.textPrimaryColor}
+            textSecondaryColor={plan.textSecondaryColor}
+            features={plan.features}
+            extraPagesHeader={plan.extraPagesHeader}
+            iteration={plan.iteration}
+            extraPagesDescription={plan.extraPagesDescription}
+            lookupKey={plan.lookupKey}
+          />
+        ))
+      }
+    </div>
+  </div>
+  <!--   </FadeInSection> -->
 </section>

@@ -1,7 +1,9 @@
 ---
-import CheckIconCustom from "@/components/icons/CheckIconCustom"
-import { IconSizeEnum } from "@/types/icon_types";
-import PricingCurrency from "./PricingCurrency";
+import CheckIconCustom from '@/components/icons/CheckIconCustom';
+import { IconSizeEnum } from '@/types/icon_types';
+import PricingCurrency from './PricingCurrency';
+import type { StripePriceSimplified } from '@/types/stripe_types';
+import PricingCurrencyServer from './PricingCurrencyServer.astro';
 
 export interface Props {
   planData: {
@@ -12,10 +14,13 @@ export interface Props {
     cta: string;
     lookupKey: string;
   };
+  prices: StripePriceSimplified[];
 }
 
-const {planData} = Astro.props;
-const {locale} = Astro.params;
+const { planData, prices } = Astro.props;
+const { locale } = Astro.params;
+
+
 ---
 
 <div
@@ -28,17 +33,23 @@ const {locale} = Astro.params;
     <h2 class="text-base font-normal leading-6 space-y-4">
       {planData.description}
     </h2>
-    <div class="flex text-5xl font-medium leading-15 space-y-12 tracking-tight my-6">
-      <PricingCurrency basePrice={49} lookupKey={planData.lookupKey} client:load/>
-      <!-- <span class="text-2xl space-y-4 font-normal">
-         /&thinsp;{planData.interval}
-      </span> -->
+    <div
+      class="relative flex text-5xl font-medium leading-15 space-y-12 tracking-tight my-6"
+    >
+      <PricingCurrency
+        prices={prices}
+        lookupKey={planData.lookupKey}
+        client:idle
+      />
+      <!--       <div id="static absolute inset-0 border-2 border-green-500">
+        <PricingCurrencyServer prices={prices} currency={currency} />
+      </div> -->
     </div>
     <ul class="text-base font-medium leading-6 space-y-4">
       {
         planData.features.map((feature) => (
           <li class="flex">
-            <CheckIconCustom size={IconSizeEnum.small} client:load/>
+            <CheckIconCustom size={IconSizeEnum.small} client:load />
             {feature}
           </li>
         ))
@@ -50,6 +61,6 @@ const {locale} = Astro.params;
       class="mt-5 flex justify-center items-center bg-carrot-500 rounded-xl py-6 px-4 text-center text-white text-2xl w-full cursor-pointer"
     >
       {planData.cta}
-  </a>
+    </a>
   </div>
 </div>

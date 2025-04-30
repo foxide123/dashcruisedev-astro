@@ -37,3 +37,8 @@ export async function handleMailSubmition(formData: FormData) {
     return {error: "Server error", details: error};
   }
 }
+
+
+export async function sendPaymentConfirmation(){
+  
+}

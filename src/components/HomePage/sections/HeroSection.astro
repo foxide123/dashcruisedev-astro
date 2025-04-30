@@ -4,7 +4,7 @@ import ExclusivePlan from '@/components/HomePage/Pricing/ExclusivePlan.astro';
 
 /* const isProduction = process.env.NODE_ENV === 'production' */
 
-const { lg_screen_width, default_screen_width, heroData, commonData } =
+const { lg_screen_width, default_screen_width, heroData, commonData, prices } =
   Astro.props;
 ---
 
@@ -28,8 +28,8 @@ const { lg_screen_width, default_screen_width, heroData, commonData } =
         alt=""
         loading="eager"
         fetchpriority="high"
-      class="relative w-screen h-screen overflow-hidden"
-        />
+        class="relative w-screen h-screen overflow-hidden"
+      />
     </picture>
   </div>
   <div
@@ -44,16 +44,31 @@ const { lg_screen_width, default_screen_width, heroData, commonData } =
         <div
           class="lg:text-7xl lg:leading-[90px] lg:text-start text-6xl my-5 leading-[80px] tracking-[-2%] font-bold font-sans text-center"
         >
-          <h1>
-            {heroData.headerBeforeEffect}
-            <span class="block">
+        <h1>
+          {heroData.headerBeforeEffect}
+          
+          <!-- Shared wrapper for fallback + animation -->
+          <span class="relative block h-[80px] leading-[80px]">
+            <!-- Fallback: absolutely positioned -->
+            <span
+              id="flip-fallback"
+              class="lg:justify-start absolute inset-0 text-carrot-500 flex items-center justify-center transition-opacity duration-300"
+            >
+              {heroData.headerEffect?.[heroData.headerEffect?.length - 1] ?? 'Brand'}
+            </span>
+        
+            <!-- Client:idle flip animation appears in same space -->
+           <span class="lg:justify-start absolute inset-0 flex items-center justify-center">
               <ContainerTextFlipClient
                 words={heroData.headerEffect}
-                client:load
+                client:idle
               />
-            </span>{' '}
-            {heroData.headerAfterEffect}
-          </h1>
+            </span>
+          </span>
+        
+          {heroData.headerAfterEffect}
+        </h1>
+        
         </div>
         <p
           class="sm:hidden lg:text-start text-base leading-6 text-center break-words mb-2"
@@ -63,7 +78,7 @@ const { lg_screen_width, default_screen_width, heroData, commonData } =
           <br />
         </p>
       </div>
-      <ExclusivePlan planData={commonData.exclusivePlan} />
+     <ExclusivePlan planData={commonData.exclusivePlan} prices={prices}/> 
     </div>
   </div>
 </div>
