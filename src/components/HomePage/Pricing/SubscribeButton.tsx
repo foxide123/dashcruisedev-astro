@@ -35,7 +35,7 @@ export default function SubscribeButton({
     setCurrency(currencyFromCookies ?? "usd");
     pathname = window.location.pathname;
     setLoading(false); // Reset on mount
-  }, [pathname]);
+  }, []);
 
   const handleCheckout = async () => {
     setLoading(true);
