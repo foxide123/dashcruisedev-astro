@@ -5,7 +5,7 @@ export type SlugWithLocale = {
   
   export type ArticleData = {
     id: "string";
-    post_id: "string";
+    article_id: "string";
     locale: number;
     title: "string";
     slug: "string";
@@ -17,5 +17,5 @@ export type SlugWithLocale = {
     section_slug: string;
     section_title: string;
     order: number;
-    PostTranslation: any;
+    ArticleTranslation: any;
   }
