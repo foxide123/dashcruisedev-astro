@@ -40,7 +40,7 @@ export default defineConfig({
       },
     },
 
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), sitemap()]
   }
 })
 /*  export default defineConfig({

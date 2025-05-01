@@ -13,3 +13,9 @@ export type SlugWithLocale = {
     introduction: "string";
   };
   
+  export type SectionData = {
+    section_slug: string;
+    section_title: string;
+    order: number;
+    PostTranslation: any;
+  }

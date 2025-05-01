@@ -3,10 +3,11 @@ import { supportedLocaleArray } from '@/utils/translationUtils';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
   fetchArticleBySlug,
+  fetchSectionDataByTrasnlationId,
   fetchSlugsWithLocale,
   generateHreflangsForArticles,
 } from '@/actions/articleActions';
-import type { ArticleData, SlugWithLocale } from '@/types/article_types';
+import type { ArticleData, SectionData, SlugWithLocale } from '@/types/article_types';
 import Layout from '@/layouts/MainLayout.astro';
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
 import sanitizeHtml from 'sanitize-html'
@@ -35,6 +36,13 @@ const { languages } = generateHreflangsForArticles(slugsWithLocale);
 const articleData: ArticleData | null = await fetchArticleBySlug(slug);
 console.log("ArticleData body: ", articleData);
 
+let sectionData: SectionData[] | null = null;
+if(articleData){
+  const {data, error} = (await fetchSectionDataByTrasnlationId(articleData.id)) as any; 
+  if(error) console.error(error);
+  sectionData = data;
+}
+
 const metadata: MetadataProps = {
   title: 'Web Agency',
   description: 'Web Agency Offering Custom Websites',
@@ -49,14 +57,14 @@ const metadata: MetadataProps = {
   openGraph: {
     images: '/og-image.png',
   },
-  imagesToPreload: {
+  /*imagesToPreload: {
     remoteImages: [
       {
         href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080',
         alt: 'Background Image',
       },
     ],
-  },
+  },*/
 };
 
 export async function getStaticPaths() {
@@ -77,6 +85,19 @@ export const prerender = true;
     <div class="md:sticky md:block hidden caret-accent h-[320px]  top-20 left-0 mt-50 mr-20 text-base w-[200px]">
 		<h2 class="mb-5">ON THIS PAGE</h2>
 		<hr />
+      
+    <ul>
+      {
+      sectionData && sectionData!
+        .sort((a, b) => a.order - b.order)
+        .map((section) => (
+          <li class="mt-5 cursor-pointer">
+            <a href=`#${section.section_slug}`>{section.section_title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
 		<ul>
 		  <li class="mt-5 cursor-pointer">
 			<a href="#what-is-seo-and-why-it-matters">

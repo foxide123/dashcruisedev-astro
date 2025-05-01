@@ -54,6 +54,7 @@ export async function fetchSlugsWithLocale(postId?: string) {
         console.error(error);
         throw new Error(error instanceof Error ? error.message : error);
       }  
+
       //eslint-disable-next-line
       const slugsWithLocale = data.map((item: any) => {
         return { slug: item["slug"], locale: item["locale"]["locale"] };
@@ -67,5 +68,20 @@ export async function fetchSlugsWithLocale(postId?: string) {
         error instanceof Error ? error.message : error
       );
     throw new Error(`Error while retrieving articles ${error instanceof Error ? error.message : error}`)
+    }
+  }
+
+  export async function fetchSectionDataByTrasnlationId(translationId:string){
+    try{
+      const response = await fetch(`https://api.dashcruisedev.com/articles/sections/${translationId}`);
+      if(!response.ok){
+        const errorText = await response.text();
+        return {data:null, error:errorText};
+      }
+  
+      return await response.json();
+
+    }catch(error){
+      return {data: null, error};
     }
   }
