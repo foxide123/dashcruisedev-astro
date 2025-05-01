@@ -97,26 +97,6 @@ export const prerender = true;
         ))
       }
     </ul>
-
-		<ul>
-		  <li class="mt-5 cursor-pointer">
-			<a href="#what-is-seo-and-why-it-matters">
-			  What Is SEO and Why It Matters
-			</a>
-		  </li>
-		  <li class="mt-5 cursor-pointer">
-			<a href="#how-search-engines-work">How Search Engines Work</a>
-		  </li>
-		  <li class="mt-5 cursor-pointer">
-			<a href="#3-key-elements-of-seo">3 Key Elements of SEO</a>
-		  </li>
-		  <li class="mt-5 cursor-pointer">
-			<a href="#why-you-should-care">Why You Should Care</a>
-		  </li>
-		  <li class="mt-5 cursor-pointer">
-			<a href="#quick-tips-for-beginners">Quick Tips for Beginners</a>
-		  </li>
-		</ul>
 	  </div>
 
     {/* Main Content in the Middle */}
@@ -140,7 +120,15 @@ export const prerender = true;
       {
         articleData?.body && (
           <div
-            set:html={sanitizeHtml(articleData.body)}
+            set:html={sanitizeHtml(articleData.body, {
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'ol', 'li', 'section']),
+              allowedAttributes: {
+                ...sanitizeHtml.defaults.allowedAttributes,
+                h2: ['id' ,'style'],
+                ol: ['style'],
+                section: ['id']
+              }
+            })}
             class="mb-50"
           />
         )
