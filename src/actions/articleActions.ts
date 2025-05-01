@@ -32,11 +32,11 @@ export async function fetchArticleBySlug(slug: string): Promise<ArticleData | nu
     }
   }
 
-export async function fetchSlugsWithLocale(postId?: string) {
+export async function fetchSlugsWithLocale(articleId?: string) {
     try {
       let query = "https://api.dashcruisedev.com/articles/slugs-with-locale";
-      if (postId) {
-        query = `${query}/${postId}`;
+      if (articleId) {
+        query = `${query}/${articleId}`;
       }
   
       const response = await fetch(query);
