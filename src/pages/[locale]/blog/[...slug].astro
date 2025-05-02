@@ -75,6 +75,8 @@ export async function getStaticPaths() {
 }
 
 export const prerender = true;
+// cache for 1h, serve stale for 60s while revalidating
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60')
 ---
 
 <Layout metadata={metadata}>

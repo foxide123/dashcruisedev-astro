@@ -69,13 +69,15 @@ export async function getStaticPaths() {
   ))
 }
 
-export const prerender = true
+export const prerender = true;
+// cache for 1h, serve stale for 60s while revalidating
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60');
 ---
 
 <Layout metadata={metadata}>
 <div class=`caret-transparent w-screen lg:py-10 min-h-[100vh] ${lg_screen_width} ${default_screen_width} mx-auto`>
 <!-- <CursorWrapper client:idle> -->
-    <a href={`/${locale}blog/${mainPost.slug}`}>
+    <a href={`/${locale}/blog/${mainPost.slug}`}>
       {/* Large post Preview */}
       <div
         class={`mx-auto lg:h-[625px]  text-center bg-gray-100 flex flex-col cursor-pointer`}
