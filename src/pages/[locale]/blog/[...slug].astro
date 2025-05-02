@@ -7,10 +7,14 @@ import {
   fetchSlugsWithLocale,
   generateHreflangsForArticles,
 } from '@/actions/articleActions';
-import type { ArticleData, SectionData, SlugWithLocale } from '@/types/article_types';
+import type {
+  ArticleData,
+  SectionData,
+  SlugWithLocale,
+} from '@/types/article_types';
 import Layout from '@/layouts/MainLayout.astro';
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
-import sanitizeHtml from 'sanitize-html'
+import sanitizeHtml from 'sanitize-html';
 /* import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
 import { render } from 'astro:content';
@@ -34,12 +38,14 @@ const { locale, slug } = Astro.params;
 const slugsWithLocale: SlugWithLocale[] = await fetchSlugsWithLocale();
 const { languages } = generateHreflangsForArticles(slugsWithLocale);
 const articleData: ArticleData | null = await fetchArticleBySlug(slug);
-console.log("ArticleData body: ", articleData);
+console.log('ArticleData body: ', articleData);
 
 let sectionData: SectionData[] | null = null;
-if(articleData){
-  const {data, error} = (await fetchSectionDataByTrasnlationId(articleData.id)) as any; 
-  if(error) console.error(error);
+if (articleData) {
+  const { data, error } = (await fetchSectionDataByTrasnlationId(
+    articleData.id
+  )) as any;
+  if (error) console.error(error);
   sectionData = data;
 }
 
@@ -68,7 +74,7 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-	const slugsWithLocale = await fetchSlugsWithLocale();
+  const slugsWithLocale = await fetchSlugsWithLocale();
   return slugsWithLocale.map((item: any) => ({
     params: { locale: item.locale, slug: item.slug },
   }));
@@ -76,7 +82,10 @@ export async function getStaticPaths() {
 
 export const prerender = true;
 // cache for 1h, serve stale for 60s while revalidating
-Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60')
+Astro.response.headers.set(
+  'Cache-Control',
+  'public, s-maxage=3600, stale-while-revalidate=60'
+);
 ---
 
 <Layout metadata={metadata}>
@@ -84,22 +93,27 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-
     class={`caret-transparent ${lg_screen_width} ${default_screen_width} mx-auto min-h-screen flex md:flex-row flex-col justify-center`}
   >
     {/* Sidebar navigation */}
-    <div class="md:sticky md:block hidden caret-accent h-[320px]  top-20 left-0 mt-50 mr-20 text-base w-[200px]">
-		<h2 class="mb-5">ON THIS PAGE</h2>
-		<hr />
-      
-    <ul>
-      {
-      sectionData && sectionData!
-        .sort((a, b) => a.order - b.order)
-        .map((section) => (
-          <li class="mt-5 cursor-pointer">
-            <a href=`#${section.section_slug}`>{section.section_title}</a>
-          </li>
-        ))
-      }
-    </ul>
-	  </div>
+    <div
+      class="md:sticky md:block hidden caret-accent h-[320px] top-20 left-0 mt-50 mr-20 text-base w-[200px]"
+    >
+      <h2 class="mb-5">ON THIS PAGE</h2>
+      <hr />
+
+      <ul>
+        {
+          sectionData &&
+            sectionData!
+              .sort((a, b) => a.order - b.order)
+              .map((section) => (
+                <li class="mt-5 cursor-pointer">
+                  <a href={`#${section.section_slug}`}>
+                    {section.section_title}
+                  </a>
+                </li>
+              ))
+        }
+      </ul>
+    </div>
 
     {/* Main Content in the Middle */}
     <div
@@ -110,26 +124,54 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-
       >
         {articleData?.introduction}
       </h1>
-      <div class="mt-10 relative w-full aspect-video">
-        <img
+
+      <div
+        style="background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkJCQkKCQoLCwoODw0PDhUTERETFR8WGBYYFh8wHiMeHiMeMCozKScpMypMOzU1O0xXSUVJV2pfX2qFf4WuruoBCQkJCQoJCgsLCg4PDQ8OFRMRERMVHxYYFhgWHzAeIx4eIx4wKjMpJykzKkw7NTU7TFdJRUlXal9faoV/ha6u6v/CABEIAAUACQMBIgACEQEDEQH/xAApAAEBAQAAAAAAAAAAAAAAAAAABQYBAQEAAAAAAAAAAAAAAAAAAAID/9oADAMBAAIQAxAAAADJSCq//8QAHhAAAQQBBQAAAAAAAAAAAAAAAgABAwQRBRNSU5H/2gAIAQEAAT8A1C1HM5GNcQHjnK3o+hvV/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAIx/9oACAECAQE/AFh//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPwB//9k=');
+    background-size: cover;
+  background-position: center;"
+        class="mt-10 w-full aspect-video relative"
+      >
+        <picture>
+          <source
+            media="(min-width: 640px)"
+            srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            class="object-cover absolute w-full h-full overflow-hidden"
+          />
+        </picture>
+      </div>
+
+      {
+        /*   <img
           alt="main-image"
           src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/e097d49d-c0e4-4644-f379-8a731753de00/hd1920x1080"
           fetchpriority="high"
           loading="eager"
           class="object-cover inset-0 absolute w-full h-full"
-        />
-      </div>
+        /> */
+      }
       {
         articleData?.body && (
           <div
             set:html={sanitizeHtml(articleData.body, {
-              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'ol', 'li', 'section']),
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                'h1',
+                'h2',
+                'ol',
+                'li',
+                'section',
+              ]),
               allowedAttributes: {
                 ...sanitizeHtml.defaults.allowedAttributes,
-                h2: ['id' ,'style'],
+                h2: ['id', 'style'],
                 ol: ['style'],
-                section: ['id']
-              }
+                section: ['id'],
+              },
             })}
             class="mb-50"
           />
