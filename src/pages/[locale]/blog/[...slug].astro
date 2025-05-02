@@ -8,9 +8,9 @@ import {
   generateHreflangsForArticles,
 } from '@/actions/articleActions';
 import type {
-  ArticleData,
   SectionData,
   SlugWithLocale,
+  TranslationData,
 } from '@/types/article_types';
 import Layout from '@/layouts/MainLayout.astro';
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
@@ -36,16 +36,20 @@ const default_screen_width = 'w-[85vw]';
 const { locale, slug } = Astro.params;
 
 const slugsWithLocale: SlugWithLocale[] = await fetchSlugsWithLocale();
-const { languages } = generateHreflangsForArticles(slugsWithLocale);
-const articleData: ArticleData | null = await fetchArticleBySlug(slug);
-console.log('ArticleData body: ', articleData);
+const translationData: TranslationData | null = await fetchArticleBySlug(slug);
+/* console.log('translationData body: ', translationData); */
+
+const articleId = translationData?.article_id;
+let languages = null;
+if (articleId) {({languages} = generateHreflangsForArticles(articleId, slugsWithLocale))};
 
 let sectionData: SectionData[] | null = null;
-if (articleData) {
+if (translationData) {
   const { data, error } = (await fetchSectionDataByTrasnlationId(
-    articleData.id
+    translationData.id
   )) as any;
-  if (error) console.error(error);
+  if (error)
+    console.error('Fetch section data by translation id error:', error);
   sectionData = data;
 }
 
@@ -58,7 +62,7 @@ const metadata: MetadataProps = {
   metadataBase: new URL('https://dashcruisedev.com'),
   alternates: {
     canonical: `/${locale}/${slug}`,
-    languages: languages,
+    languages: languages ?? '',
   },
   openGraph: {
     images: '/og-image.png',
@@ -122,7 +126,7 @@ Astro.response.headers.set(
       <h1
         class="font-medium text-center text-medium-header leading-medium-header"
       >
-        {articleData?.introduction}
+        {translationData?.introduction}
       </h1>
 
       <div
@@ -156,9 +160,9 @@ Astro.response.headers.set(
         /> */
       }
       {
-        articleData?.body && (
+        translationData?.body && (
           <div
-            set:html={sanitizeHtml(articleData.body, {
+            set:html={sanitizeHtml(translationData.body, {
               allowedTags: sanitizeHtml.defaults.allowedTags.concat([
                 'h1',
                 'h2',
