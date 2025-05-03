@@ -126,7 +126,7 @@
       
     ],
     "newsletter": {
-      "header": "Rămâi la curent cu <br></br> Reducerile și Noutățile",
+      "header": "Rămâi la curent cu <br/> Reducerile și Noutățile",
       "placeholder": "Introduceti emailul dumneavoastră",
       "invalidEmailError": "Adresă de email invalidă",
       "cta": "Abonează-te",

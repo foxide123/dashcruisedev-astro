@@ -133,7 +133,7 @@
     
   ],
   "newsletter": {
-    "header": "Bleiben Sie auf dem Laufenden bei <br></br> Angeboten & Neuigkeiten",
+    "header": "Bleiben Sie auf dem Laufenden bei <br/> Angeboten & Neuigkeiten",
     "placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
     "invalidEmailError": "Ungültige E-Mail-Adresse",
     "cta": "Anmelden",

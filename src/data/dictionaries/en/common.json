@@ -126,7 +126,7 @@
       }
     ],
     "newsletter": {
-      "header": "Stay Up to Date on <br></br> Sales & News",
+      "header": "Stay Up to Date on <br/> Sales & News",
       "placeholder": "Enter your email",
       "invalidEmailError": "Invalid Email Address",
       "cta": "Sign Up",

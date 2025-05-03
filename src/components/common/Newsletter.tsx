@@ -5,6 +5,7 @@ import { newsletterSignup } from "@/actions/newsletterActions";
 import { useState } from "react";
 import PopupModal from "@/components/modals/PopupModal";
 import type { NewsletterDataProps } from "@/types/common_types";
+import sanitizeHtml from 'sanitize-html';
 
 export function Newsletter({locale = 'en', newsletterData}: {locale?: string; newsletterData: NewsletterDataProps}) {
 
@@ -21,8 +22,9 @@ export function Newsletter({locale = 'en', newsletterData}: {locale?: string; ne
     <div className="w-full bg-amber-500 flex lg:flex-row flex-col justify-between rounded-[10px] py-[24px] px-[32px]">
       <div className="flex flex-col text-white text-2xl font-bold ">
        {/*  <h2 dangerouslySetInnerHTML={{__html: newsletterData['header']}}> */}
-       <h2>
-        Stay Up to Date on Sales & News Text
+       <h2 dangerouslySetInnerHTML={{__html: sanitizeHtml(newsletterData.header, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['br'])
+       })}}>
         </h2>
       </div>
       <div className="flex lg:flex-row lg:items-center lg:mt-0 mt-3 flex-col text-sm font-normal">

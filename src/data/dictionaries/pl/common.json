@@ -128,7 +128,7 @@
       
     ],
     "newsletter": {
-      "header": "Bądź na Bieżąco z <br></br> Promocjami i Nowościami",
+      "header": "Bądź na bieżąco z <br/> promocjami i nowościami",
       "placeholder": "Wprowadź swój email",
       "invalidEmailError": "Nieprawidłowy adres email",
       "cta": "Zapisz się",
