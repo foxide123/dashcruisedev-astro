@@ -17,6 +17,7 @@ const { locale } = Astro.params;
 
 const supportedLocale = locale as SupportedLocale;
 
+const navbarData = (await translations[supportedLocale]['navbar.json']());
 const footerData = (await translations[supportedLocale]['footer.json']())[
   'footer'
 ];
@@ -39,7 +40,7 @@ const newsletterData = (await translations[supportedLocale]['common.json']())[
     <ClientRouter />
   </head>
   <body>
-    <Navbar locale={locale} />
+    <Navbar locale={locale} navbarData={navbarData}/>
     <article>
       <slot />
       <!-- your content is injected here -->

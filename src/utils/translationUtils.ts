@@ -1,11 +1,11 @@
-type JsonFiles = 'about.json' | 'blog_page.json' | 'common.json' | 'footer.json' | 'header.json' | 'home_page.json' | 'success_page.json';
+type JsonFiles = 'about.json' | 'blog_page.json' | 'common.json' | 'footer.json' | 'navbar.json' | 'home_page.json' | 'success_page.json';
 
 const jsonFiles: JsonFiles[] = [
   'about.json', 
   'blog_page.json', 
   'common.json', 
   'footer.json', 
-  'header.json', 
+  'navbar.json', 
   'home_page.json',
   'success_page.json'
 ]

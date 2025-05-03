@@ -5,7 +5,16 @@ import Cookies from 'js-cookie';
 import HamburgerToggle from './HamburgerToggle';
 
 const lg_screen_width = 'lg:w-[75vw]';
+const { navbarData } = Astro.props;
 const { locale } = Astro.params;
+
+type NavbarItem = {
+  name: string;
+  pathname: string;
+}
+
+const navbarItems:NavbarItem[] = navbarData['navbarItems'];
+const cta:string = navbarData['cta'];
 
 const pathname = Astro.url.pathname;
 ---
@@ -72,8 +81,10 @@ const pathname = Astro.url.pathname;
     transition-all duration-500 ease-in-out overflow-hidden 
          xl:max-h-none xl:opacity-100 max-h-0 opacity-0`}
   >
+  {
+  }
     {
-      MenuItemsData.map((item, index) => {
+      navbarItems.map((item, index) => {
         const fullItemPath = `/${locale}/${item.pathname}`;
         const currentPath = Astro.url.pathname!.endsWith('/')
           ? pathname!.slice(0, -1)
@@ -109,7 +120,7 @@ const pathname = Astro.url.pathname;
       href="#pricing_section"
       class="text-center bg-carrot-500 mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
     >
-      See Pricing
+      {cta}
     </a>
   </div>
   <!--       <div class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden">

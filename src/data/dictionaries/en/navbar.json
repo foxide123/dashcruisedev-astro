@@ -1,0 +1,21 @@
+{
+    "navbarItems": [
+        {
+            "name": "Home",
+            "pathname": ""
+        },
+        {
+            "name": "About",
+            "pathname": "about"
+        },
+        {
+            "name": "Contact",
+            "pathname": "contact"
+        },
+        {
+            "name": "Blog",
+            "pathname": "blog"
+        }
+    ],
+    "cta": "See Pricing"
+}
