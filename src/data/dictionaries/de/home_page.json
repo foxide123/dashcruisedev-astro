@@ -65,6 +65,10 @@
         "header": "Häufig gestellte Fragen",
         "qaData": [
             {
+                "question": "Kann ich meinen Plan upgraden?",
+                "answer": "Natürlich! Genau dafür haben wir die Pläne erstellt – damit Sie Ihren Plan upgraden können, wenn Ihre Anforderungen und Ihre Website wachsen."
+            },            
+            {
                 "question": "Welche Sicherheitsmaßnahmen bietet ihr für meine Website?",
                 "answer": "Wir priorisieren Sicherheit mit DDoS-Schutz, SSL-Verschlüsselung und Echtzeitüberwachung, um deine Website vor Bedrohungen zu schützen. Unser Hosting beinhaltet automatische Backups und Firewall-Schutz, damit deine Seite rund um die Uhr sicher bleibt."
             },

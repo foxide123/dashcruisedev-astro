@@ -102,7 +102,35 @@
       "extraPagesHeader": "Brauchen Sie mehr Seiten?",
       "iteration": "Monat",
       "extraPagesDescription": "pro zusätzlicher Seite"
+    },
+    {
+      "name": "🚀 Premium 🚀",
+      "price": "99",
+      "additionalPagePrice": "9",
+      "lookupKey": "premium_monthly",
+      "description": "Unser einzigartiger Plan für größere Websites.",
+      "bgColor": "bg-gray-100",
+      "textPrimaryColor": "black",
+      "textSecondaryColor": "carrot-500",
+      "features": [
+        {
+          "featureHighlight": "✅ Alles aus dem Standardplan",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🤝 Priorisierter Support"
+        },
+        {
+          "featureHighlight": "➕ Unbegrenzte Seiten",
+          "featureDescription": ""
+        }
+      ],
+      "extraPagesHeader": "Benötigen Sie mehr Seiten?",
+      "iteration": "month",
+      "extraPagesDescription": "pro zusätzlicher Seite"
     }
+    
+    
   ],
   "newsletter": {
     "header": "Bleiben Sie auf dem Laufenden bei <br></br> Angeboten & Neuigkeiten",

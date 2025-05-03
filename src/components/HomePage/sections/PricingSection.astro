@@ -79,22 +79,22 @@ const {
     >
       {
         pricingPlansData!.map((plan: PricingPlanType, index: number) => (
-          <PricingPlan
-            prices={prices}
-            locale={locale}
-            planName={plan.name}
-            planPrice={plan.price}
-            planDescription={plan.description}
-            additionalPagePrice={plan.additionalPagePrice}
-            bgColor={plan.bgColor}
-            textPrimaryColor={plan.textPrimaryColor}
-            textSecondaryColor={plan.textSecondaryColor}
-            features={plan.features}
-            extraPagesHeader={plan.extraPagesHeader}
-            iteration={plan.iteration}
-            extraPagesDescription={plan.extraPagesDescription}
-            lookupKey={plan.lookupKey}
-          />
+            <PricingPlan
+              prices={prices}
+              locale={locale}
+              planName={plan.name}
+              planPrice={plan.price}
+              planDescription={plan.description}
+              additionalPagePrice={plan.additionalPagePrice}
+              bgColor={plan.bgColor}
+              textPrimaryColor={plan.textPrimaryColor}
+              textSecondaryColor={plan.textSecondaryColor}
+              features={plan.features}
+              extraPagesHeader={plan.extraPagesHeader}
+              iteration={plan.iteration}
+              extraPagesDescription={plan.extraPagesDescription}
+              lookupKey={plan.lookupKey}
+            />
         ))
       }
     </div>

@@ -18,7 +18,7 @@ export async function getStripePrices() {
 
   if (error) return { data: null, error: error };
 
-  const transformedStripeData = data.data.map(
+  const transformedStripeData = data.map(
     (item: any) =>
       ({
         id: item.id,

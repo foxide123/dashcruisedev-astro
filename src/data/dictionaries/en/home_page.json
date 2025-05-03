@@ -48,6 +48,10 @@
         "header": "Frequently Asked Questions",
         "qaData": [
             {
+                "question": "Can I upgrade my plan?",
+                "answer": "Of course! That's why we have created them, so you can upgrade your plan as your requirements and website grows"
+            },
+            {
                 "question": "What security measures do you provide for my website?",
                 "answer": "We prioritize security with DDoS protection, SSL encryption, and real-time monitoring to keep your website safe from threats. Our hosting includes automatic backups and firewall protection, ensuring your site remains secure 24/7."
             },

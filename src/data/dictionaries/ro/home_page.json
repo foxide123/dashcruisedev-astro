@@ -48,6 +48,10 @@
         "header": "Întrebări Frecvente",
         "qaData": [
             {
+                "question": "Pot să-mi upgradez planul?",
+                "answer": "Desigur! Tocmai de aceea le-am creat – ca să îți poți upgrada planul pe măsură ce nevoile tale și site-ul tău cresc."
+            },            
+            {
                 "question": "Ce măsuri de securitate oferiți pentru site-ul meu?",
                 "answer": "Punem accent pe securitate cu protecție DDoS, criptare SSL și monitorizare în timp real pentru a păstra site-ul tău în siguranță de amenințări. Găzduirea noastră include copii de siguranță automate și protecție firewall, asigurându-ne că site-ul tău rămâne securizat 24/7."
             },
