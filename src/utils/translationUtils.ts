@@ -12,7 +12,9 @@ const jsonFiles: JsonFiles[] = [
 
 export type SupportedLocale = 'en' | 'de' | 'pl' | 'ro';
 
-export const supportedLocaleArray: SupportedLocale[] = ['en', 'de', 'pl', 'ro']
+export const DefaultLocale = 'en';
+
+export const SupportedLocaleArray: SupportedLocale[] = ['en', 'de', 'pl', 'ro']
 
 const translationGlobPath = import.meta.glob('/src/data/dictionaries/*/*.json', { eager: true });
 
@@ -27,7 +29,7 @@ function loadTranslation(locale: SupportedLocale, jsonFile: JsonFiles) {
 
 export const translations: Record<SupportedLocale, Record<JsonFiles, () => Promise<any>>> = 
   Object.fromEntries(
-    supportedLocaleArray.map((locale) => [
+    SupportedLocaleArray.map((locale) => [
       locale,
       Object.fromEntries(
         jsonFiles.map((file) => [file, () => loadTranslation(locale, file)])

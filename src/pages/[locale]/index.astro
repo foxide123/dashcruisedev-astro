@@ -19,7 +19,7 @@ import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
-  supportedLocaleArray,
+  SupportedLocaleArray,
   translations,
   type SupportedLocale,
 } from '@/utils/translationUtils';
@@ -58,7 +58,10 @@ const metadata: MetadataProps = {
     ],
   },
   openGraph: {
-    images: '/og-image.png',
+    url: "https://dashcruisedev.com",
+    title: "Web Agency",
+    description: "Web Agency Offering Custom Websites",
+    image: 'https://dashcruisedev.com/og-image.png',
   },
   /*  imagesToPreload: {
     remoteImages: [
@@ -72,8 +75,8 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => ({
-    params: { locale: supportedLocale },
+  return SupportedLocaleArray.map((SupportedLocale) => ({
+    params: { locale: SupportedLocale },
   }));
 }
 

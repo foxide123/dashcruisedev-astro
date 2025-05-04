@@ -9,7 +9,7 @@ import enBlogData from '@/data/dictionaries/en/blog_page.json';
 import deBlogData from '@/data/dictionaries/de/blog_page.json';
 import Layout from "@/layouts/MainLayout.astro"
 import CursorWrapper from '@/components/CursorWrapper';
-import { supportedLocaleArray } from '@/utils/translationUtils';
+import { SupportedLocaleArray } from '@/utils/translationUtils';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import { fetchSlugsWithLocale } from '@/actions/articleActions';
 
@@ -49,7 +49,10 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    images: '/og-image.png',
+    url: "https://dashcruisedev.com",
+    title: "Web Agency",
+    description: "Web Agency Offering Custom Websites",
+    image: 'https://dashcruisedev.com/og-image.png',
   },
   imagesToPreload: {
     remoteImages: [
@@ -62,9 +65,9 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
+  return SupportedLocaleArray.map((SupportedLocale) => (
     {
-      params: { locale: supportedLocale }
+      params: { locale: SupportedLocale }
     }
   ))
 }

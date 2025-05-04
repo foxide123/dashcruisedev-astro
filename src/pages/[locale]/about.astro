@@ -6,7 +6,7 @@ import deAboutData from '@/data/dictionaries/de/about.json';
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
-  supportedLocaleArray,
+  SupportedLocaleArray,
   translations,
   type SupportedLocale,
 } from '@/utils/translationUtils';
@@ -77,7 +77,10 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    images: '/og-image.png',
+    url: "https://dashcruisedev.com",
+    title: "Web Agency",
+    description: "Web Agency Offering Custom Websites",
+    image: 'https://dashcruisedev.com/og-image.png',
   },
 /*   imagesToPreload: {
     remoteImages: [
@@ -96,7 +99,7 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => ({
+  return SupportedLocaleArray.map((supportedLocale) => ({
     params: { locale: supportedLocale },
   }));
 }

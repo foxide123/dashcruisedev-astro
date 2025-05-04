@@ -4,7 +4,7 @@ import enContactData from "@/data/dictionaries/en/common.json"
 import deContactData from "@/data/dictionaries/de/common.json"
 import ContactUsForm from "@/components/common/ContactForm";
 import Layout from "@/layouts/MainLayout.astro"
-import { supportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
+import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
 import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
 
 const {locale} = Astro.params;
@@ -35,7 +35,10 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    images: '/og-image.png',
+    url: "https://dashcruisedev.com",
+    title: "Web Agency",
+    description: "Web Agency Offering Custom Websites",
+    image: 'https://dashcruisedev.com/og-image.png',
   },
   imagesToPreload: {
     remoteImages: [
@@ -54,7 +57,7 @@ const metadata: MetadataProps = {
 };
 
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
+  return SupportedLocaleArray.map((supportedLocale) => (
     {
       params: { locale: supportedLocale }
     }
