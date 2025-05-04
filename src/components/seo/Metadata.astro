@@ -88,7 +88,7 @@ const ogImage = openGraph?.image
 <!-- Facebook Meta Tags -->
 {openGraph?.url && <meta property="og:url" content={openGraph.url} />}
 <meta property="og:type" content="website" />
-{openGraph?.title && <meta property="og:title" content="Web Agency" />}
+{openGraph?.title && <meta property="og:title" content={openGraph?.title} />}
 {openGraph?.description && <meta property="og:description" content={openGraph.description} />}
 <meta property="og:image" content={ogImage} />
 
