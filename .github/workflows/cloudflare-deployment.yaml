@@ -19,5 +19,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: dashcruisedev-astro # e.g. 'my-project'
-          directory: YOUR_DIRECTORY_OF_STATIC_ASSETS # e.g. 'dist'
+          directory: dist # e.g. 'dist'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
