@@ -7,6 +7,8 @@
       "sending": "Sending Message..."
     },
     "contactUs": {
+      "phone": "Phone Number:",
+      "email": "Email:",
       "header": "We'd love to\nconnect with you!",
       "description": "Please fill out the contact form and we will contact you as soon as possible with all of the informations and answers to your questions."
   },
