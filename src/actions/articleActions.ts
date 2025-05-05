@@ -3,7 +3,7 @@ const isProd = import.meta.env.PROD;
 
 const PUBLIC_API = isProd
   ? 'https://api.dashcruisedev.com'
-  : 'http://localhost:8787';
+  : 'https://api.dashcruisedev.com';
 
 export function generateHreflangsForArticles(
   articleId: string,

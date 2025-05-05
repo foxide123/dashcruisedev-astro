@@ -6,11 +6,11 @@
         },
         {
             "name": "Über uns",
-            "pathname": "about"
+            "pathname": "uber-uns"
         },
         {
             "name": "Kontakt",
-            "pathname": "contact"
+            "pathname": "kontakt"
         },
         {
             "name": "Blog",

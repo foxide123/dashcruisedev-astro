@@ -20,6 +20,9 @@ import { useEffect, useState } from 'react';
 import { useStore } from '@nanostores/react';
 import { currencyFromStore } from '@/store/currencyStore';
 import Cookies from 'js-cookie'
+import { getLocalizedPath } from '@/utils/routeMap';
+
+type Locale = 'en' | 'de' | 'pl' | 'ro';
 
 const getLocaleWithFlag  = (locale:String) => {
   switch(locale){
@@ -39,6 +42,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
 
   const [language, setLanguage] = useState(getLocaleWithFlag(locale ?? 'en'));
   const [currency, setCurrency] = useState('usd');
+  const [currentLocale, setCurrentLocale] = useState('');
 
 
   const [open, setOpen] = useState(false);
@@ -52,6 +56,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
     setCurrency(Cookies.get('currency') ?? "usd");
     pathname = window.location.pathname;
     const localeFromPath = pathname?.split("/")[1];
+    setCurrentLocale(localeFromPath);
     const localeWithFlag = getLocaleWithFlag(localeFromPath);
     setLanguage(localeWithFlag);
   }, [pathname]);
@@ -64,7 +69,18 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
   const handleSave = () => {
     const newLocale = language.split(' ')[1]; // from "🇩🇪 de" → "de"
     // ### IMPORTANT ### Add / Remove new language to currentPathWithoutLocale below
-    const currentPathWithoutLocale = window.location.pathname!.replace(/^\/(en|de|ro|pl)/, ''); // remove existing locale from path
+    const currentSlug = window.location.pathname!
+  .replace(/^\/(en|de|ro|pl)/, '') // remove locale
+  .replace(/^\/+/, ''); // remove any remaining leading slash
+
+    console.log("Current Path without locale:", currentSlug);
+    console.log("Current locale:", currentLocale);
+    console.log("New locale", newLocale);
+     const newSlug = getLocalizedPath(currentSlug, currentLocale as Locale, newLocale as Locale)
+
+    console.log("Current Path without locale:", currentSlug);
+    console.log("Current locale:", currentLocale);
+    console.log("New path without locale", newSlug);
 
     // Save cookie
     Cookies.set("currency", currency, { path: "/" });
@@ -75,8 +91,20 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
 
     setOpen(false);
 
-    // Navigate to new locale route
-    navigate(`/${newLocale}${currentPathWithoutLocale}`);
+    let finalPath;
+
+    if(currentSlug === ''){
+      console.log("newlocale", newLocale)
+      finalPath = `/${newLocale}`;  
+    }else{
+      if (!newSlug) {
+        console.warn(`Fallback: couldn't find translated slug for "${currentSlug}" from "${currentLocale}" to "${newLocale}"`);
+      }      
+      const safeSlug = (newSlug ?? currentSlug).replace(/^\/+/, '');
+      finalPath = `/${newLocale}/${safeSlug}`;
+    }
+
+    navigate(finalPath);
   };
 
   return (

@@ -10,6 +10,7 @@ import {
   translations,
   type SupportedLocale,
 } from '@/utils/translationUtils';
+import { getPathTranslations } from '@/utils/pathUtils';
 
 type AboutType = {
   header: string;
@@ -40,7 +41,7 @@ interface Props {
   aboutData: AboutType;
 }
 
-const { locale } = Astro.params;
+const { locale, slug } = Astro.params;
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -53,7 +54,7 @@ const sectionDescriptionLines = aboutData.sectionDescription.split('\n');
 const lg_screen_width = 'lg:w-[75vw]';
 const default_screen_width = 'w-[85vw]';
 
-const metadata: MetadataProps = {
+export const metadata: MetadataProps = {
   title: 'DashcruiseDev - About Us',
   description: 'Meet Our Team at DashcruiseDev',
   keywords: [
@@ -98,15 +99,13 @@ const metadata: MetadataProps = {
   }, */
 };
 
-export async function getStaticPaths() {
-  return SupportedLocaleArray.map((supportedLocale) => ({
+/* export async function getStaticPaths() {
+    return ({
     params: { locale: supportedLocale },
-  }));
-}
+  });
+} */
 export const prerender = true;
 ---
-
-<Layout metadata={metadata}>
   <div class="caret-transparent w-screen">
     {/* Hero */}
     <div
@@ -251,4 +250,3 @@ export const prerender = true;
       </div>
     </div>
   </div>
-</Layout>

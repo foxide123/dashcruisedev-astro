@@ -1,0 +1,97 @@
+---
+import { routeComponentMap } from '@/utils/routeMap';
+import Layout from '@/layouts/MainLayout.astro';
+import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+
+/* if (!Astro.params.locale || !Astro.params.slug) {
+  throw new Error("Missing route parameters: locale or slug.");
+}
+
+const { locale, slug } = Astro.params;
+
+const safeLocale = locale as keyof typeof routeComponentMap;
+const safeSlug = slug as keyof typeof routeComponentMap[typeof safeLocale];
+
+const PageComponent = routeComponentMap[safeLocale]?.[safeSlug] as {
+  (props: { locale: string }): any;
+  metadata?: object | ((args: { locale: string; slug: string }) => object);
+};
+ */
+
+const { locale, slug } = Astro.params;
+
+const safeLocale = locale as keyof typeof routeComponentMap;
+const safeSlug = slug as keyof typeof routeComponentMap[typeof safeLocale];
+
+console.log("Safe locale: ", safeLocale);
+console.log("Safe slug: ", safeSlug);
+
+const entry = routeComponentMap[safeLocale]?.[safeSlug] as any
+
+if (!entry) {
+  throw new Error(`Route not found for /${safeLocale}/${safeSlug}`);
+}
+
+const PageComponent = entry.component;
+const metadata = typeof entry.metadata === 'function'
+  ? entry.metadata({ locale, slug })
+  : entry.metadata ?? {};
+
+/* const metadata: MetadataProps = {
+    title: 'DashcruiseDev - Contact Us',
+    description: 'DashcruiseDev - Contact Us',
+    keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+    creator: 'Jakub Cezary Kolando',
+    publisher: 'Jakub Cezary Kolando',
+    metadataBase: new URL('https://dashcruisedev.com/en/contact'),
+    alternates: {
+      canonical: '/en/contact',
+      languages: {
+        en: '/en/contact',
+        de: '/de/contact',
+        pl: "/pl/contact",
+        ro: "/ro/contact"
+      },
+    },
+    openGraph: {
+      url: "https://dashcruisedev.com",
+      title: "Web Agency",
+      description: "Web Agency Offering Custom Websites",
+      image: 'https://dashcruisedev.com/og-image.png',
+    },
+    imagesToPreload: {
+      remoteImages: [
+        {
+          href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
+          alt: "Background Image",
+          media: "(min-width: 640px)"
+        },
+        {
+          href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
+          alt: "Background Image ",
+          media: "(max-width: 639px)"
+        }
+      ]
+    }
+  };
+ */
+
+  export async function getStaticPaths() {
+  const paths: { params: { locale: string; slug: string } }[] = [];
+
+  for (const locale of Object.keys(routeComponentMap)) {
+    const slugs = Object.keys(routeComponentMap[locale as keyof typeof routeComponentMap]);
+    for (const slug of slugs) {
+      paths.push({ params: { locale, slug } });
+    }
+  }
+  console.log("Static paths generated:", paths);
+  return paths;
+}
+
+export const prerender = true;
+---
+
+<Layout metadata={metadata}>
+  <PageComponent locale={locale} />
+</Layout>
