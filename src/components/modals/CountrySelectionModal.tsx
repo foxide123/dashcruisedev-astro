@@ -70,8 +70,10 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
     const newLocale = language.split(' ')[1]; // from "🇩🇪 de" → "de"
     // ### IMPORTANT ### Add / Remove new language to currentPathWithoutLocale below
     const currentSlug = window.location.pathname!
-  .replace(/^\/(en|de|ro|pl)/, '') // remove locale
-  .replace(/^\/+/, ''); // remove any remaining leading slash
+    .replace(/^\/(en|de|ro|pl)/, '') // remove locale
+    .replace(/^\/+/, '')             // remove leading slash
+    .replace(/\/+$/, '');            // ✅ remove trailing slash
+  
 
     console.log("Current Path without locale:", currentSlug);
     console.log("Current locale:", currentLocale);
