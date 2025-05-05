@@ -6,11 +6,11 @@
         },
         {
             "name": "O nas",
-            "pathname": "about"
+            "pathname": "o-nas"
         },
         {
             "name": "Kontakt",
-            "pathname": "contact"
+            "pathname": "kontakt"
         },
         {
             "name": "Blog",

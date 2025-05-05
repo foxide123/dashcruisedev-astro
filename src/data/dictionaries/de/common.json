@@ -7,6 +7,8 @@
     "sending": "Nachricht wird gesendet..."
   },
   "contactUs": {
+    "phone": "Telefonnummer:",
+    "email": "Email:",
     "header": "Wir würden uns freuen,\nvon dir zu hören!",
     "description": "Bitte fülle das Kontaktformular aus und wir melden uns so schnell wie möglich mit allen Informationen und Antworten auf deine Fragen bei dir."
 },

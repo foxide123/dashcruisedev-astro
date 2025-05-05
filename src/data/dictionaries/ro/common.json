@@ -1,136 +1,143 @@
 {
-    "contactForm": {
-      "name": "Nume",
-      "email": "Email",
-      "message": "Mesai",
-      "send": "Trimite mesajul",
-      "sending": "Se trimite mesajul..."
-    },
-    "contactUs": {
-        "header": "Ne-ar plăcea să \n ne conectăm cu tine!",
-        "description": "Te rugăm să completezi formularul de contact și te vom contacta cât mai curând posibil cu toate informațiile și răspunsurile la întrebările tale."
-    },
-    "exclusivePlan": {
-      "header": "Plan Exclusiv",
-      "lookupKey": "startup_monthly",
-      "description": "Acces la întreaga suită de funcționalități avansate",
-      "interval": "luna",
-      "features": ["2 Pagini Incluse", "Îmbunătățește-ți Brandul cu un Site Personalizat", "Versiune Mobilă și Desktop", "Optimizare pentru Motoarele de Căutare (SEO)", "Găzduire & Domeniu & Email de Afacere"],
-      "cta": "Află mai multe"
-    },
-    "pricingPlan": [
-      {
-        "name": "🌱 Startup 🌱",
-        "price": "49",
-        "additionalPagePrice": "9",
-        "lookupKey": "startup_monthly",
-        "description": "Perfect pentru afaceri noi sau profesioniștii care au nevoie doar de o prezență online solidă",
-        "bgColor": "bg-gray-900",
-        "textPrimaryColor": "white",
-        "textSecondaryColor": "gray-400",
-        "features": [
-          {
-            "featureHighlight": "✅ Site Personalizat Simplu",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "📱 Design Prietenos cu Mobilul",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🔍 Setare SEO de Bază",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "⚡️ Lansare Rapidă",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🔒 Găzduire, Domeniu & SSL Incluse",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "📄 Include 2 Pagini",
-            "featureDescription": ""
-          }
-        ],
-        "extraPagesHeader": "Ai nevoie de mai multe pagini?",
-        "iteration": "luna",
-        "extraPagesDescription": "per pagină suplimentară"
-      },
-      {
-        "name": "✨ Standard ✨",
-        "price": "79",
-        "additionalPagePrice": "9",
-        "lookupKey": "standard_monthly",
-        "description": "Ideal pentru afaceri în creștere care doresc un site personalizat, vizibilitate mai mare și liniște sufletească",
-        "bgColor": "bg-gray-100",
-        "textPrimaryColor": "black",
-        "textSecondaryColor": "carrot-500",
-        "features": [
-          {
-            "featureHighlight": "✅ Design Personalizat pentru Site",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "📱 Responsive & Prietenos cu Mobilul",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🔍 Optimizare SEO",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🔁 Editări Nelimitate",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🔒 Găzduire, Domeniu & SSL Incluse",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "📄 Până la 5 Pagini Personalizate",
-            "featureDescription": ""
-          }
-        ],
-        "extraPagesHeader": "Ai nevoie de mai multe pagini?",
-        "iteration": "luna",
-        "extraPagesDescription": "per pagină suplimentară"
-      },
-      {
-        "name": "🚀 Premium 🚀",
-        "price": "99",
-        "additionalPagePrice": "9",
-        "lookupKey": "premium_monthly",
-        "description": "Planul nostru unic creat pentru site-uri mai mari.",
-        "bgColor": "bg-gray-100",
-        "textPrimaryColor": "black",
-        "textSecondaryColor": "carrot-500",
-        "features": [
-          {
-            "featureHighlight": "✅ Totul din planul Standard",
-            "featureDescription": ""
-          },
-          {
-            "featureHighlight": "🤝 Suport Prioritar"
-          },
-          {
-            "featureHighlight": "➕ Pagini nelimitate",
-            "featureDescription": ""
-          }
-        ],
-        "extraPagesHeader": "Ai nevoie de mai multe pagini?",
-        "iteration": "month",
-        "extraPagesDescription": "per pagină suplimentară"
-      }
-      
+  "contactForm": {
+    "name": "Nume",
+    "email": "Email",
+    "message": "Mesai",
+    "send": "Trimite mesajul",
+    "sending": "Se trimite mesajul..."
+  },
+  "contactUs": {
+    "phone": "Număr de telefon:",
+    "email": "Email:",
+    "header": "Ne-ar plăcea să \n ne conectăm cu tine!",
+    "description": "Te rugăm să completezi formularul de contact și te vom contacta cât mai curând posibil cu toate informațiile și răspunsurile la întrebările tale."
+  },
+  "exclusivePlan": {
+    "header": "Plan Exclusiv",
+    "lookupKey": "startup_monthly",
+    "description": "Acces la întreaga suită de funcționalități avansate",
+    "interval": "luna",
+    "features": [
+      "2 Pagini Incluse",
+      "Îmbunătățește-ți Brandul cu un Site Personalizat",
+      "Versiune Mobilă și Desktop",
+      "Optimizare pentru Motoarele de Căutare (SEO)",
+      "Găzduire & Domeniu & Email de Afacere"
     ],
-    "newsletter": {
-      "header": "Rămâi la curent cu <br/> Reducerile și Noutățile",
-      "placeholder": "Introduceti emailul dumneavoastră",
-      "invalidEmailError": "Adresă de email invalidă",
-      "cta": "Abonează-te",
-      "emailExistsError": "Acest email este deja abonat",
-      "unknownError": "Eroare necunoscută"
+    "cta": "Află mai multe"
+  },
+  "pricingPlan": [
+    {
+      "name": "🌱 Startup 🌱",
+      "price": "49",
+      "additionalPagePrice": "9",
+      "lookupKey": "startup_monthly",
+      "description": "Perfect pentru afaceri noi sau profesioniștii care au nevoie doar de o prezență online solidă",
+      "bgColor": "bg-gray-900",
+      "textPrimaryColor": "white",
+      "textSecondaryColor": "gray-400",
+      "features": [
+        {
+          "featureHighlight": "✅ Site Personalizat Simplu",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "📱 Design Prietenos cu Mobilul",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🔍 Setare SEO de Bază",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "⚡️ Lansare Rapidă",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🔒 Găzduire, Domeniu & SSL Incluse",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "📄 Include 2 Pagini",
+          "featureDescription": ""
+        }
+      ],
+      "extraPagesHeader": "Ai nevoie de mai multe pagini?",
+      "iteration": "luna",
+      "extraPagesDescription": "per pagină suplimentară"
+    },
+    {
+      "name": "✨ Standard ✨",
+      "price": "79",
+      "additionalPagePrice": "9",
+      "lookupKey": "standard_monthly",
+      "description": "Ideal pentru afaceri în creștere care doresc un site personalizat, vizibilitate mai mare și liniște sufletească",
+      "bgColor": "bg-gray-100",
+      "textPrimaryColor": "black",
+      "textSecondaryColor": "carrot-500",
+      "features": [
+        {
+          "featureHighlight": "✅ Design Personalizat pentru Site",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "📱 Responsive & Prietenos cu Mobilul",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🔍 Optimizare SEO",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🔁 Editări Nelimitate",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🔒 Găzduire, Domeniu & SSL Incluse",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "📄 Până la 5 Pagini Personalizate",
+          "featureDescription": ""
+        }
+      ],
+      "extraPagesHeader": "Ai nevoie de mai multe pagini?",
+      "iteration": "luna",
+      "extraPagesDescription": "per pagină suplimentară"
+    },
+    {
+      "name": "🚀 Premium 🚀",
+      "price": "99",
+      "additionalPagePrice": "9",
+      "lookupKey": "premium_monthly",
+      "description": "Planul nostru unic creat pentru site-uri mai mari.",
+      "bgColor": "bg-gray-100",
+      "textPrimaryColor": "black",
+      "textSecondaryColor": "carrot-500",
+      "features": [
+        {
+          "featureHighlight": "✅ Totul din planul Standard",
+          "featureDescription": ""
+        },
+        {
+          "featureHighlight": "🤝 Suport Prioritar"
+        },
+        {
+          "featureHighlight": "➕ Pagini nelimitate",
+          "featureDescription": ""
+        }
+      ],
+      "extraPagesHeader": "Ai nevoie de mai multe pagini?",
+      "iteration": "month",
+      "extraPagesDescription": "per pagină suplimentară"
     }
+  ],
+  "newsletter": {
+    "header": "Rămâi la curent cu <br/> Reducerile și Noutățile",
+    "placeholder": "Introduceti emailul dumneavoastră",
+    "invalidEmailError": "Adresă de email invalidă",
+    "cta": "Abonează-te",
+    "emailExistsError": "Acest email este deja abonat",
+    "unknownError": "Eroare necunoscută"
   }
+}
