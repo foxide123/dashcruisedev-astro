@@ -1,0 +1,21 @@
+{
+    "navbarItems": [
+        {
+            "name": "Acasă",
+            "pathname": ""
+        },
+        {
+            "name": "Despre",
+            "pathname": "despre"
+        },
+        {
+            "name": "Contact",
+            "pathname": "contact"
+        },
+        {
+            "name": "Blog",
+            "pathname": "blog"
+        }
+    ],
+    "cta": "Vezi prețurile"
+}

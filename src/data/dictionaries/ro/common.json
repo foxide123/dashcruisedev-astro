@@ -96,10 +96,37 @@
         "extraPagesHeader": "Ai nevoie de mai multe pagini?",
         "iteration": "luna",
         "extraPagesDescription": "per pagină suplimentară"
+      },
+      {
+        "name": "🚀 Premium 🚀",
+        "price": "99",
+        "additionalPagePrice": "9",
+        "lookupKey": "premium_monthly",
+        "description": "Planul nostru unic creat pentru site-uri mai mari.",
+        "bgColor": "bg-gray-100",
+        "textPrimaryColor": "black",
+        "textSecondaryColor": "carrot-500",
+        "features": [
+          {
+            "featureHighlight": "✅ Totul din planul Standard",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🤝 Suport Prioritar"
+          },
+          {
+            "featureHighlight": "➕ Pagini nelimitate",
+            "featureDescription": ""
+          }
+        ],
+        "extraPagesHeader": "Ai nevoie de mai multe pagini?",
+        "iteration": "month",
+        "extraPagesDescription": "per pagină suplimentară"
       }
+      
     ],
     "newsletter": {
-      "header": "Rămâi la curent cu <br></br> Reducerile și Noutățile",
+      "header": "Rămâi la curent cu <br/> Reducerile și Noutățile",
       "placeholder": "Introduceti emailul dumneavoastră",
       "invalidEmailError": "Adresă de email invalidă",
       "cta": "Abonează-te",

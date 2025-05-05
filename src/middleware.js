@@ -4,6 +4,8 @@ import { redirectToDefaultLocale } from "astro:i18n"; // function available with
 const locales = ['en', 'de', 'pl', 'ro']
 const defaultLocale = 'en'
 
+
+
 export const onRequest = defineMiddleware(async (ctx, next) => {
   console.log("middleware loaded")
     const {pathname} = ctx.url;

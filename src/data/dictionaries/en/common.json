@@ -96,10 +96,37 @@
         "extraPagesHeader": "Need More Pages?",
         "iteration": "month",
         "extraPagesDescription": "per additional page"
+      },
+      {
+        "name": "🚀 Premium 🚀",
+        "price": "99",
+        "additionalPagePrice": "9",
+        "lookupKey": "premium_monthly",
+        "description": "Our unique plan designed for larger websites.",
+        "bgColor": "bg-gradient-to-br from-yellow-300 via-yellow-100 to-yellow-400 text-black p-4 rounded-xl shadow-lg",
+        "textPrimaryColor": "black",
+        "textSecondaryColor": "carrot-500",
+        "features": [
+          {
+            "featureHighlight": "✅ Everything From Standard Plan",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "🤝 Priority Support",
+            "featureDescription": ""
+          },
+          {
+            "featureHighlight": "➕ Unlimited Pages",
+            "featureDescription": ""
+          }
+        ],
+        "extraPagesHeader": "Need More Pages?",
+        "iteration": "month",
+        "extraPagesDescription": "per additional page"
       }
     ],
     "newsletter": {
-      "header": "Stay Up to Date on <br></br> Sales & News",
+      "header": "Stay Up to Date on <br/> Sales & News",
       "placeholder": "Enter your email",
       "invalidEmailError": "Invalid Email Address",
       "cta": "Sign Up",

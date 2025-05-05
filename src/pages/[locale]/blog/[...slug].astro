@@ -1,5 +1,5 @@
 ---
-import { supportedLocaleArray } from '@/utils/translationUtils';
+import { SupportedLocaleArray } from '@/utils/translationUtils';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
   fetchArticleBySlug,
@@ -65,7 +65,10 @@ const metadata: MetadataProps = {
     languages: languages ?? '',
   },
   openGraph: {
-    images: '/og-image.png',
+    url: "https://dashcruisedev.com",
+    title: "Web Agency",
+    description: "Web Agency Offering Custom Websites",
+    image: 'https://dashcruisedev.com/og-image.png',
   },
   /*imagesToPreload: {
     remoteImages: [
@@ -164,17 +167,23 @@ Astro.response.headers.set(
           <div
             set:html={sanitizeHtml(translationData.body, {
               allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                'p',
                 'h1',
                 'h2',
                 'ol',
+                'ul',
                 'li',
                 'section',
+                'span'
               ]),
               allowedAttributes: {
                 ...sanitizeHtml.defaults.allowedAttributes,
+                p: ['style'],
                 h2: ['id', 'style'],
                 ol: ['style'],
+                ul: ['style'],
                 section: ['id'],
+                span: ['style']
               },
             })}
             class="mb-50"

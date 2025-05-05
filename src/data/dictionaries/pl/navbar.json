@@ -1,0 +1,21 @@
+{
+    "navbarItems": [
+        {
+            "name": "Strona główna",
+            "pathname": ""
+        },
+        {
+            "name": "O nas",
+            "pathname": "about"
+        },
+        {
+            "name": "Kontakt",
+            "pathname": "contact"
+        },
+        {
+            "name": "Blog",
+            "pathname": "blog"
+        }
+    ],
+    "cta": "Zobacz ceny"
+}

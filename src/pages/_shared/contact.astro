@@ -4,8 +4,7 @@ import enContactData from "@/data/dictionaries/en/common.json"
 import deContactData from "@/data/dictionaries/de/common.json"
 import ContactUsForm from "@/components/common/ContactForm";
 import Layout from "@/layouts/MainLayout.astro"
-import { supportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
-import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
 
 const {locale} = Astro.params;
 
@@ -18,43 +17,8 @@ const contactData = await translations[supportedLocale]['common.json']();
 const contactUsData = contactData.contactUs;
 const contactFormData = contactData.contactForm;
 
-const metadata: MetadataProps = {
-  title: 'DashcruiseDev - Contact Us',
-  description: 'DashcruiseDev - Contact Us',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com/en/contact'),
-  alternates: {
-    canonical: '/en/contact',
-    languages: {
-      en: '/en/contact',
-      de: '/de/contact',
-      pl: "/pl/contact",
-      ro: "/ro/contact"
-    },
-  },
-  openGraph: {
-    images: '/og-image.png',
-  },
-  imagesToPreload: {
-    remoteImages: [
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
-        alt: "Background Image",
-        media: "(min-width: 640px)"
-      },
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
-        alt: "Background Image ",
-        media: "(max-width: 639px)"
-      }
-    ]
-  }
-};
-
 export async function getStaticPaths() {
-  return supportedLocaleArray.map((supportedLocale) => (
+  return SupportedLocaleArray.map((supportedLocale) => (
     {
       params: { locale: supportedLocale }
     }
@@ -63,8 +27,6 @@ export async function getStaticPaths() {
 
 export const prerender = true
 ---
-
-<Layout metadata={metadata}>
 
 <div class="w-screen h-full bg-white flex justify-center items-center">
   <div
@@ -80,13 +42,14 @@ export const prerender = true
             Sunday: 11:00am - 6:00pm
           </h3> */
       }
+      <h2>Phone Numebr: +45 52720387</h2>
+      <h2>contact@dashcruisedev.com</h2>
       <h2
         class="lg:w-1/2 w-full font-normal text-base tracking-wide text-start mt-8 leading-7"
       >
         {contactUsData.description}
       </h2>
-      <ContactUsForm marginTop="mt-16" formData={contactFormData}/>
+      <ContactUsForm marginTop="mt-16" formData={contactFormData} client:load/>
     </div>
   </div>
 </div>
-</Layout>
