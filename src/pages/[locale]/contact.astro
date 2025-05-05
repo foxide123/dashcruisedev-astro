@@ -1,95 +1,98 @@
 ---
+// src/pages/[locale]/contact.astro
+
 import type { GetStaticPaths } from "astro";
-import enContactData from "@/data/dictionaries/en/common.json"
-import deContactData from "@/data/dictionaries/de/common.json"
 import ContactUsForm from "@/components/common/ContactForm";
-import Layout from "@/layouts/MainLayout.astro"
-import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
-import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import Layout from "@/layouts/MainLayout.astro";
+import type { SupportedLocale } from "@/utils/translationUtils";
+import { SupportedLocaleArray, translations } from "@/utils/translationUtils";
+import type { Props as MetadataProps } from "@/components/seo/Metadata.astro";
 
-const {locale} = Astro.params;
+const lg_screen_width = "lg:w-[75vw]";
+const default_screen_width = "w-[85vw]";
 
-const lg_screen_width = "lg:w-[75vw]"
-const default_screen_width = "w-[85vw]"
-
-const supportedLocale = locale as SupportedLocale;
-
-const contactData = await translations[supportedLocale]['common.json']();
-const contactUsData = contactData.contactUs;
-const contactFormData = contactData.contactForm;
-
-const metadata: MetadataProps = {
-  title: 'DashcruiseDev - Contact Us',
-  description: 'DashcruiseDev - Contact Us',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com/en/contact'),
-  alternates: {
-    canonical: '/en/contact',
-    languages: {
-      en: '/en/contact',
-      de: '/de/contact',
-      pl: "/pl/contact",
-      ro: "/ro/contact"
-    },
-  },
-  openGraph: {
-    url: "https://dashcruisedev.com",
-    title: "Web Agency",
-    description: "Web Agency Offering Custom Websites",
-    image: 'https://dashcruisedev.com/og-image.png',
-  },
-  imagesToPreload: {
-    remoteImages: [
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
-        alt: "Background Image",
-        media: "(min-width: 640px)"
-      },
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
-        alt: "Background Image ",
-        media: "(max-width: 639px)"
-      }
-    ]
-  }
-};
+// ✅ Props injected from getStaticProps
+const {
+  locale,
+  contactUsData,
+  contactFormData,
+  metadata
+} = Astro.props;
 
 export async function getStaticPaths() {
-  return SupportedLocaleArray.map((supportedLocale) => (
-    {
-      params: { locale: supportedLocale }
-    }
-  ))
+  return SupportedLocaleArray.map((supportedLocale) => ({
+    params: { locale: supportedLocale }
+  }));
 }
 
-export const prerender = true
+export async function getStaticProps({ params }) {
+  const supportedLocale = params.locale as SupportedLocale;
+
+  const contactData = await translations[supportedLocale]["common.json"]();
+  const contactUsData = contactData.contactUs;
+  const contactFormData = contactData.contactForm;
+
+  const metadata: MetadataProps = {
+    title: 'DashcruiseDev - Contact Us',
+    description: 'DashcruiseDev - Contact Us',
+    keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+    creator: 'Jakub Cezary Kolando',
+    publisher: 'Jakub Cezary Kolando',
+    metadataBase: new URL(`https://dashcruisedev.com/${supportedLocale}/contact`),
+    alternates: {
+      canonical: `/${supportedLocale}/contact`,
+      languages: {
+        en: '/en/contact',
+        de: '/de/contact',
+        pl: '/pl/contact',
+        ro: '/ro/contact'
+      },
+    },
+    openGraph: {
+      url: "https://dashcruisedev.com",
+      title: "Web Agency",
+      description: "Web Agency Offering Custom Websites",
+      image: 'https://dashcruisedev.com/og-image.png',
+    },
+    imagesToPreload: {
+      remoteImages: [
+        {
+          href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080",
+          alt: "Background Image",
+          media: "(min-width: 640px)"
+        },
+        {
+          href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480",
+          alt: "Background Image ",
+          media: "(max-width: 639px)"
+        }
+      ]
+    }
+  };
+
+  return {
+    props: {
+      locale: supportedLocale,
+      contactUsData,
+      contactFormData,
+      metadata
+    }
+  };
+}
+
+export const prerender = true;
 ---
 
 <Layout metadata={metadata}>
-
-<div class="w-screen h-full bg-white flex justify-center items-center">
-  <div
-    class={`flex flex-col justify-center items-center ${lg_screen_width} ${default_screen_width}`}
-  >
-    <div class="lg:w-fit w-full p-10 mb-24 mx-auto">
-      <h1 class="font-normal text-[40px]">{contactUsData.header}</h1>
-      {
-        /* <h2 class="text-base font-bold tracking-wide mt-8">Hours</h2>
-          <h3 class="font-normal text-base tracking-wide text-start mt-8 leading-10">
-            Monday - Friday: 10:00am - 7:30pm <br />
-            Saturday: 10:00am - 6:00pm <br />
-            Sunday: 11:00am - 6:00pm
-          </h3> */
-      }
-      <h2
-        class="lg:w-1/2 w-full font-normal text-base tracking-wide text-start mt-8 leading-7"
-      >
-        {contactUsData.description}
-      </h2>
-      <ContactUsForm marginTop="mt-16" formData={contactFormData} client:idle/>
+  <div class="w-screen h-full bg-white flex justify-center items-center">
+    <div class={`flex flex-col justify-center items-center ${lg_screen_width} ${default_screen_width}`}>
+      <div class="lg:w-fit w-full p-10 mb-24 mx-auto">
+        <h1 class="font-normal text-[40px]">{contactUsData.header}</h1>
+        <h2 class="lg:w-1/2 w-full font-normal text-base tracking-wide text-start mt-8 leading-7">
+          {contactUsData.description}
+        </h2>
+        <ContactUsForm marginTop="mt-16" formData={contactFormData} client:idle />
+      </div>
     </div>
   </div>
-</div>
 </Layout>
