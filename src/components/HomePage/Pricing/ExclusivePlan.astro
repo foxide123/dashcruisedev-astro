@@ -39,7 +39,7 @@ const { locale } = Astro.params;
       <PricingCurrency
         prices={prices}
         lookupKey={planData.lookupKey}
-        client:idle
+        client:load
       />
       <!--       <div id="static absolute inset-0 border-2 border-green-500">
         <PricingCurrencyServer prices={prices} currency={currency} />
