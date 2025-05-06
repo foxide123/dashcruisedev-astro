@@ -6,5 +6,5 @@ export default function HamburgerIconCustom({stroke, width, height}:
         width?: number;
         height?: number;}) {
 /*   return <IconMenu2 stroke={stroke} width={width} height={height}/>; */
-return <Menu/>
+return <Menu size={40} className=""/>
 }
