@@ -21,7 +21,7 @@ export default function HamburgerToggle() {
 
   return (
     <button onClick={handleToggle} className="cursor-pointer">
-      <HamburgerIconCustom stroke={3} width={50} height={50} />
+      <HamburgerIconCustom stroke={3} width={70} height={70} />
     </button>
   );
 }
