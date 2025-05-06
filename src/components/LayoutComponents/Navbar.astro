@@ -20,7 +20,7 @@ const pathname = Astro.url.pathname;
 ---
 
 <nav
-  class={`xl:flex-row xl:my-[48px] xl:h-[98px] lg:rounded-4xl mx-auto h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
+  class={`xl:static sticky top-0 z-50 xl:flex-row xl:my-[48px] xl:h-[98px] lg:rounded-4xl mx-auto h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
 >
   <div
     class="xl:w-[350px] xl:px-0 xl:justify-start xl:pl-6 sm:px-0 w-full justify-center flex items-center"
@@ -47,7 +47,7 @@ const pathname = Astro.url.pathname;
     </a>
     {/* DEFAULT to XL Navbar (Hamburger, Icon and Locale)*/}
     <div
-      class="xl:hidden w-screen self-center p-2 flex justify-around items-center"
+      class="xl:hidden w-screen self-center px-2 flex justify-around items-center"
     >
       {/* Hamburger */}
       <HamburgerToggle client:media="(max-width: 1279px)" />
