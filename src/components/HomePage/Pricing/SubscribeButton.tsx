@@ -49,13 +49,13 @@ export default function SubscribeButton({
         setLoading(false);
         console.error(error);
         return;}
-      if (!data.sessionId) {
+      if (!data.url) {
         console.error("Error creating session:", data || error);
         setLoading(false);
         return;
       }
 
-      const { loadStripe } = await import("@stripe/stripe-js/pure");
+      /* const { loadStripe } = await import("@stripe/stripe-js/pure");
       const stripePromise = loadStripe(
         import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY_PROD as string
       );
@@ -73,8 +73,9 @@ export default function SubscribeButton({
         return;
       }
 
-      await stripe?.redirectToCheckout({ sessionId: data.sessionId });
+      await stripe?.redirectToCheckout({ sessionId: data.sessionId }); */
       setLoading(false);
+      window.location.href = data.url
     } catch (error) {
       console.error(error);
     }
