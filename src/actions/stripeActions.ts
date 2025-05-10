@@ -64,7 +64,7 @@ export async function redirectToCheckout(
   language: string,
   currency: string
 ) {
-  const res = await fetch(
+  try{const res = await fetch(
     'https://api.dashcruisedev.com/stripe/checkout-session',
     {
       method: 'POST',
@@ -77,5 +77,10 @@ export async function redirectToCheckout(
     }
   );
 
-  return await res.json();
+  const json:any = await res.json();
+  return { data: json.data, error: json.error }}
+  catch(error){
+    console.error("Redirect to Checkout error:", error);
+    return { data: null, error}
+  }
 }
