@@ -77,6 +77,12 @@ export async function redirectToCheckout(
     }
   );
 
+  if(!res.ok) {
+    console.error("Failed to create checkout session:", res.status);
+    console.error("Failed res body:",res.body);
+    return;
+  }
+
   const json:any = await res.json();
   return { data: json.data, error: json.error }}
   catch(error){
