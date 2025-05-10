@@ -3,6 +3,8 @@
   Content-Security-Policy:
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://billing.dashcruisedev.com
+      https://checkout.dashcruisedev.com
       https://js.stripe.com
       https://checkout.stripe.com
       https://www.google.com
@@ -20,8 +22,10 @@
       https://www.gstatic.com
       https://www.digitalsilk.com;
     font-src 'self' https://fonts.gstatic.com;
-    frame-src https://js.stripe.com https://checkout.stripe.com https://www.google.com;
+    frame-src https://billing.dashcruisedev.com https://checkout.dashcruisedev.com https://js.stripe.com https://checkout.stripe.com https://www.google.com;
     connect-src 'self'
+      https://billing.dashcruisedev.com
+      https://checkout.dashcruisedev.com
       https://api.dashcruisedev.com
       https://api.stripe.com
       https://m.stripe.network
