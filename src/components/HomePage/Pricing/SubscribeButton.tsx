@@ -41,6 +41,8 @@ export default function SubscribeButton({
     setLoading(true);
 
     try {
+      console.log("Currency:", currency);
+      console.log("Language:", language);
       const {data, error} = (await redirectToCheckout(lookupKey, language, currency)) as any;
 
       if(error) {
