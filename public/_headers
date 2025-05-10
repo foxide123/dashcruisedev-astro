@@ -22,6 +22,7 @@
     font-src 'self' https://fonts.gstatic.com;
     frame-src https://js.stripe.com https://checkout.stripe.com https://www.google.com;
     connect-src 'self'
+      https://api.dashcruisedev.com
       https://api.stripe.com
       https://m.stripe.network
       https://www.google-analytics.com
