@@ -60,7 +60,19 @@ export default function SubscribeButton({
         import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY_PROD as string
       );
 
+      if (!stripePromise) {
+        console.error("Stripe Promise failed to load. Check PUBLIC_STRIPE_PUBLISHABLE_KEY_PROD in your env.");
+        setLoading(false);
+        return;
+      }
+
       const stripe = await stripePromise;
+      if (!stripe) {
+        console.error("Stripe failed to load. Check PUBLIC_STRIPE_PUBLISHABLE_KEY_PROD in your env.");
+        setLoading(false);
+        return;
+      }
+
       await stripe?.redirectToCheckout({ sessionId: data.sessionId });
       setLoading(false);
     } catch (error) {
