@@ -24,6 +24,7 @@ import {
   type SupportedLocale,
 } from '@/utils/translationUtils';
 import { getStripePrices } from '@/actions/stripeActions';
+import ScrollingColumnsSection from '@/components/HomePage/sections/ScrollingColumnsSection.astro';
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -41,12 +42,13 @@ const metadata: MetadataProps = {
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL('https://dashcruisedev.com'),
   alternates: {
-    canonical: '/en',
+    canonical: '/',
     languages: {
       en: '/en',
       de: '/de',
       pl: '/pl',
       ro: '/ro',
+      'x-default': '/en'
     },
   },
   imagesToPreload: {
@@ -59,8 +61,8 @@ const metadata: MetadataProps = {
   },
   openGraph: {
     url: "https://dashcruisedev.com",
-    title: "Web Agency",
-    description: "Web Agency Offering Custom Websites",
+    title: "DashcruiseDev - Custom Web Agency",
+    description: "Web development agency offering multilingual, blazing-fast websites tailored to your brand",
     image: 'https://dashcruisedev.com/og-image.png',
   },
   /*  imagesToPreload: {
