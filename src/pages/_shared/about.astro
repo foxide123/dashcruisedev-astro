@@ -133,11 +133,12 @@ export const prerender = true;
           />
         </picture>
       </div>
+      {/* Mobile image */}
       <div
         style="background-color: black;
       background-size: cover;
     background-position: center;"
-        class="sm:hidden relative w-screen z-[-10] aspect-video self-start"
+        class="sm:hidden relative w-screen z-[10] aspect-video self-start"
       >
         <picture>
           <source
@@ -152,7 +153,7 @@ export const prerender = true;
           />
         </picture>
       </div>
-      <div class="absolute w-fit z-10 text-white text-center z-10">
+      <div class=" absolute w-fit z-10 text-white text-center">
         <h1 class="sm:text-[4rem] font-bold leading-[6rem] text-5xl">
           {aboutData.header}
         </h1>
