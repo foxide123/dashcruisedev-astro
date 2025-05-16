@@ -1,0 +1,92 @@
+---
+const imagesColumn1 = [
+  {
+    srcset: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/1.jpg.webp',
+    src: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/1.jpg',
+  },
+  {
+    srcset: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/2.jpg.webp',
+    src: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/2.jpg',
+  },
+  {
+    srcset: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/3.jpg.webp',
+    src: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/3.jpg',
+  },
+  {
+    srcset: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/4.jpg.webp',
+    src: 'https://www.digitalsilk.com/wp-content/uploads/2024/05/4.jpg',
+  },
+];
+---
+
+<style>
+  @keyframes heroscroll {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .hero-bg_wrap {
+    pointer-events: none;
+  }
+  .hero-bg_wrap-col:nth-child(2n + 1) .v-scroll {
+    animation-direction: reverse;
+  }
+  .v-scroll {
+    animation: heroscroll 125s linear infinite;
+    animation-direction: normal;
+  }
+</style>
+<div
+  class="bg-black/50 flex justify-start w-[60%] absolute top-[-30%] bottom-auto right-[-5%] left-auto rotate-[10deg] gap-5"
+>
+<div class="absolute inset-0 w-full h-full bg-black/30 z-10"></div>
+  <div class="hero-bg_wrap-col flex relative w-[530px] gap-10">
+    <div class="w-full flex flex-col gap-10 v-scroll">
+      {
+        [...imagesColumn1, ...imagesColumn1].map((item) => (
+          <div class="w-full aspect-[16/9] rounded-[5px] overflow-hidden">
+            <picture>
+              <source srcset={item.srcset} type="image/webp" />
+              <img
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+                src={item.src}
+                alt="Website"
+                width="500"
+                height="281"
+              />
+            </picture>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class=" hero-bg_wrap-col flex relative w-[530px] gap-10">
+    <div class="w-full flex flex-col gap-10 v-scroll">
+      {
+        [...imagesColumn1, ...imagesColumn1].map((item) => (
+          <div class="ratio-[16/9] rounded-[5px] overflow-hidden">
+            <picture>
+              <source srcset={item.srcset} type="image/webp" />
+              <img
+                loading="lazy"
+                decoding="async"
+                class="w-full h-fulll object-cover"
+                src={item.src}
+                alt="Website"
+                width="500"
+                height="281"
+              />
+            </picture>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 ---
 import { ContainerTextFlipClient } from '../ContainerTextFlipClient';
 import ExclusivePlan from '@/components/HomePage/Pricing/ExclusivePlan.astro';
+/*  */import ScrollingColumnsSection from './ScrollingColumnsSection.astro';
 
 /* const isProduction = process.env.NODE_ENV === 'production' */
 
@@ -8,77 +9,160 @@ const { lg_screen_width, default_screen_width, heroData, commonData, prices } =
   Astro.props;
 ---
 
+<style>
+  .arrow-clip {
+    filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .arrow-clip-1 {
+    clip-path: polygon(
+      0 0,
+      30% 0,
+      30% 99%,
+      100% 99%,
+      100% 100%,
+      29% 100%,
+      29% 1%
+    );
+    background: linear-gradient(to bottom right,black 10%, #ef6f0e 90%, #ef3a0e 95%);
+  }
+  .arrow-clip-2 {
+    clip-path: polygon(
+     0% 0%,
+     100% 0%,
+     100% 100%,
+     99% 100%,
+     99% 1%
+    );
+    background: linear-gradient(to bottom right, #ef6f0e 90%, #ef3a0e 95%);
+  }
+  .arrow-clip-3 {
+    clip-path: polygon(
+      0% 99%,
+      50% 99%,
+      50% 0, 
+      100% 0,
+      100% 1%,
+      51% 1%,
+      51% 100%
+    );
+    background: linear-gradient(to top right,black 10%, #ef6f0e 90%, #ef3a0e 95%);
+  }
+  .arrow-tip-circle {
+    position: absolute;
+    transform: translateX(50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #EF720E;
+    filter: blur(4.56px);
+  }
+
+  @keyframes arrow-circle-pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .circle-pulse{
+    animation: arrow-circle-pulse 1s ease-in-out infinite;
+  }
+
+</style>
 <div
-  class="relative caret-transparent w-screen flex justify-center lg:min-h-[75vh]"
+style="background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;"
+  class="overflow-hidden relative bg-[#010101] caret-transparent w-screen flex justify-center h-screen"
 >
-  <div class="absolute inset-0 bg-black z-[-1] md:hidden"></div>
+{/* black overlay */}
+<div class="z-5 bg-black/20 absolute inset-0 w-full h-full"></div>
+  {/* Arrow Left 1*/}
   <div
-    style="background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkJCQkKCQoLCwoODw0PDhUTERETFR8WGBYYFh8wHiMeHiMeMCozKScpMypMOzU1O0xXSUVJV2pfX2qFf4WuruoBCQkJCQoJCgsLCg4PDQ8OFRMRERMVHxYYFhgWHzAeIx4eIx4wKjMpJykzKkw7NTU7TFdJRUlXal9faoV/ha6u6v/CABEIAAUACQMBIgACEQEDEQH/xAApAAEBAQAAAAAAAAAAAAAAAAAABQYBAQEAAAAAAAAAAAAAAAAAAAID/9oADAMBAAIQAxAAAADJSCq//8QAHhAAAQQBBQAAAAAAAAAAAAAAAgABAwQRBRNSU5H/2gAIAQEAAT8A1C1HM5GNcQHjnK3o+hvV/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAIx/9oACAECAQE/AFh//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPwB//9k=');
-    background-size: cover;
-  background-position: center;"
-    class={`fixed -z-10  inset-0 w-screen h-screen sm:block hidden`}
+    class="lg:opacity-100 opacity-[0.5] top-[35%] left-0 translate-y-[-50%] absolute w-[350px] h-[225px]"
   >
-    <picture>
-      <source
-        media="(min-width: 640px)"
-        srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080"
-      />
-      <img
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-        alt=""
-        loading="eager"
-        fetchpriority="high"
-        class="relative w-screen h-screen overflow-hidden"
-      />
-    </picture>
+    <div class="arrow-clip arrow-clip-1"></div>
+    <div class="circle-pulse arrow-tip-circle bottom-0 right-0 translate-y-[50%]"></div>
   </div>
+  {/* Arrow Left 2*/}
   <div
-    class={`pb-[48px] ${lg_screen_width} flex  ${default_screen_width} overflow-hidden`}
+    class="lg:opacity-100 opacity-[0.5] top-[65%] left-[0%] translate-y-[-50%] absolute w-[400px] h-[150px]"
   >
-    {/* Main Hero Section */}
-    <div
-      class="z-10 lg:justify-between lg:flex-row flex flex-col justify-center items-center w-full"
+    <div class="arrow-clip arrow-clip-2"></div>
+    <div class="circle-pulse arrow-tip-circle bottom-0 right-0 translate-y-[50%]"></div>
+  </div>
+  {/* Arrow Left 3*/}
+  <div
+    class="lg:opacity-100 opacity-[0.5] top-[55%] left-[5%] translate-y-[-50%] absolute w-[200px] h-[300px]"
+  >
+    <div class="arrow-clip arrow-clip-3"></div>
+    <div class="circle-pulse arrow-tip-circle top-0 right-0 translate-y-[-50%]"></div>
+  </div>
+    {/* Arrow Right 1*/}
+      <div
+      class="lg:block hidden scale-x-[-1] top-[35%] right-0 translate-y-[-50%] absolute w-[350px] h-[225px]"
     >
-      {/* Launch Your Site */}
-      <div class="lg:w-[662px] flex flex-col lg:items-start text-white">
-        <div
-          class="lg:text-7xl lg:leading-[90px] lg:text-start text-6xl my-5 leading-[80px] tracking-[-2%] font-bold font-sans text-center"
-        >
-        <h1>
-          {heroData.headerBeforeEffect}
-          
-          <!-- Shared wrapper for fallback + animation -->
-          <span class="relative block h-[80px] leading-[80px]">
-            <!-- Fallback: absolutely positioned -->
-            <span
-              id="flip-fallback"
-              class="lg:justify-start absolute inset-0 text-carrot-500 flex items-center justify-center transition-opacity duration-300"
-            >
-              {heroData.headerEffect?.[heroData.headerEffect?.length - 1] ?? 'Brand'}
-            </span>
-        
-            <!-- Client:idle flip animation appears in same space -->
-           <span class="lg:justify-start absolute inset-0 flex items-center justify-center">
-              <ContainerTextFlipClient
-                words={heroData.headerEffect}
-                client:load
-              />
-            </span>
-          </span>
-        
-          {heroData.headerAfterEffect}
-        </h1>
-        
-        </div>
-        <p
-          class="sm:hidden lg:text-start text-base leading-6 text-center break-words mb-2"
-        >
-          We craft custom websites designed to bring your ideas to life and help
-          you grow your business.
-          <br />
-        </p>
-      </div>
-     <ExclusivePlan planData={commonData.exclusivePlan} prices={prices}/> 
+      <div class="arrow-clip arrow-clip-1"></div>
+      <div class="circle-pulse arrow-tip-circle bottom-0 right-0 translate-y-[50%]"></div>
+    </div>
+  {/* Arrow Right 2*/}
+  <div
+    class="lg:block hidden scale-x-[-1] top-[65%] right-0 translate-y-[-50%] absolute w-[400px] h-[150px]"
+  >
+    <div class="arrow-clip arrow-clip-2"></div>
+    <div class="circle-pulse arrow-tip-circle bottom-0 right-0 translate-y-[50%]"></div>
+  </div>
+  {/* Arrow Right 3*/}
+  <div
+    class="lg:block hidden scale-x-[-1] top-[55%] right-[5%] translate-y-[-50%] absolute w-[200px] h-[300px]"
+  >
+    <div class="arrow-clip arrow-clip-3"></div>
+    <div class="circle-pulse arrow-tip-circle top-0 right-0 translate-y-[-50%]"></div>
+  </div>
+  {/* Radial gradient top */}
+  <div
+    class="absolute opacity-50 top-[-546px] left-[50%] transform translate-x-[-50%] rounded-full w-[850px] h-[850px] bg-radial-[at_50%_0%] to-100% from-[#EF3A0E] to-[#EF6F0E] blur-[600px] pointer-events-none z-0"
+  >
+  </div>
+  {/* Radial gradient bottom left */}
+  <div
+  class="absolute opacity-50 bottom-0 left-0 border-3 translate-x-[-50%] translate-y-[50%] rounded-full w-[340px] h-[340px] bg-radial-[at_50%_0%] to-100% from-[#EF3A0E] to-[#EF6F0E] blur-[800px] pointer-events-none z-0"
+>
+</div>
+  <div
+    class={`z-10 relative mx-auto ${lg_screen_width} flex  ${default_screen_width} overflow-hidden`}
+  >
+    <div
+      class={` mx-auto text-center w-fit absolute top-[45%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]`}
+    >
+      <h1
+        style="font-family: 'Sora', sans-serif; text-shadow: 0 0 30px rgba(239, 106, 14, 0.6);"
+        class="lg:text-[160px] lg:leading-[90%] lg:tracking-[-4%] tracking-[-3%] leading-[105%] text-[84px] xl:whitespace-nowrap space-y-[72px] text-white font-semibold"
+      >
+        Dev Crafted
+      </h1>
+      <h2
+        class="lg:text-[46px] lg:leading-[120%] lg:tracking-[-3%] tracking-[-2%] leading-[130%] text-[32px] mt-6 text-white space-y-[72px] font-normal"
+      >
+        <span class="text-[#848080]">TAILORED</span> DIGITAL SOLUTIONS
+      </h2>
+      <p
+        class="mt-6 text-[#D9D4D2] font-normal text-base leading-[150%] space-y-4"
+      >
+        Our comprehensive guide to strategies for entrepreneurs and
+    </br> leaders offers valuable insights, practical advice. </p>
+    <a href="#portfolio" style="background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1) 0%, rgba(239, 113, 14, 0.12) 100%);" class="mx-auto block cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 duration-500 ease-in-out backdrop-blur-[10px] mt-10 border border-white/10 font-semibold text-xl leading-[140%] py-[14px] px-[32px] rounded-[8px] space-y-4 tracking-[-1%] w-fit text-white">View Portfolio</a>
     </div>
   </div>
 </div>

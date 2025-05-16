@@ -3,6 +3,7 @@ import { MenuItemsData } from '@/data/MenuItemsData';
 import CountrySelectionModal from '../modals/CountrySelectionModal';
 import Cookies from 'js-cookie';
 import HamburgerToggle from './HamburgerToggle';
+import NavbarMenu from './NavbarMenu.astro';
 
 const lg_screen_width = 'lg:w-[75vw]';
 const { navbarData } = Astro.props;
@@ -11,132 +12,73 @@ const { locale } = Astro.params;
 type NavbarItem = {
   name: string;
   pathname: string;
-}
+};
 
-const navbarItems:NavbarItem[] = navbarData['navbarItems'];
-const cta:string = navbarData['cta'];
+const navbarItems: NavbarItem[] = navbarData['navbarItems'];
+const cta: string = navbarData['cta'];
 
 const pathname = Astro.url.pathname;
 ---
 
 <nav
-  class={`xl:static sticky top-0 z-50 xl:flex-row xl:my-[48px] xl:h-[98px] lg:rounded-4xl mx-auto h-fit flex-col z-10 caret-transparent flex bg-black text-white justify-between items-center  ${lg_screen_width} w-screen`}
+  class={` xl:absolute xl:left-[50%] xl:transform xl:translate-x-[-50%] absolute top-0 z-50 xl:flex-row xl:my-[48px] xl:h-fit lg:rounded-4xl mx-auto h-fit flex-col caret-transparent flex bg-transparent text-white justify-between items-center  ${lg_screen_width} w-screen`}
 >
   <div
-    class="xl:w-[350px] xl:px-0 xl:justify-start xl:pl-6 sm:px-0 w-full justify-center flex items-center"
+    class="w-full xl:px-0 xl:pl-6 sm:px-0 justify-center flex items-center"
   >
     {/* > XL Navbar (Only Icon)*/}
     <a
       href="/"
-      class="xl:flex hidden self-center rounded-4xl p-2 justify-center items-center"
+      class=" xl:flex hidden self-center rounded-4xl px-2 h-full justify-center items-center"
     >
-      <picture>
-        <source
-          media="(min-width: 1280px)"
-          srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/c0d6674f-31fc-4fc3-cdcd-7cd049c48700/logo240x240"
-        />
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-          alt=""
-          width={240}
-          height={240}
-          loading="eager"
-          fetchpriority="high"
-        />
-      </picture>
+      <p
+        class="font-semibold text-3xl tracking-[-4%]"
+      >
+        Dashcruise<span class="text-[#ef7a0e] ml-2"></span>
+      </p>
     </a>
-    {/* DEFAULT to XL Navbar (Hamburger, Icon and Locale)*/}
+    <div class="text-lg font-normal tracking-[-0.5%] flex items-center justify-center gap-8 w-full">
+      <NavbarMenu navbarItems={navbarItems} />
+    </div>
     <div
-      class="xl:hidden w-screen self-center px-2 flex justify-around items-center"
+      class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden"
     >
-      {/* Hamburger */}
-      <HamburgerToggle client:media="(max-width: 1279px)" />
-      {/* Logo */}
-      <a href="/">
-        <picture>
-          <source
-            media="(max-width: 1279px)"
-            srcset="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8b797d3f-6998-43c5-8c6e-ab7d5165b700/logo240x240"
-          />
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-            alt=""
-            class="ml-10 md:w-[200px] md:h-[200px] w-[120px] h-[120px]"
-            loading="eager"
-          />
-        </picture>
+      <a
+        href="#pricing_section"
+        class=" text-center bg-carrot-500 mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
+      >
+        {cta}
       </a>
-
-      <div class="ml-5">
-        <CountrySelectionModal
-          client:media="(max-width: 1279px)"
-          locale={locale}
-        />
-      </div>
     </div>
   </div>
-  <ul
-    id="menu"
-    class={`w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
-    transition-all duration-500 ease-in-out overflow-hidden 
-         xl:max-h-none xl:opacity-100 max-h-0 opacity-0`}
-  >
-  {
-  }
-    {
-      navbarItems.map((item, index) => {
-        const fullItemPath = `/${locale}/${item.pathname}`;
-        const currentPath = Astro.url.pathname!.endsWith('/')
-          ? pathname!.slice(0, -1)
-          : pathname;
-        const comparePath = fullItemPath.endsWith('/')
-          ? fullItemPath.slice(0, -1)
-          : fullItemPath;
-        const isActive =
-          currentPath === comparePath ? 'text-carrot-500' : 'text-white';
-        const isLast = index === MenuItemsData.length - 1;
-        return (
-          <a
-            data-astro-prefetch="hover"
-            class={`${isActive} xl:mb-0 sm:pr-8 first:mt-0 last:pr-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
-            href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
-          >
-            {item.name}
-          </a>
-        );
-      })
-    }
-    <li class="xl:block hidden">
-      <CountrySelectionModal
-        client:media="(min-width: 1280px)"
-        locale={locale}
-      />
-    </li>
-  </ul>
+
+  {/* DEFAULT to XL Navbar (Hamburger, Icon and Locale)*/}
   <div
-    class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden"
+    class=" backdrop-blur-3xl absolute top-0 left-0 mx-auto xl:hidden w-screen self-center flex flex-col items-center"
   >
-    <a
-      href="#pricing_section"
-      class="text-center bg-carrot-500 mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
-    >
-      {cta}
-    </a>
+    <div class="flex items-center justify-between w-full py-5 px-10">
+      {/* Logo */}
+      <a href="/">
+        <p>Dashcruise<span class="text-[#ef7a0e] ml-2"></span></p>
+      </a>
+      {/* Hamburger */}
+      <HamburgerToggle client:media="(max-width: 1279px)" />
+    </div>
+    <div class="relative w-screen">
+      <ul
+        id="menu"
+        class={`backdrop-blur-3xl py-5 absolute top-0 w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
+transition-all duration-500 ease-in-out overflow-hidden 
+     xl:max-h-none xl:opacity-100 max-h-0 opacity-0`}
+      >
+      <NavbarMenu navbarItems={navbarItems}/>
+      </ul>
+      <li class="xl:block hidden">
+        <CountrySelectionModal
+          client:media="(min-width: 1280px)"
+          locale={locale}
+        />
+      </li>
+    </div>
   </div>
-  <!--       <div class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden">
-        {pageSlug === "/" ? (
-          <a
-            href="#pricing_section"
-           /*  spy={true}
-            smooth={true}
-            duration={2000}
-            offset={30}
-            class="text-center bg-carrot-500  mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer" */
-          >
-            See Pricing
-          </a>
-        ) : (
-          <a href="/#pricing_section" class="text-center bg-carrot-500  mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer">See Pricing</a>
-        )}
-      </div> -->
 </nav>
