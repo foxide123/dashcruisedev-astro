@@ -112,10 +112,10 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button type="button" className="text-xl cursor-pointer flex">
+        <button type="button" className="text-xl cursor-pointer flex items-center">
           {`${language.toUpperCase()} / ${currency.toUpperCase()}`}{' '}
           <span className="pl-2 pt-0.5">
-            <ArrowDown className="w-5" />
+            <img loading='lazy' src="/arrow_down.svg" className="w-5" />
           </span>
         </button>
       </PopoverTrigger>
