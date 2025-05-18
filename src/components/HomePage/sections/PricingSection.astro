@@ -30,8 +30,6 @@ type PricingDataType = {
 };
 
 interface Props {
-  lg_screen_width: string;
-  default_screen_width: string;
   pricingPlansData: PricingPlanType[];
   pricingSectionData: PricingDataType;
   locale: string;
@@ -39,8 +37,6 @@ interface Props {
 }
 
 const {
-  lg_screen_width,
-  default_screen_width,
   pricingPlansData,
   pricingSectionData,
   locale,
@@ -50,10 +46,10 @@ const {
 
 <section
   id="pricing_section"
-  class="bg-white caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto lg:py-[150px] py-10 px-8"
+  class="custom-section-padding bg-white caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto px-8"
 >
   <!--   <FadeInSection> -->
-  <div class={`${lg_screen_width} ${default_screen_width}`}>
+  <div class="custom-section-width">
     <div class="lg:px-10 max-w-[964px] w-full px-0 mx-auto text-center">
       <h1 class="lg:text-5xl text-4xl font-semibold">
         {pricingSectionData.header}
@@ -75,7 +71,7 @@ const {
 
     {/* Available Plans */}
     <div
-      class={`lg:pt-14 pt-5 flex-wrap lg:items-start lg:flex-row lg:justify-around ${lg_screen_width} ${default_screen_width} flex flex-col justify-center items-center`}
+      class="custom-section-width lg:pt-14 pt-5 flex-wrap lg:items-start lg:flex-row lg:justify-around flex flex-col justify-center items-center"
     >
       {
         pricingPlansData!.map((plan: PricingPlanType, index: number) => (

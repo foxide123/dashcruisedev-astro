@@ -5,52 +5,80 @@ type PortfolioItem = {
 };
 
 interface PortfolioDataType {
-  header: string;
+  header1: string;
+  header2: string;
+  description: string;
   portfolioItems: PortfolioItem[];
-};
- 
+}
+
 interface Props {
-  lg_screen_width: string;
-  default_screen_width: string;
   portfolioData: PortfolioDataType;
 }
- 
-const { lg_screen_width, default_screen_width, portfolioData } = Astro.props;
+
+const { portfolioData } = Astro.props;
+
+const firstPortfolioElement = portfolioData.portfolioItems[0];
 ---
 
-<section id="portfolio" class="bg-white caret-transparent flex justify-center w-screen">
-<!--   <FadeInSection> -->
-    <div
-      class={`lg:py-[150px] lg:text-start ${lg_screen_width} ${default_screen_width} text-center py-10`}
+<style>
+  @media (width >= 64rem) {
+    .img-container {
+      height: 100%;
+    }
+  }
+  .img-container {
+    height: 300px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 90%;
+  }
+</style>
+<section
+  id="portfolio"
+  class="custom-section-padding bg-white caret-transparent flex justify-center w-screen"
+>
+  <!--   <FadeInSection> -->
+  <div
+    class="custom-section-width text-center h-fit mx-auto"
+  >
+    <h1 class="text-[64px] w-full leading-[105%] tracking-[-3%] font-semibold">
+      {portfolioData.header1}
+      <span class="font-normal text-[#848080]">{portfolioData.header2}</span>
+    </h1>
+    <p
+      class="text-[#3E3C3A] mx-auto max-w-[678px] text-base font-normal leading-[150%] tracking-[-0.5%] mt-6 w-full text-center"
     >
-      <h1 class="font-medium text-5xl leading-15 mb-6 tracking-tight">
-        {portfolioData.header}
-      </h1>
-      {/* Portfolio Container */}
-      <div
-        class="lg:flex-row flex flex-col items-center justify-between text-center"
-      >
+      {portfolioData.description}
+    </p>
+    {/* Portfolio Container */}
+    <div class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
+      <div class="flex-1 flex flex-col w-full min-h-[600px]">
+        <div class="grow-1 img-container">
+          <img
+          loading="lazy"
+            class="w-full h-full object-cover"
+            src={firstPortfolioElement.imageUrl}
+          />
+        </div>
+<!--         <div class="lg:block hidden">
+          <div class="flex">
+            <p>2025</p>
+            <p>Full Website Build</p>
+          </div>
+          <p>Website For Immersive Travel Stories & Analog Photography</p>
+        </div> -->
+      </div>
+      <div class="flex-1 gap-5 flex flex-col w-full">
         {
-          portfolioData.portfolioItems.map(
-            (item: PortfolioItem, index: number) => (
-              <div
-                class="lg:mt-[58px] mt-[20px] highlight-container-custom"
-              >
-                <div class="relative overflow-hidden lg:w-[400px] lg:h-[400px] rounded-2xl object-cover w-[200px] h-[200px] mx-auto">
-                  <img
-                    src={item.imageUrl}
-                    alt="Portfolio Picture"
-                     loading="lazy"
-                    class="object-cover absolute inset-0 w-full h-full "
-                  />
-                </div>
-                <p class="mt-3 font-medium text-2xl leading-8">{item.name}</p>
-              </div>
-            )
-          )
+          portfolioData.portfolioItems.slice(1).map((item) => (
+            <div class="img-container">
+              <img loading="lazy" class="w-full h-full object-cover" src={item.imageUrl} />
+            </div>
+          ))
         }
       </div>
-      {/*<Testimonials1/>*/}
     </div>
-<!--   </FadeInSection> -->
+  </div>
+  <!--   </FadeInSection> -->
 </section>

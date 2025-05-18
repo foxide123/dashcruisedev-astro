@@ -1,0 +1,70 @@
+---
+import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
+---
+
+<style>
+  #numbers-row h3 {
+    font-weight: 600;
+    font-size: 64px;
+    letter-spacing: -3%;
+    line-height: 105%;
+  }
+  #numbers-row p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.5%;
+    color: #3e3c3a;
+    margin-top: 16px;
+    text-align: center;
+  }
+  @media (width <=1023px) {
+    .divider{
+      display: none;
+    }
+  }
+  .divider {
+    width: 1px;
+    height: 100px;
+    background-color: #d9d4d2;
+  }
+</style>
+<section class="caret-transparent custom-section-padding flex justify-center items-center bg-white text-black">
+  <div class="custom-section-width mx-auto">
+    <div class="flex flex-col">
+      <div class="lg:flex-row lg:text-start text-center flex-col flex">
+        <h3 class="font-semibold text-5xl leading-[120%] tracking-[-4%]">
+          Focus on quality, <span class="text-[#848080]"
+            >we maintain customer trust</span>
+        </h3>
+        <p
+          class="mt-2 text-[#848080] text-[28px] font-normal leading-[120%] tracking-[-3%]"
+        >
+          We are a dynamic digital agency driven by creativity and code -
+          crafting bold brands and powerful digital products that scale.
+        </p>
+      </div>
+      <div id="numbers-row" class="lg:grid-cols-8 md:grid-cols-2 gap-15 grid-cols-1 mt-15 grid w-full mx-auto justify-center items-center ">
+        <div class="flex flex-col items-center">
+          <h3>100+</h3>
+          <p>Projects Delivered</p>
+        </div>
+        <div class="divider"></div>
+        <div class="flex flex-col items-center">
+          <h3>98%</h3>
+          <p>Client Satisfaction Rate</p>
+        </div>
+        <div class="divider"></div>
+        <div class="flex flex-col items-center">
+          <h3>3+</h3>
+          <p>Years of Experience</p>
+        </div>
+        <div class="divider"></div>
+        <div class="flex flex-col items-center">
+          <h3>4.9/5</h3>
+          <p>Average Rating</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

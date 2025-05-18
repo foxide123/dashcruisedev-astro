@@ -24,7 +24,7 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: {enabled: true}
   }),
-  site: "https://dashcruisedev.com",
+  site: "https://dashcruise.com",
   prefetch: true,
   trailingSlash: "ignore",
   i18n: {

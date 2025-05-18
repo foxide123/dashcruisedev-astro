@@ -12,13 +12,13 @@ type QaDataType = {
   qaData: QaItemType;
 };
 
-const { lg_screen_width, default_screen_width, qaData} = Astro.props;
+const { qaData} = Astro.props;
 ---
 
-<section class="bg-white caret-transparent flex justify-center w-screen">
+<section class="custom-section-padding bg-white caret-transparent flex justify-center w-screen">
 <!--   <FadeInSection> -->
     <div
-      class={`lg:py-[150px] lg:text-start py-10 text-center ${lg_screen_width} ${default_screen_width}`}
+      class="custom-section-width lg:text-start text-center"
     >
       <div class="text-center">
         <h3 class="text-xl font-medium text-carrot-500">

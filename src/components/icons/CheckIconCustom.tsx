@@ -18,6 +18,6 @@ export default function CheckIcon({
   const iconWidth = iconSizeMap[size] ?? 24; //default to 24
 
   return (
-    <CheckIconLucide className={`mr-5 ${color} w-[${iconWidth}px] mt-${marginTop}`} />
+    <img src="/check-icon.svg" className={`mr-5 ${color} w-[${iconWidth}px] mt-${marginTop}`} />
   )
 }

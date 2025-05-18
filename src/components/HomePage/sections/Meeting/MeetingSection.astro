@@ -8,18 +8,16 @@ type MeetingDataType = {
 };
 
 interface Props {
-  lg_screen_width: string;
-  default_screen_width: string;
   meetingData: MeetingDataType;
 }
 
-const { lg_screen_width, default_screen_width, meetingData } = Astro.props;
+const { meetingData } = Astro.props;
 ---
 
-<section class="bg-white w-screen flex items-center justify-center">
+<section class="caret-transparent custom-section-padding bg-white w-screen flex items-center justify-center">
 <!--   <FadeInSection> -->
     <div
-      class={`lg:px-20 lg:py0 py-10 flex flex-col items-center justify-center ${lg_screen_width} ${default_screen_width}`}
+      class="custom-section-width lg:px-20 flex flex-col items-center justify-center"
     >
       {/* Header with description */}
       <div
