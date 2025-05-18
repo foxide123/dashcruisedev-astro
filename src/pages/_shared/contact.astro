@@ -1,13 +1,7 @@
 ---
-import type { GetStaticPaths } from "astro";
-import enContactData from "@/data/dictionaries/en/common.json"
-import deContactData from "@/data/dictionaries/de/common.json"
 import ContactUsForm from "@/components/common/ContactForm";
-import Layout from "@/layouts/MainLayout.astro"
 import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
-import Metadata from '@/components/seo/Metadata.astro';
-import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
-import { SiteURL } from "@/globals";
+import { enContactMetadata } from "@/data/dictionaries/en/enMetadata";
 
 const {locale} = Astro.params;
 
@@ -20,40 +14,7 @@ const contactData = await translations[supportedLocale]['common.json']();
 const contactUsData = contactData.contactUs;
 const contactFormData = contactData.contactForm;
 
-const metadata: MetadataProps = {
-  title: 'Web Agency',
-  description: 'Web Agency Offering Custom Websites',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL(`${SiteURL}`),
-  alternates: {
-    canonical: '/contact',
-    languages: {
-      en: '/en/contact',
-      de: '/de/kontakt',
-      pl: '/pl/kontakt',
-      ro: '/ro/contact',
-      'x-default': '/en/contact'
-    },
-  },
-  openGraph: {
-    url: `${SiteURL}`,
-    title: "DashcruiseDev - Custom Web Agency",
-    description: "Web development agency offering multilingual, blazing-fast websites tailored to your brand",
-    image: `${SiteURL}/og-image.png`,
-  },
-  /*  imagesToPreload: {
-    remoteImages: [
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080",
-        alt: "Background Image",
-        media: "(min-width: 640px)"
-      }
-    ]
-  } */
-};
-
+export { enContactMetadata };
 export async function getStaticPaths() {
   return SupportedLocaleArray.map((supportedLocale) => (
     {

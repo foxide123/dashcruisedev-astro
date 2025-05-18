@@ -7,14 +7,14 @@ export const deAboutMetadata: MetadataProps = {
     keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
-    metadataBase: new URL(`${SiteURL}/en/contact`),
+    metadataBase: new URL(`${SiteURL}/en/about`),
     alternates: {
-      canonical: '/en/contact',
+      canonical: '/en/about',
       languages: {
-        en: '/en/contact',
-        de: '/de/contact',
-        pl: "/pl/contact",
-        ro: "/ro/contact"
+        en: '/en/about',
+        de: '/de/uber-uns',
+        pl: "/pl/o-nas",
+        ro: "/ro/despre"
       },
     },
     openGraph: {
