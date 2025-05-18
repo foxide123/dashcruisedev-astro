@@ -15,6 +15,7 @@ import type {
 import Layout from '@/layouts/MainLayout.astro';
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
 import sanitizeHtml from 'sanitize-html';
+import { SiteURL } from '@/globals';
 /* import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
 import { render } from 'astro:content';
@@ -59,16 +60,16 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com'),
+  metadataBase: new URL(`${SiteURL}`),
   alternates: {
     canonical: `/${locale}/${slug}`,
     languages: languages ?? '',
   },
   openGraph: {
-    url: "https://dashcruisedev.com",
+    url: `${SiteURL}`,
     title: "Web Agency",
     description: "Web Agency Offering Custom Websites",
-    image: 'https://dashcruisedev.com/og-image.png',
+    image: `${SiteURL}/og-image.png`,
   },
   /*imagesToPreload: {
     remoteImages: [

@@ -7,6 +7,7 @@ import Layout from "@/layouts/MainLayout.astro"
 import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
+import { SiteURL } from "@/globals";
 
 const {locale} = Astro.params;
 
@@ -25,7 +26,7 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com'),
+  metadataBase: new URL(`${SiteURL}`),
   alternates: {
     canonical: '/contact',
     languages: {
@@ -37,10 +38,10 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    url: "https://dashcruisedev.com",
+    url: `${SiteURL}`,
     title: "DashcruiseDev - Custom Web Agency",
     description: "Web development agency offering multilingual, blazing-fast websites tailored to your brand",
-    image: 'https://dashcruisedev.com/og-image.png',
+    image: `${SiteURL}/og-image.png`,
   },
   /*  imagesToPreload: {
     remoteImages: [
@@ -79,7 +80,7 @@ export const prerender = true
           </h3> */
       }
       <h2>{contactUsData.phone} +45 52720387</h2>
-      <h2>{contactUsData.email} contact@dashcruisedev.com</h2>
+      <h2>{contactUsData.email} contact@dashcruise.com</h2>
       <h2
         class="lg:w-1/2 w-full font-normal text-base tracking-wide text-start mt-8 leading-7"
       >

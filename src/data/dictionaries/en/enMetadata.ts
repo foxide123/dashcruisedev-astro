@@ -1,4 +1,5 @@
 import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
+import { SiteURL } from "@/globals";
 
 export const enAboutMetadata: MetadataProps = {
     title: 'DashcruiseDev - Contact Us',
@@ -6,7 +7,7 @@ export const enAboutMetadata: MetadataProps = {
     keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
-    metadataBase: new URL('https://dashcruisedev.com/en/contact'),
+    metadataBase: new URL(`${SiteURL}/en/contact`),
     alternates: {
       canonical: '/en/contact',
       languages: {
@@ -17,10 +18,10 @@ export const enAboutMetadata: MetadataProps = {
       },
     },
     openGraph: {
-      url: "https://dashcruisedev.com",
+      url: `${SiteURL}`,
       title: "Web Agency",
       description: "Web Agency Offering Custom Websites",
-      image: 'https://dashcruisedev.com/og-image.png',
+      image: `${SiteURL}/og-image.png`,
     },
     imagesToPreload: {
       remoteImages: [
@@ -44,7 +45,7 @@ export const enContactMetadata: MetadataProps = {
     keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
-    metadataBase: new URL('https://dashcruisedev.com/en/contact'),
+    metadataBase: new URL(`${SiteURL}om/en/contact`),
     alternates: {
       canonical: '/en/contact',
       languages: {
@@ -55,10 +56,10 @@ export const enContactMetadata: MetadataProps = {
       },
     },
     openGraph: {
-      url: "https://dashcruisedev.com",
+      url: `${SiteURL}`,
       title: "Web Agency",
       description: "Web Agency Offering Custom Websites",
-      image: 'https://dashcruisedev.com/og-image.png',
+      image: `${SiteURL}/og-image.png`,
     },
     imagesToPreload: {
       remoteImages: [

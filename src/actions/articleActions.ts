@@ -1,3 +1,4 @@
+import { SiteURL } from '@/globals';
 import type { TranslationData, SlugWithLocale } from '@/types/article_types';
 const isProd = import.meta.env.PROD;
 
@@ -17,7 +18,7 @@ export function generateHreflangsForArticles(
   slugsWithLocale.forEach((item: SlugWithLocale) => {
     const { article_id, slug, locale } = item;
     console.log("Item Article_id:", article_id);
-    if(article_id === articleId) languages[locale] = `https://dashcruisedev.com/${locale}/${slug}`;
+    if(article_id === articleId) languages[locale] = `${SiteURL}/${locale}/${slug}`;
   });
 
   return { languages: languages };

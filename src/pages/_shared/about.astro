@@ -11,6 +11,7 @@ import {
   type SupportedLocale,
 } from '@/utils/translationUtils';
 import { getPathTranslations } from '@/utils/pathUtils';
+import { SiteURL } from '@/globals';
 
 type AboutType = {
   header: string;
@@ -67,7 +68,7 @@ export const metadata: MetadataProps = {
   ],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com'),
+  metadataBase: new URL(`${SiteURL}`),
   alternates: {
     canonical: '/about',
     languages: {
@@ -79,10 +80,10 @@ export const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    url: "https://dashcruisedev.com",
+    url: `${SiteURL}`,
     title: "Web Agency",
     description: "Web Agency Offering Custom Websites",
-    image: 'https://dashcruisedev.com/og-image.png',
+    image: `${SiteURL}/og-image.png`,
   },
 /*   imagesToPreload: {
     remoteImages: [

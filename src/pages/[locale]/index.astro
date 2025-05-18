@@ -28,6 +28,7 @@ import ScrollingColumnsSection from '@/components/HomePage/sections/ScrollingCol
 import NumbersSection from '@/components/HomePage/sections/NumbersSection.astro';
 import WhyChooseUsSection from '@/components/HomePage/sections/WhyChooseUsSection.astro';
 import RatingSection from '@/components/HomePage/sections/RatingSection.astro';
+import { SiteURL } from '@/globals';
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -41,7 +42,7 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com'),
+  metadataBase: new URL(SiteURL),
   alternates: {
     canonical: '/',
     languages: {
@@ -53,11 +54,11 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    url: 'https://dashcruisedev.com',
+    url: `${SiteURL}`,
     title: 'DashcruiseDev - Custom Web Agency',
     description:
       'Web development agency offering multilingual, blazing-fast websites tailored to your brand',
-    image: 'https://dashcruisedev.com/og-image.png',
+    image: `${SiteURL}/og-image.png`,
   },
   /*  imagesToPreload: {
     remoteImages: [

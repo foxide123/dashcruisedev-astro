@@ -1,4 +1,6 @@
 ---
+import { SiteURL } from '@/globals';
+
 type AlternateProps = {
   canonical: string;
   languages?: Record<string, string>;
@@ -60,7 +62,7 @@ const canonicalLink = alternates?.canonical
 // OG Image
 const ogImage = openGraph?.image
   ? new URL(openGraph?.image, metadataBase)
-  : 'https://dashcruise.com/favicon.icon';
+  : `${SiteURL}/favicon.icon`;
 ---
 
 <title>{title}</title>
@@ -94,10 +96,10 @@ const ogImage = openGraph?.image
 
 <!-- <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:domain" content="dashcruise.com" />
-<meta property="twitter:url" content="https://dashcruise.com" />
+<meta property="twitter:url" content=`${SiteURL}` />
 <meta name="twitter:title" content="Web Agency" />
 <meta
   name="twitter:description"
   content="Web Agency Offering Custom Websites"
 />
-<meta name="twitter:image" content="https://dashcruise.com/og-image.png" /> -->
+<meta name="twitter:image" content=`${SiteURL}/og-image.png` /> -->
