@@ -12,6 +12,30 @@ type offerItem = {
   .offer-container {
   }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && window.innerWidth >= 1024) {
+          const images = document.querySelectorAll(
+            'img[data-src]'
+          ) as NodeListOf<HTMLImageElement>;
+          images.forEach((img) => {
+            if (img instanceof HTMLImageElement && img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('dataset-src');
+            }
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {root:null,rootMargin: "0px 0px 10% 0px"});
+    const imgContainer = document.getElementById(
+      'img-container'
+    ) as HTMLDivElement;
+    observer.observe(imgContainer);
+  });
+</script>
 <section
   class="custom-section-padding caret-transparent overflow-visible relative -z-10 w-screen flex justify-center items-center bg-[#010101] text-white"
 >
@@ -28,7 +52,9 @@ type offerItem = {
     <div
       class="lg:flex-row lg:text-start text-center flex-col relative flex gap-11"
     >
-      <div class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full">
+      <div
+        class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full"
+      >
         <!-- round bg gradient circle -->
         <!-- move bg 100% to the left  -->
         <div
@@ -53,21 +79,21 @@ type offerItem = {
           to create custom web experiences that scale and drive growth. Our work
           exceeds goals and delivers real results.
         </p>
-        <div class="lg:block hidden mt-15 relative w-fit">
+        <div id="img-container" class="lg:block hidden mt-15 relative w-fit">
           <img
             loading="lazy"
             class=""
-            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/f271d9b2-19d1-4e92-0e0a-b2492d56bd00/mobile640x480"
+            data-src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/f271d9b2-19d1-4e92-0e0a-b2492d56bd00/mobile640x480"
           />
           <img
             loading="lazy"
             class="absolute bottom-0 left-0"
-            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/b07e1cae-1bc6-454c-d1a3-eff233b0df00/mobile640x480"
+            data-src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/b07e1cae-1bc6-454c-d1a3-eff233b0df00/mobile640x480"
           />
           <img
             loading="lazy"
             class="absolute top-10 right-[-50%] -z-5"
-            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/181cd578-eb0b-4e17-0a7a-274ffaa5f400/mobile640x480"
+            data-src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/181cd578-eb0b-4e17-0a7a-274ffaa5f400/mobile640x480"
           />
         </div>
       </div>
