@@ -2,19 +2,19 @@ import type {Props as MetadataProps} from "@/components/seo/Metadata.astro"
 import { SiteURL } from "@/globals";
 
 export const enAboutMetadata: MetadataProps = {
-    title: 'DashcruiseDev - Contact Us',
-    description: 'DashcruiseDev - Contact Us',
+    title: 'Dashcruise - About Us',
+    description: 'Meet Our Team at DashcruiseDev',
     keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
-    metadataBase: new URL(`${SiteURL}/en/contact`),
+    metadataBase: new URL(SiteURL),
     alternates: {
-      canonical: '/en/contact',
+      canonical: 'about',
       languages: {
-        en: '/en/contact',
-        de: '/de/contact',
-        pl: "/pl/contact",
-        ro: "/ro/contact"
+        en: '/en/about',
+        de: '/de/uber-uns',
+        pl: "/pl/o-nas",
+        ro: "/ro/despre"
       },
     },
     openGraph: {
@@ -40,19 +40,20 @@ export const enAboutMetadata: MetadataProps = {
 }
 
 export const enContactMetadata: MetadataProps = {
-    title: 'DashcruiseDev - Contact Us',
-    description: 'DashcruiseDev - Contact Us',
-    keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
+    title: 'Dashcruise - Contact Us',
+    description: 'Web Agency Offering Custom Websites',
+    keywords: ['web agency', 'websites', 'custom websites', 'dashcruise', 'dashcruise contact'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
-    metadataBase: new URL(`${SiteURL}om/en/contact`),
+    metadataBase: new URL(SiteURL),
     alternates: {
-      canonical: '/en/contact',
+      canonical: '/contact',
       languages: {
         en: '/en/contact',
-        de: '/de/contact',
-        pl: "/pl/contact",
-        ro: "/ro/contact"
+        de: '/de/kontakt',
+        pl: "/pl/kontakt",
+        ro: "/ro/contact",
+        'x-default': '/en/contact'
       },
     },
     openGraph: {

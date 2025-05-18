@@ -1,17 +1,10 @@
 ---
 import { SocialIcons2 } from '@/components/common/SocialIcons2';
-import Layout from '@/layouts/MainLayout.astro';
-import enAboutData from '@/data/dictionaries/en/about.json';
-import deAboutData from '@/data/dictionaries/de/about.json';
-import Metadata from '@/components/seo/Metadata.astro';
-import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
-  SupportedLocaleArray,
   translations,
   type SupportedLocale,
 } from '@/utils/translationUtils';
-import { getPathTranslations } from '@/utils/pathUtils';
-import { SiteURL } from '@/globals';
+import { enAboutMetadata } from '@/data/dictionaries/en/enMetadata';
 
 type AboutType = {
   header: string;
@@ -55,57 +48,7 @@ const sectionDescriptionLines = aboutData.sectionDescription.split('\n');
 const lg_screen_width = 'lg:w-[75vw]';
 const default_screen_width = 'w-[85vw]';
 
-export const metadata: MetadataProps = {
-  title: 'DashcruiseDev - About Us',
-  description: 'Meet Our Team at DashcruiseDev',
-  keywords: [
-    'web agency',
-    'websites',
-    'custom websites',
-    'astro',
-    'dashcruisedev',
-    'dashcruisedev about',
-  ],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL(`${SiteURL}`),
-  alternates: {
-    canonical: '/about',
-    languages: {
-      en: '/en/about',
-      de: '/de/uber-uns',
-      pl: '/pl/o-nas',
-      ro: '/ro/despre',
-      'x-default': '/en/about'
-    },
-  },
-  openGraph: {
-    url: `${SiteURL}`,
-    title: "Web Agency",
-    description: "Web Agency Offering Custom Websites",
-    image: `${SiteURL}/og-image.png`,
-  },
-/*   imagesToPreload: {
-    remoteImages: [
-      {
-        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080',
-        alt: 'Background Image',
-        media: '(min-width: 640px)',
-      },
-      {
-        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480',
-        alt: 'Background Image ',
-        media: '(max-width: 639px)',
-      },
-    ],
-  }, */
-};
-
-/* export async function getStaticPaths() {
-    return ({
-    params: { locale: supportedLocale },
-  });
-} */
+export {enAboutMetadata}
 export const prerender = true;
 ---
   <div class="caret-transparent w-screen">
