@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-custom-gray: #848080;
+
   --color-magenta-100: #E2B6D3; /* pink lavender */
   --color-magenta-200: #C671AA; /* sky magenta */
   --color-magenta-300: #953C78; /* violet (crayola) */
@@ -49,6 +51,16 @@
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
+}
+
+@layer components{
+  .custom-section-padding{
+    @apply lg:py-[120px] py-[80px]
+  }
+
+  .custom-section-width{
+    @apply lg:w-[75vw] w-[85vw] mx-auto
+  }
 }
 
 @theme inline {
@@ -108,15 +120,6 @@ body {
   border: 10px solid orange;
 }
 
-.header-custom {
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 60px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  letter-spacing: -2%;
-}
-
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -128,44 +131,6 @@ body {
   animation: shimmer 1.5s infinite linear;
 }
 
-.highlight-image-custom {
-  width: 300px;
-  height: 411px;
-  border-radius: 15px;
-}
-
-/* COMPARISON SECTION: START*/
-
-.list-item-custom {
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-}
-
-.list-item-custom div{
-  margin-top: 0px;
-}
-
-.comparison-container-custom{
-  width: 100%;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-width: 1px;
-}
-
-@media (min-width: 1024px) { /* lg breakpoint */
-  .comparison-container-custom{ 
-    width: 34rem;
-    height: 19.5rem;
-    align-items: flex-start;
-  }
-}
-/* END: COMPARISON SECTION*/
 
 :root {
   --radius: 0.625rem;

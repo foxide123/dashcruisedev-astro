@@ -10,7 +10,13 @@ const { lg_screen_width, default_screen_width, highlightData } = Astro.props;
 
 const headerLines = (highlightData as HighlightDataType).header.split('\n');
 ---
-
+<style>
+  .highlight-image-custom {
+  width: 300px;
+  height: 411px;
+  border-radius: 15px;
+}
+</style>
 <section
   class="caret-transparent xl:text-start lg:text-center text-center flex flex-row justify-center bg-magenta-500 w-screen"
 >

@@ -1,0 +1,94 @@
+---
+const { whyChooseUsData } = Astro.props;
+
+type offerItem = {
+  icon: string;
+  header: string;
+  description: string;
+};
+---
+
+<style>
+  .offer-container {
+  }
+</style>
+<section
+  class="custom-section-padding caret-transparent overflow-visible relative -z-10 w-screen flex justify-center items-center bg-[#010101] text-white"
+>
+  <!-- repeating square grid -->
+  <div
+    style="background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05), transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent 1px);
+        background-size: 80px 80px;"
+    class="-z-10 absolute top-0 inset-0 bg-black"
+  >
+  </div>
+  <div class="custom-section-width h-fit">
+    <div
+      class="lg:flex-row lg:text-start text-center flex-col relative flex gap-11"
+    >
+      <div class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full">
+        <!-- round bg gradient circle -->
+        <!-- move bg 100% to the left  -->
+        <div
+          style="background-size: 100% 100%; background-position: top -100%;"
+          class="lg:block hidden mix-blend-lighten blur-[600px] bg-gradient-to-br from-[#EF290E80] to-[#EF7A0E40] to-50% absolute top-0 left-full transform translate-x-[-50%] w-[475px] h-[475px] rounded-full -z-9"
+        >
+        </div>
+        <h3
+          class="text-[#EF7A0E] text-lg font-normal leading-[150%] tracking-[-0.5%]"
+        >
+          Why Choose Us
+        </h3>
+        <h2
+          class="mt-2 font-semibold text-[64px] leading-[105%] tracking-[-3%]"
+        >
+          Explore Our Full-Spectrum Digital Expertise
+        </h2>
+        <p
+          class="mt-6 text-[#D9D4D2] text-base font-normal leading-[150%] tracking-[-0.5%]"
+        >
+          We’re a full-service agency blending strategy, design, and development
+          to create custom web experiences that scale and drive growth. Our work
+          exceeds goals and delivers real results.
+        </p>
+        <div class="lg:visible hidden mt-15 relative w-fit">
+          <img
+            loading="lazy"
+            class=""
+            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/f271d9b2-19d1-4e92-0e0a-b2492d56bd00/mobile640x480"
+          />
+          <img
+            loading="lazy"
+            class="absolute bottom-0 left-0"
+            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/b07e1cae-1bc6-454c-d1a3-eff233b0df00/mobile640x480"
+          />
+          <img
+            loading="lazy"
+            class="absolute top-10 right-[-50%] -z-5"
+            src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/181cd578-eb0b-4e17-0a7a-274ffaa5f400/mobile640x480"
+          />
+        </div>
+      </div>
+      {/* Right column */}
+      <div class="lg:overflow-y-auto h-full flex flex-col w-full z-0 gap-12">
+        {
+          whyChooseUsData.items.map((item: offerItem) => (
+            <div class="w-full rounded-[12px] bg-gradient-to-b from-[#000000]/3 to-[#EF700E]/30 offer-container p-11 flex flex-col">
+              <div class="flex items-center justify-center w-[85px] h-[85px] bg-[#EF7A0E]/10 backdrop-blur-md rounded-full">
+                <img src={item.icon} />
+              </div>
+              <h3 class="mt-6 font-normal text-[32px] leading-[130%] tracking-[-2%]">
+                {item.header}
+              </h3>
+              <p class="mt-4 text-[#D9D4D2] font-normal text-base leading-[150%] tracking-[-0.5%]">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -25,14 +25,15 @@ import {
 } from '@/utils/translationUtils';
 import { getStripePrices } from '@/actions/stripeActions';
 import ScrollingColumnsSection from '@/components/HomePage/sections/ScrollingColumnsSection.astro';
+import NumbersSection from '@/components/HomePage/sections/NumbersSection.astro';
+import WhyChooseUsSection from '@/components/HomePage/sections/WhyChooseUsSection.astro';
+import RatingSection from '@/components/HomePage/sections/RatingSection.astro';
 
 const supportedLocale = locale as SupportedLocale;
 
 const homeData = await translations[supportedLocale]['home_page.json']();
 const commonData = await translations[supportedLocale]['common.json']();
 const heroData = homeData['hero'];
-const lg_screen_width = 'lg:w-[75vw]';
-const default_screen_width = 'w-[85vw]';
 
 const metadata: MetadataProps = {
   title: 'Web Agency',
@@ -48,7 +49,7 @@ const metadata: MetadataProps = {
       de: '/de',
       pl: '/pl',
       ro: '/ro',
-      'x-default': '/en'
+      'x-default': '/en',
     },
   },
   imagesToPreload: {
@@ -60,9 +61,10 @@ const metadata: MetadataProps = {
     ],
   },
   openGraph: {
-    url: "https://dashcruisedev.com",
-    title: "DashcruiseDev - Custom Web Agency",
-    description: "Web development agency offering multilingual, blazing-fast websites tailored to your brand",
+    url: 'https://dashcruisedev.com',
+    title: 'DashcruiseDev - Custom Web Agency',
+    description:
+      'Web development agency offering multilingual, blazing-fast websites tailored to your brand',
     image: 'https://dashcruisedev.com/og-image.png',
   },
   /*  imagesToPreload: {
@@ -93,54 +95,51 @@ export const prerender = true;
 
 <Layout metadata={metadata}>
   <a href="https://wa.me/4552720387" class="fixed bottom-5 right-5 z-50">
-    <img class="animate-[bounce_3s_ease-out_infinite]" src="/whatsapp-icon.svg" width={70} height={70} />
+    <img
+      class="animate-[bounce_3s_ease-out_infinite]"
+      src="/whatsapp-icon.svg"
+      width={70}
+      height={70}
+    />
   </a>
-  <div class="w-screen flex flex-col justify-center overflow-hidden">
+  <div class="w-screen flex flex-col justify-center">
     <HeroSection
       prices={prices}
       heroData={heroData}
       commonData={commonData}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
+    />
+    <NumbersSection
+    />
+    <WhyChooseUsSection
+      whyChooseUsData={homeData.whyChooseUs}
+    />
+    <PortfolioSection
+      portfolioData={homeData.portfolio}
     />
     <ComparisonSection
       comparisonData={homeData.comparison}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
     />
+    <RatingSection/>
     <!-- <HighlightSection
       highlightData={homeData.highlight}
       lg_screen_width={lg_screen_width}
       default_screen_width={default_screen_width}
     /> -->
-    <PortfolioSection
-      portfolioData={homeData.portfolio}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
-    />
     <ContactSection
       contactUsData={commonData.contactUs}
       contactFormData={commonData.contactForm}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
     />
     <PricingSection
       prices={prices}
       locale={locale}
       pricingPlansData={commonData.pricingPlan}
       pricingSectionData={homeData.pricing}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
     />
     <MeetingSection
       meetingData={homeData.meeting}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
     />
     <QaSection
       qaData={homeData.qa}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
     />
   </div>
 </Layout>

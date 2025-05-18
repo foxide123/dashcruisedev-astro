@@ -24,7 +24,7 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
 ---
 
 <nav
-  class={`${isHome ? "absolute xl:left-[50%] xl:transform xl:translate-x-[-50%]" : "static"} top-0 xl:flex-row xl:my-[48px] xl:h-fit lg:rounded-4xl mx-auto h-fit flex-col caret-transparent flex bg-transparent text-white justify-between items-center  ${lg_screen_width} w-screen z-999`}
+  class={`${isHome ? "absolute xl:left-[50%] xl:transform xl:translate-x-[-50%]" : "static"} top-0 xl:flex-row xl:my-[48px] xl:h-fit lg:rounded-4xl mx-auto h-fit flex-col caret-transparent flex text-white justify-between items-center  ${lg_screen_width} w-screen z-999`}
 >
     {/* > XL Navbar*/}
   <div
@@ -57,22 +57,22 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
 
   {/* DEFAULT to XL Navbar*/}
   <div
-    class={`${isHome ? "backdrop-blur-3xl absolute top-0 left-0" : "bg-black"} mx-auto xl:hidden w-screen self-center flex flex-col items-center`}
+    class={`${isHome ? "bg-black/50" : "bg-black"} z-100 mx-auto xl:hidden w-screen self-center flex flex-col items-center`}
   >
     <div class="flex items-center justify-between w-full py-5 px-10">
       {/* Logo */}
       <a href="/">
-        <p>Dashcruise<span class="text-[#ef7a0e] ml-2"></span></p>
+        <p>Dashcruise<span class="ml-2"></span></p>
       </a>
       {/* Hamburger */}
       <HamburgerToggle client:media="(max-width: 1279px)" />
     </div>
-    <div class="relative w-screen">
+    <div class="relative w-screen ">
       <ul
         id="menu"
-        class={`${isHome ? "bg-black" : "bg-black"} py-5 absolute top-0 w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
+        class={`${isHome ? "backdrop-blur-lg bg-black/50" : "bg-black"} py-5 absolute top-0 w-full caret-transparent xl:flex-row flex flex-col justify-center items-center text-[20px] font-semibold cursor-pointer 
 transition-all duration-500 ease-in-out overflow-hidden 
-     xl:max-h-none xl:opacity-100 max-h-0 opacity-0`}
+     xl:max-h-none max-h-0 opacity-0`}
       >
       <NavbarMenu navbarItems={navbarItems}/>
       </ul>

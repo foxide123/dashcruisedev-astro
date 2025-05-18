@@ -8,22 +8,20 @@ type ContactUsDataType = {
 };
 
 interface Props {
-  lg_screen_width: string;
-  default_screen_width: string;
   contactUsData: ContactUsDataType;
   contactFormData: ContactFormDataProps;
 }
 
-const { lg_screen_width, default_screen_width, contactUsData, contactFormData } = Astro.props;
+const { contactUsData, contactFormData } = Astro.props;
 
 const headerLines = contactUsData.header.split('\n');
 ---
 
-<section class="bg-white w-screen flex justify-center">
+<section class="custom-section-padding bg-white w-screen flex justify-center">
   <!--   <FadeInSection> -->
   {/* Wrapper with defined width */}
   <div
-    class={`lg:justify-between lg:flex-row lg:py-0 py-10  flex flex-col  ${lg_screen_width} ${default_screen_width}`}
+    class="custom-section-width lg:justify-between lg:flex-row  flex flex-col"
   >
     {/* Description */}
     <div class="caret-transparent lg:w-[530px] md:text-start text-center">
