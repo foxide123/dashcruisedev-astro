@@ -25,6 +25,6 @@ export const QAData:QADataType[] = [
     {
       question: "I have further questions",
       answer:
-        "In case you still have further questions, you can contact us by email: contact@dashcruisedev.com",
+        "In case you still have further questions, you can contact us by email: contact@dashcruise.com",
     },
   ];

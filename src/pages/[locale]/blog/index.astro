@@ -12,6 +12,7 @@ import CursorWrapper from '@/components/CursorWrapper';
 import { SupportedLocaleArray } from '@/utils/translationUtils';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import { fetchSlugsWithLocale } from '@/actions/articleActions';
+import { SiteURL } from '@/globals';
 
 type PostParams = {
     title: string;
@@ -38,7 +39,7 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL('https://dashcruisedev.com/en/blog'),
+  metadataBase: new URL(`${SiteURL}/en/blog`),
   alternates: {
     canonical: '/en',
     languages: {
@@ -50,10 +51,10 @@ const metadata: MetadataProps = {
     },
   },
   openGraph: {
-    url: "https://dashcruisedev.com",
+    url: `${SiteURL}`,
     title: "Web Agency",
     description: "Web Agency Offering Custom Websites",
-    image: 'https://dashcruisedev.com/og-image.png',
+    image: `${SiteURL}/og-image.png`,
   },
   imagesToPreload: {
     remoteImages: [

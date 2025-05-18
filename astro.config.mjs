@@ -15,7 +15,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('mode:', mode);
 
-const siteUrl = SITE_URL ?? "https://astro.dashcruisedev.com"
+const siteUrl = SITE_URL ?? "https://astro.dashcruise.com"
  */
 
 // https://astro.build/config
