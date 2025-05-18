@@ -67,7 +67,21 @@
     "header1": "Nasze",
     "header2": "projekty stron",
     "description": "Prezentujemy projekty stron internetowych pokazujące nasze umiejętności w projektowaniu i programowaniu oraz wspierające obecność naszych klientów w sieci.",
-    "portfolioItems": []
+    "portfolioItems": [
+      {
+        "link": "https://voyageblur.com",
+        "name": "VoyageBlur Travel Blog",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/23737a89-c028-49be-5574-1085efe6a400/square800x800"
+      },
+      {
+        "name": "Nitra Solutions",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/d8b0ed39-4557-49ec-ef44-ff565ba09b00/mobile640x480"
+      },
+      {
+        "name": "Oasis",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/856fae3c-2f24-4744-717c-3f9585b24400/mobile640x480"
+      }
+    ]
   },
   "pricing": {
     "header": "Wybierz idealny plan dla siebie",
@@ -81,6 +95,31 @@
   "qa": {
     "sectionHighlight": "Masz pytania? Mamy odpowiedzi!",
     "header": "Najczęściej zadawane pytania",
-    "qaData": []
+          "qaData": [
+        {
+          "question": "Czy mogę zaktualizować swój plan?",
+          "answer": "Oczywiście! Właśnie po to je stworzyliśmy – abyś mógł go dostosować do rosnących potrzeb."
+        },
+        {
+          "question": "Jakie środki bezpieczeństwa zapewniacie mojej stronie?",
+          "answer": "Priorytetem jest dla nas bezpieczeństwo: ochrona DDoS, szyfrowanie SSL oraz monitorowanie w czasie rzeczywistym. Hosting obejmuje automatyczne kopie zapasowe i ochronę zaporą ogniową."
+        },
+        {
+          "question": "Co się stanie po anulowaniu subskrypcji?",
+          "answer": "Po anulowaniu subskrypcji strona przestanie być aktywna."
+        },
+        {
+          "question": "Czy domena i hosting są wliczone w cenę?",
+          "answer": "Hosting jest wliczony w plan. Domena również, chyba że zawiera wartościowe słowa kluczowe – wówczas może wymagać dodatkowej opłaty."
+        },
+        {
+          "question": "Co jeśli nie będę zadowolony z efektu?",
+          "answer": "Jeśli nie jesteś zadowolony, przysługuje Ci 14 dni na zwrot pieniędzy (chociaż cenimy Twoją opinię)."
+        },
+        {
+          "question": "Mam więcej pytań",
+          "answer": "W razie dalszych pytań możesz napisać do nas: contact@dashcruisedev.com"
+        }
+      ]
   }
 }

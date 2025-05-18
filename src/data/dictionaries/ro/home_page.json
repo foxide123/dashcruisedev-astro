@@ -67,7 +67,21 @@
       "header1": "Prezentăm",
       "header2": "proiectele noastre",
       "description": "Expunem proiecte care reflectă experiența noastră în design și dezvoltare, și care ajută clienții să-și îmbunătățească prezența online.",
-      "portfolioItems": []
+      "portfolioItems": [
+        {
+        "link": "https://voyageblur.com",
+        "name": "VoyageBlur Travel Blog",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/23737a89-c028-49be-5574-1085efe6a400/square800x800"
+      },
+      {
+        "name": "Nitra Solutions",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/d8b0ed39-4557-49ec-ef44-ff565ba09b00/mobile640x480"
+      },
+      {
+        "name": "Oasis",
+        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/856fae3c-2f24-4744-717c-3f9585b24400/mobile640x480"
+      }
+      ]
     },
     "pricing": {
       "header": "Alege planul perfect pentru tine",
@@ -81,6 +95,31 @@
     "qa": {
       "sectionHighlight": "Ai întrebări? Avem răspunsuri!",
       "header": "Întrebări frecvente",
-      "qaData": []
+           "qaData": [
+        {
+          "question": "Pot să-mi upgradez planul?",
+          "answer": "Desigur! Planurile sunt create special pentru a putea fi extinse pe măsură ce cresc cerințele și proiectul tău."
+        },
+        {
+          "question": "Ce măsuri de securitate oferiți pentru site-ul meu?",
+          "answer": "Acordăm prioritate securității: protecție DDoS, criptare SSL și monitorizare în timp real. Hostingul include backupuri automate și firewall."
+        },
+        {
+          "question": "Ce se întâmplă dacă anulez abonamentul?",
+          "answer": "Dacă anulezi abonamentul, site-ul nu va mai fi activ."
+        },
+        {
+          "question": "Este domeniul și găzduirea incluse în preț?",
+          "answer": "Găzduirea este inclusă. Domeniul este inclus cu excepția cazurilor speciale (de ex. cuvinte-cheie premium). Unele domenii pot avea preț suplimentar."
+        },
+        {
+          "question": "Ce se întâmplă dacă nu sunt mulțumit de site?",
+          "answer": "Dacă nu ești mulțumit, ai la dispoziție 14 zile pentru rambursare (apreciem feedback-ul)."
+        },
+        {
+          "question": "Am întrebări suplimentare",
+          "answer": "Pentru alte întrebări, ne poți contacta pe email: contact@dashcruisedev.com"
+        }
+      ]
     }
   }
