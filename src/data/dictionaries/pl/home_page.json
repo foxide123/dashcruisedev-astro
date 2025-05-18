@@ -1,93 +1,86 @@
 {
   "hero": {
-    "headerBeforeEffect": "Wprowadź Swój",
-    "headerEffect": ["Biznes", "Pomysł", "Startup"],
-    "headerAfterEffect": "Do Internetu"
+    "headerBeforeEffect": "Wprowadź swoją",
+    "headerEffect": ["Ideę", "Markę", "Projekt", "Portfolio", "Historię"],
+    "headerAfterEffect": "do sieci"
+  },
+  "whyChooseUs": {
+    "items": [
+      {
+        "icon": "/offer1.svg",
+        "header": "Indywidualny projekt strony",
+        "description": "Od koncepcji po końcowy interfejs - tworzymy unikalne doświadczenia cyfrowe, które wzmacniają Twoją markę, angażują użytkowników i wspierają Twoje cele biznesowe."
+      },
+      {
+        "icon": "/offer2.svg",
+        "header": "Projektowanie i przeprojektowanie UX/UI",
+        "description": "Tworzymy intuicyjne, wydajne interfejsy, które łączą formę z funkcjonalnością. Budujemy od podstaw lub ulepszamy istniejące rozwiązania, koncentrując się na ścieżce użytkownika."
+      },
+      {
+        "icon": "/offer3.svg",
+        "header": "Indywidualne tworzenie stron internetowych",
+        "description": "Budujemy skalowalne, bezpieczne strony internetowe. Dzięki nowoczesnym technologiom tworzymy szybkie i niezawodne platformy dopasowane do Twoich potrzeb."
+      },
+      {
+        "icon": "/offer4.svg",
+        "header": "Responsywny projekt strony",
+        "description": "Tworzymy doświadczenia dostosowane do każdego urządzenia. Nasze projekty działają na wszystkich ekranach, zapewniając spójne i angażujące wrażenia."
+      },
+      {
+        "icon": "/offer5.svg",
+        "header": "Optymalizacja pod kątem wyszukiwarek",
+        "description": "Zapewniamy pełen zakres usług SEO w celu zwiększenia widoczności i ruchu organicznego. Przeprowadzamy audyty i wdrażamy skuteczne strategie."
+      }
+    ]
   },
   "comparison": {
-    "header": "Strony Szyte na Miarę, Aby Wzmocnić Twoją Markę",
-    "description": "Nie Kolejny Powolny Szablon Jak U Wszystkich – Strony Tak Unikalne Jak Ty",
+    "header": "Szyte na miarę strony, które wzmacniają Twoją markę",
+    "description": "Nie kolejny powolny szablon — tylko unikalna strona dla Ciebie",
     "dashcruiseDev": {
-      "title": "Nasze Strony",
+      "title": "Nasze strony",
       "items": [
-        "Zoptymalizowane pod Wyszukiwarkę Google",
-        "Błyskawiczne Ładowanie",
-        "Bezpieczne",
-        "Unikalne",
-        "Dostosowane do Twoich Potrzeb",
-        "Pomoc Ekspertów"
+        "Optymalizacja pod Google",
+        "Błyskawiczne ładowanie",
+        "Bezpieczeństwo",
+        "Unikalność",
+        "Dostosowanie do potrzeb",
+        "Wsparcie ekspertów"
       ]
     },
     "webBuilders": {
-      "title": "Kreatory Stron",
+      "title": "Kreatory stron",
       "items": [
         "Gorsze SEO",
-        "Powolne",
-        "Zagrożenia Bezpieczeństwa z Wtyczek",
-        "Ograniczenia Szablonów",
-        "Schematyczny Wygląd",
-        "Słabe / Brak Wsparcia"
+        "Wolne działanie",
+        "Ryzyko przez wtyczki",
+        "Ograniczenia szablonów",
+        "Typowe projekty",
+        "Brak lub słabe wsparcie"
       ]
     }
   },
   "highlight": {
-    "header": "Zwiększ Potencjał Firmy dzięki Niezrównanej Prędkości i\nBezpieczeństwu",
-    "description": "Ciesz się spokojem dzięki ochronie 24/7 i nieprzerwanemu działaniu Twojej strony. Dzięki ochronie przed atakami DoS, szyfrowaniu SSL i inteligentnemu cache'owaniu możesz spać spokojnie, wiedząc, że Twoja strona jest szybka i bezpieczna. Zmodernizuj swoją obecność w sieci z nami – gdzie prędkość spotyka się z bezpieczeństwem!"
+    "header": "Zwiększ efektywność dzięki niezrównanej szybkości i bezpieczeństwu",
+    "description": "Ciesz się spokojem dzięki 24/7 ochronie i ciągłości działania. Dzięki ochronie DoS, szyfrowaniu SSL i inteligentnemu cachowaniu możesz spać spokojnie wiedząc, że Twoja strona jest szybka i bezpieczna."
   },
   "portfolio": {
-    "header": "Zobacz Nasze Realizacje",
-    "portfolioItems": [
-      {
-        "name": "VoyageBlur Blog Podróżniczy",
-        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/236846ed-3356-4bb7-6094-a0eb79b59f00/card600x400"
-      },
-      {
-        "name": "Webee Panel Administracyjny",
-        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/9f2c4b1b-f1f2-45c0-dcdb-d8f846703c00/card600x400"
-      },
-      {
-        "name": "Rana Solutions",
-        "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/8fde5afd-0c71-47e5-0383-209157ae8e00/card600x400"
-      }
-    ]
+    "header1": "Nasze",
+    "header2": "projekty stron",
+    "description": "Prezentujemy projekty stron internetowych pokazujące nasze umiejętności w projektowaniu i programowaniu oraz wspierające obecność naszych klientów w sieci.",
+    "portfolioItems": []
   },
   "pricing": {
-    "header": "Wybierz Plan Idealny Dla Siebie",
-    "description": "Od osób chcących zaistnieć w sieci po rozwijające się firmy — nasze plany, pomogą rozwinąć Twoją obecność w sieci"
+    "header": "Wybierz idealny plan dla siebie",
+    "description": "Od małych projektów po rozwijające się firmy — znajdź odpowiednie narzędzia do rozwoju online"
   },
   "meeting": {
-    "header": "Darmowa Konsultacja Strony Internetowej",
-    "description": "Umów się na 15-minutowe spotkanie, aby omówić swoje potrzeby, cele i jak możemy ożywić Twoją wizję.",
-    "cta": "Umów Spotkanie i Porozmawiajmy o Szczegółach"
+    "header": "Darmowa konsultacja strony internetowej",
+    "description": "Umów się na 15-minutową rozmowę, aby omówić potrzeby, cele i jak możemy zrealizować Twoją wizję.",
+    "cta": "Umów się na spotkanie, aby omówić szczegóły"
   },
   "qa": {
-    "sectionHighlight": "Masz Pytania? Mamy Odpowiedzi!",
-    "header": "Najczęściej Zadawane Pytania",
-    "qaData": [
-      {
-        "question": "Czy mogę uaktualnić swój plan?",
-        "answer": "Oczywiście! Właśnie po to je stworzyliśmy, abyś mógł uaktualnić swój plan, gdy Twoje potrzeby i strona internetowa się rozrastają."
-      },
-      {
-        "question": "Jakie środki bezpieczeństwa oferujecie dla mojej strony?",
-        "answer": "Priorytetowo traktujemy bezpieczeństwo, oferując ochronę przed atakami DDoS, szyfrowanie SSL i monitorowanie w czasie rzeczywistym. Nasz hosting zawiera automatyczne kopie zapasowe i ochronę zaporą, dzięki czemu Twoja strona jest bezpieczna przez całą dobę."
-      },
-      {
-        "question": "Co się stanie, jeśli anuluję subskrypcję?",
-        "answer": "Po anulowaniu subskrypcji strona internetowa przestanie być aktywna."
-      },
-      {
-        "question": "Czy domena i hosting są wliczone w cenę?",
-        "answer": "Hosting jest wliczony w plan. Domena również jest dostarczana, z wyjątkiem przypadków, gdy zawiera wartościowe słowa kluczowe. Niektóre domeny mogą podlegać regularnym opłatom i nie być objęte standardowym planem."
-      },
-      {
-        "question": "Co jeśli nie będę zadowolony ze strony?",
-        "answer": "W przypadku niezadowolenia z naszej pracy, przysługuje Ci 14-dniowy zwrot pieniędzy (choć chętnie przyjmiemy również Twoją opinię)."
-      },
-      {
-        "question": "Mam więcej pytań",
-        "answer": "Jeśli masz dodatkowe pytania, skontaktuj się z nami przez email: contact@dashcruisedev.com"
-      }
-    ]
+    "sectionHighlight": "Masz pytania? Mamy odpowiedzi!",
+    "header": "Najczęściej zadawane pytania",
+    "qaData": []
   }
 }
