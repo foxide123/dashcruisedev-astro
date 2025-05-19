@@ -1,8 +1,10 @@
 {
     "hero": {
-      "headerBeforeEffect": "Lansează-ți",
-      "headerEffect": ["Ideea", "Brandul", "Proiectul", "Portofoliul", "Povestea"],
-      "headerAfterEffect": "online"
+     "header": "Site-uri Web",
+    "header2BeforeHighlight": "CREATE PENTRU BRANDUL",
+    "header2Highlight": "BRANDUL",
+    "header2AfterHighlight": "TĂU",
+    "description": "Ghidul nostru cuprinzător privind strategiile pentru antreprenori și lideri oferă perspective valoroase și sfaturi practice."
     },
     "whyChooseUs": {
       "items": [

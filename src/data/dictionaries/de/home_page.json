@@ -1,8 +1,10 @@
 {
   "hero": {
-    "headerBeforeEffect": "Bring deine",
-    "headerEffect": ["Idee", "Marke", "Projekt", "Portfolio", "Geschichte"],
-    "headerAfterEffect": "online"
+     "header": "Websites",
+    "header2BeforeHighlight": "FÜR",
+    "header2Highlight": "IHRE",
+    "header2AfterHighlight": "MARKE GEMACHT",
+    "description": "Unser umfassender Leitfaden mit Strategien für Unternehmer und Führungskräfte bietet wertvolle Einblicke und praxisnahe Ratschläge."
   },
   "whyChooseUs": {
     "items": [

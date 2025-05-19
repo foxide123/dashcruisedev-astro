@@ -1,8 +1,10 @@
 {
   "hero": {
-    "headerBeforeEffect": "Bring Your",
-    "headerEffect": ["Idea", "Brand", "Project", "Portfolio", "Story"],
-    "headerAfterEffect": "Online"
+    "header": "Websites",
+    "header2BeforeHighlight": "Made For",
+    "header2Highlight": "Your",
+    "header2AfterHighlight": "Brand",
+    "description": "Our comprehensive guide to strategies for entrepreneurs and leaders offers valuable insights, practical advice."
   },
   "whyChooseUs": {
     "items": [
