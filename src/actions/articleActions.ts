@@ -18,7 +18,7 @@ export function generateHreflangsForArticles(
   slugsWithLocale.forEach((item: SlugWithLocale) => {
     const { article_id, slug, locale } = item;
     console.log("Item Article_id:", article_id);
-    if(article_id === articleId) languages[locale] = `${SiteURL}/${locale}/${slug}`;
+    if(article_id === articleId) languages[locale] = `${SiteURL}/${locale}/blog/${slug}`;
   });
 
   return { languages: languages };

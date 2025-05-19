@@ -3,7 +3,7 @@ import { SiteURL } from "@/globals";
 
 export const enAboutMetadata: MetadataProps = {
     title: 'Dashcruise - About Us',
-    description: 'Meet Our Team at DashcruiseDev',
+    description: 'Meet Our Team at Dashcruise',
     keywords: ['web agency', 'websites', 'custom websites', 'astro', 'dashcruisedev', 'dashcruisedev about'],
     creator: 'Jakub Cezary Kolando',
     publisher: 'Jakub Cezary Kolando',
@@ -18,9 +18,9 @@ export const enAboutMetadata: MetadataProps = {
       },
     },
     openGraph: {
-      url: `${SiteURL}`,
-      title: "Web Agency",
-      description: "Web Agency Offering Custom Websites",
+      url: `${SiteURL}/about`,
+      title: "Dashcruise - About Us",
+      description: "Meet Our Team at Dashcruise",
       image: `${SiteURL}/og-image.png`,
     },
     imagesToPreload: {
@@ -57,8 +57,8 @@ export const enContactMetadata: MetadataProps = {
       },
     },
     openGraph: {
-      url: `${SiteURL}`,
-      title: "Web Agency",
+      url: `${SiteURL}/contact`,
+      title: "Dashcruise - Contact Us",
       description: "Web Agency Offering Custom Websites",
       image: `${SiteURL}/og-image.png`,
     },

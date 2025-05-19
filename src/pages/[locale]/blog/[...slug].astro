@@ -60,15 +60,15 @@ const metadata: MetadataProps = {
   keywords: ['web agency', 'websites', 'custom websites', 'astro'],
   creator: 'Jakub Cezary Kolando',
   publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL(`${SiteURL}/blog`),
+  metadataBase: new URL(SiteURL),
   alternates: {
-    canonical: `/${slug}`,
+    canonical: `/blog/${slug}`,
     languages: languages ?? '',
   },
   openGraph: {
-    url: `${SiteURL}`,
-    title: "Web Agency",
-    description: "Web Agency Offering Custom Websites",
+    url: `${SiteURL}/blog/${slug}`,
+    title: "Dashcruise Article",
+    description: "Dashcruise New Article",
     image: `${SiteURL}/og-image.png`,
   },
   /*imagesToPreload: {
