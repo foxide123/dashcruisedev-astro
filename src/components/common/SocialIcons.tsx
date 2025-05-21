@@ -32,7 +32,7 @@ export function SocialIcons() {
       </a>
 
       <a
-        href="https://www.aedin.com/in/jakub-cezary-kolando-137491269/"
+        href="https://www.linkedin.com/company/dashcruise"
         target="_blank"
         rel="noopener noreferrer"
         className="pr-5 cursor-pointer"
