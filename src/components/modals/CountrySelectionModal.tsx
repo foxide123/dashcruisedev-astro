@@ -119,7 +119,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
           </span>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="flex flex-col justify-center items-center">
+      <PopoverContent className="z-900 flex flex-col justify-center items-center">
         {/* Language Selection */}
         <div>
           <p className="text-sm mb-1 font-medium">Language</p>
@@ -127,7 +127,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
             <SelectTrigger className="w-[180px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="z-999">
               <SelectItem value="🇺🇸 en">🇺🇸 EN</SelectItem>
               <SelectItem value="🇩🇪 de">🇩🇪 DE</SelectItem>
               <SelectItem value="🇷🇴 ro">🇷🇴 RO</SelectItem>
@@ -143,7 +143,7 @@ export default function CountrySelectionModal({locale}: {locale:string | undefin
             <SelectTrigger className="w-[180px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="z-999">
               <SelectItem value="usd">USD</SelectItem>
               <SelectItem value="eur">EUR</SelectItem>
               <SelectItem value="pln">PLN</SelectItem>

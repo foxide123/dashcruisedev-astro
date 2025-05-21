@@ -1,5 +1,15 @@
-import { deAboutMetadata, deContactMetadata } from '@/data/dictionaries/de/deMetadata';
-import { enAboutMetadata, enContactMetadata } from '@/data/dictionaries/en/enMetadata';
+import { enAboutMetadata } from '@/data/dictionaries/en/metadata/enAboutMetadata';
+import { enContactMetadata } from '@/pages/_shared/contact.astro';
+
+import { deAboutMetadata } from '@/data/dictionaries/de/metadata/deAboutMetadata';
+import { deContactMetadata } from '@/data/dictionaries/de/metadata/deContactMetadata';
+
+import { roAboutMetadata } from '@/data/dictionaries/ro/metadata/roAboutMetadata';
+import { roContactMetadata } from '@/data/dictionaries/ro/metadata/roContactMetadata';
+
+import { plAboutMetadata } from '@/data/dictionaries/pl/metadata/plAboutMetadata';
+import { plContactMetadata } from '@/data/dictionaries/pl/metadata/plContactMetadata';
+
 import About from '@/pages/_shared/about.astro';
 import Contact from '@/pages/_shared/contact.astro';
 
@@ -54,21 +64,21 @@ export const routeComponentMap = {
   'ro': {
     'despre': {
       component: About,
-      metadata: enAboutMetadata
+      metadata: roAboutMetadata
     },
     contact: {
       component: Contact,
-      metadata: enContactMetadata
+      metadata: roContactMetadata
     },
   },
   'pl': {
     'o-nas': {
       component: About,
-      metadata: enAboutMetadata
+      metadata: plAboutMetadata
     },
     kontakt: {
       component: Contact,
-      metadata: enContactMetadata
+      metadata: plContactMetadata
     },
   },
 };

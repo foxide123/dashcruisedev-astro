@@ -1,34 +1,20 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import Layout from '@/layouts/MainLayout.astro';
-import { Image } from 'astro:assets';
-// defaultLocale is "en"
-const indexUrl = getRelativeLocaleUrl('en', '');
+import { enHomeMetadata } from "@/data/dictionaries/en/metadata/enHomeMetadata";
+import { deHomeMetadata } from "@/data/dictionaries/de/metadata/deHomeMetadata";
+import { roHomeMetadata } from "@/data/dictionaries/ro/metadata/roHomeMetadata";
+import { plHomeMetadata } from "@/data/dictionaries/pl/metadata/plHomeMetadata";
 
 const { locale } = Astro.params;
 
-import ComparisonSection from '@/components/HomePage/sections/ComparisonSection.astro';
-import HighlightSection from '@/components/HomePage/sections/HighlightSection.astro';
-import PortfolioSection from '@/components/HomePage/sections/PortfolioSection.astro';
-import ContactSection from '@/components/HomePage/sections/ContactSection.astro';
-import PricingSection from '@/components/HomePage/sections/PricingSection.astro';
-import QaSection from '@/components/HomePage/sections/QA/QaSection.astro';
-import MeetingSection from '@/components/HomePage/sections/Meeting/MeetingSection.astro';
-import { ContainerTextFlipClient } from '@/components/HomePage/ContainerTextFlipClient';
-import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
-import Metadata from '@/components/seo/Metadata.astro';
-import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import {
   SupportedLocaleArray,
   translations,
   type SupportedLocale,
 } from '@/utils/translationUtils';
 import { getStripePrices } from '@/actions/stripeActions';
-import ScrollingColumnsSection from '@/components/HomePage/sections/ScrollingColumnsSection.astro';
-import NumbersSection from '@/components/HomePage/sections/NumbersSection.astro';
-import WhyChooseUsSection from '@/components/HomePage/sections/WhyChooseUsSection.astro';
-import RatingSection from '@/components/HomePage/sections/RatingSection.astro';
-import { SiteURL } from '@/globals';
+import HomePage from '../_shared/HomePage.astro';
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -36,40 +22,18 @@ const homeData = await translations[supportedLocale]['home_page.json']();
 const commonData = await translations[supportedLocale]['common.json']();
 const heroData = homeData['hero'];
 
-const metadata: MetadataProps = {
-  title: 'Web Agency',
-  description: 'Web Agency Offering Custom Websites',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL(SiteURL),
-  alternates: {
-    canonical: '/',
-    languages: {
-      en: '/en',
-      de: '/de',
-      pl: '/pl',
-      ro: '/ro',
-      'x-default': '/en',
-    },
-  },
-  openGraph: {
-    url: `${SiteURL}`,
-    title: 'DashcruiseDev - Custom Web Agency',
-    description:
-      'Web development agency offering multilingual, blazing-fast websites tailored to your brand',
-    image: `${SiteURL}/og-image.png`,
-  },
-  /*  imagesToPreload: {
-    remoteImages: [
-      {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080",
-        alt: "Background Image",
-        media: "(min-width: 640px)"
-      }
-    ]
-  } */
-};
+const metadata = (() => {
+  switch(locale){
+    case "de":
+      return deHomeMetadata;
+    case "ro":
+      return roHomeMetadata;
+    case "pl":
+      return plHomeMetadata;
+    default: 
+      return enHomeMetadata;
+  }
+})()
 
 export async function getStaticPaths() {
   return SupportedLocaleArray.map((SupportedLocale) => ({
@@ -81,58 +45,14 @@ const { data, error } = await getStripePrices();
 
 console.log('Data on home page:', data);
 
-const prices = data;
+let prices = null;
+if(!error){
+  prices = data;
+}
 
 export const prerender = true;
 ---
 
 <Layout metadata={metadata}>
-  <a href="https://wa.me/4552720387" class="fixed bottom-5 right-5 z-50">
-    <img
-      class="animate-[bounce_3s_ease-out_infinite]"
-      src="/whatsapp-icon.svg"
-      width={70}
-      height={70}
-    />
-  </a>
-  <div class="w-screen flex flex-col justify-center">
-    <HeroSection
-      prices={prices}
-      heroData={heroData}
-      commonData={commonData}
-    />
-    <NumbersSection
-    />
-    <WhyChooseUsSection
-      whyChooseUsData={homeData.whyChooseUs}
-    />
-    <PortfolioSection
-      portfolioData={homeData.portfolio}
-    />
-    <ComparisonSection
-      comparisonData={homeData.comparison}
-    />
-    <RatingSection/>
-    <!-- <HighlightSection
-      highlightData={homeData.highlight}
-      lg_screen_width={lg_screen_width}
-      default_screen_width={default_screen_width}
-    /> -->
-    <ContactSection
-      contactUsData={commonData.contactUs}
-      contactFormData={commonData.contactForm}
-    />
-    <PricingSection
-      prices={prices}
-      locale={locale}
-      pricingPlansData={commonData.pricingPlan}
-      pricingSectionData={homeData.pricing}
-    />
-    <MeetingSection
-      meetingData={homeData.meeting}
-    />
-    <QaSection
-      qaData={homeData.qa}
-    />
-  </div>
+  <HomePage prices={prices} homeData={homeData}  commonData={commonData} locale={locale}/>
 </Layout>

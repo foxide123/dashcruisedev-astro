@@ -1,8 +1,10 @@
 {
   "hero": {
-    "headerBeforeEffect": "Wprowadź swoją",
-    "headerEffect": ["Ideę", "Markę", "Projekt", "Portfolio", "Historię"],
-    "headerAfterEffect": "do sieci"
+    "header": "Strony Internetowe",
+    "header2BeforeHighlight": "Stworzone Dla",
+    "header2Highlight": "Twojej",
+    "header2AfterHighlight": "Marki",
+    "description": "Nasz kompleksowy przewodnik po strategiach dla przedsiębiorców i liderów oferuje cenne spostrzeżenia oraz praktyczne porady."
   },
   "whyChooseUs": {
     "items": [
