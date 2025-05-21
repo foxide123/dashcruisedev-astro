@@ -6,8 +6,7 @@ import HamburgerToggle from './HamburgerToggle';
 import NavbarMenu from './NavbarMenu.astro';
 
 const lg_screen_width = 'lg:w-[75vw]';
-const { navbarData } = Astro.props;
-const { locale } = Astro.params;
+const { navbarData, locale } = Astro.props;
 
 type NavbarItem = {
   name: string;
@@ -41,7 +40,7 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
       </p>
     </a>
     <div class="text-xl font-semibold tracking-[-0.5%] flex items-center justify-center gap-8 w-full">
-      <NavbarMenu navbarItems={navbarItems} />
+      <NavbarMenu navbarItems={navbarItems} locale={locale}/>
       <CountrySelectionModal
           client:media="(min-width: 1280px)"
           locale={locale}
@@ -79,7 +78,7 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
 transition-all duration-500 ease-in-out overflow-hidden 
      xl:max-h-none max-h-0 opacity-0`}
       >
-      <NavbarMenu navbarItems={navbarItems}/>
+      <NavbarMenu navbarItems={navbarItems} locale={locale}/>
       <div class="mt-4">
         <CountrySelectionModal
           client:media="(max-width: 1279px)"

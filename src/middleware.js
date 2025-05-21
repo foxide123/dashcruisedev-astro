@@ -18,7 +18,6 @@ export const onRequest = defineMiddleware(async (ctx, next) => {
   if(!hasLocale && !isBot){
     const newPath = `/${defaultLocale}${pathname}`;
     const url = new URL(newPath, ctx.url);
-    /* return Response.redirect(url, 302); */
     return ctx.redirect(url, 301);
   }
    return next()
