@@ -79,9 +79,9 @@ transition-all duration-500 ease-in-out overflow-hidden
      xl:max-h-none max-h-0 opacity-0`}
       >
       <NavbarMenu navbarItems={navbarItems} locale={locale}/>
-      <div class="mt-4">
+      <div class="mt-4 xl:hidden">
         <CountrySelectionModal
-          client:media="(max-width: 1279px)"
+          client:load
           locale={locale}
         />
       </div>
