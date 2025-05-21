@@ -17,8 +17,14 @@ if(!error){
   prices = data;
 }
 
-const ua = Astro.request.headers.get('user-agent') || '';
-const isBot = /(bot|crawl|slurp|spider)/i.test(ua);
+let isBot = false;
+
+try{
+  const ua = Astro.request.headers.get('user-agent') || '';
+  isBot = /(bot|crawl|slurp|spider)/i.test(ua);
+}catch(err){
+  console.warn('Failed to read user-agent header:', err);
+}
 
 if (!isBot) {
   throw Astro.redirect('/en', 301);
