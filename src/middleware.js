@@ -7,7 +7,7 @@ const defaultLocale = 'en'
 
 
 export const onRequest = defineMiddleware(async (ctx, next) => {
-  const isBot = /(bot|crawl|slurp|spider)/i.test(
+  const isBot = /(bot|crawl|spider|slurp|bing|duckduckgo|baiduspider|yandex)/i.test(
     ctx.request.headers.get('user-agent') || ''
   );
   console.log("middleware loaded")
