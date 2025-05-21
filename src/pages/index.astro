@@ -32,14 +32,6 @@ if (!isBot) {
 
 
 const locale = 'en';
-
-export async function getStaticPaths() {
-  return [{
-    params: { locale: 'en' },
-  }];
-}
-
-export const prerender = true;
 ---
 <Layout metadata={enHomeMetadata} locale={locale}>
   <HomePage prices={prices} homeData={homeData}  commonData={commonData} locale={locale}}/>
