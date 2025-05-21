@@ -1,29 +1,24 @@
 ---
-import Header from '@/components/LayoutComponents/Header.astro';
-import Footer from '@/components/LayoutComponents/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '@/components/FormattedDate.astro';
+import { enBlogMetadata } from '@/data/dictionaries/en/metadata/enBlogMetadata';
+import { deBlogMetadata } from '@/data/dictionaries/de/metadata/deBlogMetadata';
+import { roBlogMetadata } from '@/data/dictionaries/ro/metadata/roBlogMetadata';
+import { plBlogMetadata } from '@/data/dictionaries/pl/metadata/plBlogMetadata';
+
 import enBlogData from '@/data/dictionaries/en/blog_page.json';
 import deBlogData from '@/data/dictionaries/de/blog_page.json';
-import Layout from "@/layouts/MainLayout.astro"
-import CursorWrapper from '@/components/CursorWrapper';
+import Layout from '@/layouts/MainLayout.astro';
 import { SupportedLocaleArray } from '@/utils/translationUtils';
-import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
-import { fetchSlugsWithLocale } from '@/actions/articleActions';
-import { SiteURL } from '@/globals';
 
 type PostParams = {
-    title: string;
-    description: string;
-    date: string;
-    image_src: string;
-    slug: string;
-  };
+  title: string;
+  description: string;
+  date: string;
+  image_src: string;
+  slug: string;
+};
 
 const lg_screen_width = 'lg:w-[85vw]';
 const default_screen_width = 'w-[75vw]';
-
 
 const { locale } = Astro.params;
 
@@ -32,55 +27,51 @@ const blogData = locale === 'en' ? enBlogData : deBlogData;
 const mainPost = blogData.posts[0];
 const otherPosts = blogData.posts.slice(1);
 
-const metadata: MetadataProps = {
-  title: 'Web Agency',
-  description: 'Web Agency Offering Custom Websites',
-  keywords: ['web agency', 'websites', 'custom websites', 'astro'],
-  creator: 'Jakub Cezary Kolando',
-  publisher: 'Jakub Cezary Kolando',
-  metadataBase: new URL(SiteURL),
-  alternates: {
-    canonical: '/blog',
-    languages: {
-      en: '/en/blog',
-      de: '/de/blog',
-      pl: '/pl/blog',
-      ro: "/ro/blog",
-      'x-default': "/en/blog"
-    },
-  },
-  openGraph: {
-    url: `${SiteURL}/blog`,
-    title: "Dashcruise Blog",
-    description: "Blog about web and business development",
-    image: `${SiteURL}/og-image.png`,
-  },
+const sharedMetadata = {
   imagesToPreload: {
     remoteImages: [
       {
-        href: "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080",
-        alt: "Background Image"
-      }
-    ]
-  }
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/22218a4e-1efb-43dd-ff1e-562588e15a00/hd1920x1080',
+        alt: 'Background Image',
+      },
+    ],
+  },
 };
 
+const baseMetadata = (() => {
+  switch (locale) {
+    case 'de':
+      return deBlogMetadata;
+    case 'pl':
+      return plBlogMetadata;
+    case 'ro': 
+      return roBlogMetadata;
+    default:
+      return enBlogMetadata;
+  }
+})();
+
+const metadata = { ...baseMetadata, sharedMetadata };
+
 export async function getStaticPaths() {
-  return SupportedLocaleArray.map((SupportedLocale) => (
-    {
-      params: { locale: SupportedLocale }
-    }
-  ))
+  return SupportedLocaleArray.map((SupportedLocale) => ({
+    params: { locale: SupportedLocale },
+  }));
 }
 
 export const prerender = true;
 // cache for 1h, serve stale for 60s while revalidating
-Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60');
+Astro.response.headers.set(
+  'Cache-Control',
+  'public, s-maxage=3600, stale-while-revalidate=60'
+);
 ---
 
 <Layout metadata={metadata}>
-<div class=`caret-transparent w-screen lg:py-10 min-h-[100vh] ${lg_screen_width} ${default_screen_width} mx-auto`>
-<!-- <CursorWrapper client:idle> -->
+  <div
+    class=`caret-transparent w-screen lg:py-10 min-h-[100vh] ${lg_screen_width} ${default_screen_width} mx-auto`
+  >
+    <!-- <CursorWrapper client:idle> -->
     <a href={`/${locale}/blog/${mainPost.slug}`}>
       {/* Large post Preview */}
       <div
@@ -95,10 +86,7 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-
             src={`${mainPost.image_src}/hd1920x1080`}
             class="object-cover w-full absolute top-0 left-0 transform translate-y-[-20%]"
           />
-          <div
-            class="w-[95%] h-[95%] mx-auto absolute"
-            data-cursor="READ"
-          >
+          <div class="w-[95%] h-[95%] mx-auto absolute" data-cursor="READ">
           </div>
 
           {
@@ -130,14 +118,12 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-
             }
             return (
               <a href={`/${locale}/blog/${post.slug}`}>
-                <div
-                  class="flex cursor-pointer flex-col gap-2 hover:opacity-75"
-                >
+                <div class="flex cursor-pointer flex-col gap-2 hover:opacity-75">
                   <span class=" block relative aspect-video rounded-md bg-muted overflow-hidden">
                     <img
                       src={`${post.image_src}/card600x400`}
                       alt="post image"
-					  class="object-cover w-full absolute top-0 left-0"
+                      class="object-cover w-full absolute top-0 left-0"
                     />
                     <div
                       class="w-[95%] h-[95%] mx-auto absolute cursor-pointer"
@@ -166,6 +152,6 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-
         View more
       </button>
     </div>
-<!--   </CursorWrapper> -->
-</div>
+    <!--   </CursorWrapper> -->
+  </div>
 </Layout>

@@ -1,32 +1,6 @@
 ---
 import { SiteURL } from '@/globals';
-
-type AlternateProps = {
-  canonical: string;
-  languages?: Record<string, string>;
-};
-
-type OpenGraphProps = {
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-};
-
-//
-
-type ImageProps = {
-  href: string;
-  alt: string;
-  srcset?: string;
-  sizes?: string;
-  media?: string;
-};
-
-type PreloadImageProps = {
-  remoteImages?: ImageProps[];
-  localImages?: ImageProps[];
-};
+import type { AlternateProps, OpenGraphProps, PreloadImageProps } from '@/types/metadata_types';
 
 export interface Props {
   title?: string;

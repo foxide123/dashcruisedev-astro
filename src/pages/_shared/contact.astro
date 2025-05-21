@@ -1,12 +1,16 @@
 ---
-import ContactUsForm from "@/components/common/ContactForm";
-import { SupportedLocaleArray, translations, type SupportedLocale } from "@/utils/translationUtils";
-import { enContactMetadata } from "@/data/dictionaries/en/enMetadata";
+import ContactUsForm from '@/components/common/ContactForm';
+import {
+  SupportedLocaleArray,
+  translations,
+  type SupportedLocale,
+} from '@/utils/translationUtils';
+import { enContactMetadata } from '@/data/dictionaries/en/metadata/enContactMetadata';
 
-const {locale} = Astro.params;
+const { locale } = Astro.params;
 
-const lg_screen_width = "lg:w-[75vw]"
-const default_screen_width = "w-[85vw]"
+const lg_screen_width = 'lg:w-[75vw]';
+const default_screen_width = 'w-[85vw]';
 
 const supportedLocale = locale as SupportedLocale;
 
@@ -14,16 +18,31 @@ const contactData = await translations[supportedLocale]['common.json']();
 const contactUsData = contactData.contactUs;
 const contactFormData = contactData.contactForm;
 
+const sharedMetadata = {
+  imagesToPreload: {
+    remoteImages: [
+      {
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/hd1920x1080',
+        alt: 'Background Image',
+        media: '(min-width: 640px)',
+      },
+      {
+        href: 'https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/7528164d-c2ec-4d98-84a0-17a4a96e5500/mobile640x480',
+        alt: 'Background Image ',
+        media: '(max-width: 639px)',
+      },
+    ],
+  },
+};
+
 export { enContactMetadata };
 export async function getStaticPaths() {
-  return SupportedLocaleArray.map((supportedLocale) => (
-    {
-      params: { locale: supportedLocale }
-    }
-  ))
+  return SupportedLocaleArray.map((supportedLocale) => ({
+    params: { locale: supportedLocale },
+  }));
 }
 
-export const prerender = true
+export const prerender = true;
 ---
 
 <div class="w-screen h-full bg-white flex justify-center items-center">
@@ -47,7 +66,7 @@ export const prerender = true
       >
         {contactUsData.description}
       </h2>
-      <ContactUsForm marginTop="mt-16" formData={contactFormData} client:load/>
+      <ContactUsForm marginTop="mt-16" formData={contactFormData} client:load />
     </div>
   </div>
 </div>

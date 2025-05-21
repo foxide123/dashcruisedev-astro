@@ -3,21 +3,6 @@ import { routeComponentMap } from '@/utils/routeMap';
 import Layout from '@/layouts/MainLayout.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 
-/* if (!Astro.params.locale || !Astro.params.slug) {
-  throw new Error("Missing route parameters: locale or slug.");
-}
-
-const { locale, slug } = Astro.params;
-
-const safeLocale = locale as keyof typeof routeComponentMap;
-const safeSlug = slug as keyof typeof routeComponentMap[typeof safeLocale];
-
-const PageComponent = routeComponentMap[safeLocale]?.[safeSlug] as {
-  (props: { locale: string }): any;
-  metadata?: object | ((args: { locale: string; slug: string }) => object);
-};
- */
-
 const { locale, slug } = Astro.params;
 
 const safeLocale = locale as keyof typeof routeComponentMap;
