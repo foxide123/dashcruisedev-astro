@@ -8,34 +8,35 @@ type NavbarItem = {
 };
 
 interface Props {
-    navbarItems:NavbarItem[];
+  navbarItems: NavbarItem[];
+  locale: any;
 }
 
 const pathname = Astro.url.pathname;
-const { locale } = Astro.params;
-const {navbarItems} = Astro.props;
+const { navbarItems, locale } = Astro.props;
 ---
 
 {
-  navbarItems && navbarItems.map((item, index) => {
-    const fullItemPath = `/${locale}/${item.pathname}`;
-    const currentPath = Astro.url.pathname!.endsWith('/')
-      ? pathname!.slice(0, -1)
-      : pathname;
-    const comparePath = fullItemPath.endsWith('/')
-      ? fullItemPath.slice(0, -1)
-      : fullItemPath;
-    const isActive =
-      currentPath === comparePath ? 'text-carrot-500' : 'text-white';
-    const isLast = index === MenuItemsData.length - 1;
-    return (
-      <a
-        data-astro-prefetch="hover"
-        class={`${isActive} xl:mb-0 sm:pr-0 first:mt-0 last:pr-0 xl:last:mb-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
-        href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
-      >
-        {item.name}
-      </a>
-    );
-  })
+  navbarItems &&
+    navbarItems.map((item, index) => {
+      const fullItemPath = `/${locale}/${item.pathname}`;
+      const currentPath = Astro.url.pathname!.endsWith('/')
+        ? pathname!.slice(0, -1)
+        : pathname;
+      const comparePath = fullItemPath.endsWith('/')
+        ? fullItemPath.slice(0, -1)
+        : fullItemPath;
+      const isActive =
+        currentPath === comparePath ? 'text-carrot-500' : 'text-white';
+      const isLast = index === MenuItemsData.length - 1;
+      return (
+        <a
+          data-astro-prefetch="hover"
+          class={`${isActive} xl:mb-0 sm:pr-0 first:mt-0 last:pr-0 xl:last:mb-0 last:mb-5  xl:mt-0 md:mt-3 mt-5`}
+          href={`/${locale}${item.pathname.startsWith('/') ? item.pathname : `/${item.pathname}`}`}
+        >
+          {item.name}
+        </a>
+      );
+    })
 }

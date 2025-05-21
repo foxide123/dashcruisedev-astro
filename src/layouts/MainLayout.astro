@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Navbar from '@/components/LayoutComponents/Navbar.astro';
 import { ClientRouter } from 'astro:transitions';
-import { fade } from 'astro:transitions';
 import Metadata from '@/components/seo/Metadata.astro';
 import type { Props as MetadataProps } from '@/components/seo/Metadata.astro';
 import Footer from '@/components/LayoutComponents/Footer.astro';
@@ -10,10 +9,10 @@ import { translations, type SupportedLocale } from '@/utils/translationUtils';
 
 export interface Props {
   metadata?: MetadataProps;
+  locale: any;
 }
 
-const { metadata } = Astro.props;
-const { locale } = Astro.params;
+const { metadata, locale } = Astro.props;
 
 const supportedLocale = locale as SupportedLocale;
 

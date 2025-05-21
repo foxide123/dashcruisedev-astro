@@ -38,6 +38,6 @@ const metadata = typeof entry.metadata === 'function'
 export const prerender = true;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} locale={locale}>
   <PageComponent locale={locale} />
 </Layout>
