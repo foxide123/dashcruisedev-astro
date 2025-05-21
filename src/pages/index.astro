@@ -17,7 +17,12 @@ if(!error){
   prices = data;
 }
 
-export const prerender = true;
+const ua = Astro.request.headers.get('user-agent') || '';
+const isBot = /(bot|crawl|slurp|spider)/i.test(ua);
+
+if (!isBot) {
+  throw Astro.redirect('/en', 301);
+}
 
 ---
 <Layout metadata={enHomeMetadata}>
