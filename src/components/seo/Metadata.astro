@@ -37,7 +37,114 @@ const canonicalLink = alternates?.canonical
 const ogImage = openGraph?.image
   ? new URL(openGraph?.image, metadataBase)
   : `${SiteURL}/favicon.ico`;
+
+// Organization JSON LD
+const searchJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dashcruise",
+  "url": SiteURL,
+  "logo": `${SiteURL}/android-chrome-512x512.png`,
+  "sameAs": [
+    "https://linkedin.com/company/dashcruise",
+    "https://www.trustpilot.com/review/dashcruise.com",
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+45 52720387",
+    "contactType": "customer support",
+    "areaServed": "DK",
+    "availableLanguage": ["English"]
+  }]
+};
+
+// FAQ JSON LD
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Dashcruise offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dashcruise offers custom web development, multilingual websites, and analytics integrations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build multilingual websites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We specialize in multilingual websites with language-specific SEO and performance optimization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get a quote?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can get a quote by filling out our contact form or booking a free consultation on our website."
+      }
+    }
+  ]
+};
+
+// BreadcrumbList
+const breadcrumbListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dashcruise.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About",
+      "item": "https://dashcruise.com/en/about"
+    },
+        {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Contact",
+      "item": "https://dashcruise.com/en/contact"
+    },
+        {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Blog",
+      "item": "https://dashcruise.com/en/blog"
+    }
+  ]
+}
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Custom Website Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "Dashcruise"
+  },
+  "areaServed": "Global",
+  "serviceType": "Web Design & Development",
+  "description": "We build fast websites tailored to your business goals."
+}
+
+
 ---
+<script type="application/ld+json" set:html={ JSON.stringify(searchJsonLd) }>
+</script>
+<!-- FAQ JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>
+<!-- Breadcrumb List JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbListJsonLd)}></script>
+<!-- Service JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)}></script>
 
 <title>{title}</title>
 <meta name="description" content={description} />
