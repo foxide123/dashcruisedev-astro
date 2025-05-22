@@ -13,7 +13,7 @@ type offerItem = {
   }
 </style>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initImageObserver(){
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && window.innerWidth >= 1024) {
@@ -23,7 +23,7 @@ type offerItem = {
           images.forEach((img) => {
             if (img instanceof HTMLImageElement && img.dataset.src) {
               img.src = img.dataset.src;
-              img.removeAttribute('dataset-src');
+              img.removeAttribute('data-src');
             }
           });
           observer.unobserve(entry.target);
@@ -34,7 +34,9 @@ type offerItem = {
       'img-container'
     ) as HTMLDivElement;
     observer.observe(imgContainer);
-  });
+  }
+
+  document.addEventListener('astro:page-load', initImageObserver)
 </script>
 <section
   class="custom-section-padding caret-transparent overflow-visible relative -z-10 w-screen flex justify-center items-center bg-[#010101] text-white"
