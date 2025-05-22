@@ -5,6 +5,7 @@
 
 @theme {
   --color-custom-gray: #848080;
+  --color-custom-light-gray: #F7F7F7;
 
   --color-magenta-100: #E2B6D3; /* pink lavender */
   --color-magenta-200: #C671AA; /* sky magenta */

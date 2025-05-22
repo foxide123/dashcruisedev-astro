@@ -1,5 +1,5 @@
 import { enAboutMetadata } from '@/data/dictionaries/en/metadata/enAboutMetadata';
-import { enContactMetadata } from '@/pages/_shared/contact.astro';
+import { enContactMetadata } from '@/data/dictionaries/en/metadata/enContactMetadata';
 
 import { deAboutMetadata } from '@/data/dictionaries/de/metadata/deAboutMetadata';
 import { deContactMetadata } from '@/data/dictionaries/de/metadata/deContactMetadata';
