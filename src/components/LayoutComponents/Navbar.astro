@@ -31,7 +31,7 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
   >
     <a
       href="/"
-      class=" xl:flex hidden self-center rounded-4xl px-2 h-full justify-center items-center"
+      class=" 2xl:w-[450px] xl:w-[250px] xl:flex hidden self-center rounded-4xl px-2 h-full justify-center items-center"
     >
       <p
         class="font-semibold text-3xl tracking-[-4%]"
@@ -48,11 +48,11 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
     </div>
     
     <div
-      class="2xl:w-[350px] xl:w-[250px] xl:flex justify-end items-center scroll-smooth hidden"
+      class="2xl:w-[450px] xl:w-[250px] xl:flex justify-center items-center scroll-smooth hidden"
     >
       <a
-        href="#pricing_section"
-        class=" text-center bg-carrot-500 mr-12 rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
+        href="#meeting-section"
+        class="font-bold text-lg text-center bg-carrot-500 border-2 border-carrot-800 w-fit rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
       >
         {cta}
       </a>

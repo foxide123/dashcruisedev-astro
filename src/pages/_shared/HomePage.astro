@@ -1,6 +1,7 @@
 ---
 import ComparisonSection from '@/components/HomePage/sections/ComparisonSection.astro';
 import ContactSection from '@/components/HomePage/sections/ContactSection.astro';
+import ExclusiveOffer from '@/components/HomePage/sections/ExclusiveOffer.astro';
 import HeroSection from '@/components/HomePage/sections/HeroSection.astro';
 import MeetingSection from '@/components/HomePage/sections/Meeting/MeetingSection.astro';
 import NumbersSection from '@/components/HomePage/sections/NumbersSection.astro';
@@ -35,6 +36,7 @@ const heroData = homeData['hero'];
       lg_screen_width={lg_screen_width}
       default_screen_width={default_screen_width}
     /> -->
+    <ExclusiveOffer/>
     <ContactSection
       contactUsData={commonData.contactUs}
       contactFormData={commonData.contactForm}

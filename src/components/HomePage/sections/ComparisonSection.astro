@@ -18,6 +18,7 @@ const { comparisonData } = Astro.props;
     font-weight: 500;
     font-size: 16px;
     display: flex;
+    margin-top: 16px;
     flex-direction: row;
     align-items: start;
   }
@@ -31,7 +32,7 @@ const { comparisonData } = Astro.props;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     border-width: 1px;
   }
 
@@ -39,7 +40,6 @@ const { comparisonData } = Astro.props;
     /* lg breakpoint */
     .comparison-container-custom {
       width: 34rem;
-      height: 19.5rem;
       align-items: flex-start;
     }
   }
@@ -47,9 +47,7 @@ const { comparisonData } = Astro.props;
 <section
   class="custom-section-padding caret-transparent lg:text-start text-center flex justify-center w-screen bg-black"
 >
-  <!--     <FadeInSection> -->
   <div class="custom-section-width text-white">
-    {/* Build Faster Section */}
     <div class="">
       <h1 class="header-custom break-words">{comparisonData.header}</h1>
       <h1 class="header-custom"></h1>
@@ -64,13 +62,11 @@ const { comparisonData } = Astro.props;
       class="lg:flex-row items-center flex flex-col justify-between w-full overflow-hidden mt-10"
     >
       {/* LandingPageDev container */}
-      <div class="comparison-container-custom border-magenta-300">
-        <div>
+      <div class="comparison-container-custom border-magenta-300 p-8">
           <h2 class="font-medium text-2xl leading-8 my-6">
             {comparisonData.dashcruiseDev.title}
           </h2>
-        </div>
-        <ul class="text-start">
+        <ul class="text-start flex flex-col items-start">
           {
             comparisonData.dashcruiseDev.items.map(
               (item: string, index: number) => (
@@ -79,7 +75,7 @@ const { comparisonData } = Astro.props;
                     {/* <CheckIcon /> */}
                     <CheckIconCustom size={IconSizeEnum.small} client:visible />
                   </div>{' '}
-                  <span>{item}</span>
+                  <span class="font-semibold text-lg">{item}</span>
                 </li>
               )
             )
@@ -88,12 +84,10 @@ const { comparisonData } = Astro.props;
       </div>
       {/* WordPress container */}
       <div class="lg:mt-0 comparison-container-custom border-vampire-400 mt-5">
-        <div>
           <h2 class="font-medium text-2xl leading-8 my-6">
             {comparisonData.webBuilders.title}
           </h2>
-        </div>
-        <ul>
+        <ul class="flex flex-col items-start">
           {
             comparisonData.webBuilders.items.map(
               (item: string, index: number) => (

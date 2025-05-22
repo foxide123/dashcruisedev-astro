@@ -24,9 +24,16 @@ const {
 ---
 
 <div
-  class="w-screen pt-10 pb-[58px] bg-black flex flex-col justify-center items-center"
+style="background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;"
+  class="relative w-screen pt-10 pb-[58px] bg-black flex flex-col justify-center items-center overflow-hidden"
 >
-  <div class={`${lg_screen_width} ${default_screen_width}`}>
+<div
+style="background:linear-gradient(96deg, #EF6F0E 4.35%, #EF3A0E 127.45%); filter:blur(700px)"
+class="w-[610px] h-[610px] absolute top-0 right-0 rounded-full border-2 border-green-500 opacity-25"></div>
+  <div class={`z-10 ${lg_screen_width} ${default_screen_width}`}>
     <Newsletter locale={locale ?? 'en'} newsletterData={newsletterData} client:visible/>
     <div class="mt-10 flex justify-end">
       <SocialIcons client:visible/>
