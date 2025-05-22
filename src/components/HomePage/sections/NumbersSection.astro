@@ -27,6 +27,9 @@ import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
     width: 1px;
     height: 100px;
     background-color: #d9d4d2;
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: span 1 / span 1;
   }
 </style>
 <section class="caret-transparent custom-section-padding flex justify-center items-center bg-white text-black">
@@ -44,7 +47,7 @@ import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
           crafting bold brands and powerful digital products that scale.
         </p>
       </div>
-      <div id="numbers-row" class="lg:grid-cols-8 md:grid-cols-2 gap-15 grid-cols-1 mt-15 grid w-full mx-auto justify-center items-center ">
+      <div id="numbers-row" class="lg:grid-cols-7 lg:items-center grid-cols-2 gap-15 mt-15 grid w-full mx-auto items-start">
         <div class="flex flex-col items-center">
           <h3>100+</h3>
           <p>Projects Delivered</p>
@@ -59,7 +62,7 @@ import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
           <h3>3+</h3>
           <p>Years of Experience</p>
         </div>
-        <div class="divider"></div>
+        <div class="divider col-span-1"></div>
         <div class="flex flex-col items-center">
           <h3>4.9/5</h3>
           <p>Average Rating</p>
