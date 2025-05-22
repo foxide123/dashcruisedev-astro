@@ -20,6 +20,29 @@ const { portfolioData } = Astro.props;
 const firstPortfolioElement = portfolioData.portfolioItems[0];
 ---
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const images = document.querySelectorAll("img['data-src']");
+          images.forEach((img) => {
+             if (img instanceof HTMLImageElement && img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+            }
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: "0x 0px 100% 0px"});
+
+    const portfolioContainer = document.getElementById(
+      'portfolio'
+    ) as HTMLDivElement;
+    observer.observe(portfolioContainer);
+  });
+</script>
 <style>
   @media (width >= 64rem) {
     .img-container {
@@ -39,9 +62,7 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
   class="custom-section-padding bg-white caret-transparent flex justify-center w-screen"
 >
   <!--   <FadeInSection> -->
-  <div
-    class="custom-section-width text-center h-fit mx-auto"
-  >
+  <div class="custom-section-width text-center h-fit mx-auto">
     <h1 class="text-[64px] w-full leading-[105%] tracking-[-3%] font-semibold">
       {portfolioData.header1}
       <span class="font-normal text-[#848080]">{portfolioData.header2}</span>
@@ -54,14 +75,14 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
     {/* Portfolio Container */}
     <div class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
       <div class="flex-1 flex flex-col w-full min-h-[600px]">
-        <div class="grow-1 img-container">
+        <div class="grow-1 img-container bg-custom-light-gray">
           <img
-          loading="lazy"
+            loading="lazy"
             class="w-full h-full object-cover"
-            src={firstPortfolioElement.imageUrl}
+            data-src={firstPortfolioElement.imageUrl}
           />
         </div>
-<!--         <div class="lg:block hidden">
+        <!--         <div class="lg:block hidden">
           <div class="flex">
             <p>2025</p>
             <p>Full Website Build</p>
@@ -72,8 +93,12 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
       <div class="flex-1 gap-5 flex flex-col w-full">
         {
           portfolioData.portfolioItems.slice(1).map((item) => (
-            <div class="img-container">
-              <img loading="lazy" class="w-full h-full object-cover" src={item.imageUrl} />
+            <div class="img-container bg-custom-light-gray">
+              <img
+                loading="lazy"
+                class="w-full h-full object-cover"
+                data-src={item.imageUrl}
+              />
             </div>
           ))
         }
