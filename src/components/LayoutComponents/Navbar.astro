@@ -1,7 +1,5 @@
 ---
-import { MenuItemsData } from '@/data/MenuItemsData';
 import CountrySelectionModal from '../modals/CountrySelectionModal';
-import Cookies from 'js-cookie';
 import HamburgerToggle from './HamburgerToggle';
 import NavbarMenu from './NavbarMenu.astro';
 
@@ -81,7 +79,7 @@ transition-all duration-500 ease-in-out overflow-hidden
       <NavbarMenu navbarItems={navbarItems} locale={locale}/>
       <div class="mt-4 xl:hidden">
         <CountrySelectionModal
-          client:idle
+          client:load
           locale={locale}
         />
       </div>
