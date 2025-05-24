@@ -6,6 +6,9 @@ import {
   type SupportedLocale,
 } from '@/utils/translationUtils';
 import { enContactMetadata } from '@/data/dictionaries/en/metadata/enContactMetadata';
+import { plContactMetadata } from '@/data/dictionaries/pl/metadata/plContactMetadata';
+import { roContactMetadata } from '@/data/dictionaries/ro/metadata/roContactMetadata';
+import { deContactMetadata } from '@/data/dictionaries/de/metadata/deContactMetadata';
 
 const { locale } = Astro.params;
 
@@ -35,7 +38,22 @@ const sharedMetadata = {
   },
 };
 
-export { enContactMetadata };
+const baseMetadata = (() => {
+  switch (locale) {
+    case 'pl':
+      return plContactMetadata;
+    case 'ro':
+      return roContactMetadata;
+    case 'de':
+      return deContactMetadata;
+    default:
+      return enContactMetadata;
+  }
+})();
+
+const metadata = {...baseMetadata, sharedMetadata}
+
+export { metadata };
 export async function getStaticPaths() {
   return SupportedLocaleArray.map((supportedLocale) => ({
     params: { locale: supportedLocale },
