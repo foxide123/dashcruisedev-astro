@@ -20,7 +20,7 @@ const { portfolioData } = Astro.props;
 const firstPortfolioElement = portfolioData.portfolioItems[0];
 ---
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if(entry.isIntersecting) {
@@ -35,7 +35,7 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
           obs.unobserve(portfolioContainer)
         }
       })
-    }, { threshold: 0, rootMargin: '0px 0px -50% 0px', root:null})
+    }, {  rootMargin: '0px 0px 100% 0px', root:null})
     const portfolioContainer = document.getElementById("portfolio-container") as HTMLDivElement;
     observer.observe(portfolioContainer);
   })
