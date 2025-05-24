@@ -19,7 +19,27 @@ const { portfolioData } = Astro.props;
 
 const firstPortfolioElement = portfolioData.portfolioItems[0];
 ---
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+          const portfolioContainer = entry.target;
+          const images = portfolioContainer.querySelectorAll("img[data-src]") as NodeListOf<HTMLImageElement>;
+          images.forEach((image) => {
+            if(image.dataset.src){
+              image.src = image.dataset.src;
+            }
+          })
 
+          obs.unobserve(portfolioContainer)
+        }
+      })
+    }, { threshold: 0.1})
+    const portfolioContainer = document.getElementById("portfolio-container") as HTMLDivElement;
+    observer.observe(portfolioContainer);
+  })
+</script>
 <style>
   @media (width >= 64rem) {
     .img-container {
@@ -52,13 +72,13 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
       {portfolioData.description}
     </p>
     {/* Portfolio Container */}
-    <div class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
+    <div id="portfolio-container" class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
       <div class="flex-1 flex flex-col w-full min-h-[600px]">
         <div class="grow-1 img-container">
           <img
           loading="lazy"
             class="w-full h-full object-cover"
-            src={firstPortfolioElement.imageUrl}
+            data-src={firstPortfolioElement.imageUrl}
           />
         </div>
 <!--         <div class="lg:block hidden">
@@ -73,7 +93,7 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
         {
           portfolioData.portfolioItems.slice(1).map((item) => (
             <div class="img-container">
-              <img loading="lazy" class="w-full h-full object-cover" src={item.imageUrl} />
+              <img loading="lazy" class="w-full h-full object-cover" data-src={item.imageUrl} />
             </div>
           ))
         }
