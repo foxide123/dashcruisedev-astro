@@ -42,7 +42,7 @@ const sharedMetadata = {
   },
 };
 
-/* const baseMetadata = (() => {
+const baseMetadata = (() => {
   switch (locale) {
     case 'pl':
       return plAboutMetadata;
@@ -53,17 +53,9 @@ const sharedMetadata = {
     default:
       return enAboutMetadata;
   }
-})(); */
+})();
 
-const baseMetadata = routeComponentMap[safeLocale][safeSlug] as any;
-
-let metadata = {}
-
-if(!baseMetadata){
-  metadata = { ...enAboutMetadata, sharedMetadata }
-}else{
-  metadata = { ...baseMetadata, sharedMetadata }
-}
+const metadata = { ...baseMetadata, sharedMetadata }
 
 export { metadata };
 export const prerender = true;
