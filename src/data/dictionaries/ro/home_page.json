@@ -120,6 +120,25 @@
     "position": "Fondator & CEO",
     "companyName": "Nitra Solutions"
   },
+  "exclusiveData": {
+    "sectioinHighlight": "Lansează cu Impact",
+    "header": "Obține oferta de lansare acum",
+    "text": "Începe următorul tău proiect de design și dezvoltare cu beneficii exclusive pentru prima colaborare. Ofertă limitată, creată special pentru branduri în creștere.",
+    "benefitList": [
+      "Economisește timp cu design profesionist",
+      "Soluții personalizate pentru afacerea ta",
+      "Ofertă exclusivă pentru clienți noi"
+    ],
+    "offerHighlight": "Ofertă Exclusivă<span class=\"text-[#EF7A0E]\"> - disponibilă pentru o perioadă limitată</span>",
+    "interval": "lună",
+    "offerList": [
+      "Crește-ți brandul cu un site personalizat (1–2 pagini)",
+      "Versiune pentru mobil și desktop",
+      "Optimizare SEO (pentru motoarele de căutare)"
+    ],
+    "cta": "Revendică oferta"
+  },
+
   "meeting": {
     "header": "Consultanță gratuită pentru site-ul tău",
     "description": "Programează o întâlnire de 15 minute pentru a discuta cerințele, obiectivele și cum putem aduce viziunea ta la viață.",
