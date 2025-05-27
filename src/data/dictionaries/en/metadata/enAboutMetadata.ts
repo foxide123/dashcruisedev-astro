@@ -23,5 +23,12 @@ export const enAboutMetadata: MetadataProps = {
       title: "Dashcruise - About Us",
       description: "Meet Our Team at Dashcruise",
       image: `${SiteURL}/og-image.png`,
-    }
+    },
+    breadcrumbListItems: [
+      {
+        position: 1,
+        name: "About Us",
+        url: `${SiteURL}/en/about`
+      }
+    ]
 }

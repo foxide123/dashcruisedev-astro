@@ -23,5 +23,12 @@ export const roAboutMetadata: MetadataProps = {
     title: 'Dashcruise – Despre Noi',
     description: 'Cunoaște echipa noastră de la Dashcruise',
     image: `${SiteURL}/og-image.png`,
-  }
+  },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Despre Noi",
+      url: `${SiteURL}/ro/despre`
+    }
+  ]
 }

@@ -23,5 +23,12 @@ export const enContactMetadata: MetadataProps = {
       title: "Dashcruise - Contact Us",
       description: "Web Agency Offering Custom Websites",
       image: `${SiteURL}/og-image.png`,
-    }
+    },
+    breadcrumbListItems: [
+      {
+        position: 1,
+        name: "Contact Us",
+        url: `${SiteURL}/en/contact`
+      }
+    ]
   };

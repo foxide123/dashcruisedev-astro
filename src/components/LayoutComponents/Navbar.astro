@@ -29,15 +29,15 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
   >
     <a
       href="/"
-      class=" 2xl:w-[450px] xl:w-[250px] xl:flex hidden self-center rounded-4xl px-2 h-full justify-center items-center"
+      class="2xl:w-[500px] xl:w-[250px] xl:flex hidden self-center rounded-4xl h-full justify-center items-center"
     >
       <p
-        class="font-semibold text-3xl tracking-[-4%]"
+        class="font-semibold text-3xl tracking-2xl"
       >
-        Dashcruise<span class="text-[#ef7a0e] ml-2"></span>
+        Dashcruise
       </p>
     </a>
-    <div class="text-xl font-semibold tracking-[-0.5%] flex items-center justify-center gap-8 w-full">
+    <div class="text-xl font-semibold tracking-sm flex items-center justify-center gap-8 w-full">
       <NavbarMenu navbarItems={navbarItems} locale={locale}/>
       <CountrySelectionModal
           client:media="(min-width: 1280px)"
@@ -46,10 +46,10 @@ const isHome = pathname === `/${locale}/` || pathname === `/${locale}`;
     </div>
     
     <div
-      class="2xl:w-[450px] xl:w-[250px] xl:flex justify-center items-center scroll-smooth hidden"
+      class="2xl:w-[500px] xl:w-[250px] xl:flex justify-center items-center scroll-smooth hidden"
     >
       <a
-        href="#meeting-section"
+        href="https://dashcruise.com/#meeting_section"
         class="font-bold text-lg text-center bg-carrot-500 border-2 border-carrot-800 w-fit rounded-4xl px-8 py-4 flex justify-center items-center cursor-pointer"
       >
         {cta}

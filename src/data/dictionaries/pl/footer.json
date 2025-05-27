@@ -1,6 +1,9 @@
 {
-    "footer": {
-      "copyright": "Copyright<thinspace></thinspace>@ 2025 Dashcruise.com (poprzednio Dashcruisedev). Wszelkie prawa zastrzeżone"
-    }
+  "footer": {
+    "header": "Tworzymy wyjątkowe podróże cyfrowe i dostosowane rozwiązania, aby wcielić Twoją wizję w życie z łatwością i innowacyjnością.",
+    "contactHeader": "Kontakt",
+    "quicklinksHeader": "Szybkie linki",
+    "resourcesHeader": "Materiały",
+    "copyright": "Copyright<thinspace></thinspace>@ 2025 Dashcruise.com (poprzednio Dashcruisedev). Wszelkie prawa zastrzeżone"
   }
-  
+}

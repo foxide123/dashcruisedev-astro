@@ -23,5 +23,12 @@ export const deAboutMetadata: MetadataProps = {
     title: 'Dashcruise – Über Uns',
     description: 'Lernen Sie unser Team bei Dashcruise kennen',
     image: `${SiteURL}/og-image.png`,
-  }
+  },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Über uns",
+      url: `${SiteURL}/de/uber-uns`
+    }
+  ]
 }

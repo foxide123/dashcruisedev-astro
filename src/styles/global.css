@@ -1,40 +1,53 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-custom-gray: #848080;
-  --color-custom-light-gray: #F7F7F7;
+  --leading-sm: 90%;
+  --leading-md: 105%;
+  --leading-lg: 120%;
+  --leading-xl: 130%;
+  --leading-2xl: 140%;
+  --leading-3xl: 150%;
 
-  --color-magenta-100: #E2B6D3; /* pink lavender */
-  --color-magenta-200: #C671AA; /* sky magenta */
-  --color-magenta-300: #953C78; /* violet (crayola) */
-  --color-magenta-400: #4D1F3D; /* brown chocolate */
+  --tracking-sm: -0.5%;
+  --tracking-md: -1%;
+  --tracking-lg: -2%;
+  --tracking-xl: -3%;
+  --tracking-2xl: -4%;
+
+  --color-custom-gray: #848080;
+  --color-custom-light-gray: #f7f7f7;
+
+  --color-magenta-100: #e2b6d3; /* pink lavender */
+  --color-magenta-200: #c671aa; /* sky magenta */
+  --color-magenta-300: #953c78; /* violet (crayola) */
+  --color-magenta-400: #4d1f3d; /* brown chocolate */
   --color-magenta-500: #050204; /* asphalt */
 
-  --color-blur-500: #F9F9FB4D;
+  --color-blur-500: #f9f9fb4d;
 
   --color-navbar: #333333;
 
-  --color-carrot-50: #FEF3E6;
-  --color-carrot-100: #FDE9D3;
-  --color-carrot-200: #FCD4A6;
-  --color-carrot-300: #FABE7A;
-  --color-carrot-400: #F8A749;
-  --color-carrot-500: #F7931E; /* orange like */
-  --color-carrot-600: #D47408;
-  --color-carrot-700: #A25906;
-  --color-carrot-800: #6C3C04;
+  --color-carrot-50: #fef3e6;
+  --color-carrot-100: #fde9d3;
+  --color-carrot-200: #fcd4a6;
+  --color-carrot-300: #fabe7a;
+  --color-carrot-400: #f8a749;
+  --color-carrot-500: #f7931e; /* orange like */
+  --color-carrot-600: #d47408;
+  --color-carrot-700: #a25906;
+  --color-carrot-800: #6c3c04;
 
-  --color-vampire-400: #D6D6D6;
+  --color-vampire-400: #d6d6d6;
   --color-vampire-500: #545454; /* gray like */
 
   --color-profile_background-orange: #edc676;
   --color-profile_background-beige: #e4bdb6;
   --color-profile_background-blue: #0172a3;
-  --color-profile_border: #E6E8EC;
-  --color-gray_highlight: #6A778B;
+  --color-profile_border: #e6e8ec;
+  --color-gray_highlight: #6a778b;
   --color-gray_highlight_2: #808080;
 
   --leading-medium-header: 1.43;
@@ -47,20 +60,20 @@
 }
 
 @font-face {
-  font-family: "Sora";
-  src: "/fonts/Sora-VariableFont_wghtt.ttf";
+  font-family: 'Sora';
+  src: '/fonts/Sora-VariableFont_wghtt.ttf';
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
-@layer components{
-  .custom-section-padding{
-    @apply lg:py-[120px] py-[80px]
+@layer components {
+  .custom-section-padding {
+    @apply lg:py-[120px] py-[80px];
   }
 
-  .custom-section-width{
-    @apply lg:w-[75vw] w-[85vw] mx-auto
+  .custom-section-width {
+    @apply lg:w-[75vw] w-[85vw] mx-auto;
   }
 }
 
@@ -104,10 +117,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
-/*   overflow-x:hidden; */
+  /*   overflow-x:hidden; */
   font-size: 16px;
   scroll-behavior: smooth;
 }
@@ -116,7 +130,7 @@ body {
   box-sizing: border-box;
 }
 
-.hovered-outline{
+.hovered-outline {
   padding: 10px;
   border: 10px solid orange;
 }
@@ -131,7 +145,6 @@ body {
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
 }
-
 
 :root {
   --radius: 0.625rem;

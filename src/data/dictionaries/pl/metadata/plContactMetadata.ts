@@ -23,5 +23,12 @@ export const plContactMetadata: MetadataProps = {
     title: 'Dashcruise: Skontaktuj się z nami',
     description: 'Agencja internetowa oferująca niestandardowe strony internetowe',
     image: `${SiteURL}/og-image.png`,
-  }
+  },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Skontaktuj się z nami",
+      url: `${SiteURL}/pl/kontakt`
+    }
+  ]
 };

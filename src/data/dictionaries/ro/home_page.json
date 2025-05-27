@@ -1,76 +1,100 @@
 {
-    "hero": {
-     "header": "Site-uri Web",
+  "hero": {
+    "header": "Site-uri Web",
     "header2BeforeHighlight": "CREATE PENTRU BRANDUL",
     "header2Highlight": "BRANDUL",
     "header2AfterHighlight": "TĂU",
-    "description": "Ghidul nostru cuprinzător privind strategiile pentru antreprenori și lideri oferă perspective valoroase și sfaturi practice."
-    },
-    "whyChooseUs": {
+    "description": "Ghidul nostru cuprinzător privind strategiile pentru antreprenori și lideri oferă perspective valoroase și sfaturi practice.",
+    "cta": "Vizualizați Portofoliul"
+  },
+  "numbersSection": {
+    "header1": "Skupiamy się na jakości,",
+    "header2": " utrzymujemy zaufanie klientów",
+    "description": "Jesteśmy dynamiczną agencją cyfrową napędzaną kreatywnością i kodem – tworzymy odważne marki i potężne produkty cyfrowe, które się skalują.",
+    "achievementList": [
+      {
+        "value": "100+",
+        "text": "Zrealizowanych projektów"
+      },
+      {
+        "value": "100%",
+        "text": "Zadowolenie klientów"
+      },
+      {
+        "value": "1+",
+        "text": "Lata doświadczenia"
+      },
+      {
+        "value": "4.9/5",
+        "text": "Średnia ocena"
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "items": [
+      {
+        "icon": "/offer1.svg",
+        "header": "Design web personalizat",
+        "description": "De la concept la interfața finală, creăm experiențe digitale unice care întăresc brandul tău, implică utilizatorii și susțin obiectivele tale de afaceri."
+      },
+      {
+        "icon": "/offer2.svg",
+        "header": "Design și redesign UX/UI",
+        "description": "Creăm interfețe intuitive și performante. Fie că începem de la zero sau optimizăm, livrăm soluții de design axate pe conversie."
+      },
+      {
+        "icon": "/offer3.svg",
+        "header": "Dezvoltare web personalizată",
+        "description": "Construim site-uri scalabile și sigure folosind tehnologii moderne. Realizăm platforme rapide și fiabile adaptate nevoilor tale."
+      },
+      {
+        "icon": "/offer4.svg",
+        "header": "Design web responsive",
+        "description": "Asigurăm experiențe coerente pe toate dispozitivele. Designul nostru adaptiv oferă performanță și atractivitate pe orice ecran."
+      },
+      {
+        "icon": "/offer5.svg",
+        "header": "Optimizare pentru motoarele de căutare",
+        "description": "Oferim servicii SEO complete pentru a crește vizibilitatea și traficul organic. Efectuăm audituri și aplicăm strategii eficiente."
+      }
+    ]
+  },
+  "comparison": {
+    "header": "Site-uri personalizate pentru a-ți crește brandul",
+    "description": "Nu doar un alt șablon lent - ci un site la fel de unic ca tine",
+    "dashcruiseDev": {
+      "title": "Site-urile noastre",
       "items": [
-        {
-          "icon": "/offer1.svg",
-          "header": "Design web personalizat",
-          "description": "De la concept la interfața finală, creăm experiențe digitale unice care întăresc brandul tău, implică utilizatorii și susțin obiectivele tale de afaceri."
-        },
-        {
-          "icon": "/offer2.svg",
-          "header": "Design și redesign UX/UI",
-          "description": "Creăm interfețe intuitive și performante. Fie că începem de la zero sau optimizăm, livrăm soluții de design axate pe conversie."
-        },
-        {
-          "icon": "/offer3.svg",
-          "header": "Dezvoltare web personalizată",
-          "description": "Construim site-uri scalabile și sigure folosind tehnologii moderne. Realizăm platforme rapide și fiabile adaptate nevoilor tale."
-        },
-        {
-          "icon": "/offer4.svg",
-          "header": "Design web responsive",
-          "description": "Asigurăm experiențe coerente pe toate dispozitivele. Designul nostru adaptiv oferă performanță și atractivitate pe orice ecran."
-        },
-        {
-          "icon": "/offer5.svg",
-          "header": "Optimizare pentru motoarele de căutare",
-          "description": "Oferim servicii SEO complete pentru a crește vizibilitatea și traficul organic. Efectuăm audituri și aplicăm strategii eficiente."
-        }
+        "Optimizat pentru Google",
+        "Viteză de încărcare ultra-rapidă",
+        "Securitate sporită",
+        "Unicitate",
+        "Adaptabil la nevoile tale",
+        "Asistență profesionistă"
       ]
     },
-    "comparison": {
-      "header": "Site-uri personalizate pentru a-ți crește brandul",
-      "description": "Nu doar un alt șablon lent - ci un site la fel de unic ca tine",
-      "dashcruiseDev": {
-        "title": "Site-urile noastre",
-        "items": [
-          "Optimizat pentru Google",
-          "Viteză de încărcare ultra-rapidă",
-          "Securitate sporită",
-          "Unicitate",
-          "Adaptabil la nevoile tale",
-          "Asistență profesionistă"
-        ]
-      },
-      "webBuilders": {
-        "title": "Constructori de site-uri",
-        "items": [
-          "SEO slab",
-          "Încet",
-          "Risc de securitate din pluginuri",
-          "Limitat de teme",
-          "Designuri comune",
-          "Suport slab sau inexistent"
-        ]
-      }
-    },
-    "highlight": {
-      "header": "Îți creștem afacerea prin viteză și securitate de neegalat",
-      "description": "Bucură-te de liniște cu protecție non-stop și funcționare fără întreruperi. Cu protecție DoS, criptare SSL și caching inteligent, site-ul tău va fi rapid și sigur."
-    },
-    "portfolio": {
-      "header1": "Prezentăm",
-      "header2": "proiectele noastre",
-      "description": "Expunem proiecte care reflectă experiența noastră în design și dezvoltare, și care ajută clienții să-și îmbunătățească prezența online.",
-      "portfolioItems": [
-        {
+    "webBuilders": {
+      "title": "Constructori de site-uri",
+      "items": [
+        "SEO slab",
+        "Încet",
+        "Risc de securitate din pluginuri",
+        "Limitat de teme",
+        "Designuri comune",
+        "Suport slab sau inexistent"
+      ]
+    }
+  },
+  "highlight": {
+    "header": "Îți creștem afacerea prin viteză și securitate de neegalat",
+    "description": "Bucură-te de liniște cu protecție non-stop și funcționare fără întreruperi. Cu protecție DoS, criptare SSL și caching inteligent, site-ul tău va fi rapid și sigur."
+  },
+  "portfolio": {
+    "header1": "Prezentăm",
+    "header2": "proiectele noastre",
+    "description": "Expunem proiecte care reflectă experiența noastră în design și dezvoltare, și care ajută clienții să-și îmbunătățească prezența online.",
+    "portfolioItems": [
+      {
         "link": "https://voyageblur.com",
         "name": "VoyageBlur Travel Blog",
         "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/23737a89-c028-49be-5574-1085efe6a400/square800x800"
@@ -83,45 +107,52 @@
         "name": "Oasis",
         "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/856fae3c-2f24-4744-717c-3f9585b24400/mobile640x480"
       }
-      ]
-    },
-    "pricing": {
-      "header": "Alege planul perfect pentru tine",
-      "description": "De la freelanceri la afaceri în creștere — găsește soluția potrivită pentru a-ți extinde prezența online"
-    },
-    "meeting": {
-      "header": "Consultanță gratuită pentru site-ul tău",
-      "description": "Programează o întâlnire de 15 minute pentru a discuta cerințele, obiectivele și cum putem aduce viziunea ta la viață.",
-      "cta": "Programează o discuție pentru detalii"
-    },
-    "qa": {
-      "sectionHighlight": "Ai întrebări? Avem răspunsuri!",
-      "header": "Întrebări frecvente",
-           "qaData": [
-        {
-          "question": "Pot să-mi upgradez planul?",
-          "answer": "Desigur! Planurile sunt create special pentru a putea fi extinse pe măsură ce cresc cerințele și proiectul tău."
-        },
-        {
-          "question": "Ce măsuri de securitate oferiți pentru site-ul meu?",
-          "answer": "Acordăm prioritate securității: protecție DDoS, criptare SSL și monitorizare în timp real. Hostingul include backupuri automate și firewall."
-        },
-        {
-          "question": "Ce se întâmplă dacă anulez abonamentul?",
-          "answer": "Dacă anulezi abonamentul, site-ul nu va mai fi activ."
-        },
-        {
-          "question": "Este domeniul și găzduirea incluse în preț?",
-          "answer": "Găzduirea este inclusă. Domeniul este inclus cu excepția cazurilor speciale (de ex. cuvinte-cheie premium). Unele domenii pot avea preț suplimentar."
-        },
-        {
-          "question": "Ce se întâmplă dacă nu sunt mulțumit de site?",
-          "answer": "Dacă nu ești mulțumit, ai la dispoziție 14 zile pentru rambursare (apreciem feedback-ul)."
-        },
-        {
-          "question": "Am întrebări suplimentare",
-          "answer": "Pentru alte întrebări, ne poți contacta pe email: contact@dashcruise.com"
-        }
-      ]
-    }
+    ]
+  },
+  "pricing": {
+    "header": "Alege planul perfect pentru tine",
+    "description": "De la freelanceri la afaceri în creștere — găsește soluția potrivită pentru a-ți extinde prezența online"
+  },
+  "rating": {
+    "header": "Nu au construit doar un site – m-au ajutat să regândesc modul în care îmi prezint afacerea online",
+    "founderImage": "",
+    "founderName": "Erhan Namli",
+    "position": "Fondator & CEO",
+    "companyName": "Nitra Solutions"
+  },
+  "meeting": {
+    "header": "Consultanță gratuită pentru site-ul tău",
+    "description": "Programează o întâlnire de 15 minute pentru a discuta cerințele, obiectivele și cum putem aduce viziunea ta la viață.",
+    "cta": "Programează o discuție pentru detalii"
+  },
+  "qa": {
+    "sectionHighlight": "Ai întrebări? Avem răspunsuri!",
+    "header": "Întrebări frecvente",
+    "qaData": [
+      {
+        "question": "Pot să-mi upgradez planul?",
+        "answer": "Desigur! Planurile sunt create special pentru a putea fi extinse pe măsură ce cresc cerințele și proiectul tău."
+      },
+      {
+        "question": "Ce măsuri de securitate oferiți pentru site-ul meu?",
+        "answer": "Acordăm prioritate securității: protecție DDoS, criptare SSL și monitorizare în timp real. Hostingul include backupuri automate și firewall."
+      },
+      {
+        "question": "Ce se întâmplă dacă anulez abonamentul?",
+        "answer": "Dacă anulezi abonamentul, site-ul nu va mai fi activ."
+      },
+      {
+        "question": "Este domeniul și găzduirea incluse în preț?",
+        "answer": "Găzduirea este inclusă. Domeniul este inclus cu excepția cazurilor speciale (de ex. cuvinte-cheie premium). Unele domenii pot avea preț suplimentar."
+      },
+      {
+        "question": "Ce se întâmplă dacă nu sunt mulțumit de site?",
+        "answer": "Dacă nu ești mulțumit, ai la dispoziție 14 zile pentru rambursare (apreciem feedback-ul)."
+      },
+      {
+        "question": "Am întrebări suplimentare",
+        "answer": "Pentru alte întrebări, ne poți contacta pe email: contact@dashcruise.com"
+      }
+    ]
   }
+}

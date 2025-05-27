@@ -1,5 +1,6 @@
 ---
 type PortfolioItem = {
+  link?: string;
   name: string;
   imageUrl: string;
 };
@@ -62,25 +63,25 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
   <div
     class="custom-section-width text-center h-fit mx-auto"
   >
-    <h1 class="text-[64px] w-full leading-[105%] tracking-[-3%] font-semibold">
+    <h1 class="text-[64px] w-full leading-md tracking-xl font-semibold">
       {portfolioData.header1}
       <span class="font-normal text-[#848080]">{portfolioData.header2}</span>
     </h1>
     <p
-      class="text-[#3E3C3A] mx-auto max-w-[678px] text-base font-normal leading-[150%] tracking-[-0.5%] mt-6 w-full text-center"
+      class="text-[#3E3C3A] mx-auto max-w-[678px] text-base font-normal leading-3xl tracking-sm mt-6 w-full text-center"
     >
       {portfolioData.description}
     </p>
     {/* Portfolio Container */}
     <div id="portfolio-container" class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
       <div class="flex-1 flex flex-col w-full min-h-[600px]">
-        <div class="grow-1 img-container">
+        <a target="_blank" href={firstPortfolioElement.link} class="grow-1 img-container">
           <img
           loading="lazy"
             class="w-full h-full object-cover"
             data-src={firstPortfolioElement.imageUrl}
           />
-        </div>
+        </a>
 <!--         <div class="lg:block hidden">
           <div class="flex">
             <p>2025</p>

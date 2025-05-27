@@ -25,4 +25,11 @@ export const roBlogMetadata: MetadataProps = {
     description: 'Blog despre dezvoltare web și afaceri',
     image: `${SiteURL}/og-image.png`,
   },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Blog",
+      url: `${SiteURL}/ro/blog`
+    }
+  ]
 };

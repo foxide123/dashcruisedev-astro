@@ -22,5 +22,12 @@ export const deContactMetadata: MetadataProps = {
     title: 'Dashcruise: Kontaktieren Sie uns',
     description: 'Webagentur für maßgeschneiderte Webseiten',
     image: `${SiteURL}/og-image.png`,
-  }
+  },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Kontaktieren Sie uns",
+      url: `${SiteURL}/de/kontakt`
+    }
+  ]
 };

@@ -1,5 +1,9 @@
 {
-    "footer": {
-        "copyright": "Copyright<thinspace></thinspace>@ 2025 Dashcruise.com (anterior Dashcruisedev). Toate drepturile rezervate"
-    }
+  "footer": {
+    "header": "Creăm călătorii digitale unice și soluții personalizate pentru a vă aduce viziunea la viață cu ușurință și inovație.",
+    "contactHeader": "Kontakt",
+    "quicklinksHeader": "Linkuri rapide",
+    "resourcesHeader": "Resurse",
+    "copyright": "Copyright<thinspace></thinspace>@ 2025 Dashcruise.com (anterior Dashcruisedev). Toate drepturile rezervate"
+  }
 }
