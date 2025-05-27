@@ -65,21 +65,19 @@ type offerItem = {
         >
         </div>
         <h3
-          class="text-[#EF7A0E] text-lg font-normal leading-[150%] tracking-[-0.5%]"
+          class="text-[#EF7A0E] text-lg font-normal leading-3xl tracking-sm"
         >
-          Why Choose Us
+          {whyChooseUsData.sectionHighlight}
         </h3>
         <h2
-          class="mt-2 font-semibold text-[64px] leading-[105%] tracking-[-3%]"
+          class="mt-2 font-semibold text-[64px] leading-md tracking-xl"
         >
-          Explore Our Full-Spectrum Digital Expertise
+          {whyChooseUsData.header}
         </h2>
         <p
-          class="mt-6 text-[#D9D4D2] text-base font-normal leading-[150%] tracking-[-0.5%]"
+          class="mt-6 text-[#D9D4D2] text-base font-normal leading-3xl tracking-sm"
         >
-          We’re a full-service agency blending strategy, design, and development
-          to create custom web experiences that scale and drive growth. Our work
-          exceeds goals and delivers real results.
+         {whyChooseUsData.description}
         </p>
         <div id="img-container" class="lg:block hidden mt-15 relative w-fit">
           <img
@@ -107,10 +105,10 @@ type offerItem = {
               <div class="flex items-center justify-center w-[85px] h-[85px] bg-[#EF7A0E]/10 backdrop-blur-md rounded-full">
                 <img loading="lazy" src={item.icon} />
               </div>
-              <h3 class="mt-6 font-normal text-[32px] leading-[130%] tracking-[-2%]">
+              <h3 class="mt-6 font-normal text-[32px] leading-xl tracking-lg">
                 {item.header}
               </h3>
-              <p class="mt-4 text-[#D9D4D2] font-normal text-base leading-[150%] tracking-[-0.5%]">
+              <p class="mt-4 text-[#D9D4D2] font-normal text-base leading-3xl tracking-sm">
                 {item.description}
               </p>
             </div>

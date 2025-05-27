@@ -1,5 +1,7 @@
 ---
 import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
+
+const { numbersData } = Astro.props;
 ---
 
 <style>
@@ -19,7 +21,7 @@ import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
     text-align: center;
   }
   @media (width <=1023px) {
-    .divider{
+    .divider {
       display: none;
     }
   }
@@ -32,41 +34,35 @@ import NumbersScrollEffect from '@/components/HomePage/NumbersScrollEffect';
     grid-column: span 1 / span 1;
   }
 </style>
-<section class="caret-transparent custom-section-padding flex justify-center items-center bg-white text-black">
+<section
+  class="caret-transparent custom-section-padding flex justify-center items-center bg-white text-black"
+>
   <div class="custom-section-width mx-auto">
     <div class="flex flex-col">
       <div class="lg:flex-row lg:text-start text-center flex-col flex">
-        <h3 class="font-semibold text-5xl leading-[120%] tracking-[-4%]">
-          Focus on quality, <span class="text-[#848080]"
-            >we maintain customer trust</span>
+        <h3 class="font-semibold text-5xl leading-lg tracking-2xl">
+          {numbersData.header1}
+          <span class="text-[#848080]">{numbersData.header2}</span>
         </h3>
         <p
-          class="mt-2 text-[#848080] text-[28px] font-normal leading-[120%] tracking-[-3%]"
+          class="mt-2 text-[#848080] text-[28px] font-normal leading-lg tracking-xl"
         >
-          We are a dynamic digital agency driven by creativity and code -
-          crafting bold brands and powerful digital products that scale.
+          {numbersData.description}
         </p>
       </div>
-      <div id="numbers-row" class="lg:grid-cols-7 lg:items-center grid-cols-2 gap-15 mt-15 grid w-full mx-auto items-start">
-        <div class="flex flex-col items-center">
-          <h3>100+</h3>
-          <p>Projects Delivered</p>
-        </div>
-        <div class="divider"></div>
-        <div class="flex flex-col items-center">
-          <h3>98%</h3>
-          <p>Client Satisfaction Rate</p>
-        </div>
-        <div class="divider"></div>
-        <div class="flex flex-col items-center">
-          <h3>3+</h3>
-          <p>Years of Experience</p>
-        </div>
-        <div class="divider col-span-1"></div>
-        <div class="flex flex-col items-center">
-          <h3>4.9/5</h3>
-          <p>Average Rating</p>
-        </div>
+      <div
+        id="numbers-row"
+        class="lg:grid-cols-7 lg:items-center grid-cols-2 gap-15 mt-15 grid w-full mx-auto items-start"
+      >
+        {
+          numbersData.achievementList.map((item: any) => (
+              <div class="flex flex-col items-center">
+                <h3>{item.value}</h3>
+                <p>{item.text}</p>
+              </div>
+              <div class="divider last:hidden" />
+          ))
+        }
       </div>
     </div>
   </div>

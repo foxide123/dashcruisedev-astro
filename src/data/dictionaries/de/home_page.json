@@ -1,10 +1,34 @@
 {
   "hero": {
-     "header": "Websites",
+    "header": "Websites",
     "header2BeforeHighlight": "FÜR",
     "header2Highlight": "IHRE",
     "header2AfterHighlight": "MARKE GEMACHT",
-    "description": "Unser umfassender Leitfaden mit Strategien für Unternehmer und Führungskräfte bietet wertvolle Einblicke und praxisnahe Ratschläge."
+    "description": "Unser umfassender Leitfaden mit Strategien für Unternehmer und Führungskräfte bietet wertvolle Einblicke und praxisnahe Ratschläge.",
+    "cta": "Portfolio Ansehen"
+  },
+  "numbersSection": {
+    "header1": "Fokus auf Qualität,",
+    "header2": " wir erhalten das Vertrauen der Kunden",
+    "description": "Wir sind eine dynamische Digitalagentur, die von Kreativität und Code angetrieben wird – wir entwickeln mutige Marken und leistungsstarke digitale Produkte, die skalieren.",
+    "achievementList": [
+      {
+        "value": "100+",
+        "text": "Abgeschlossene Projekte"
+      },
+      {
+        "value": "100%",
+        "text": "Kundenzufriedenheit"
+      },
+      {
+        "value": "1+",
+        "text": "Jahre Erfahrung"
+      },
+      {
+        "value": "4.9/5",
+        "text": "Durchschnittliche Bewertung"
+      }
+    ]
   },
   "whyChooseUs": {
     "items": [
@@ -76,6 +100,7 @@
         "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/23737a89-c028-49be-5574-1085efe6a400/square800x800"
       },
       {
+        "link": "https://nitra-solutions.pages.dev",
         "name": "Nitra Solutions",
         "imageUrl": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/d8b0ed39-4557-49ec-ef44-ff565ba09b00/mobile640x480"
       },
@@ -88,6 +113,13 @@
   "pricing": {
     "header": "Wähle den perfekten Plan für dich",
     "description": "Von Nebenprojekten bis zu wachsenden Unternehmen — finde die richtigen Werkzeuge, um deine Online-Präsenz auszubauen"
+  },
+  "rating": {
+    "header": "Sie haben nicht einfach nur eine Website erstellt – sie haben mir geholfen, die Art und Weise zu überdenken, wie ich mein Geschäft online präsentiere",
+    "founderImage": "",
+    "founderName": "Erhan Namli",
+    "position": "Gründer & Geschäftsführer",
+    "companyName": "Nitra Solutions"
   },
   "meeting": {
     "header": "Kostenlose Website-Beratung",

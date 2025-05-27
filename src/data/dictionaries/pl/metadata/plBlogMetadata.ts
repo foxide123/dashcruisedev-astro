@@ -25,4 +25,11 @@ export const plBlogMetadata: MetadataProps = {
     description: 'Blog o tworzeniu stron internetowych i biznesie',
     image: `${SiteURL}/og-image.png`,
   },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Blog",
+      url: `${SiteURL}/pl/blog`
+    }
+  ]
 };

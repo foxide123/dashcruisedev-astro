@@ -7,6 +7,9 @@ import ExclusivePlan from '@/components/HomePage/Pricing/ExclusivePlan.astro';
 
 const { heroData, commonData, prices } =
   Astro.props;
+
+const formattedHeader = heroData.header.split("\n");
+console.log("FOrmatted header", formattedHeader);
 ---
 
 <style>
@@ -154,25 +157,29 @@ style="background-image:
     class="custom-section-width px-2 z-10 relative mx-auto flex"
   >
     <div
-      class={`lg:w-fit lg:top-[50%] top-[55%] w-full mx-auto text-center absolute left-[50%] transform translate-x-[-50%] translate-y-[-50%]`}
+      class={`lg:w-fit lg:top-[52%] top-[55%] w-full mx-auto text-center absolute left-[50%] transform translate-x-[-50%] translate-y-[-50%]`}
     >
       <h1
         style="font-family: 'Sora', sans-serif; text-shadow: 0 0 30px rgba(239, 106, 14, 0.6);"
-        class="lg:text-[160px] lg:leading-[90%] lg:tracking-[-4%] tracking-[-3%] leading-[105%] text-[70px] xl:whitespace-nowrap space-y-[72px] text-white font-semibold"
+        class="lg:text-[160px] lg:leading-[50%] lg:tracking-2xl tracking-xl leading-md text-[70px] xl:whitespace-nowrap space-y-[72px] text-white font-semibold"
       >
-        {heroData.header}
+        {formattedHeader.map((item:any) => (
+          <div>{item}</div>
+        ))}
       </h1>
       <h2
-        class="lg:text-[46px] lg:leading-[120%] lg:tracking-[-3%] tracking-[-2%] leading-[130%] text-[32px] mt-6 text-white space-y-[72px] font-normal"
+        class="lg:text-[46px] lg:leading-lg lg:tracking-xl tracking-lg leading-xl text-[32px] mt-12 text-white space-y-[72px] font-normal"
       >
         {heroData.header2BeforeHighlight}<span class="text-gradient orange-gradient"> {heroData.header2Highlight} </span>{heroData.header2AfterHighlight}
       </h2>
       <p
-        class="mx-auto text-center mt-6 text-[#D9D4D2] font-normal text-base leading-[150%] space-y-4 max-w-[80%]"
+        class="mx-auto text-center mt-6 text-[#D9D4D2] font-normal text-base leading-3xl space-y-4 max-w-[80%]"
       >
        {heroData.description}</p>
-    <a href="#portfolio" class="orange-gradient mx-auto block cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 duration-500 ease-in-out backdrop-blur-[10px] mt-10 border border-white/10 font-semibold text-xl leading-[140%] py-[14px] px-[32px] rounded-[8px] space-y-4 tracking-[-1%] w-fit text-white">View Portfolio</a> 
-   <!--  <a href="#portfolio" style="background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1) 0%, rgba(239, 113, 14, 0.12) 100%);" class="mx-auto block cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 duration-500 ease-in-out backdrop-blur-[10px] mt-10 border border-white/10 font-semibold text-xl leading-[140%] py-[14px] px-[32px] rounded-[8px] space-y-4 tracking-[-1%] w-fit text-white">View Portfolio</a> -->
+    <a href="#portfolio" class="orange-gradient mx-auto block cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 duration-500 ease-in-out backdrop-blur-[10px] mt-10 border border-white/10 font-semibold text-xl leading-2xl py-[14px] px-[32px] rounded-[8px] space-y-4 tracking-md w-fit text-white">
+      {heroData.cta}
+    </a> 
+   <!--  <a href="#portfolio" style="background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1) 0%, rgba(239, 113, 14, 0.12) 100%);" class="mx-auto block cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 duration-500 ease-in-out backdrop-blur-[10px] mt-10 border border-white/10 font-semibold text-xl leading-2xl py-[14px] px-[32px] rounded-[8px] space-y-4 tracking-md w-fit text-white">View Portfolio</a> -->
     </div>
   </div>
 </section>

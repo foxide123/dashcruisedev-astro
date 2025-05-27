@@ -26,17 +26,17 @@ const heroData = homeData['hero'];
   </a>
   <div class="w-screen flex flex-col justify-center">
     <HeroSection prices={prices} heroData={heroData} commonData={commonData} />
-    <NumbersSection />
+    <NumbersSection numbersData={homeData.numbersSection}/>
     <WhyChooseUsSection whyChooseUsData={homeData.whyChooseUs} />
     <PortfolioSection portfolioData={homeData.portfolio} />
     <ComparisonSection comparisonData={homeData.comparison} />
-    <RatingSection />
+    <RatingSection ratingData={homeData.rating}/>
     <!-- <HighlightSection
       highlightData={homeData.highlight}
       lg_screen_width={lg_screen_width}
       default_screen_width={default_screen_width}
     /> -->
-    <ExclusiveOffer/>
+    <ExclusiveOffer exclusiveData={homeData.exclusiveData}/>
     <ContactSection
       contactUsData={commonData.contactUs}
       contactFormData={commonData.contactForm}

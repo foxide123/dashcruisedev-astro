@@ -1,12 +1,39 @@
 {
   "hero": {
-    "header": "Strony Internetowe",
+    "header": "Strony \n Internetowe",
     "header2BeforeHighlight": "Stworzone Dla",
     "header2Highlight": "Twojej",
     "header2AfterHighlight": "Marki",
-    "description": "Nasz kompleksowy przewodnik po strategiach dla przedsiębiorców i liderów oferuje cenne spostrzeżenia oraz praktyczne porady."
+    "description": "Nasz kompleksowy przewodnik po strategiach dla przedsiębiorców i liderów oferuje cenne spostrzeżenia oraz praktyczne porady.",
+    "cta": "Zobacz Portfolio"
+  },
+  "numbersSection": {
+    "header1": "Skupiamy się na jakości,",
+    "header2": " utrzymujemy zaufanie klientów",
+    "description": "Jesteśmy dynamiczną agencją cyfrową napędzaną kreatywnością i kodem – tworzymy odważne marki i potężne produkty cyfrowe, które się skalują.",
+    "achievementList": [
+      {
+        "value": "100+",
+        "text": "Zrealizowanych projektów"
+      },
+      {
+        "value": "100%",
+        "text": "Zadowolenie klientów"
+      },
+      {
+        "value": "1+",
+        "text": "Lata doświadczenia"
+      },
+      {
+        "value": "4.9/5",
+        "text": "Średnia ocena"
+      }
+    ]
   },
   "whyChooseUs": {
+    "sectionHighlight": "Dlaczego Dashcruise",
+    "header": "Odkryj naszą wszechstronną wiedzę specjalistyczną w zakresie rozwiązań cyfrowych",
+    "description": "Jesteśmy agencją oferującą pełen zakres usług, łączącą strategię, projektowanie i rozwój, aby tworzyć niestandardowe doświadczenia internetowe, które skalują się i napędzają wzrost. Nasza praca przekracza cele i przynosi realne rezultaty.",
     "items": [
       {
         "icon": "/offer1.svg",
@@ -89,6 +116,31 @@
     "header": "Wybierz idealny plan dla siebie",
     "description": "Od małych projektów po rozwijające się firmy — znajdź odpowiednie narzędzia do rozwoju online"
   },
+  "rating": {
+    "header": "Nie tylko <span class=\"text-custom-gray font-normal\">stworzyli stronę internetową – </span> pomogli mi <span class=\"text-custom-gray font-normal\">przemyśleć, jak</span> prezentuję swoją firmę <span class=\"text-custom-gray font-normal\">w</span> internecie",
+    "founderImage": "",
+    "founderName": "Erhan Namli",
+    "position": "Założyciel i Prezes",
+    "companyName": "Nitra Solutions"
+  },
+  "exclusiveData": {
+    "sectionHighlight": "Zacznij z Impetem",
+    "header": "Limitowana Oferta",
+    "text": "Rozpocznij swój kolejny projekt projektowy i deweloperski z ekskluzywnymi korzyściami dla nowych klientów. Oferta limitowana, dopasowana do rozwijających się marek.",
+    "benefitList": [
+      "Oszczędzaj czas dzięki projektowaniu przez ekspertów",
+      "Rozwiązania dopasowane do Twojej firmy",
+      "Ekskluzywna oferta dla nowych klientów"
+    ],
+    "offerHighlight": "Ekskluzywna oferta<span class=\"text-[#EF7A0E]\"> - ograniczona czasowo</span>",
+    "interval": "miesiąc",
+    "offerList": [
+      "Wzmocnij swoją markę dzięki spersonalizowanej stronie (1–2 strony)",
+      "Wersja mobilna i na komputer",
+      "Optymalizacja pod kątem wyszukiwarek (SEO)"
+    ],
+    "cta": "Skorzystaj z Oferty"
+  },
   "meeting": {
     "header": "Darmowa konsultacja strony internetowej",
     "description": "Umów się na 15-minutową rozmowę, aby omówić potrzeby, cele i jak możemy zrealizować Twoją wizję.",
@@ -97,31 +149,31 @@
   "qa": {
     "sectionHighlight": "Masz pytania? Mamy odpowiedzi!",
     "header": "Najczęściej zadawane pytania",
-          "qaData": [
-        {
-          "question": "Czy mogę zaktualizować swój plan?",
-          "answer": "Oczywiście! Właśnie po to je stworzyliśmy – abyś mógł go dostosować do rosnących potrzeb."
-        },
-        {
-          "question": "Jakie środki bezpieczeństwa zapewniacie mojej stronie?",
-          "answer": "Priorytetem jest dla nas bezpieczeństwo: ochrona DDoS, szyfrowanie SSL oraz monitorowanie w czasie rzeczywistym. Hosting obejmuje automatyczne kopie zapasowe i ochronę zaporą ogniową."
-        },
-        {
-          "question": "Co się stanie po anulowaniu subskrypcji?",
-          "answer": "Po anulowaniu subskrypcji strona przestanie być aktywna."
-        },
-        {
-          "question": "Czy domena i hosting są wliczone w cenę?",
-          "answer": "Hosting jest wliczony w plan. Domena również, chyba że zawiera wartościowe słowa kluczowe – wówczas może wymagać dodatkowej opłaty."
-        },
-        {
-          "question": "Co jeśli nie będę zadowolony z efektu?",
-          "answer": "Jeśli nie jesteś zadowolony, przysługuje Ci 14 dni na zwrot pieniędzy (chociaż cenimy Twoją opinię)."
-        },
-        {
-          "question": "Mam więcej pytań",
-          "answer": "W razie dalszych pytań możesz napisać do nas: contact@dashcruise.com"
-        }
-      ]
+    "qaData": [
+      {
+        "question": "Czy mogę zaktualizować swój plan?",
+        "answer": "Oczywiście! Właśnie po to je stworzyliśmy – abyś mógł go dostosować do rosnących potrzeb."
+      },
+      {
+        "question": "Jakie środki bezpieczeństwa zapewniacie mojej stronie?",
+        "answer": "Priorytetem jest dla nas bezpieczeństwo: ochrona DDoS, szyfrowanie SSL oraz monitorowanie w czasie rzeczywistym. Hosting obejmuje automatyczne kopie zapasowe i ochronę zaporą ogniową."
+      },
+      {
+        "question": "Co się stanie po anulowaniu subskrypcji?",
+        "answer": "Po anulowaniu subskrypcji strona przestanie być aktywna."
+      },
+      {
+        "question": "Czy domena i hosting są wliczone w cenę?",
+        "answer": "Hosting jest wliczony w plan. Domena również, chyba że zawiera wartościowe słowa kluczowe – wówczas może wymagać dodatkowej opłaty."
+      },
+      {
+        "question": "Co jeśli nie będę zadowolony z efektu?",
+        "answer": "Jeśli nie jesteś zadowolony, przysługuje Ci 14 dni na zwrot pieniędzy (chociaż cenimy Twoją opinię)."
+      },
+      {
+        "question": "Mam więcej pytań",
+        "answer": "W razie dalszych pytań możesz napisać do nas: contact@dashcruise.com"
+      }
+    ]
   }
 }

@@ -25,4 +25,11 @@ export const enBlogMetadata: MetadataProps = {
     description: 'Blog about web and business development',
     image: `${SiteURL}/og-image.png`,
   },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Blog",
+      url: `${SiteURL}/en/blog`
+    }
+  ]
 };

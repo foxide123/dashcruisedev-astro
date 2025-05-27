@@ -14,10 +14,9 @@ export default function XIcon({
   }
 
   const iconWidth = iconSizeMap[size] ?? 24;
-
   
 
   return (
-    <XCircleIcon className={`mr-5 ${color} w-[${iconWidth}px]`} />
+    <XCircleIcon className={`mr-5 ${color} w-[${iconWidth}px]`}/>
   )
 }

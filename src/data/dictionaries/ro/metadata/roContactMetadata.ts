@@ -23,6 +23,13 @@ export const roContactMetadata: MetadataProps = {
     title: 'Dashcruise: Contactează-ne',
     description: 'Agenție web care oferă site-uri personalizate',
     image: `${SiteURL}/og-image.png`,
-  }
+  },
+  breadcrumbListItems: [
+    {
+      position: 1,
+      name: "Contactaţi-ne",
+      url: `${SiteURL}/ro/contact`
+    }
+  ]
 };
 

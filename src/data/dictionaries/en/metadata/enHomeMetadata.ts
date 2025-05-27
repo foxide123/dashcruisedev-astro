@@ -16,7 +16,7 @@ export const enHomeMetadata: MetadataProps = {
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL(SiteURL),
   alternates: {
-    canonical: '/',
+    canonical: '/en',
     languages: {
       en: '/en',
       de: '/de',
@@ -31,5 +31,5 @@ export const enHomeMetadata: MetadataProps = {
     description:
       'Web development agency offering multilingual, blazing-fast websites tailored to your brand',
     image: `${SiteURL}/og-image.png`,
-  },
+  }
 };

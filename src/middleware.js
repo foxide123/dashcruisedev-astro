@@ -7,15 +7,12 @@ const defaultLocale = 'en'
 
 
 export const onRequest = defineMiddleware(async (ctx, next) => {
-  const isBot = /(bot|crawl|spider|slurp|bing|duckduckgo|baiduspider|yandex)/i.test(
-    ctx.request.headers.get('user-agent') || ''
-  );
   console.log("middleware loaded")
     const {pathname} = ctx.url;
 
   const hasLocale = locales.some((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`));
 
-  if(!hasLocale && !isBot){
+  if(!hasLocale){
     const newPath = `/${defaultLocale}${pathname}`;
     const url = new URL(newPath, ctx.url);
     return ctx.redirect(url, 301);

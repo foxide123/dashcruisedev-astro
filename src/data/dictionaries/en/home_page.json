@@ -4,9 +4,36 @@
     "header2BeforeHighlight": "Made For",
     "header2Highlight": "Your",
     "header2AfterHighlight": "Brand",
-    "description": "Our comprehensive guide to strategies for entrepreneurs and leaders offers valuable insights, practical advice."
+    "description": "Our comprehensive guide to strategies for entrepreneurs and leaders offers valuable insights, practical advice.",
+    "cta": "View Portfolio"
+  },
+  "numbersSection": {
+    "header1": "Focus on quality,",
+    "header2": " we maintain customer trust",
+    "description": "We are a dynamic digital agency driven by creativity and code - crafting bold brands and powerful digital products that scale.",
+    "achievementList": [
+      {
+        "value": "100+",
+        "text": "Projects Delivered"
+      },
+      {
+        "value": "100%",
+        "text": "Client Satisfaction"
+      },
+      {
+        "value": "1+",
+        "text": "Years of Experience"
+      },
+      {
+        "value": "4.9/5",
+        "text": "Average Rating"
+      }
+    ]
   },
   "whyChooseUs": {
+    "sectionHighlight": "Why Choose Us",
+    "header": "Explore Our Full-Spectrum Digital Expertise",
+    "description": "We’re a full-service agency blending strategy, design, and development to create custom web experiences that scale and drive growth. Our work exceeds goals and delivers real results. ",
     "items": [
       {
         "icon": "/offer1.svg",
@@ -88,6 +115,31 @@
   "pricing": {
     "header": "Choose the Plan that's Perfect for You",
     "description": "From side hustlers to scaling businesses — find the right tools to grow your online presence"
+  },
+  "rating": {
+    "header": "They didn't just<span class=\"text-custom-gray font-normal\"> build a website -</span> they helped me rethink how I present <span class=\"text-custom-gray font-normal\">my business online</span>",
+    "founderImage": "",
+    "founderName": "Erhan Namli",
+    "position": "Founder & CEO",
+    "companyName": "Nitra Solutions"
+  },
+  "exclusiveData": {
+    "sectioinHighlight": "Launch with Impact",
+    "header": "Get Your Launch Offer Now",
+    "text": "Kickstart your next design & development project with exclusive first-time benefits. Limited-time deal tailored for growing brands. ",
+    "benefitList": [
+      "Save time with expert design",
+      "Tailored solutions for your business",
+      "Exclusive offer for new clients"
+    ],
+    "offerHighlight": "Exclusive Limited<span class=\"text-[#EF7A0E]\"> - Time Deal</span>",
+    "interval": "month",
+    "offerList": [
+      "Boost Your Brand with a Custom Site (1-2 Pages)",
+      "Mobile and Desktop Version",
+      "Search Engine Optimization (SEO)"
+    ],
+    "cta": "Claim My Offer"
   },
   "meeting": {
     "header": "Free Website Consultation",

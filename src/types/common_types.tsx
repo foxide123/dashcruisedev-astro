@@ -16,5 +16,9 @@ export type NewsletterDataProps = {
 };
 
 export type FooterDataProps = {
+  header: string;
+  contactHeader: string;
+  quicklinksHeader: string;
+  resourcesHeader: string;
   copyright: string;
 };

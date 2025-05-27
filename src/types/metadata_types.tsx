@@ -24,3 +24,10 @@ export type PreloadImageProps = {
   remoteImages?: ImageProps[];
   localImages?: ImageProps[];
 };
+
+// JSON LD
+export type BreadcrumbListItem = {
+  position: number,
+  name: string;
+  url: string;
+}

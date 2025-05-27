@@ -24,23 +24,60 @@ const {
 ---
 
 <div
-style="background-image: 
+  style="background-image: 
     linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 80px 80px;"
-  class="relative w-screen pt-10 pb-[58px] bg-black flex flex-col justify-center items-center overflow-hidden"
+  class="caret-transparent relative w-screen pt-10 pb-[58px] bg-black flex flex-col justify-center items-center overflow-hidden"
 >
-<div
-style="background:linear-gradient(96deg, #EF6F0E 4.35%, #EF3A0E 127.45%); filter:blur(700px)"
-class="w-[610px] h-[610px] absolute top-0 right-0 rounded-full border-2 border-green-500 opacity-25"></div>
+  <div
+    style="background:linear-gradient(96deg, #EF6F0E 4.35%, #EF3A0E 127.45%); filter:blur(700px)"
+    class="w-[610px] h-[610px] absolute top-0 right-0 rounded-full border-2 border-green-500 opacity-25"
+  >
+  </div>
   <div class={`z-10 ${lg_screen_width} ${default_screen_width}`}>
-    <Newsletter locale={locale ?? 'en'} newsletterData={newsletterData} client:visible/>
-    <div class="mt-10 flex justify-end">
-      <SocialIcons client:visible/>
-    </div>
-    <p
-      class="text-white mt-10"
-      set:html={footerData.copyright}
+    <Newsletter
+      locale={locale ?? 'en'}
+      newsletterData={newsletterData}
+      client:visible
     />
+    <div class="lg:flex-row flex-col mt-10 flex items-start text-white lg:gap-[80px] gap-10">
+      <div class="flex flex-col">
+        <SocialIcons client:visible />
+        <p class="mt-8 max-w-[380px]">
+          { footerData.header }
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="font-semibold text-2xl leading-3xl">
+         { footerData.contactHeader }
+        </h3>
+        <div class="mt-5 flex flex-col gap-[14px]">
+          <div class="flex items-center"><img width={24} height={24} src="/ic_sharp-phone.svg"/> <p class="ml-2">+45 52720387</p></div>
+          <div class="flex items-center"><img width={24} height={24} src="/mail-icon.svg"/> <p class="ml-2">contact@dashcruise.com</p></div>
+          <div class="flex items-center"><img width={24} height={24} src="/location-icon.svg"/> <p class="ml-2">Kollegievaenget 5/B117, 8700 Horsens, Denmark</p></div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="font-semibold lg:text-2xl text-lg leading-3xl">{ footerData.quicklinksHeader }</h3>
+        <ul class="lg:text-base text-sm leading-3xl tracking-sm mt-5 flex flex-col gap-[14px]">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="font-semibold lg:text-2xl text-lg leading-3xl">{ footerData.resourcesHeader }</h3>
+        <div class="lg:text-base text-sm leading-3xl tracking-sm mt-5 flex flex-col gap-[14px]">
+          <p>Blog</p>
+          <p>Testimonials</p>
+          <a href="/en/#qa_section">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <h2 class="font-semibold lg:text-[160px] text-[64px] lg:leading-sm leading-md lg:tracking-2xl tracking-xl text-white mt-[35px] mb-[32px]">Dashcruise</h2>
+    <hr/>
+    <p class="text-white mt-10" set:html={footerData.copyright} />
   </div>
 </div>
