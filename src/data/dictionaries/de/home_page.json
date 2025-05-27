@@ -121,6 +121,24 @@
     "position": "Gründer & Geschäftsführer",
     "companyName": "Nitra Solutions"
   },
+  "exclusiveData": {
+    "sectioinHighlight": "Starten mit Wirkung",
+    "header": "Sichern Sie sich jetzt Ihr Startangebot",
+    "text": "Starten Sie Ihr nächstes Design- und Entwicklungsprojekt mit exklusiven Vorteilen für Erstkunden. Zeitlich begrenztes Angebot für wachsende Marken.",
+    "benefitList": [
+      "Zeit sparen mit professionellem Design",
+      "Maßgeschneiderte Lösungen für Ihr Unternehmen",
+      "Exklusives Angebot für neue Kunden"
+    ],
+    "offerHighlight": "Exklusives<span class=\"text-[#EF7A0E]\"> zeitlich begrenztes Angebot</span>",
+    "interval": "Monat",
+    "offerList": [
+      "Stärken Sie Ihre Marke mit einer individuellen Website (1–2 Seiten)",
+      "Mobile und Desktop-Version",
+      "Suchmaschinenoptimierung (SEO)"
+    ],
+    "cta": "Angebot sichern"
+  },
   "meeting": {
     "header": "Kostenlose Website-Beratung",
     "description": "Buche ein 15-minütiges Gespräch, um deine Anforderungen, Ziele und unsere Möglichkeiten zur Umsetzung deiner Vision zu besprechen.",
