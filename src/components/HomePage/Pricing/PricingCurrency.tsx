@@ -25,7 +25,7 @@ const getPriceData = (pricesArray: StripePriceSimplified[],lookupKey: string) =>
   (price: StripePriceSimplified) =>
     price.lookupKey === lookupKey);
 
-export default function PricingCurrency({ prices, lookupKey }: { prices:StripePriceSimplified[], lookupKey: string }) {
+export default function PricingCurrency({ prices, lookupKey, iteration }: { prices:StripePriceSimplified[], lookupKey: string, iteration: string }) {
   const [mounted, setMounted] = useState(false);
   const [currency, setCurrency] = useState<SupportedCurrency>('usd');
   const [priceData, setPriceData] = useState<any>(null);
@@ -54,7 +54,7 @@ export default function PricingCurrency({ prices, lookupKey }: { prices:StripePr
             {priceData?.unitAmount / 100}
           </span>
           <span className="text-2xl space-y-4 font-normal">
-            &thinsp;/&thinsp;Month
+            &thinsp;/&thinsp;{iteration}
           </span>
         </>
         ) : <span></span>

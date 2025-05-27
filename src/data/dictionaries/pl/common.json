@@ -16,7 +16,7 @@
       "header": "Ekskluzywny Plan",
       "lookupKey": "startup_monthly",
       "description": "Dostęp do pełnego zestawu zaawansowanych funkcji",
-      "interval": "miesiąc",
+      "interval": "Miesiąc",
       "features": ["2 Strony w Zestawie", "Wzmocnij Markę Dzięki Spersonalizowanej Stronie", "Wersja Mobilna i Desktopowa", "Optymalizacja SEO", "Hosting, Domeny i E-mail Firmowy"],
       "cta": "Dowiedz się więcej"
     },
@@ -57,7 +57,7 @@
           }
         ],
         "extraPagesHeader": "Potrzebujesz Więcej Stron?",
-        "iteration": "miesiąc",
+        "iteration": "Miesiąc",
         "extraPagesDescription": "za dodatkową stronę"
       },
       {
@@ -96,7 +96,7 @@
           }
         ],
         "extraPagesHeader": "Potrzebujesz Więcej Stron?",
-        "iteration": "miesiąc",
+        "iteration": "Miesiąc",
         "extraPagesDescription": "za dodatkową stronę"
       },
       {
@@ -122,7 +122,7 @@
           }
         ],
         "extraPagesHeader": "Potrzebujesz więcej stron?",
-        "iteration": "month",
+        "iteration": "Miesiąc",
         "extraPagesDescription": "za dodatkową stronę"
       }
       
