@@ -10,9 +10,12 @@ export const onRequest = defineMiddleware(async (ctx, next) => {
   console.log("middleware loaded")
     const {pathname} = ctx.url;
 
+    const userAgent = ctx.request.headers.get('user-agent') || '';
+  const isBot = /facebookexternalhit|Facebot|Twitterbot|Slackbot|WhatsApp/i.test(userAgent);
+
   const hasLocale = locales.some((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`));
 
-  if(!hasLocale){
+  if(!hasLocale && !isBot){
     const newPath = `/${defaultLocale}${pathname}`;
     const url = new URL(newPath, ctx.url);
     return ctx.redirect(url, 301);
