@@ -16,13 +16,13 @@ export const deHomeMetadata: MetadataProps = {
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL(SiteURL),
   alternates: {
-    canonical: '/de', // canonical URL of the root page
+    canonical: '/de/', // canonical URL of the root page
     languages: {
-      en: '/en',
-      de: '/de',
-      pl: '/pl',
-      ro: '/ro',
-      'x-default': '/en', // default fallback to /en 
+      en: '/en/',
+      de: '/de/',
+      pl: '/pl/',
+      ro: '/ro/',
+      'x-default': '/en/', // default fallback to /en 
     },
   },
   openGraph: {
