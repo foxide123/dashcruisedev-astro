@@ -1,0 +1,17 @@
+---
+import { SiteURL } from '@/globals';
+const redirectTo = '/en';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; URL=${redirectTo}/`} />
+    <link rel="canonical" href=`${SiteURL}/en/` />
+    <meta property="og:url" content=`${SiteURL}/en/` />
+    <meta property="og:image" content={`${SiteURL}/og-image.png`} />
+    <meta property="og:title" content="Dashcruise: Web Agency" />
+    <meta property="og:description" content="Dashcruise: Web Agency Offering Custom Websites" />
+  </head>
+  <body></body>
+</html>
