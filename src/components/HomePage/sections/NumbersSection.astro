@@ -40,12 +40,12 @@ const { numbersData } = Astro.props;
   <div class="custom-section-width mx-auto">
     <div class="flex flex-col">
       <div class="lg:flex-row lg:text-start text-center flex-col flex">
-        <h3 class="font-semibold text-5xl leading-lg tracking-2xl">
+        <h3 class="lg:text-5xl text-[28px]  font-semibold lg:leading-lg leading-xl lg:tracking-2xl tracking-xl">
           {numbersData.header1}
-          <span class="text-[#848080]">{numbersData.header2}</span>
+          <span class="font-normal text-[#848080]">{numbersData.header2}</span>
         </h3>
         <p
-          class="mt-2 text-[#848080] text-[28px] font-normal leading-lg tracking-xl"
+          class="mt-2 text-[#848080] lg:text-[28px] text-lg  font-normal lg:leading-lg leading-3xl tracking-xl"
         >
           {numbersData.description}
         </p>

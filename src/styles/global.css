@@ -75,6 +75,94 @@
   .custom-section-width {
     @apply lg:w-[75vw] w-[85vw] mx-auto;
   }
+
+  /* MOBILE TYPOGRAPHY */
+
+  .mobile-H1 {
+    @apply text-[84px] font-semibold leading-md tracking-xl;
+  }
+
+  .mobile-H2-Regular {
+    @apply text-4xl font-normal leading-xl tracking-xl;
+  }
+
+  .mobile-H2-Semibold {
+    @apply text-4xl font-semibold leading-xl  tracking-xl;
+  }
+
+  .mobile-H4 {
+    @apply text-2xl font-normal leading-3xl tracking-md;
+  }
+
+  .mobile-Body18 {
+    @apply text-lg font-normal leading-3xl tracking-sm;
+  }
+
+  .mobile-Paragraph {
+    @apply text-sm font-normal leading-3xl tracking-[0%];
+  }
+
+  /* DESKTOP TYPOGRAPHY */
+
+  @variant lg {
+    .desktop-H1 {
+      @apply text-[160px] font-semibold leading-sm tracking-2xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-H2 {
+      @apply text-[64px] font-semibold leading-md tracking-xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-H2-Regular {
+      @apply text-[64px] font-normal leading-md tracking-xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-H3-Semibold {
+      @apply text-[46px] font-semibold leading-lg tracking-2xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-H3-Regular {
+      @apply text-[46px] font-normal leading-lg tracking-2xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-H4 {
+      @apply text-[32px] font-normal leading-xl tracking-lg;
+    }
+  }
+
+  @variant lg {
+    .desktop-Body-28 {
+      @apply text-[28px] font-normal leading-lg tracking-xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-Body-24 {
+      @apply text-[24px] font-normal leading-3xl;
+    }
+  }
+
+  @variant lg {
+    .desktop-Menu {
+      @apply text-lg font-normal leading-3xl tracking-sm;
+    }
+  }
+
+  @variant lg {
+    .dekstop-Paragraph {
+      @apply text-base font-normal leading-3xl tracking-sm;
+    }
+  }
 }
 
 @theme inline {

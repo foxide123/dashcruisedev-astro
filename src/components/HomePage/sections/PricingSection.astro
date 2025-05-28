@@ -42,31 +42,24 @@ const {
   locale,
   prices,
 } = Astro.props;
+
+import { mobileTypography, desktopTypography } from '@/styles/typography';
 ---
 
 <section
   id="pricing_section"
-  class=" bg-white caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto px-8"
+  class=" bg-black text-white custom-section-padding caret-transparent lg:max-w-screen lg:px-30 w-full flex flex-col items-center mx-auto px-8"
 >
   <!--   <FadeInSection> -->
   <div class="custom-section-width">
     <div class="lg:px-10 max-w-[964px] w-full px-0 mx-auto text-center">
-      <h1 class="lg:text-5xl text-4xl font-semibold">
+      <h3 class={`text-[#EF7A0E] ${mobileTypography.Body18}`}>Flexible Pricing Options</h3>
+      <h1 class={`${mobileTypography.H2Semibold} ${desktopTypography.H2} mt-2`}>
         {pricingSectionData.header}
       </h1>
-      <p class="mt-5 text-xl text-gray-500 font-medium">
+      <p class={`lg:mt-6 mt-4 ${mobileTypography.Paragraph} ${desktopTypography.Menu} text-[#D9D4D2] max-w-[500px] mx-auto`}>
         {pricingSectionData.description}
       </p>
-      <div
-        class="mt-8 w-fit mx-auto flex flex-row items-center justify-between"
-      >
-        {
-          /*<p class="font-medium text-2xl pr-5 text-carrot-500">Monthly</p>
-          <Switch class="cursor-pointer h-[30px] w-[65px]"/>
-          <p class="font-medium text-2xl pl-5">Yearly</p>
-          */
-        }
-      </div>
     </div>
 
     {/* Available Plans */}

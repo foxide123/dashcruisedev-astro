@@ -6,6 +6,10 @@ type offerItem = {
   header: string;
   description: string;
 };
+
+import { mobileTypography } from "@/styles/typography";
+import { desktopTypography } from "@/styles/typography";
+import clsx from "clsx";
 ---
 
 <style>
@@ -52,7 +56,7 @@ type offerItem = {
   </div>
   <div class="custom-section-width h-fit">
     <div
-      class="lg:flex-row lg:text-start text-center flex-col relative flex gap-11"
+      class="lg:flex-row text-start flex-col relative flex gap-11"
     >
       <div
         class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full"
@@ -65,17 +69,17 @@ type offerItem = {
         >
         </div>
         <h3
-          class="text-[#EF7A0E] text-lg font-normal leading-3xl tracking-sm"
+          class={`text-[#EF7A0E] ${mobileTypography.Body18}`}
         >
           {whyChooseUsData.sectionHighlight}
         </h3>
         <h2
-          class="mt-2 font-semibold text-[64px] leading-md tracking-xl"
+          class={`${desktopTypography.H2} ${mobileTypography.H2Semibold} mt-2`}
         >
           {whyChooseUsData.header}
         </h2>
         <p
-          class="mt-6 text-[#D9D4D2] text-base font-normal leading-3xl tracking-sm"
+          class={`mt-6 text-[#D9D4D2] ${desktopTypography.Menu} ${mobileTypography.Paragraph} max-w-[500px]`}
         >
          {whyChooseUsData.description}
         </p>
@@ -105,10 +109,10 @@ type offerItem = {
               <div class="flex items-center justify-center w-[85px] h-[85px] bg-[#EF7A0E]/10 backdrop-blur-md rounded-full">
                 <img loading="lazy" src={item.icon} />
               </div>
-              <h3 class="mt-6 font-normal text-[32px] leading-xl tracking-lg">
+              <h3 class={`mt-6 lg:${desktopTypography.H4} ${mobileTypography.H4}`}>
                 {item.header}
               </h3>
-              <p class="mt-4 text-[#D9D4D2] font-normal text-base leading-3xl tracking-sm">
+              <p class={`mt-4 text-[#D9D4D2] ${desktopTypography.Menu} ${mobileTypography.Paragraph}`}>
                 {item.description}
               </p>
             </div>

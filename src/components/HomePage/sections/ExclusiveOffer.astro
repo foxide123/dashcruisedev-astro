@@ -1,22 +1,23 @@
 ---
 const { exclusiveData } = Astro.props;
+import { mobileTypography, desktopTypography } from "@/styles/typography";
 ---
 
 <div
   class="caret-transparent text-white w-screen bg-black custom-section-padding"
 >
   <div
-    class="lg:flex-row flex-col custom-section-width mx-auto flex gap-[102px]"
+    class="lg:flex-row flex-col custom-section-width mx-auto flex lg:gap-[102px] gap-10"
   >
     <div class="flex flex-col w-full">
-      <h3 class="text-[#EF7A0E] text-lg font-normal leading-3xl tracking-sm">
+      <h3 class={`text-[#EF7A0E] ${desktopTypography.Menu} ${mobileTypography.Body18}`}>
         {exclusiveData.sectionHighlight}
       </h3>
-      <h2 class="mt-2 text-[64px] font-semibold leading-md tracking-xl">
+      <h2 class={`mt-2 ${desktopTypography.H2} ${mobileTypography.H2Semibold}`}>
         {exclusiveData.header}
       </h2>
       <p
-        class="text-[#D9D4D2] mt-6 text-base font-normal leading-3xl tracking-sm"
+        class={`${desktopTypography.Menu} ${mobileTypography.Paragraph} text-[#D9D4D2] mt-6`}
       >
         {exclusiveData.text}
       </p>
@@ -32,7 +33,7 @@ const { exclusiveData } = Astro.props;
                     height={16}
                     src="/check-icon-2.svg"
                   />
-                  <p>{item}</p>
+                  <p class={`${mobileTypography.Paragraph} ${desktopTypography.Paragraph}`}>{item}</p>
                 </>
               </div>
             </li>

@@ -45,6 +45,8 @@ const {
   lookupKey,
   prices,
 } = Astro.props;
+
+import { mobileTypography, desktopTypography } from '@/styles/typography';
 ---
 
 <div
@@ -98,7 +100,7 @@ const {
     {/* Plan Description */}
     <div class="md:text-start text-center">
       <p
-        class={`text-2xl mt-5 mb-2 px-2 text-${textPrimaryColor} "mb-[-10px]"`}
+        class={`${mobileTypography.Body18} ${desktopTypography.Menu} text-xl mt-5 mb-2 px-2 text-${textPrimaryColor} "mb-[-10px]"`}
       >
         {planDescription}
       </p>
@@ -111,7 +113,7 @@ const {
         <li class="flex text-lg mb-2 items-start">
           <CheckIcon color={`text-${textPrimaryColor}`} marginTop="1" />
           <span class="ml-3">
-            <span class={`text-${textPrimaryColor} font-semibold text-xl`}>
+            <span class={`text-${textPrimaryColor} ${mobileTypography.Body18} ${desktopTypography.Menu}`}>
               {feature.featureHighlight}
             </span>
             <span class={`text-${textPrimaryColor}`}>
