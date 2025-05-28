@@ -30,6 +30,6 @@ export const enHomeMetadata: MetadataProps = {
     title: 'DashcruiseDev: Web Agency',
     description:
       'Web development agency offering multilingual, blazing-fast websites tailored to your brand',
-    image: `${SiteURL}/og-image.png`,
+    image: "https://dashcruise.com/og-image.png",
   }
 };
