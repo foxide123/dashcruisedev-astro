@@ -13,6 +13,7 @@ type QaDataType = {
 };
 
 const { qaData} = Astro.props;
+import { mobileTypography, desktopTypography } from '@/styles/typography';
 ---
 
 <section id="qa_section" class="custom-section-padding bg-white caret-transparent flex justify-center w-screen">
@@ -21,10 +22,10 @@ const { qaData} = Astro.props;
       class="custom-section-width lg:text-start text-center"
     >
       <div class="text-center">
-        <h3 class="text-xl font-medium text-carrot-500">
+        <h3 class={`${mobileTypography.Body18} ${desktopTypography.Menu} text-carrot-500`}>
           {qaData.sectionHighlight}
         </h3>
-        <h1 class=" font-medium text-5xl leading-15 tracking-tight">
+        <h1 class={`${mobileTypography.H2Semibold} ${desktopTypography.H2}`}>
           {qaData.header}
         </h1>
       </div>

@@ -5,15 +5,10 @@ import XIconCustom from '@/components/icons/XIconCustom';
 import { IconSizeEnum } from '@/types/icon_types';
 
 const { comparisonData } = Astro.props;
+import { desktopTypography, mobileTypography } from '@/styles/typography';
 ---
 
 <style>
-  .header-custom {
-    font-weight: 500;
-    font-size: 42px;
-    line-height: 60px;
-    letter-spacing: -2%;
-  }
   .list-item-custom {
     font-weight: 500;
     font-size: 16px;
@@ -45,15 +40,20 @@ const { comparisonData } = Astro.props;
   }
 </style>
 <section
-  class="custom-section-padding caret-transparent lg:text-start text-center flex justify-center w-screen bg-black"
+  class="custom-section-padding caret-transparent text-start flex justify-center w-screen bg-black"
 >
   <div class="custom-section-width text-white">
     <div class="">
-      <h1 class="header-custom break-words">{comparisonData.header}</h1>
-      <h1 class="header-custom"></h1>
+      <h1
+        class={`break-words ${desktopTypography.H2} ${mobileTypography.H2Semibold}`}
+      >
+        {comparisonData.header}
+      </h1>
     </div>
 
-    <p class="font-normal text-base leading-6 mt-5">
+    <p
+      class={`${desktopTypography.Menu} ${mobileTypography.Paragraph} mt-5`}
+    >
       {comparisonData.description}
     </p>
     <hr class="mt-8" />
@@ -63,9 +63,9 @@ const { comparisonData } = Astro.props;
     >
       {/* LandingPageDev container */}
       <div class="comparison-container-custom border-magenta-300 p-8">
-          <h2 class="font-medium text-2xl leading-8 my-6">
-            {comparisonData.dashcruiseDev.title}
-          </h2>
+        <h2 class={`${mobileTypography.H2Semibold} my-6`}>
+          {comparisonData.dashcruiseDev.title}
+        </h2>
         <ul class="text-start flex flex-col items-start">
           {
             comparisonData.dashcruiseDev.items.map(
@@ -75,7 +75,11 @@ const { comparisonData } = Astro.props;
                     {/* <CheckIcon /> */}
                     <CheckIconCustom size={IconSizeEnum.small} client:visible />
                   </div>{' '}
-                  <span class="font-semibold text-lg">{item}</span>
+                  <span
+                    class={`${desktopTypography.Menu} ${mobileTypography.Body18}`}
+                  >
+                    {item}
+                  </span>
                 </li>
               )
             )
@@ -84,9 +88,9 @@ const { comparisonData } = Astro.props;
       </div>
       {/* WordPress container */}
       <div class="lg:mt-0 comparison-container-custom border-vampire-400 mt-5">
-          <h2 class="font-medium text-2xl leading-8 my-6">
-            {comparisonData.webBuilders.title}
-          </h2>
+        <h2 class="font-medium text-2xl leading-8 my-6">
+          {comparisonData.webBuilders.title}
+        </h2>
         <ul class="flex flex-col items-start">
           {
             comparisonData.webBuilders.items.map(
@@ -99,7 +103,7 @@ const { comparisonData } = Astro.props;
                       client:visible
                     />
                   </div>{' '}
-                  <span>{item}</span>
+                  <span class={`${mobileTypography.Body18} ${desktopTypography.Menu}`}>{item}</span>
                 </li>
               )
             )

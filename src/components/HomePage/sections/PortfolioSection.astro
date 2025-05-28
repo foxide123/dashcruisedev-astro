@@ -19,6 +19,8 @@ interface Props {
 const { portfolioData } = Astro.props;
 
 const firstPortfolioElement = portfolioData.portfolioItems[0];
+
+import { desktopTypography, mobileTypography } from '@/styles/typography';
 ---
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -63,17 +65,17 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
   <div
     class="custom-section-width text-center h-fit mx-auto"
   >
-    <h1 class="text-[64px] w-full leading-md tracking-xl font-semibold">
+    <h1 class={`${desktopTypography.H2} ${mobileTypography.H2Semibold}`}>
       {portfolioData.header1}
       <span class="font-normal text-[#848080]">{portfolioData.header2}</span>
     </h1>
     <p
-      class="text-[#3E3C3A] mx-auto max-w-[678px] text-base font-normal leading-3xl tracking-sm mt-6 w-full text-center"
+      class={`text-[#3E3C3A] mx-auto max-w-[678px] mt-6 w-full text-center ${desktopTypography.Menu} ${mobileTypography.Paragraph}`}
     >
       {portfolioData.description}
     </p>
     {/* Portfolio Container */}
-    <div id="portfolio-container" class="mt-15 lg:flex-row flex-col flex justify-between gap-5">
+    <div id="portfolio-container" class="lg:mt-15 mt-10 lg:flex-row flex-col flex justify-between gap-5">
       <div class="flex-1 flex flex-col w-full min-h-[600px]">
         <a target="_blank" href={firstPortfolioElement.link} class="grow-1 img-container">
           <img
