@@ -16,13 +16,13 @@ export const roHomeMetadata: MetadataProps = {
   publisher: 'Jakub Cezary Kolando',
   metadataBase: new URL(SiteURL),
   alternates: {
-    canonical: '/ro',
+    canonical: '/ro/',
     languages: {
-      en: '/en',
-      de: '/de',
-      pl: '/pl',
-      ro: '/ro',
-      'x-default': '/en',
+      en: '/en/',
+      de: '/de/',
+      pl: '/pl/',
+      ro: '/ro/',
+      'x-default': '/en/',
     },
   },
   openGraph: {
