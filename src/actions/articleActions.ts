@@ -3,8 +3,8 @@ import type { TranslationData, SlugWithLocale } from '@/types/article_types';
 const isProd = import.meta.env.PROD;
 
 const PUBLIC_API = isProd
-  ? 'https://api.dashcruisedev.com'
-  : 'https://api.dashcruisedev.com';
+  ? 'https://api.dashcruise.com'
+  : 'https://api.dashcruise.com';
 
 export function generateHreflangsForArticles(
   articleId: string,
