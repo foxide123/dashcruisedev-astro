@@ -18,7 +18,7 @@ export async function handleMailSubmition(formData: FormData) {
   }
 
   try {
-    const response = await fetch("https://api.dashcruisedev.com/mail/submit-form", {
+    const response = await fetch("https://api.dashcruise.com/mail/submit-form", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, name, message }),

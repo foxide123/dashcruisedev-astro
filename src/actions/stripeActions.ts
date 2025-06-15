@@ -2,7 +2,7 @@ import type { StripePriceSimplified } from '@/types/stripe_types';
 
 export async function getStripePrices() {
   const res = await fetch(
-    'https://api.dashcruisedev.com/stripe/website-plans/get-prices',
+    'https://api.dashcruise.com/stripe/website-plans/get-prices',
     { method: 'POST' }
   );
 
@@ -42,7 +42,7 @@ export async function getStripePrices() {
 
 export async function verifyStripeSession(sessionId?: string) {
   const res = await fetch(
-    `https://api.dashcruisedev.com/stripe/verify-session/${sessionId}`,
+    `https://api.dashcruise.com/stripe/verify-session/${sessionId}`,
     { method: 'POST' }
   );
 
@@ -65,7 +65,7 @@ export async function redirectToCheckout(
   currency: string
 ) {
   try{const res = await fetch(
-    'https://api.dashcruisedev.com/stripe/checkout-session',
+    'https://api.dashcruise.com/stripe/checkout-session',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

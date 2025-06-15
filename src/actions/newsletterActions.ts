@@ -22,7 +22,7 @@ export async function newsletterSignup({
     return { success: false, error: `${invalidEmailText}` };
   }
   try {
-    const response = await fetch('api.dashcruisedev.com/newsletter/signup');
+    const response = await fetch('api.dashcruise.com/newsletter/signup');
     return (await response.json()) as NewsletterSignupApiResponse;
   } catch (err) {
     return { error: err };
