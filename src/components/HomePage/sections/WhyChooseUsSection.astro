@@ -48,6 +48,14 @@ import clsx from 'clsx';
     //observer
     const observer = new IntersectionObserver(
       (entries) => {
+        console.log(
+          'IO fired',
+          entries.map((e) => ({
+            is: e.isIntersecting,
+            r: e.boundingClientRect,
+            ir: e.intersectionRect,
+          }))
+        );
         entries.forEach((entry) => {
           if (entry.isIntersecting && window.innerWidth >= 1024) {
             loadImagesNow();
