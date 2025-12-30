@@ -25,9 +25,10 @@ import clsx from "clsx";
             'img[data-src]'
           ) as NodeListOf<HTMLImageElement>;
           images.forEach((img) => {
-            if (img instanceof HTMLImageElement && img.dataset.src) {
-              img.src = img.dataset.src;
-              img.removeAttribute('data-src');
+            const src = img.getAttribute("data-src");
+            if(src){
+              img.setAttribute("src", src);
+              img.removeAttribute("data-src");
             }
           });
           observer.unobserve(entry.target);
@@ -40,6 +41,7 @@ import clsx from "clsx";
     observer.observe(imgContainer);
   }
 
+  document.addEventListener('DOMContentLoaded', initImageObserver)
   document.addEventListener('astro:page-load', initImageObserver)
 </script>
 <section
