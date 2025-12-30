@@ -22,26 +22,39 @@ const firstPortfolioElement = portfolioData.portfolioItems[0];
 
 import { desktopTypography, mobileTypography } from '@/styles/typography';
 ---
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting) {
-          const portfolioContainer = entry.target;
-          const images = portfolioContainer.querySelectorAll("img[data-src]") as NodeListOf<HTMLImageElement>;
-          images.forEach((image) => {
-            if(image.dataset.src){
-              image.src = image.dataset.src;
-            }
-          })
 
-          obs.unobserve(portfolioContainer)
-        }
-      })
-    }, {  rootMargin: '0px 0px 100% 0px', root:null})
-    const portfolioContainer = document.getElementById("portfolio-container") as HTMLDivElement;
+<script>
+  function init() {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const portfolioContainer = entry.target;
+            const images = portfolioContainer.querySelectorAll(
+              'img[data-src]'
+            ) as NodeListOf<HTMLImageElement>;
+            images.forEach((image) => {
+              if (image.dataset.src) {
+                image.src = image.dataset.src;
+              }
+            });
+
+            obs.unobserve(portfolioContainer);
+          }
+        });
+      },
+      { rootMargin: '0px 0px 100% 0px', root: null }
+    );
+    const portfolioContainer = document.getElementById(
+      'portfolio-container'
+    ) as HTMLDivElement;
     observer.observe(portfolioContainer);
-  })
+  }
+
+  document.addEventListener('astro:page-load', init);
+  window.addEventListener('pageshow', init);
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
 </script>
 <style>
   @media (width >= 64rem) {
@@ -62,9 +75,7 @@ import { desktopTypography, mobileTypography } from '@/styles/typography';
   class="custom-section-padding bg-white caret-transparent flex justify-center w-screen"
 >
   <!--   <FadeInSection> -->
-  <div
-    class="custom-section-width text-center h-fit mx-auto"
-  >
+  <div class="custom-section-width text-center h-fit mx-auto">
     <h1 class={`${desktopTypography.H2} ${mobileTypography.H2Semibold}`}>
       {portfolioData.header1}
       <span class="font-normal text-[#848080]">{portfolioData.header2}</span>
@@ -75,16 +86,23 @@ import { desktopTypography, mobileTypography } from '@/styles/typography';
       {portfolioData.description}
     </p>
     {/* Portfolio Container */}
-    <div id="portfolio-container" class="lg:mt-15 mt-10 lg:flex-row flex-col flex justify-between gap-5">
+    <div
+      id="portfolio-container"
+      class="lg:mt-15 mt-10 lg:flex-row flex-col flex justify-between gap-5"
+    >
       <div class="flex-1 flex flex-col w-full min-h-[600px]">
-        <a target="_blank" href={firstPortfolioElement.link} class="grow-1 img-container">
+        <a
+          target="_blank"
+          href={firstPortfolioElement.link}
+          class="grow-1 img-container"
+        >
           <img
-          loading="lazy"
+            loading="lazy"
             class="w-full h-full object-cover"
             data-src={firstPortfolioElement.imageUrl}
           />
         </a>
-<!--         <div class="lg:block hidden">
+        <!--         <div class="lg:block hidden">
           <div class="flex">
             <p>2025</p>
             <p>Full Website Build</p>
@@ -96,7 +114,11 @@ import { desktopTypography, mobileTypography } from '@/styles/typography';
         {
           portfolioData.portfolioItems.slice(1).map((item) => (
             <div class="img-container">
-              <img loading="lazy" class="w-full h-full object-cover" data-src={item.imageUrl} />
+              <img
+                loading="lazy"
+                class="w-full h-full object-cover"
+                data-src={item.imageUrl}
+              />
             </div>
           ))
         }
