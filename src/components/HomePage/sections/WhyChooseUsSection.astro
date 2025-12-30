@@ -7,9 +7,9 @@ type offerItem = {
   description: string;
 };
 
-import { mobileTypography } from "@/styles/typography";
-import { desktopTypography } from "@/styles/typography";
-import clsx from "clsx";
+import { mobileTypography } from '@/styles/typography';
+import { desktopTypography } from '@/styles/typography';
+import clsx from 'clsx';
 ---
 
 <style>
@@ -17,32 +17,49 @@ import clsx from "clsx";
   }
 </style>
 <script>
-  function initImageObserver(){
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && window.innerWidth >= 1024) {
-          const images = document.querySelectorAll(
-            'img[data-src]'
-          ) as NodeListOf<HTMLImageElement>;
-          images.forEach((img) => {
-            const src = img.getAttribute("data-src");
-            if(src){
-              img.setAttribute("src", src);
-              img.removeAttribute("data-src");
-            }
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {root:null,rootMargin: "0px 0px 10% 0px"});
+  // fallback function
+  function loadImagesNow(imgContainer: HTMLElement) {
+    const images = imgContainer.querySelectorAll(
+      'img[data-src]'
+    ) as NodeListOf<HTMLImageElement>;
+    images.forEach((img) => {
+      const src = img.getAttribute('data-src');
+      if (src) {
+        img.setAttribute('src', src);
+        img.removeAttribute('data-src');
+      }
+    });
+  }
+  function initImageObserver() {
     const imgContainer = document.getElementById(
       'img-container'
-    ) as HTMLDivElement;
+    ) as HTMLDivElement | null;
+    if (!imgContainer) return;
+    // fallback: if it’s already in viewport, load immediately (Firefox case)
+    const rect = imgContainer.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      loadImagesNow(imgContainer);
+      return;
+    }
+
+    //observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && window.innerWidth >= 1024) {
+            loadImagesNow(imgContainer);
+            observer.disconnect();
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px 10% 0px' }
+    );
     observer.observe(imgContainer);
   }
 
-  document.addEventListener('DOMContentLoaded', initImageObserver)
-  document.addEventListener('astro:page-load', initImageObserver)
+  document.addEventListener('DOMContentLoaded', initImageObserver);
+  window.addEventListener('pageshow', initImageObserver); // firefox bfcache
+  document.addEventListener('astro:page-load', initImageObserver);
 </script>
 <section
   class="custom-section-padding caret-transparent overflow-visible relative -z-10 w-screen flex justify-center items-center bg-[#010101] text-white"
@@ -57,9 +74,7 @@ import clsx from "clsx";
   >
   </div>
   <div class="custom-section-width h-fit">
-    <div
-      class="lg:flex-row text-start flex-col relative flex gap-11"
-    >
+    <div class="lg:flex-row text-start flex-col relative flex gap-11">
       <div
         class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full"
       >
@@ -70,9 +85,7 @@ import clsx from "clsx";
           class="lg:block hidden mix-blend-lighten blur-[600px] bg-gradient-to-br from-[#EF290E80] to-[#EF7A0E40] to-50% absolute top-0 left-full transform translate-x-[-50%] w-[475px] h-[475px] rounded-full -z-9"
         >
         </div>
-        <h3
-          class={`text-[#EF7A0E] ${mobileTypography.Body18}`}
-        >
+        <h3 class={`text-[#EF7A0E] ${mobileTypography.Body18}`}>
           {whyChooseUsData.sectionHighlight}
         </h3>
         <h2
@@ -83,12 +96,17 @@ import clsx from "clsx";
         <p
           class={`mt-6 text-[#D9D4D2] ${desktopTypography.Menu} ${mobileTypography.Paragraph} max-w-[500px]`}
         >
-         {whyChooseUsData.description}
+          {whyChooseUsData.description}
         </p>
-        <div id="img-container" class="lg:block hidden mt-15 relative w-[350px] h-[480px]">
+        <div
+          id="img-container"
+          class="lg:block hidden mt-15 relative w-[350px] h-[480px]"
+        >
           <img
             loading="lazy"
-            class=""
+            class="w-[250] h-[380] object-cover"
+            width={250}
+            height={380}
             data-src="https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/f271d9b2-19d1-4e92-0e0a-b2492d56bd00/mobile640x480"
           />
           <img
@@ -111,10 +129,14 @@ import clsx from "clsx";
               <div class="flex items-center justify-center w-[85px] h-[85px] bg-[#EF7A0E]/10 backdrop-blur-md rounded-full">
                 <img loading="lazy" src={item.icon} />
               </div>
-              <h3 class={`mt-6 lg:${desktopTypography.H4} ${mobileTypography.H4}`}>
+              <h3
+                class={`mt-6 lg:${desktopTypography.H4} ${mobileTypography.H4}`}
+              >
                 {item.header}
               </h3>
-              <p class={`mt-4 text-[#D9D4D2] ${desktopTypography.Menu} ${mobileTypography.Paragraph}`}>
+              <p
+                class={`mt-4 text-[#D9D4D2] ${desktopTypography.Menu} ${mobileTypography.Paragraph}`}
+              >
                 {item.description}
               </p>
             </div>
