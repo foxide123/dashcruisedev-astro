@@ -27,7 +27,7 @@ export const plHomeMetadata: MetadataProps = {
   },
   openGraph: {
     url: `${SiteURL}/pl`,
-    title: 'DashcruiseDev: Agencja Webowa',
+    title: 'Dashcruise: Agencja Webowa',
     description:
       'Agencja tworząca szybkie, wielojęzyczne strony internetowe dopasowane do Twojej marki',
     image: `${SiteURL}/og-image.png`,
