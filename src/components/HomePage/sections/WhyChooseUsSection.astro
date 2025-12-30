@@ -17,60 +17,37 @@ import clsx from 'clsx';
   }
 </style>
 <script>
-  // fallback function
-  function loadImagesNow() {
-    const imgContainer = document.getElementById('img-container');
-    if (!imgContainer) return;
-    const images = imgContainer.querySelectorAll(
-      'img[data-src]'
-    ) as NodeListOf<HTMLImageElement>;
-    images.forEach((img) => {
-      const src = img.getAttribute('data-src');
-      if (src) {
-        img.setAttribute('src', src);
-        img.removeAttribute('data-src');
-      }
-    });
-  }
-  function initImageObserver() {
-    const section = document.getElementById('why-choose-us');
-    if (!section) return;
-
-    if (window.innerWidth < 1024) return;
-
-    // fallback: if it’s already in viewport, load immediately (Firefox case)
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      loadImagesNow();
-      return;
-    }
-
-    //observer
+  function init() {
     const observer = new IntersectionObserver(
-      (entries) => {
-        console.log(
-          'IO fired',
-          entries.map((e) => ({
-            is: e.isIntersecting,
-            r: e.boundingClientRect,
-            ir: e.intersectionRect,
-          }))
-        );
+      (entries, obs) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && window.innerWidth >= 1024) {
-            loadImagesNow();
-            observer.disconnect();
+          if (entry.isIntersecting) {
+            const whyChooseUsContainer = entry.target;
+            const images = whyChooseUsContainer.querySelectorAll(
+              'img[data-src]'
+            ) as NodeListOf<HTMLImageElement>;
+            images.forEach((image) => {
+              if (image.dataset.src) {
+                image.src = image.dataset.src;
+              }
+            });
+
+            obs.unobserve(whyChooseUsContainer);
           }
         });
       },
-      { root: null, rootMargin: '0px 0px 10% 0px' }
+      { rootMargin: '0px 0px 100% 0px', root: null }
     );
-    observer.observe(section);
+    const whyChooseUsContainer = document.getElementById(
+      'why-choose-us'
+    ) as HTMLDivElement;
+    observer.observe(whyChooseUsContainer);
   }
 
-  document.addEventListener('DOMContentLoaded', initImageObserver);
-  window.addEventListener('pageshow', initImageObserver); // firefox bfcache
-  document.addEventListener('astro:page-load', initImageObserver);
+  document.addEventListener('astro:page-load', init);
+  window.addEventListener('pageshow', init);
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
 </script>
 <section
   id="why-choose-us"
