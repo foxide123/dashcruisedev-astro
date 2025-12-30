@@ -31,14 +31,12 @@ import clsx from 'clsx';
     });
   }
   function initImageObserver() {
-    const imgContainer = document.getElementById(
-      'img-container'
-    ) as HTMLDivElement | null;
-    if (!imgContainer) return;
+    const section = document.getElementById("why-choose-us");
+if (!section) return;
     // fallback: if it’s already in viewport, load immediately (Firefox case)
-    const rect = imgContainer.getBoundingClientRect();
+    const rect = section.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      loadImagesNow(imgContainer);
+      loadImagesNow(section);
       return;
     }
 
@@ -47,14 +45,14 @@ import clsx from 'clsx';
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && window.innerWidth >= 1024) {
-            loadImagesNow(imgContainer);
+            loadImagesNow(section);
             observer.disconnect();
           }
         });
       },
       { root: null, rootMargin: '0px 0px 10% 0px' }
     );
-    observer.observe(imgContainer);
+    observer.observe(section);
   }
 
   document.addEventListener('DOMContentLoaded', initImageObserver);
@@ -73,7 +71,7 @@ import clsx from 'clsx';
     class="-z-10 absolute top-0 inset-0 bg-black"
   >
   </div>
-  <div class="custom-section-width h-fit">
+  <div id="why-choose-us" class="custom-section-width h-fit">
     <div class="lg:flex-row text-start flex-col relative flex gap-11">
       <div
         class="lg:h-screen lg:sticky static lg:top-[40px] flex flex-col w-full"
